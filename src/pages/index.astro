@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout title="Oliver Speir">
+	<header>
+		<p>insert contact links</p>
+	</header>
+	<main>
+		<div class="text-container">
+		<h1>Oliver Speir</h1>
+			<p class="body-text">
+				I am a driven engineer who loves to solve problems.
+				<br> I am looking for a position that will allow me to develop my skills and create powerful technology.
+			</p>
+		</div>
+		<div class="card-container">
+			<ul role="list" class="link-card-grid">
+			<Card
+				href="/projects"
+				title="Projects"
+				target="_self"
+				body="Click here to see the projects I have worked on."
+			/>
+			<Card
+				href="https://storage.googleapis.com/oliver-speir-cv-resume/Oliver%20Speir%20CV.pdf"
+				title="CV / Resume"
+				target="_blank"
+				body="Click here to open my CV/Resume in a new tab."
+			/>
+			<Card
+			href="/skills"
+			title="Skills"
+			target="_self"
+			body="Click here to see my skills."
+			/>
+			<Card
+			href="/about"
+			title="About Me"
+			target="_self"
+			body="Click here to learn more about me."
+			/>
+			</ul>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	main {
+		display: flex;
+  		flex-wrap: wrap;
+  		justify-content: space-between;
+		margin: auto;
+		padding: 1.5rem;
+		max-width: 60ch;
+	}
+	/* h1 {
+		text-align: center;
+		font-size: 3rem;
+		font-weight: 800;
+		margin: 0;
+	}
+	div {
+		margin: auto;
+		padding-top: 5rem;
+	} */
+	.body-text {
+		line-height: 1.6;
+		margin: 1rem 0;
+		border: 1px solid rgba(var(--accent), 25%);
+		background-color: white;
+		padding: 1rem;
+		border-radius: 0.4rem;
+		flex-basis: 50%;
+	}
+	/* .link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 1rem;
+		padding: 0;
+	} */
+	.link-card-grid {
+		display: flex;
+		flex-wrap: wrap;
+		flex-basis: 50%;
+		gap: 1rem;
+		justify-content: space-between;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+</style>
