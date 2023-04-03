@@ -8,14 +8,14 @@ import Card from '../components/Card.astro';
 		<p>insert contact links</p>
 	</header>
 	<main>
-		<div class="text-container">
 		<h1>Oliver Speir</h1>
+		<div>
 			<p class="body-text">
 				I am a driven engineer who loves to solve problems.
 				<br> I am looking for a position that will allow me to develop my skills and create powerful technology.
 			</p>
 		</div>
-		<div class="card-container">
+		<div>
 			<ul role="list" class="link-card-grid">
 			<Card
 				href="/projects"
@@ -48,14 +48,11 @@ import Card from '../components/Card.astro';
 
 <style>
 	main {
-		display: flex;
-  		flex-wrap: wrap;
-  		justify-content: space-between;
 		margin: auto;
 		padding: 1.5rem;
 		max-width: 60ch;
 	}
-	/* h1 {
+	h1 {
 		text-align: center;
 		font-size: 3rem;
 		font-weight: 800;
@@ -64,7 +61,7 @@ import Card from '../components/Card.astro';
 	div {
 		margin: auto;
 		padding-top: 5rem;
-	} */
+	}
 	.body-text {
 		line-height: 1.6;
 		margin: 1rem 0;
@@ -72,22 +69,11 @@ import Card from '../components/Card.astro';
 		background-color: white;
 		padding: 1rem;
 		border-radius: 0.4rem;
-		flex-basis: 50%;
 	}
-	/* .link-card-grid {
+	.link-card-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
 		gap: 1rem;
 		padding: 0;
-	} */
-	.link-card-grid {
-		display: flex;
-		flex-wrap: wrap;
-		flex-basis: 50%;
-		gap: 1rem;
-		justify-content: space-between;
-		list-style: none;
-		padding: 0;
-		margin: 0;
 	}
 </style>
