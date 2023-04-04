@@ -1,5 +1,63 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import PictureCard from '../components/PictureCard.astro';
+import Header from '../components/Header.astro';
 ---
 
+<Layout title="Projects - Oliver Speir">
+<Header/>
+<main>
+    <div class="textbox">
+        <h1>Projects</h1>
+    </div>
+    <div class="cards">
+        <ul role="list" class="card-grid">
+            <PictureCard
+                href="https://clean-air-compass-mzvbj.ondigitalocean.app/"
+                title="Clean Air Compass"
+                body="this project we made "
+                src="https://storage.googleapis.com/oliver-speir/CleanAirCompassDemo.gif"
+            />
+            <PictureCard
+            href="https://github.com/ThoroughZed-Analytics/Thoroughzed"
+            title="ThoroughZED"
+            body="this project we made "
+            src="https://storage.googleapis.com/oliver-speir/ThoroughZedDemo.gif"
+            />
+            <PictureCard
+            href="https://openimg.netlify.app/"
+            title="OpenIMG"
+            body="this project we made "
+            src="https://storage.googleapis.com/oliver-speir/OpenImgDemo.gif"
+            />
+        </ul>
+    </div>
+</main>
+</Layout>
+
+<style>
+	main {
+		/* display:flex; */
+		padding-top: 15vh;
+	}
+	h1 {
+		text-align: center;
+		font-size: 3rem;
+		font-weight: 800;
+		margin: 0;
+	}
+	.textbox {
+		max-width: 60ch;
+		padding-right:15vw ;
+		padding-left:5vw;
+	}
+	.cards {
+		/* padding-left: 10px; */
+	}
+	.card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
+		gap: 1rem;
+		padding: 0;
+	}
+</style>
