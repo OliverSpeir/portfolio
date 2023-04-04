@@ -1,41 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import LinkCard from '../components/LinkCard.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 ---
 
 <Layout title="Oliver Speir">
-	<header>
-		<p>insert contact links</p>
-	</header>
+	<Header/>
 	<main>
+		<div class="text-container">
 		<h1>Oliver Speir</h1>
-		<div>
+		<h2>Software Engineer</h2>
 			<p class="body-text">
 				I am a driven engineer who loves to solve problems.
 				<br> I am looking for a position that will allow me to develop my skills and create powerful technology.
 			</p>
 		</div>
-		<div>
-			<ul role="list" class="link-card-grid">
-			<Card
+		<div class="cards">
+			<ul role="list" class="card-grid">
+			<LinkCard
 				href="/projects"
 				title="Projects"
 				target="_self"
 				body="Click here to see the projects I have worked on."
 			/>
-			<Card
+			<LinkCard
 				href="https://storage.googleapis.com/oliver-speir-cv-resume/Oliver%20Speir%20CV.pdf"
-				title="CV / Resume"
+				title="CV/Resume"
 				target="_blank"
 				body="Click here to open my CV/Resume in a new tab."
 			/>
-			<Card
+			<LinkCard
 			href="/skills"
 			title="Skills"
 			target="_self"
 			body="Click here to see my skills."
 			/>
-			<Card
+			<LinkCard
 			href="/about"
 			title="About Me"
 			target="_self"
@@ -44,13 +45,16 @@ import Card from '../components/Card.astro';
 			</ul>
 		</div>
 	</main>
+	<Footer/>
 </Layout>
 
 <style>
 	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
+		display:flex;
+		/* margin: auto; */
+		padding-top: 15vh;
+		/* padding: 1.5rem; */
+		/* max-width: 60ch; */
 	}
 	h1 {
 		text-align: center;
@@ -58,9 +62,20 @@ import Card from '../components/Card.astro';
 		font-weight: 800;
 		margin: 0;
 	}
-	div {
-		margin: auto;
-		padding-top: 5rem;
+	h2 {
+		text-align: center;
+		font-size: 2rem;
+		font-weight: 700;
+		color: grey;
+		margin: 0;
+	}
+	.text-container {
+		max-width: 60ch;
+		padding-right:15vw ;
+		padding-left:5vw;
+	}
+	.cards {
+		/* padding-left: 10px; */
 	}
 	.body-text {
 		line-height: 1.6;
@@ -70,9 +85,9 @@ import Card from '../components/Card.astro';
 		padding: 1rem;
 		border-radius: 0.4rem;
 	}
-	.link-card-grid {
+	.card-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
 		gap: 1rem;
 		padding: 0;
 	}
