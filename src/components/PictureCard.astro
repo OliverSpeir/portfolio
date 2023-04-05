@@ -23,7 +23,7 @@ const { href, title, body, src, icons} = Astro.props;
 			<ul class="icons-grid">
 				{icons.map(icon => (
 					<li class="icon-item">
-			  		<img src={`public/${icon}.svg`} alt={icon} />
+			  		<img src={`/${icon}.svg`} alt={icon} />
 					</li>
 				))}
 			</ul>
