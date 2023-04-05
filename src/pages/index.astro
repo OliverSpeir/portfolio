@@ -51,10 +51,7 @@ import Header from '../components/Header.astro';
 <style>
 	main {
 		display:flex;
-		/* margin: auto; */
 		padding-top: 15vh;
-		/* padding: 1.5rem; */
-		/* max-width: 60ch; */
 	}
 	h1 {
 		text-align: center;
@@ -66,7 +63,7 @@ import Header from '../components/Header.astro';
 		text-align: center;
 		font-size: 2rem;
 		font-weight: 700;
-		color: grey;
+		color: var(--accent-color);
 		margin: 0;
 	}
 	.text-container {
@@ -74,14 +71,11 @@ import Header from '../components/Header.astro';
 		padding-right:15vw ;
 		padding-left:5vw;
 	}
-	.cards {
-		/* padding-left: 10px; */
-	}
 	.body-text {
 		line-height: 1.6;
 		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
+		border: 1px solid var(--hover-accent) 25%;
+		background-color: var(--card-color);
 		padding: 1rem;
 		border-radius: 0.4rem;
 	}
