@@ -1,0 +1,18 @@
+---
+import { Astronav, MenuItems, MenuIcon,  Dropdown, DropdownItems } from "astro-navbar";
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+---
+
+<header class="flex p-5  gap-5 justify-center">
+  <Astronav> 
+    <MenuItems class="flex">
+      <ul class="flex gap-5 flex-row">
+        <li><a class={currentPath === "" ? "text-blue-200" : "text-blue-500 hover:text-blue-800"} href="/">Home</a></li>
+        <li><a class={currentPath === "projects" ? "text-blue-200" : "text-blue-500 hover:text-blue-800"} href="/projects">Projects</a></li>
+        <li><a class={currentPath === "skills" ? "text-blue-200" : "text-blue-500 hover:text-blue-800"} href="/skills">Skills</a></li>
+        <li><a class={currentPath === "about" ?  : "text-blue-500 hover:text-blue-800"} href="/about">About</a></li>
+      </ul>
+    </MenuItems>
+  </Astronav>
+</header>

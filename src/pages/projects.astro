@@ -1,13 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PictureCard from '../components/PictureCard.astro';
-import Header from '../components/Header.astro';
+import NavLinks from '../components/NavLinks.astro';
+import SocialLogos from '../components/SocialLogos.astro';
 ---
 
 <Layout title="Projects - Oliver Speir">
-<Header/>
+<NavLinks/>
+<SocialLogos/>
 <main>
-        <h1>Projects</h1>
+        <!-- <h1>Projects</h1> -->
         <ul role="list" class="card-grid">
             <PictureCard
                 href="https://clean-air-compass-mzvbj.ondigitalocean.app/"
@@ -50,7 +52,7 @@ import Header from '../components/Header.astro';
     .card-grid li {
         margin-bottom: 100px;
     }
-    @media (min-width:1200px){
+    @media (min-width:1000px){
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));

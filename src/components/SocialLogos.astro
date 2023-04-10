@@ -1,0 +1,57 @@
+---
+const { class: className } = Astro.props;
+---
+<nav class={className}>
+    <a href="https://www.linkedin.com/in/oliverspeir/" target="_blank" class="tooltip" data-tooltip="Click to view my LinkedIn profile"><img src="/LinkedIn_Logo.svg"/></a>
+    <a href="https://github.com/OliverSpeir" target="_blank" class="tooltip" data-tooltip="Click to view my GitHub profile"><img src="/GitHub_Logo.svg"/></a>
+    <a href="mailto:oliverspeir9@gmail.com" target="_blank" class="tooltip" data-tooltip="Click to send me an email"><img src="/mail_icon.svg"/></a>
+    <a href="https://storage.googleapis.com/oliver-speir-cv-resume/OliverSpeirCV.pdf" target="_blank" class="tooltip" data-tooltip="Click to see resume"><img src="/resume.svg"/></a>
+</nav>
+
+<style>
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5vw;
+      margin-top: 1vh;
+    }
+    nav img {
+      width: auto;
+      height: 5vh;
+    }
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip::after {
+        content: attr(data-tooltip);
+        background: var(--card-color);
+        color: var(--text-color);
+        padding: 0px 10px 5px 10px;
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity .5s ease-in-out;
+        pointer-events: none;
+        border-radius:20px;
+    }
+
+    .tooltip:hover::after {
+        opacity: 1;
+    }
+    @media (max-width:999px){
+        .top {
+            display:none;
+        }
+    }
+    @media (min-width:1000px){
+        .bottom {
+            display:none;
+        }
+    }
+</style>
