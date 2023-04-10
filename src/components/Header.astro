@@ -3,9 +3,9 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 <nav class="contact">
-  <a>linked in</a>
-  <a>git hub</a>
-  <a> email </a>
+  <a href="https://www.linkedin.com/in/oliverspeir/" target="_blank"><img src="/LinkedIn_Logo.svg"/></a>
+  <a href="https://github.com/OliverSpeir" target="_blank"><img src="/GitHub_Logo.svg"/></a>
+  <a href="mailto:oliverspeir9@gmail.com" target="_blank"><img src="/mail_icon.svg"/> OLIVERSPEIR9@GMAIL.COM </a>
 </nav>
 <nav class="links">
   <a class={currentPath === "" ? "active" : ""} href="/">Home</a>
@@ -24,9 +24,13 @@ const currentPath = pathname.slice(1);
     nav.links {
       text-align: right;
     }
-    @media (max-width:900px){
+    nav.contact img {
+      width: auto;
+      height: 2vh;
+    }
+    /* @media (max-width:900px){
         .contact {
             display: none;
         }
-    }
+    } */
 </style>
