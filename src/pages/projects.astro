@@ -7,10 +7,7 @@ import Header from '../components/Header.astro';
 <Layout title="Projects - Oliver Speir">
 <Header/>
 <main>
-    <div class="textbox">
         <h1>Projects</h1>
-    </div>
-    <div class="cards">
         <ul role="list" class="card-grid">
             <PictureCard
                 href="https://clean-air-compass-mzvbj.ondigitalocean.app/"
@@ -34,14 +31,12 @@ import Header from '../components/Header.astro';
             icons={['reactjs', 'mongodb', 'nodejs', 'expressjs']}
             />
         </ul>
-    </div>
 </main>
 </Layout>
 
 <style>
 	main {
-		/* display:flex; */
-		padding-top: 5vh;
+		/* padding-top: 5vh; */
 	}
 	h1 {
 		text-align: center;
@@ -49,30 +44,18 @@ import Header from '../components/Header.astro';
 		font-weight: 800;
 		margin: 0;
 	}
-	.textbox {
-		max-width: 60ch;
-		padding-right:15vw ;
-		padding-left:5vw;
-	}
-    @media (min-width:1200px){
-	.card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-}
-
-@media (max-width:1100px) {
     .card-grid {
-            display: flex;
-            flex-direction: column;
+        padding: 0;
+        }
+    .card-grid li {
+        margin-bottom: 100px;
+    }
+    @media (min-width:1200px){
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
             gap: 1rem;
             padding: 0;
         }
-    .cards {
-        display:flex;
-        justify-content: center;
-        }
-}
+    }
 </style>

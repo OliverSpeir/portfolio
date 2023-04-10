@@ -19,7 +19,6 @@ const { href, title, body, src, icons} = Astro.props;
 		<p>
 			{body}
 		</p>
-		<div class="icons">
 			<ul class="icons-grid">
 				{icons.map(icon => (
 					<li class="icon-item">
@@ -27,7 +26,6 @@ const { href, title, body, src, icons} = Astro.props;
 					</li>
 				))}
 			</ul>
-		</div>
 	</a>
 </li>
 <style>
@@ -35,7 +33,7 @@ const { href, title, body, src, icons} = Astro.props;
 		width: 100%;
 	}
 	.picture-card {
-		width:30vw;
+		margin-top: 1vh;
 		list-style: none;
 		display: flex;
 		padding: 0.25rem;
@@ -64,21 +62,19 @@ const { href, title, body, src, icons} = Astro.props;
 		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	p {
-		margin-top: 0.5rem;
+		margin-top: 0.5vh;
 		margin-bottom: 0;
 		color: var(--text-color);
 	}
-	.icons {
-		width:100%;
-		height:auto;
-	}
 	ul.icons-grid {
   		display: grid;
-  		grid-template-columns: repeat(4, 1fr);
+  		grid-template-columns: repeat(3, 1fr);
   		gap: 1rem; 
+		padding:0;
 	}
 	li.icon-item {
   		list-style: none;
+		height:auto;
 	}
 	.picture-card:is(:hover, :focus-within) {
 		background-position: 0;
