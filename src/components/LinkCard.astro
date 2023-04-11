@@ -13,7 +13,6 @@ const { href, title, body, target } = Astro.props;
 	<a href={href} target={target}>
 		<h2>
 			{title}
-			<span>&rarr;</span>
 		</h2>
 		<p>
 			{body}
@@ -21,6 +20,9 @@ const { href, title, body, target } = Astro.props;
 	</a>
 </li>
 <style>
+	li {
+		width:100%;
+	}
 	.link-card {
 		list-style: none;
 		display: flex;
@@ -45,6 +47,7 @@ const { href, title, body, target } = Astro.props;
 		opacity: 0.8;
 	}
 	h2 {
+		text-align: center;
 		margin: 0;
 		font-size: 1.25rem;
 		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -54,11 +57,11 @@ const { href, title, body, target } = Astro.props;
 		margin-bottom: 0;
 		color: var(--text-color);
 	}
-	.link-card:is(:hover, :focus-within) {
+	.link-card:is(:hover) {
 		background-position: 0;
 		background-image: var(--hover-accent-gradient);
 	}
-	.link-card:is(:hover, :focus-within) h2 {
+	.link-card:is(:hover) h2 {
 		color: var(--hover-accent);
 	}
 </style>

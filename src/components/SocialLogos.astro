@@ -9,22 +9,85 @@ const { class: className } = Astro.props;
 </nav>
 
 <style>
-    nav {
+    .projects {
       display: flex;
       justify-content: center;
       gap: 1.5vw;
       margin-top: 1vh;
     }
-    nav img {
+    .projects img {
       width: auto;
-      height: 5vh;
+      height: 3.5vh;
     }
-    .tooltip {
+    .projects .tooltip {
         position: relative;
         display: inline-block;
     }
-
-    .tooltip::after {
+    .projects .tooltip::after {
+        content: attr(data-tooltip);
+        background: var(--card-color);
+        color: var(--text-color);
+        padding: 0px 10px 5px 10px;
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity .5s ease-in-out;
+        pointer-events: none;
+        border-radius:20px;
+    }
+    .bottom {
+      display: flex;
+      justify-content: center;
+      gap: 1.5vw;
+      margin-top: 1vh;
+    }
+    .bottom img {
+      width: auto;
+      height: 5vh;
+    }
+    .bottom .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+    .bottom .tooltip::after {
+        content: attr(data-tooltip);
+        background: var(--card-color);
+        color: var(--text-color);
+        padding: 0px 10px 5px 10px;
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity .5s ease-in-out;
+        pointer-events: none;
+        border-radius:20px;
+    }
+    .projects .tooltip:hover::after {
+        opacity: 1;
+    }
+    .home {
+      display: flex;
+      justify-content: center;
+      gap: 1.5vw;
+      margin-top: 1vh;
+    }
+    .home img {
+        margin-top:2vh;
+        width: auto;
+        height: 3vh;
+    }
+    .home .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+    .home .tooltip::after {
         content: attr(data-tooltip);
         background: var(--card-color);
         color: var(--text-color);
@@ -41,15 +104,15 @@ const { class: className } = Astro.props;
         border-radius:20px;
     }
 
-    .tooltip:hover::after {
+    .home .tooltip:hover::after {
         opacity: 1;
     }
-    @media (max-width:999px){
-        .top {
+    @media (max-width:874px){
+        .home {
             display:none;
         }
     }
-    @media (min-width:1000px){
+    @media (min-width:875px){
         .bottom {
             display:none;
         }

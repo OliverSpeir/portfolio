@@ -5,7 +5,6 @@ import SocialLogos from '../components/SocialLogos.astro';
 ---
 
 <Layout title="Oliver Speir">
-	<SocialLogos class="top"/>
 	<main>
 		<div class="text-container">
 		<h1>Oliver Speir</h1>
@@ -14,6 +13,7 @@ import SocialLogos from '../components/SocialLogos.astro';
 				I am a driven engineer who loves to solve problems.
 				<br> I am looking for a position that will allow me to develop my skills and create powerful technology.
 			</p>
+			<SocialLogos class="home"/>
 		</div>
 		<div class="cards">
 			<ul role="list" class="card-grid">
@@ -74,11 +74,12 @@ import SocialLogos from '../components/SocialLogos.astro';
 	.cards {
 		max-width: 60ch;
 	}
-	@media (max-width:999px){
+	@media (max-width:874px){
 		main {
 			display:flex;
-			flex-direction: column;
 			justify-content: center;
+			flex-direction: column;
+			align-items: center;
 			margin-right: 2vw;
 			margin-left: 2vw;
 		}
@@ -87,12 +88,16 @@ import SocialLogos from '../components/SocialLogos.astro';
 		}
 		.card-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
-				gap: 1rem;
+				justify-content: center;
+    			align-items: center;
+				grid-template-columns: repeat(2, minmax(20ch, .1fr));
+				grid-template-rows: repeat(2, minmax(15ch, .1fr));
+				column-gap: 2rem;
 				padding: 0;
+				/* margin:-0.5rem; */
 			}
 	}
-	@media (min-width:1000px){
+	@media (min-width:875px){
 		main {
 			display:flex;
 			padding-top: 15vh;

@@ -7,7 +7,7 @@ import SocialLogos from '../components/SocialLogos.astro';
 
 <Layout title="Projects - Oliver Speir">
 <NavLinks/>
-<SocialLogos/>
+<SocialLogos class="projects"/>
 <main>
         <ul role="list" class="card-grid">
             <PictureCard
@@ -37,7 +37,7 @@ import SocialLogos from '../components/SocialLogos.astro';
 
 <style>
 	main {
-		/* padding-top: 5vh; */
+		padding-top: 5vh;
 	}
 	h1 {
 		text-align: center;
@@ -51,7 +51,7 @@ import SocialLogos from '../components/SocialLogos.astro';
     .card-grid li {
         margin-bottom: 100px;
     }
-    @media (min-width:1000px){
+    @media (min-width:875px){
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
