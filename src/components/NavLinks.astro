@@ -1,5 +1,6 @@
 
 <nav class="links">
+  <p>{Astro.url.pathname}</p>
   <a class={Astro.url.pathname === "/" ? "active" : "link"} href="/">Home</a>
   <a class={Astro.url.pathname === "/projects" ? "active" : "link"} href="/projects">Projects</a>
   <a class={Astro.url.pathname === "/skills" ? "active" : "link"} href="/skills">Skills</a>
