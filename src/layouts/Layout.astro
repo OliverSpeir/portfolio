@@ -1,6 +1,6 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,44 +8,52 @@ const { title } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Oliver Speir resume CV portfolio landing page personal website software engineer software developer tech web developer web design backend frontend">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Oliver Speir's Portfolio Website. Contains links to CV, LinkIn, GitHub and email address. Displays Skills and Projects."
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 <style is:global>
-	:root {
-		--hover-accent: rgb(13, 28, 240);
-		--hover-accent-gradient: linear-gradient(45deg, var(--hover-accent), #5b3fda99 30%, white 60%);
-	}
-	@media (prefers-color-scheme: dark) {
-  		:root {
-			--text-color: #d6d6d6;
-			--accent-color:rgb(98, 94, 94);
-    		--bg-color: #222;
-			--card-color: rgb(77, 75, 75);
-			--card-shadow:rgba(255, 255, 255, 0.39);
-  		}
-	}
-	@media (prefers-color-scheme: light) {
-  		:root {
-    		--text-color: black;
-			--accent-color: #292c88;
-    		--bg-color: #F6F6F6;
-			--card-color: rgb(165, 215, 246);
-			--card-shadow:rgba(45, 59, 170, 0.415);
-  		}
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: var(--bg-color);
-		color: var(--text-color)
-	}
+  :root {
+    --hover-accent: rgb(13, 28, 240);
+    --hover-accent-gradient: linear-gradient(
+      45deg,
+      var(--hover-accent),
+      #5b3fda99 30%,
+      white 60%
+    );
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-color: #d6d6d6;
+      --accent-color: rgb(98, 94, 94);
+      --bg-color: #222;
+      --card-color: rgb(77, 75, 75);
+      --card-shadow: rgba(255, 255, 255, 0.39);
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --text-color: black;
+      --accent-color: #292c88;
+      --bg-color: #f6f6f6;
+      --card-color: rgb(165, 215, 246);
+      --card-shadow: rgba(45, 59, 170, 0.415);
+    }
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
 </style>

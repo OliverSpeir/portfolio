@@ -1,65 +1,81 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import PictureCard from '../components/PictureCard.astro';
-import NavLinks from '../components/NavLinks.astro';
-import SocialLogos from '../components/SocialLogos.astro';
+import Layout from "../layouts/Layout.astro";
+import PictureCard from "../components/PictureCard.astro";
+import NavLinks from "../components/NavLinks.astro";
+import SocialLogos from "../components/SocialLogos.astro";
 ---
 
 <Layout title="Projects - Oliver Speir">
-<NavLinks/>
-<SocialLogos class="projects"/>
-<main>
-        <ul role="list" class="card-grid">
-            <PictureCard
-                href="https://clean-air-compass-mzvbj.ondigitalocean.app/"
-                title="Clean Air Compass"
-                body="This project we made."
-                src="https://storage.googleapis.com/oliver-speir/CleanAirCompassDemo.gif"
-                icons={['python','djangorestframework', 'nextjs', 'fastapi', 'docker', 'nextauth', 'pandas', 'scikitlearn',]}
-            />
-            <PictureCard
-            href="https://github.com/ThoroughZed-Analytics/Thoroughzed"
-            title="ThoroughZED"
-            body="this project we made"
-            src="https://storage.googleapis.com/oliver-speir/ThoroughZedDemo.gif"
-            icons={['python', 'fastapi', 'docker', 'pandas', 'scikitlearn', 'holoviz']}
-            />
-            <PictureCard
-            href="https://openimg.netlify.app/"
-            title="OpenIMG"
-            body="this project we made "
-            src="https://storage.googleapis.com/oliver-speir/OpenImgDemo.gif"
-            icons={['reactjs', 'mongodb', 'nodejs', 'expressjs']}
-            />
-        </ul>
-</main>
+  <NavLinks />
+  <SocialLogos class="projects" />
+  <main>
+    <ul role="list" class="card-grid">
+      <PictureCard
+        href="https://clean-air-compass-mzvbj.ondigitalocean.app/"
+        title="Clean Air Compass"
+        body="This project we made."
+        src="https://storage.googleapis.com/oliver-speir/CleanAirCompassDemo.gif"
+        icons={[
+          "python",
+          "djangorestframework",
+          "nextjs",
+          "fastapi",
+          "docker",
+          "nextauth",
+          "pandas",
+          "scikitlearn",
+        ]}
+      />
+      <PictureCard
+        href="https://github.com/ThoroughZed-Analytics/Thoroughzed"
+        title="ThoroughZED"
+        body="this project we made"
+        src="https://storage.googleapis.com/oliver-speir/ThoroughZedDemo.gif"
+        icons={[
+          "python",
+          "fastapi",
+          "docker",
+          "pandas",
+          "scikitlearn",
+          "holoviz",
+        ]}
+      />
+      <PictureCard
+        href="https://openimg.netlify.app/"
+        title="OpenIMG"
+        body="this project we made "
+        src="https://storage.googleapis.com/oliver-speir/OpenImgDemo.gif"
+        icons={["reactjs", "mongodb", "nodejs", "expressjs"]}
+      />
+    </ul>
+  </main>
 </Layout>
 
 <style>
-	main {
-        margin-top: -4vh;
-	}
-	h1 {
-		text-align: center;
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
+  main {
+    margin-top: -4vh;
+  }
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .card-grid {
+    padding: 5vw;
+  }
+  .card-grid li {
+    margin-bottom: 100px;
+  }
+  @media (min-width: 875px) {
+    main {
+      padding-top: 5vh;
+    }
     .card-grid {
-        padding: 5vw;
-        }
-    .card-grid li {
-        margin-bottom: 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
+      gap: 1rem;
+      padding: 0;
     }
-    @media (min-width:875px){
-        main {
-		    padding-top: 5vh;
-	    }
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
-            gap: 1rem;
-            padding: 0;
-        }
-    }
+  }
 </style>

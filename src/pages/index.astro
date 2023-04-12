@@ -1,118 +1,119 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import LinkCard from '../components/LinkCard.astro';
-import SocialLogos from '../components/SocialLogos.astro';
+import Layout from "../layouts/Layout.astro";
+import LinkCard from "../components/LinkCard.astro";
+import SocialLogos from "../components/SocialLogos.astro";
 ---
 
 <Layout title="Oliver Speir">
-	<main>
-		<div class="text-container">
-		<h1>Oliver Speir</h1>
-		<h2>Software Engineer</h2>
-			<p class="body-text">
-				I am a driven engineer who loves to solve problems.
-				<br> I am looking for a position that will allow me to develop my skills and create powerful technology.
-			</p>
-			<SocialLogos class="home"/>
-		</div>
-		<div class="cards">
-			<ul role="list" class="card-grid">
-			<LinkCard
-				href="/projects"
-				title="Projects"
-				target="_self"
-				body="Click to see my projects."
-			/>
-			<LinkCard
-				href="https://storage.googleapis.com/oliver-speir-cv-resume/OliverSpeirCV.pdf"
-				title="CV"
-				target="_blank"
-				body="Click to see my CV."
-			/>
-			<LinkCard
-			href="/skills"
-			title="Skills"
-			target="_self"
-			body="Click to see my skills."
-			/>
-			<LinkCard
-			href="/about"
-			title="About Me"
-			target="_self"
-			body="Click to read about me."
-			/>
-			</ul>
-		</div>
-	</main>
-	<SocialLogos class="bottom"/>
+  <main>
+    <div class="text-container">
+      <h1>Oliver Speir</h1>
+      <h2>Software Engineer</h2>
+      <p class="body-text">
+        I am a driven engineer who loves to solve problems.
+        <br /> I am looking for a position that will allow me to develop my skills
+        and create powerful technology.
+      </p>
+      <SocialLogos class="home" />
+    </div>
+    <div class="cards">
+      <ul role="list" class="card-grid">
+        <LinkCard
+          href="/projects"
+          title="Projects"
+          target="_self"
+          body="Click to see my projects."
+        />
+        <LinkCard
+          href="https://storage.googleapis.com/oliver-speir-cv-resume/OliverSpeirCV.pdf"
+          title="CV"
+          target="_blank"
+          body="Click to see my CV."
+        />
+        <LinkCard
+          href="/skills"
+          title="Skills"
+          target="_self"
+          body="Click to see my skills."
+        />
+        <LinkCard
+          href="/about"
+          title="About Me"
+          target="_self"
+          body="Click to read about me."
+        />
+      </ul>
+    </div>
+  </main>
+  <SocialLogos class="bottom" />
 </Layout>
 
 <style>
-	h1 {
-		text-align: center;
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	h2 {
-		text-align: center;
-		font-size: 2rem;
-		font-weight: 700;
-		color: var(--accent-color);
-		margin: 0;
-	}
-	.body-text {
-		display: flex;
-		justify-content: center;
-		margin-top:3vh;
-		line-height: 1.6;
-		border: 1px solid var(--hover-accent) 25%;
-		background-color: var(--card-color);
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.cards {
-		max-width: 60ch;
-	}
-	@media (max-width:874px){
-		main {
-			display:flex;
-			justify-content: center;
-			flex-direction: column;
-			align-items: center;
-			margin-right: 2vw;
-			margin-left: 2vw;
-		}
-		.text-container {
-		max-width: 60ch;
-		}
-		.card-grid {
-				display: grid;
-				justify-content: center;
-				grid-template-columns: repeat(2, minmax(10ch, 1fr));
-				grid-template-rows: repeat(2, minmax(10ch, 1fr));
-				column-gap: 1rem;
-				row-gap:.5rem;
-				padding: 0;
-			}
-	}
-	@media (min-width:875px){
-		main {
-			display:flex;
-			padding-top: 15vh;
-			justify-content: center;
-		}
-		.text-container {
-		max-width: 60ch;
-		margin-right:5vh;
-		}
-		.card-grid {
-			margin-top: 4.5vh;
-			display: grid;
-			grid-template-columns: repeat(2, minmax(10ch, .6fr));
-			column-gap: 1rem;
-			row-gap:.5rem;
-			padding: 0;
-		}
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 0;
+  }
+  .body-text {
+    display: flex;
+    justify-content: center;
+    margin-top: 3vh;
+    line-height: 1.6;
+    border: 1px solid var(--hover-accent) 25%;
+    background-color: var(--card-color);
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  .cards {
+    max-width: 60ch;
+  }
+  @media (max-width: 874px) {
+    main {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 2vw;
+      margin-left: 2vw;
     }
+    .text-container {
+      max-width: 60ch;
+    }
+    .card-grid {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(2, minmax(10ch, 1fr));
+      grid-template-rows: repeat(2, minmax(10ch, 1fr));
+      column-gap: 1rem;
+      row-gap: 0.5rem;
+      padding: 0;
+    }
+  }
+  @media (min-width: 875px) {
+    main {
+      display: flex;
+      padding-top: 15vh;
+      justify-content: center;
+    }
+    .text-container {
+      max-width: 60ch;
+      margin-right: 5vh;
+    }
+    .card-grid {
+      margin-top: 4.5vh;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(10ch, 0.6fr));
+      column-gap: 1rem;
+      row-gap: 0.5rem;
+      padding: 0;
+    }
+  }
 </style>
