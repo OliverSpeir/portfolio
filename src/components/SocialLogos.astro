@@ -157,7 +157,7 @@ const { class: className } = Astro.props;
     aria-label="Click to view my Resume/CV"
     target="_blank"
     class="tooltip"
-    data-tooltip="Click to see resume"
+    data-tooltip="Click to view or download my CV"
   >
     <svg
       id="Layer_1"
@@ -201,114 +201,68 @@ const { class: className } = Astro.props;
 </nav>
 
 <style>
+  .tooltip::after {
+    content: attr(data-tooltip);
+    background: var(--card-color);
+    color: var(--text-color);
+    padding: 0px 10px 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+    border-radius: 20px;
+  }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  .tooltip:hover::after {
+    opacity: 1;
+  }
   .projects {
     display: flex;
     justify-content: center;
-    gap: 1.5vw;
+    gap: 1rem;
     margin-top: 1vh;
   }
-  .projects .tooltip {
-    position: relative;
-    display: inline-block;
+  .projects svg {
+    width: auto;
+    height: 3rem;
   }
-  .projects .tooltip::after {
-    content: attr(data-tooltip);
-    background: var(--card-color);
-    color: var(--text-color);
-    padding: 0px 10px 5px 10px;
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    pointer-events: none;
-    border-radius: 20px;
-  }
-  .bottom {
+  .home-bottom {
     display: flex;
     justify-content: center;
     gap: 1.5vw;
     margin-top: 1vh;
   }
-  .bottom svg {
+  .home-bottom svg {
     width: auto;
     height: 5vh;
   }
-  .bottom .tooltip {
-    position: relative;
-    display: inline-block;
-  }
-  .bottom .tooltip::after {
-    content: attr(data-tooltip);
-    background: var(--card-color);
-    color: var(--text-color);
-    padding: 0px 10px 5px 10px;
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    pointer-events: none;
-    border-radius: 20px;
-  }
-  .projects .tooltip:hover::after {
-    opacity: 1;
-  }
-  .home {
+  .home-middle {
     display: flex;
     justify-content: center;
     gap: 1.5vw;
     margin-top: 1vh;
   }
-  .home svg {
+  .home-middle svg {
     margin-top: 2vh;
     width: auto;
     height: 3vh;
   }
-  .home .tooltip {
-    position: relative;
-    display: inline-block;
-  }
-  .home .tooltip::after {
-    content: attr(data-tooltip);
-    background: var(--card-color);
-    color: var(--text-color);
-    padding: 0px 10px 5px 10px;
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    pointer-events: none;
-    border-radius: 20px;
-  }
-  .home .tooltip:hover::after {
-    opacity: 1;
-  }
+
   @media (max-width: 874px) {
-    .home {
+    .home-middle {
       display: none;
-    }
-    .projects svg {
-      width: auto;
-      height: 5vh;
     }
   }
   @media (min-width: 875px) {
-    .projects svg {
-      width: auto;
-      height: 3.5vh;
-    }
-    .bottom {
+    .home-bottom {
       display: none;
     }
   }

@@ -1,11 +1,67 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NavLinks from "../components/NavLinks.astro";
+import SocialLogos from "../components/SocialLogos.astro";
 ---
 
 <Layout title="About Me - Oliver Speir">
   <NavLinks />
   <main>
-    <h1>coming soon</h1>
+    <p class="body-text">
+      I have always sought knowledge and a career that interested me. I started
+      building trusses, which allowed me to afford machining classes. I became a
+      machinist, which allowed me to take college courses.
+      <br />
+      <br />
+      Given the opportunity to attend college, while working full time, I decided
+      to pursue a career in IT or Coding. While taking these courses I decided I
+      wanted to focus on coding.
+      <br />
+      <br />
+      After completing my degree I attended a coding bootcamp where I learned software
+      development, deployment and maintenance best practices.
+      <br />
+      <br />
+      I am now looking forward to a career in software engineering. Please do connect
+      with me on LinkedIn if you took the time to read this.
+    </p>
   </main>
+  <SocialLogos class="projects" />
 </Layout>
+
+<style>
+  .body-text {
+    max-width: 80ch;
+    display: flex;
+    justify-content: center;
+    line-height: 1.6;
+    border: 1px solid var(--hover-accent) 25%;
+    background-color: var(--card-color);
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  @media (max-width: 874px) {
+    main {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2vh;
+      margin-right: 5vw;
+      margin-left: 5vw;
+      margin-bottom: 4vh;
+    }
+  }
+  @media (min-width: 875px) {
+    main {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10vh;
+      margin-right: 2vw;
+      margin-left: 2vw;
+      margin-bottom: 10vh;
+    }
+  }
+</style>
