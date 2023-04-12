@@ -21,25 +21,25 @@ import SocialLogos from '../components/SocialLogos.astro';
 				href="/projects"
 				title="Projects"
 				target="_self"
-				body="Click here to see my projects."
+				body="Click to see my projects."
 			/>
 			<LinkCard
 				href="https://storage.googleapis.com/oliver-speir-cv-resume/OliverSpeirCV.pdf"
 				title="CV"
 				target="_blank"
-				body="Click here to see my CV."
+				body="Click to see my CV."
 			/>
 			<LinkCard
 			href="/skills"
 			title="Skills"
 			target="_self"
-			body="Click here to see my skills."
+			body="Click to see my skills."
 			/>
 			<LinkCard
 			href="/about"
 			title="About Me"
 			target="_self"
-			body="Click here to learn more about me."
+			body="Click to read about me."
 			/>
 			</ul>
 		</div>
@@ -89,12 +89,11 @@ import SocialLogos from '../components/SocialLogos.astro';
 		.card-grid {
 				display: grid;
 				justify-content: center;
-    			align-items: center;
-				grid-template-columns: repeat(2, minmax(20ch, .1fr));
-				grid-template-rows: repeat(2, minmax(15ch, .1fr));
-				column-gap: 2rem;
+				grid-template-columns: repeat(2, minmax(10ch, 1fr));
+				grid-template-rows: repeat(2, minmax(10ch, 1fr));
+				column-gap: 1rem;
+				row-gap:.5rem;
 				padding: 0;
-				/* margin:-0.5rem; */
 			}
 	}
 	@media (min-width:875px){
@@ -108,10 +107,11 @@ import SocialLogos from '../components/SocialLogos.astro';
 		margin-right:5vh;
 		}
 		.card-grid {
-			margin-top: 2vh;
+			margin-top: 4.5vh;
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
-			gap: 1rem;
+			grid-template-columns: repeat(2, minmax(10ch, .6fr));
+			column-gap: 1rem;
+			row-gap:.5rem;
 			padding: 0;
 		}
     }
