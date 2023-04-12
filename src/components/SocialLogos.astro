@@ -15,10 +15,6 @@ const { class: className } = Astro.props;
       gap: 1.5vw;
       margin-top: 1vh;
     }
-    .projects img {
-      width: auto;
-      height: 3.5vh;
-    }
     .projects .tooltip {
         position: relative;
         display: inline-block;
@@ -103,7 +99,6 @@ const { class: className } = Astro.props;
         pointer-events: none;
         border-radius:20px;
     }
-
     .home .tooltip:hover::after {
         opacity: 1;
     }
@@ -111,8 +106,16 @@ const { class: className } = Astro.props;
         .home {
             display:none;
         }
+        .projects img {
+            width: auto;
+            height: 5vh;
+        }
     }
     @media (min-width:875px){
+        .projects img {
+            width: auto;
+            height: 3.5vh;
+        }
         .bottom {
             display:none;
         }

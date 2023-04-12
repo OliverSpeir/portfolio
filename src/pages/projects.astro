@@ -37,7 +37,7 @@ import SocialLogos from '../components/SocialLogos.astro';
 
 <style>
 	main {
-		padding-top: 5vh;
+        margin-top: -4vh;
 	}
 	h1 {
 		text-align: center;
@@ -52,6 +52,9 @@ import SocialLogos from '../components/SocialLogos.astro';
         margin-bottom: 100px;
     }
     @media (min-width:875px){
+        main {
+		    padding-top: 5vh;
+	    }
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
