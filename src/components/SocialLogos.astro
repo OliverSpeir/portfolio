@@ -2,7 +2,6 @@
 const { class: className } = Astro.props;
 ---
 <nav class={className}>
-    <!-- <a href="https://www.linkedin.com/in/oliverspeir/" target="_blank" class="tooltip" data-tooltip="Click to view my LinkedIn profile"><img src="/LinkedIn_Logo.svg"/></a> -->
     <a href="https://www.linkedin.com/in/oliverspeir/" target="_blank" class="tooltip" data-tooltip="Click to view my LinkedIn profile"><svg id="svg3070" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 87.28 76.25">
           <style>
                 .cls-1 {
@@ -31,8 +30,6 @@ const { class: className } = Astro.props;
         </g>
       </svg>
     </a>
-
-    <!-- <a href="https://github.com/OliverSpeir" target="_blank" class="tooltip" data-tooltip="Click to view my GitHub profile"><img src="/GitHub_Logo.svg"/></a> -->
     <a href="https://github.com/OliverSpeir" target="_blank" class="tooltip" data-tooltip="Click to view my GitHub profile">
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195.25 192">
               <style>
@@ -62,7 +59,6 @@ const { class: className } = Astro.props;
             </g>
           </svg>
     </a>
-    <!-- <a href="mailto:oliverspeir9@gmail.com" target="_blank" class="tooltip" data-tooltip="Click to send me an email"><img src="/mail_icon.svg"/></a> -->
     <a href="mailto:oliverspeir9@gmail.com" target="_blank" class="tooltip" data-tooltip="Click to send me an email">
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
             <style>
@@ -74,7 +70,6 @@ const { class: className } = Astro.props;
             <path d="M3,0C1.36,0,0,1.36,0,3v14c0,1.64,1.36,3,3,3H27c1.64,0,3-1.36,3-3V3c0-1.64-1.36-3-3-3H3Zm.41,2H26.58l-8.91,8.89c-1.49,1.49-3.88,1.49-5.37,0L3.41,2Zm24.59,1.41v13.18l-6.6-6.59,6.6-6.59ZM2,3.41l6.59,6.59-6.59,6.59V3.41ZM19.99,11.41l6.6,6.59H3.41l6.59-6.59,.89,.89c2.26,2.26,5.94,2.26,8.2,0l.9-.9h0Z"/>
           </svg>
     </a>
-    <!-- <a href="https://storage.googleapis.com/oliver-speir-cv-resume/OliverSpeirCV.pdf" target="_blank" class="tooltip" data-tooltip="Click to see resume"><img src="/resume.svg"/></a> -->
     <a href="https://storage.googleapis.com/oliver-speir-cv-resume/OliverSpeirCV.pdf" target="_blank" class="tooltip" data-tooltip="Click to see resume">
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 373.86 444.42">
           <path d="M156.52,95.59c0,19.77-16.02,35.79-35.79,35.79s-35.79-16.02-35.79-35.79,16.02-35.78,35.79-35.78,35.79,16.02,35.79,35.78"/>
@@ -127,7 +122,7 @@ const { class: className } = Astro.props;
       gap: 1.5vw;
       margin-top: 1vh;
     }
-    .bottom img {
+    .bottom svg {
       width: auto;
       height: 5vh;
     }
@@ -160,10 +155,10 @@ const { class: className } = Astro.props;
       gap: 1.5vw;
       margin-top: 1vh;
     }
-    .home img {
-        margin-top:2vh;
-        width: auto;
-        height: 3vh;
+    .home svg {
+            margin-top:2vh;
+            width: auto;
+            height: 3vh;
     }
     .home .tooltip {
         position: relative;
@@ -192,10 +187,6 @@ const { class: className } = Astro.props;
         .home {
             display:none;
         }
-        .projects img {
-            width: auto;
-            height: 5vh;
-        }
         .projects svg {
             width: auto;
             height: 5vh;
@@ -203,10 +194,6 @@ const { class: className } = Astro.props;
         
     }
     @media (min-width:875px){
-        .projects img {
-            width: auto;
-            height: 3.5vh;
-        }
         .projects svg {
             width: auto;
             height: 3.5vh;
