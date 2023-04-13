@@ -2,7 +2,7 @@
 const { class: className } = Astro.props;
 ---
 
-<nav class={className}>
+<footer class={className}>
   <a
     href="https://www.linkedin.com/in/oliverspeir/"
     aria-label="Click to view my LinkedIn profile"
@@ -198,7 +198,7 @@ const { class: className } = Astro.props;
       </style>
     </svg>
   </a>
-</nav>
+</footer>
 
 <style>
   .tooltip::after {
@@ -266,7 +266,7 @@ const { class: className } = Astro.props;
     }
     .projects svg {
       width: auto;
-      height: 2rem;
+      height: 3rem;
     }
   }
   @media (min-width: 875px) {
