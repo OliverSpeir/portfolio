@@ -1,11 +1,48 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SkillCard from "../components/SkillCard.astro";
 import NavLinks from "../components/NavLinks.astro";
+import SocialLogos from "../components/SocialLogos.astro";
 ---
 
 <Layout title="Skills - Oliver Speir">
   <NavLinks />
   <main>
-    <h1>coming soon</h1>
+    <ul role="list" class="card-grid">
+      <SkillCard title="Languages" skills={["Python","JavaScript", "TypeScript", "SQL", "HTML", "CSS"]} />
+      <SkillCard title="Front End Development" skills={["NextJS","ReactJS", "AstroJS", "TailwindCSS"]} />
+      <SkillCard title="Back End Development" skills={["Django REST Framework","ExpressJS", "FastAPI", "MongoDB", "PostgreSQL", "REST APIs"]} />
+      <SkillCard title="Data Science" skills={["OpenAI API","Scikit-Learn", "Pandas", "Numpy", "Jupyter Notebooks", "Holoviz"]} />
+    </ul>
   </main>
+  <SocialLogos class="projects" />
 </Layout>
+
+<style>
+  main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 2vw;
+    margin-left: 2vw;
+  }
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  @media (min-width: 875px) {
+    .card-grid {
+      display: grid;
+      /* grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr)); */
+      grid-template-columns: repeat(2, minmax(10ch, 1fr));
+      grid-template-rows: repeat(2, minmax(10ch, 1fr));
+      row-gap: .5rem;
+      column-gap: 1rem;
+      padding: 0;
+    }
+  }
+</style>

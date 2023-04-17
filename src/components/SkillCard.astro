@@ -1,29 +1,31 @@
 ---
 export interface Props {
   title: string;
-  body: string;
-  href: string;
-  target: string;
+  skills: string[];
 }
 
-const { href, title, body, target } = Astro.props;
+const { title, skills } = Astro.props;
 ---
 
-<li class="link-card">
-  <a href={href} target={target}>
-    <h2>
-      {title}
-    </h2>
-    <p>
-      {body}
-    </p>
-  </a>
+<li class="skill-card">
+  <a>
+  <h2>
+    {title}
+  </h2>
+  <div class="container">
+    <ul class ="skill-list">
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+  </div></a>
 </li>
+
 <style>
-  .link-card {
+  .skill-card {
+    /* width: 100%; */
     list-style: none;
     display: flex;
     padding: 0.25rem;
+    /* margin-bottom: 1rem; */
     background-color: var(--accent-color);
     background-image: none;
     background-size: 400%;
@@ -34,7 +36,7 @@ const { href, title, body, target } = Astro.props;
       0 2px 4px -2px rgba(146, 146, 146, 0.1);
   }
 
-  .link-card > a {
+  .skill-card > a {
     width: 100%;
     text-decoration: none;
     line-height: 1.4;
@@ -47,22 +49,23 @@ const { href, title, body, target } = Astro.props;
   h2 {
     text-align: center;
     margin: 0;
+    margin-left:1rem;
     font-size: 1.25rem;
     transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  p {
-    text-align: center;
+  .container {
     margin-top: 0.5rem;
-    margin-bottom: 0;
-    font-size: smaller;
-    font-style: italic;
+    margin-bottom: 0.5rem;
     color: var(--text-color);
   }
-  .link-card:is(:hover) {
-    background-position: 0;
-    background-image: var(--hover-accent-gradient);
+  .skill-list {
+    align-items: center;
+    justify-content: center;
   }
-  .link-card:is(:hover) h2 {
-    color: var(--hover-accent);
+
+  @media (max-width: 874px) {
+    .skill-card{
+      margin-bottom: .5rem;
+    }
   }
 </style>
