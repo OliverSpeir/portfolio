@@ -55,8 +55,7 @@ import SocialLogos from "../components/SocialLogos.astro";
   main {
     display: flex;
     flex-direction: column;
-    margin-right: 2vw;
-    margin-left: 2vw;
+    align-items: center;
   }
   h1 {
     text-align: center;
@@ -65,12 +64,10 @@ import SocialLogos from "../components/SocialLogos.astro";
     margin: 0;
   }
   .card-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding-left:0;
   }
   @media (min-width: 875px) {
-    .main {
+    main {
       margin-right: 2vw;
       margin-left: 2vw;
       margin-top: 15vh;
