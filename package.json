@@ -12,5 +12,8 @@
   "dependencies": {
     "@astrojs/vercel": "^3.2.3",
     "astro": "^2.2.1"
+  },
+  "devDependencies": {
+    "@astrojs/partytown": "^1.2.0"
   }
 }
