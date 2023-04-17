@@ -21,7 +21,7 @@ import SocialLogos from "../components/SocialLogos.astro";
           "Astro",
           "Django Template Language",
           "Tailwind CSS",
-          "Bootstrap CSS"
+          "Bootstrap CSS",
         ]}
       />
       <SkillCard
@@ -57,10 +57,6 @@ import SocialLogos from "../components/SocialLogos.astro";
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-right: 2vw;
-    margin-left: 2vw;
-    margin-top:15vh;
-    margin-bottom:5vh;
   }
   h1 {
     text-align: center;
@@ -70,6 +66,12 @@ import SocialLogos from "../components/SocialLogos.astro";
   }
 
   @media (min-width: 875px) {
+    .main {
+      margin-right: 2vw;
+      margin-left: 2vw;
+      margin-top: 15vh;
+      margin-bottom: 5vh;
+    }
     .card-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(10ch, 1fr));
