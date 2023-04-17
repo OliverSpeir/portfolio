@@ -1,7 +1,7 @@
 ---
 export interface Props {
   title: string;
-  body: string;
+  body: string[];
   href: string;
   src: string;
   icons: string[];
@@ -12,13 +12,21 @@ const { href, title, body, src, icons } = Astro.props;
 
 <li class="picture-card">
   <a href={href} target="_blank">
+    <div class="background">
+    <div class="foreground">
     <h2>
       {title}
     </h2>
     <img src={src} />
-    <p>
-      {body}
-    </p>
+    <ul class="description">
+      {
+        body.map((bulletpoint) => (
+          <li class="bulletpoint">
+            {bulletpoint}
+          </li>
+        ))
+      }
+    </ul>
     <ul class="icons-grid">
       {
         icons.map((icon) => (
@@ -28,6 +36,7 @@ const { href, title, body, src, icons } = Astro.props;
         ))
       }
     </ul>
+  </div></div>
   </a>
 </li>
 <style>
@@ -38,6 +47,10 @@ const { href, title, body, src, icons } = Astro.props;
     margin-top: 1vh;
     list-style: none;
     display: flex;
+  }
+ .background {
+    display:flex;
+    width:100%;
     padding: 0.25rem;
     background-color: var(--accent-color);
     background-image: none;
@@ -48,16 +61,16 @@ const { href, title, body, src, icons } = Astro.props;
     box-shadow: 0 4px 6px -1px var(--card-shadow),
       0 2px 4px -2px var(--card-shadow);
   }
-  .picture-card > a {
-    width: 100%;
+  .foreground {
+    width:100%;
     text-decoration: none;
     line-height: 1.4;
     padding: 0.5vw;
-    border-radius: 0.35rem;
+    border-radius: 0.6rem;
     color: var(--text-color);
     background-color: var(--card-color);
     opacity: 0.8;
-  }
+  } 
   h2 {
     text-align: center;
     margin: 0;
@@ -69,21 +82,28 @@ const { href, title, body, src, icons } = Astro.props;
     margin-bottom: 0;
     color: var(--text-color);
   }
-  ul.icons-grid {
+  .description {
+    padding:1rem;
+    margin-left:.5rem;
+  }
+  .bulletpoint {
+    margin-bottom:1rem;
+  }
+  .icons-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     padding: 0;
   }
-  li.icon-item {
+  .icon-item {
     list-style: none;
     height: auto;
   }
-  .picture-card:is(:hover, :focus-within) {
+  .background:is(:hover, :focus-within) {
     background-position: 0;
     background-image: var(--hover-accent-gradient);
   }
-  .picture-card:is(:hover, :focus-within) h2 {
+  .background:is(:hover, :focus-within) h2 {
     color: var(--hover-accent);
   }
 </style>

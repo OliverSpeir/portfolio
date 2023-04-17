@@ -12,7 +12,11 @@ import SocialLogos from "../components/SocialLogos.astro";
       <PictureCard
         href="https://clean-air-compass-mzvbj.ondigitalocean.app/"
         title="Clean Air Compass"
-        body="This project we made."
+        body={[
+          "FastAPI to create an interpolation layer with SciKit Learn based on information from a REST API.",
+          "Django REST Framework to handle the user database and server secure CRUD endpoints.",
+          "NextJS frontend, using NextAuth for the social sign on and TailwindCSS for the styling.",
+        ]}
         src="https://storage.googleapis.com/oliver-speir/CleanAirCompassDemo.gif"
         icons={[
           "python",
@@ -28,7 +32,11 @@ import SocialLogos from "../components/SocialLogos.astro";
       <PictureCard
         href="https://github.com/ThoroughZed-Analytics/Thoroughzed"
         title="ThoroughZED"
-        body="this project we made"
+        body={[
+          "Gathered large data set from a public GraphQL API.",
+          "Trained Random Forest model to predict based on that data using SciKit Learn.",
+          "Created an interactive HoloViz Panel to visualize all data and display predictions.",
+        ]}
         src="https://storage.googleapis.com/oliver-speir/ThoroughZedDemo.gif"
         icons={[
           "python",
@@ -42,13 +50,17 @@ import SocialLogos from "../components/SocialLogos.astro";
       <PictureCard
         href="https://openimg.netlify.app/"
         title="OpenIMG"
-        body="this project we made "
+        body={[
+          "This app uses the DALLE2 API from OpenAI to create images based on a text prompt.",
+          "The App uses Auth0 to provide social sign on which allows users to preform CRUD actions on their prompts.",
+          "The prompts are saved to a MongoDB database which is managed by an ExpressJS backend using Mongoose.",
+        ]}
         src="https://storage.googleapis.com/oliver-speir/OpenImgDemo.gif"
         icons={["reactjs", "mongodb", "nodejs", "expressjs"]}
       />
     </ul>
   </main>
-  <SocialLogos class="projects"/>
+  <SocialLogos class="projects" />
 </Layout>
 
 <style>
