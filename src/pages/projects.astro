@@ -10,7 +10,6 @@ import SocialLogos from "../components/SocialLogos.astro";
   <main>
     <ul role="list" class="card-grid">
       <PictureCard
-        href="https://clean-air-compass-mzvbj.ondigitalocean.app/"
         title="Clean Air Compass"
         body={[
           "FastAPI to create an interpolation layer with SciKit Learn based on information from a REST API.",
@@ -28,9 +27,14 @@ import SocialLogos from "../components/SocialLogos.astro";
           "pandas",
           "scikitlearn",
         ]}
+        links={{
+          link1: "https://github.com/orgs/Oxygen-Oriented-Programming/repositories",
+          link1Name: "GitHub",
+          link2: "https://clean-air-compass-mzvbj.ondigitalocean.app/",
+          link2Name: "Live Site",
+        }}
       />
       <PictureCard
-        href="https://github.com/ThoroughZed-Analytics/Thoroughzed"
         title="ThoroughZED"
         body={[
           "Gathered large data set from a public GraphQL API.",
@@ -46,9 +50,14 @@ import SocialLogos from "../components/SocialLogos.astro";
           "scikitlearn",
           "holoviz",
         ]}
+        links={{
+          link1: "https://github.com/ThoroughZed-Analytics/Thoroughzed",
+          link1Name: "GitHub",
+          link2: "/ThoroughZedDemo.gif",
+          link2Name: "Video",
+        }}
       />
       <PictureCard
-        href="https://openimg.netlify.app/"
         title="OpenIMG"
         body={[
           "This app uses the DALLE2 API from OpenAI to create images based on a text prompt.",
@@ -57,6 +66,12 @@ import SocialLogos from "../components/SocialLogos.astro";
         ]}
         src="/OpenImgDemo.gif"
         icons={["reactjs", "mongodb", "nodejs", "expressjs"]}
+        links={{
+          link1: "https://github.com/orgs/Full-Stack-Fluency/repositories",
+          link1Name: "GitHub",
+          link2: "https://openimg.netlify.app/",
+          link2Name: "Live Site",
+        }}
       />
     </ul>
   </main>
@@ -79,14 +94,11 @@ import SocialLogos from "../components/SocialLogos.astro";
   .card-grid {
     padding: 5vw;
   }
-  .card-grid li {
-    margin-bottom: 100px;
-  }
   @media (min-width: 875px) {
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
-      gap: 1rem;
+      gap: 2rem;
       padding: 0;
     }
   }
