@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PictureCard from "../components/PictureCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 import NavLinks from "../components/NavLinks.astro";
 import SocialLogos from "../components/SocialLogos.astro";
 ---
@@ -9,7 +9,7 @@ import SocialLogos from "../components/SocialLogos.astro";
   <NavLinks />
   <main>
     <ul role="list" class="card-grid">
-      <PictureCard
+      <ProjectCard
         title="Clean Air Compass"
         body="This project is for a web app that creates a mapping interface for PurpleAir Sensor Network using interpolated values. This app allows user to login using social sign on, save their default location, and sign up for SMS Alerts based on AQI values in any given area."
         bullets={[
@@ -35,7 +35,7 @@ import SocialLogos from "../components/SocialLogos.astro";
           link2Name: "Live Site",
         }}
       />
-      <PictureCard
+      <ProjectCard
         title="ThoroughZED"
         body="Machine learning based valuation for NFTs and an interactive dashboard to display relevant data. This was built with Python and designed to be used as a CLI tool."
         bullets={[
@@ -59,7 +59,7 @@ import SocialLogos from "../components/SocialLogos.astro";
           link2Name: "Video",
         }}
       />
-      <PictureCard
+      <ProjectCard
         title="OpenIMG"
         body="A web app that allows users to interface with the OpenAI DALLE2 API by creating images with prompts. Users can perform all CRUD actions with their prompts. Social Sign on using Auth0."
         bullets={[

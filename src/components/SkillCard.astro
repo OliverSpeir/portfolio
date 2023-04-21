@@ -9,14 +9,15 @@ const { title, skills } = Astro.props;
 
 <li class="skill-card">
   <a>
-  <h2>
-    {title}
-  </h2>
-  <div class="container">
-    <ul class ="skill-list">
-      {skills.map((skill) => <li class="skill">{skill}</li>)}
-    </ul>
-  </div></a>
+    <h2>
+      {title}
+    </h2>
+    <div class="container">
+      <ul class="skill-list">
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+      </ul>
+    </div>
+  </a>
 </li>
 
 <style>
@@ -54,10 +55,10 @@ const { title, skills } = Astro.props;
   }
   @media (max-width: 874px) {
     main {
-      margin:auto;
+      margin: auto;
     }
-    .skill-card{
-      margin-bottom: .5rem;
+    .skill-card {
+      margin-bottom: 0.5rem;
     }
   }
 </style>
