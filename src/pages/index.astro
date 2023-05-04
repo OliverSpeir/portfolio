@@ -7,45 +7,51 @@ import SocialLogos from "../components/SocialLogos.astro";
 <Layout title="Oliver Speir">
   <main>
     <div class="text-container">
+      <div class="headers">
+      <img src="/profile_picture.png" />
+      <div class="headers-text">
       <h1>Oliver Speir</h1>
       <h2>Software Engineer</h2>
+      </div>
+    </div>
       <p class="body-text">
-        I am a driven engineer who loves to creatively solve problems with code.
-        I am a skilled communicator and team player. I pride myself on my
-        ability to pick up new tools quickly. I am looking for the opportunity
-        to put my people and techincal skills to work in a challenging role.
+        From my passion for learning new technology to my ability to communicate
+        complex concepts effectively, I would be a valuable asset to any organization
+        and welcome the opportunity to contribute to the success of your team.
       </p>
-      <SocialLogos class="home-middle" />
     </div>
     <div class="cards">
       <ul role="list" class="card-grid">
-        <LinkCard
-          href="/projects"
-          title="Projects"
-          target="_self"
-        />
-        <LinkCard
-          href="/CV.pdf"
-          title="CV"
-          target="_blank"
-        />
-        <LinkCard
-          href="/skills"
-          title="Skills"
-          target="_self"
-        />
-        <LinkCard
-          href="/about"
-          title="About Me"
-          target="_self"
-        />
+        <LinkCard href="/projects" title="Projects" target="_self" />
+        <LinkCard href="/CV.pdf" title="CV" target="_blank" />
+        <LinkCard href="/skills" title="Skills" target="_self" />
+        <LinkCard href="/about" title="About Me" target="_self" />
       </ul>
+      <SocialLogos class="home-middle" />
     </div>
   </main>
   <SocialLogos class="home-bottom" />
 </Layout>
 
 <style>
+  .headers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .headers-text {
+    text-align: center;
+  }
+
+  img {
+    border-radius: 50%;
+    height: 8rem;
+    width: 8rem;
+    margin-right:2rem;
+    /* position: fixed;
+    left:0; */
+  }
   h1 {
     text-align: center;
     font-size: 3rem;
@@ -101,14 +107,14 @@ import SocialLogos from "../components/SocialLogos.astro";
       justify-content: center;
     }
     .text-container {
-      max-width: 70ch;
+      max-width: 60ch;
       margin-right: 2rem;
       margin-left: 1rem;
     }
     .card-grid {
-      margin-top: 7.5rem;
+      margin-top: 2rem;
       display: grid;
-      grid-template-columns: repeat(2, minmax(15ch, 0.8fr));
+      grid-template-columns: repeat(2, minmax(15ch, auto));
       column-gap: 0.5rem;
       row-gap: 0.5rem;
       padding: 0;

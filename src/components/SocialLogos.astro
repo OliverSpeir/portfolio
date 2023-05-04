@@ -152,6 +152,7 @@ const { class: className } = Astro.props;
       ></path>
     </svg>
   </a>
+  <div class="cv">
   <a
     href="/CV.pdf"
     aria-label="Click to view my Resume/CV"
@@ -198,6 +199,7 @@ const { class: className } = Astro.props;
       </style>
     </svg>
   </a>
+</div>
 </footer>
 
 <style>
@@ -248,12 +250,16 @@ const { class: className } = Astro.props;
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-top: 1rem;
   }
   .home-middle svg {
-    margin-top: 2vh;
     width: auto;
     height: 3rem;
+  }
+  .home-middle .cv {
+    display:none;
+  }
+  .home-bottom .cv {
+    display:none;
   }
 
   @media (max-width: 874px) {
