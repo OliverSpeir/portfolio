@@ -8,16 +8,17 @@ import SocialLogos from "../components/SocialLogos.astro";
   <main>
     <div class="text-container">
       <div class="headers">
-      <img src="/profile_picture.png" />
-      <div class="headers-text">
-      <h1>Oliver Speir</h1>
-      <h2>Software Engineer</h2>
+        <img src="/profile_picture.png" />
+        <div class="headers-text">
+          <h1>Oliver Speir</h1>
+          <h2>Software Engineer</h2>
+        </div>
       </div>
-    </div>
       <p class="body-text">
         From my passion for learning new technology to my ability to communicate
-        complex concepts effectively, I would be a valuable asset to any organization
-        and welcome the opportunity to contribute to the success of your team.
+        complex concepts effectively, I would be a valuable asset to any
+        organization and welcome the opportunity to contribute to the success of
+        your team.
       </p>
     </div>
     <div class="cards">
@@ -48,22 +49,7 @@ import SocialLogos from "../components/SocialLogos.astro";
     border-radius: 50%;
     height: 8rem;
     width: 8rem;
-    margin-right:2rem;
-    /* position: fixed;
-    left:0; */
-  }
-  h1 {
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 0;
-  }
-  h2 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent-color);
-    margin: 0;
+    margin-right: 2rem;
   }
   .body-text {
     display: flex;
@@ -79,6 +65,19 @@ import SocialLogos from "../components/SocialLogos.astro";
     max-width: 60ch;
   }
   @media (max-width: 874px) {
+    h1 {
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 800;
+      margin: 0;
+    }
+    h2 {
+      text-align: center;
+      font-size: .5rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin: 0;
+    }
     main {
       display: flex;
       justify-content: center;
@@ -101,6 +100,19 @@ import SocialLogos from "../components/SocialLogos.astro";
     }
   }
   @media (min-width: 875px) {
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 800;
+      margin: 0;
+    }
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin: 0;
+    }
     main {
       display: flex;
       padding-top: 15vh;
