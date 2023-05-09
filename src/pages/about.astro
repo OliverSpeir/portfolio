@@ -8,14 +8,15 @@ import SocialLogos from "../components/SocialLogos.astro";
   <NavLinks />
   <main>
     <div class="container">
-      <img src="/profile_picture.png" />
+      <img src="/bio-pic.jpg" class="tall" />
+      <img src="/profile_picture.png" class="circle" />
       <div class="body-text">
         <p>
-          Hi, I'm Oliver! Coding and learning new technologies are my
-          lifelong passions. All the way back in the early days of the internet,
-          I was selected to participate in a Microsoft study focused on young
-          internet users. This experience sparked my enthusiasm for all things
-          tech and opened my eyes to the exciting world of coding and software
+          Hi, I'm Oliver! Coding and learning new technologies are my lifelong
+          passions. All the way back in the early days of the internet, I was
+          selected to participate in a Microsoft study focused on young internet
+          users. This experience sparked my enthusiasm for all things tech and
+          opened my eyes to the exciting world of coding and software
           development. <br />
           <br />
           Fast-forward to today, I have recently completed my Associates of Applied
@@ -28,8 +29,8 @@ import SocialLogos from "../components/SocialLogos.astro";
           and these are all things I pride myself on as a software engineer.
           <br />
           <br />
-          Please feel free to connect with me on LinkedIn - I would love the opportunity to discuss
-          how I can contribute to your company’s success.
+          Please feel free to connect with me on LinkedIn - I would love the opportunity
+          to discuss how I can contribute to your company’s success.
         </p>
       </div>
     </div>
@@ -56,7 +57,10 @@ import SocialLogos from "../components/SocialLogos.astro";
       padding: 1rem;
       border-radius: 0.4rem;
     }
-    img {
+    .tall {
+      display: none;
+    }
+    circle {
       margin-bottom: 1rem;
       border-radius: 50%;
       height: 263px;
@@ -79,21 +83,26 @@ import SocialLogos from "../components/SocialLogos.astro";
       flex-direction: row;
       align-items: center;
       margin-bottom: 5rem;
+      margin-right: 2rem;
+    }
+    .circle {
+      display: none;
     }
     .body-text {
       max-width: 45ch;
+      height: 525px;
       line-height: 1.4;
       border: 1px solid var(--hover-accent) 25%;
       background-color: var(--card-color);
       padding-left: 1rem;
-      padding-right:1rem;
+      padding-right: 1rem;
       border-radius: 0.4rem;
     }
-    img {
+    .tall {
+      border-radius: 0.4rem;
       margin-right: 5rem;
-      border-radius: 50%;
-      height: 263px;
-      width: 263px;
+      height: 525px;
+      width: auto;
     }
     main {
       display: flex;

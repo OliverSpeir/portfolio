@@ -240,7 +240,6 @@ const { class: className } = Astro.props;
     justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
-    overflow: hidden;
   }
   .home-bottom svg {
     width: auto;
@@ -250,7 +249,6 @@ const { class: className } = Astro.props;
     display: flex;
     justify-content: center;
     gap: 1rem;
-    overflow: hidden;
   }
   .home-middle svg {
     width: auto;
@@ -266,6 +264,12 @@ const { class: className } = Astro.props;
   @media (max-width: 874px) {
     .home-middle {
       display: none;
+    }
+    .home-middle {
+      overflow: hidden;
+    }
+    .home-bottom {
+      overflow: hidden;
     }
     .projects {
       display: flex;
@@ -286,7 +290,7 @@ const { class: className } = Astro.props;
       display: flex;
       justify-content: center;
       gap: 1rem;
-      overflow: hidden;
+      overflow: visible;
     }
     .projects svg {
       width: auto;
