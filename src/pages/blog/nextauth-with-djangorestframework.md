@@ -19,7 +19,7 @@ This blog will outline and explain the steps for accomplishing:
 6. NextAuth will create a session which persists in the clients browser via an HTTP-only cookie (which cannot be accessed by javascript running in browser).
 7. useSession hook will be availble throughout the NextJS project to allow access to session information.
 
-![RCC picture]("/NA-DRF-RCC.png")
+![RCC picture](/NA-DRF-RCC.png)
 
 ## Set up steps
 
