@@ -8,7 +8,6 @@ import SocialLogos from "../components/SocialLogos.astro";
   <NavLinks />
   <main>
     <div class="container">
-      <img src="/bio-pic.jpg" class="tall" />
       <img src="/profile_picture.png" class="circle" />
       <div class="body-text">
         <p>
@@ -33,6 +32,7 @@ import SocialLogos from "../components/SocialLogos.astro";
           to discuss how I can contribute to your company’s success.
         </p>
       </div>
+      <img src="/bio-pic.jpg" class="tall" />
     </div>
     <SocialLogos class="projects" />
   </main>
@@ -83,7 +83,6 @@ import SocialLogos from "../components/SocialLogos.astro";
       flex-direction: row;
       align-items: center;
       margin-bottom: 5rem;
-      margin-right: 2rem;
     }
     .circle {
       display: none;
@@ -100,7 +99,7 @@ import SocialLogos from "../components/SocialLogos.astro";
     }
     .tall {
       border-radius: 0.4rem;
-      margin-right: 5rem;
+      margin-left: 1rem;
       height: 525px;
       width: auto;
     }
