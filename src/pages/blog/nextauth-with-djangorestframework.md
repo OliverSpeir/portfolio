@@ -295,7 +295,10 @@ REST_FRAMEWORK = {
     - I started with this [GitHub Discussion](https://github.com/nextauthjs/next-auth/discussions/1350)
     - Then I read this [Article by Mahieyin Rahmun](https://mahieyin-rahmun.medium.com/how-to-configure-social-authentication-in-a-next-js-next-auth-django-rest-framework-application-cb4c82be137) and it's [second part](https://mahieyin-rahmun.medium.com/how-to-configure-social-authentication-in-a-next-js-next-auth-django-rest-framework-application-cb4c82be137)
     - After that I read [this article by Episyche](https://episyche.com/blog/how-to-configure-google-sso-in-django-rest-framework-with-nextjs) and ending up using the code for `register.py` `google.py` and `serializers.py`
-
+- The project I implemented this solution in:
+  - [Project Repo](https://github.com/orgs/Oxygen-Oriented-Programming/repositories)
+    - [NextAuth file](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Frontend-NextJS/blob/dev/pages/api/auth/%5B...nextauth%5D.js)
+    - [DRF Accounts app](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Accounts-DjangoRestFramework/tree/dev/accounts)
 <style>
 h1 {
   color: #333;
