@@ -293,7 +293,7 @@ REST_FRAMEWORK = {
 - I wrote this article to supplement the resources I used while creating a project that applied these techniques. Writing this blog has also helped me cement my understanding, and provide an avenue for me to be fact checked or received feedback on my methods. I hope this can help someone as well if they are attempting to accomplish something similar.
   - The main resources I used are:
     - I started with this [GitHub Discussion](https://github.com/nextauthjs/next-auth/discussions/1350)
-    - Then I read this [Article by Mahieyin Rahmun](https://mahieyin-rahmun.medium.com/how-to-configure-social-authentication-in-a-next-js-next-auth-django-rest-framework-application-cb4c82be137) and it's [second part](https://mahieyin-rahmun.medium.com/how-to-configure-social-authentication-in-a-next-js-next-auth-django-rest-framework-application-cb4c82be137)
+    - Then I read this [article by Mahieyin Rahmun](https://mahieyin-rahmun.medium.com/how-to-configure-social-authentication-in-a-next-js-next-auth-django-rest-framework-application-cb4c82be137) and it's [second part](https://mahieyin-rahmun.medium.com/how-to-configure-social-authentication-in-a-next-js-next-auth-django-rest-framework-application-cb4c82be137)
     - After that I read [this article by Episyche](https://episyche.com/blog/how-to-configure-google-sso-in-django-rest-framework-with-nextjs) and ending up using the code for `register.py` `google.py` and `serializers.py`
 - The project I implemented this solution in:
   - [Project Repo](https://github.com/orgs/Oxygen-Oriented-Programming/repositories)
