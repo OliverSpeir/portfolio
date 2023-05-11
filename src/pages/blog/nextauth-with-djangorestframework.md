@@ -346,7 +346,7 @@ body {
   }
 }
 img{
-  margin-left:-5rem;
+  margin-left:-2rem;
 }
 a{
   color:#408000;
