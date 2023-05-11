@@ -16,7 +16,7 @@ This blog will outline and explain the steps for accomplishing:
 3. NextAuth API will send that token to DRF Server.
 4. DRF Server will validate that token with SSO Server.
 5. DRF Server will either create a new account and token for that user or regenerate the token of that user and send it back to NextAuth API - any other information from the user can also be sent back and included in the resulting login session at this time.
-6. NextAuth will create a session which persists in the clients browser via an HTTP-only cookie (which cannot be accessed by javascript running in browser).
+6. NextAuth will create a session which persists in the clients browser via a Session Token cookie (which cannot be accessed by javascript running in browser).
 7. useSession hook will be availble throughout the NextJS project to allow access to session information.
 
 ![NextAuth SSO Provider DRF image](/NA-DRF-RRC.png)
@@ -100,7 +100,7 @@ export default NextAuth({
 - Uses the built in GoogleProvider, NextAuth has builtin providers for all SSO providers
 - Sets the secret from the environmental variables
 - Session settings are configured
-  - Max age determines how long the HTTP-only cookie will exist
+  - Max age determines how long the Session Token cookie will exist
 - Callback functions are configured
   - The `signIn` callback is invoked when the user is authenticated by the SSO provider
     - In this configuration the signIn callback will make a POST request to the DRF server
