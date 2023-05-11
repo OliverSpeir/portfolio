@@ -121,7 +121,7 @@ export default NextAuth({
 
 ## DRF
 
-Our endpoints will be protected by [Token Authorization](https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication). The step up consists of adjusting the user model and creating 4 new files.
+Our endpoints will be protected by [Token Authentication](https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication). The step up consists of adjusting the user model and creating 4 new files.
 
 ### DRF Code
 
@@ -129,7 +129,7 @@ Our endpoints will be protected by [Token Authorization](https://www.django-rest
 
 - `auth_provider = models.CharField(max_length=50)`
 
-2. `views.py` should have a SocialAuthView that does not require authorization
+2. `views.py` should have a SocialAuthView that does not require authentication
 
 ```python
 @permission_classes((AllowAny, ))
@@ -268,9 +268,9 @@ def register_social_user(provider, email, name):
 - if the user already exists their existing token is deleted and a new one is created for them
 - if the user does not exist a token and a new user is created
 
-To reiterate: the DRF server needs to expose an unauthorized endpoint that accepts an `idToken`, validate that token and if the token is valid it needs to create an Authorization Token and a new user if that `idToken` has not already been used by an existing account
+To reiterate: the DRF server needs to expose an unauthenticated endpoint that accepts an `idToken`, validate that token and if the token is valid it needs to create an Authentication Token and a new user if that `idToken` has not already been used by an existing account
 
-### Requiring Authorization for other DRF endpoints
+### Requiring Authentication for other DRF endpoints
 
 1. add `permission_classes = (IsAuthenticated,)` with the `rest_framework.permissions import IsAuthenticated` function to all endpoints
 2. Place these settings in the `settings.py` file of the main portion of the Django project
