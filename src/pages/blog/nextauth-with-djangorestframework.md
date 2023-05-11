@@ -299,21 +299,23 @@ REST_FRAMEWORK = {
   - [Project Repo](https://github.com/orgs/Oxygen-Oriented-Programming/repositories)
     - [NextAuth file](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Frontend-NextJS/blob/dev/pages/api/auth/%5B...nextauth%5D.js)
     - [DRF Accounts app](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Accounts-DjangoRestFramework/tree/dev/accounts)
+
 <style>
 h1 {
-  color: #333;
+  margin-right:-25%;
+  margin-left:-25%;
+  color:#11D424;
   font-size: 2.5rem;
   text-align: center;
 }
 
 h2 {
-  color: #666;
+  color:#11D424;
   font-size: 2rem;
   margin-top: 2rem;
 }
 
 p {
-  color: #333;
   font-size: 1.5rem;
   line-height: 2rem;
 }
@@ -326,5 +328,26 @@ ul {
 li {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25%;
+  margin-right: 25%;
+  background-color: #fff;
+  color: #333;
+}
+
+/*Dark mode styles*/
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #333;
+    color: #fff;
+  }
+}
+
+a{
+  color:#408000;
+  text-decoration:none;
 }
 </style>
