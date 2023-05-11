@@ -345,7 +345,9 @@ body {
     color: #fff;
   }
 }
-
+img{
+  margin-left:-5rem;
+}
 a{
   color:#408000;
   text-decoration:none;
