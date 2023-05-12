@@ -35,9 +35,8 @@ This blog will outline and explain the steps for accomplishing:
 - In this example Google OAuth2 will be used, but any service that provides social sign on will work the same
 - First acquire a client ID and secret from the provider
 - Then configure the allowed origins and callback URLs with the SSO provider
-  - development origin: `http://127.0.0.1:####`
-  - development callback `http://localhost:####/api/auth/callback/google`
-  - for production replace 127.0.0.1 and localhost with the deployed frontend URL
+  - The NextAuth Callback by default will be:
+  - `www.example.com/api/auth/callback/google`
 
 ## NextAuth
 
