@@ -83,12 +83,6 @@ const { frontmatter } = Astro.props;
       --card-shadow: rgba(45, 59, 170, 0.415);
     }
   }
-  @media (min-width:875px){
-    body {
-        margin-left: 5rem;
-        margin-right: 5rem;
-    }
-  }
   img {
     width: 100%;
     height: auto;
@@ -106,12 +100,24 @@ const { frontmatter } = Astro.props;
     top: 0;
     right: 0;
     background-color: var(--text-color);
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem;
     font-size: 0.75rem;
     line-height: 1rem;
+    border-radius: 2rem;
   }
 
   .copy-code:hover {
     background-color: var(--accent-color);
+  }
+  @media (min-width:875px){
+    body {
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+  }
+  @media (max-width:874px){
+    .copy-code {
+        opacity: 0.2;
+    }
   }
 </style>
