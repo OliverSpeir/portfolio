@@ -1,0 +1,61 @@
+<script>
+  type CodeBlockElement = HTMLPreElement & { parentNode: HTMLElement };
+
+  const createCopyButton = () => {
+    const copyButton = document.createElement("button");
+    copyButton.className = "copy-code";
+    copyButton.innerText = "Copy Code";
+    return copyButton;
+  };
+
+  const codeBlocks = Array.from(
+    document.querySelectorAll("pre")
+  ) as CodeBlockElement[];
+
+  const copyButtonLabel = "Copy Code";
+
+  for (const codeBlock of codeBlocks) {
+    const wrapper = document.createElement("div");
+    wrapper.style.position = "relative";
+
+    const copyButton = createCopyButton();
+    copyButton.addEventListener("click", async () => {
+      const code = codeBlock.querySelector("code");
+      if (code) {
+        const text = code.textContent;
+        if (text) {
+          await navigator.clipboard.writeText(text);
+
+          copyButton.innerText = "Code Copied";
+
+          setTimeout(() => {
+            copyButton.innerText = copyButtonLabel;
+          }, 700);
+        }
+      }
+    });
+
+    codeBlock.appendChild(copyButton);
+    codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+    wrapper.appendChild(codeBlock);
+  }
+</script>
+
+<slot />
+<h1>a</h1>
+
+<style is:global>
+  .copy-code {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #3730a3;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .copy-code:hover {
+    background-color: #312e81;
+  }
+</style>

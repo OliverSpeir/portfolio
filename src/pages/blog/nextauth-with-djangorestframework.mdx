@@ -1,8 +1,11 @@
 ---
-title: NextAuth with DRF
+title: "NextAuth with DRF"
+slug: "NextAuth-With-DRF"
+desc: "This blog post explains how to create a NextAuth SocialSignOn button that connects to a Django REST Framework API"
+layout: ../../layouts/Blog.astro
 ---
 
-# NextAuth Social Sign On (SSO) with Django REST Framework (DRF)
+# NextAuth Social Sign On (SSO) with Django REST Framework (DRF
 
 This blog will outline and explain the steps for accomplishing:
 
@@ -16,7 +19,7 @@ This blog will outline and explain the steps for accomplishing:
 3. NextAuth API will send that token to DRF Server.
 4. DRF Server will validate that token with SSO Server.
 5. DRF Server will either create a new account and token for that user or regenerate the token of that user and send it back to NextAuth API - any other information from the user can also be sent back and included in the resulting login session at this time.
-6. NextAuth will create a session which persists in the clients browser via a Session Token cookie (which cannot be accessed by javascript running in browser).
+6. NextAuth will create a session which persists in the clients browser via an HTTP-only cookie (which cannot be accessed by javascript running in browser).
 7. useSession hook will be availble throughout the NextJS project to allow access to session information.
 
 ![NextAuth SSO Provider DRF image](/NA-DRF-RRC.png)
@@ -100,7 +103,7 @@ export default NextAuth({
 - Uses the built in GoogleProvider, NextAuth has builtin providers for all SSO providers
 - Sets the secret from the environmental variables
 - Session settings are configured
-  - Max age determines how long the Session Token cookie will exist
+  - Max age determines how long the HTTP-only cookie will exist
 - Callback functions are configured
   - The `signIn` callback is invoked when the user is authenticated by the SSO provider
     - In this configuration the signIn callback will make a POST request to the DRF server
@@ -121,7 +124,7 @@ export default NextAuth({
 
 ## DRF
 
-Our endpoints will be protected by [Token Authentication](https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication). The step up consists of adjusting the user model and creating 4 new files.
+Our endpoints will be protected by [Token Authorization](https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication). The step up consists of adjusting the user model and creating 4 new files.
 
 ### DRF Code
 
@@ -129,9 +132,9 @@ Our endpoints will be protected by [Token Authentication](https://www.django-res
 
 - `auth_provider = models.CharField(max_length=50)`
 
-2. `views.py` should have a SocialAuthView that does not require authentication
+2. `views.py` should have a SocialAuthView that does not require authorization
 
-```python
+``````python
 @permission_classes((AllowAny, ))
 class GoogleSocialAuthView(GenericAPIView):
 
@@ -146,11 +149,11 @@ class GoogleSocialAuthView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         data = ((serializer.validated_data)['auth_token'])
         return Response(data, status=status.HTTP_200_OK)
-```
+``````
 
 3. `serializers.py` should have a SocialAuthSerializer that is used to validate the `idToken` that the NextAuth API sends
 
-```python
+``````python
 class GoogleSocialAuthSerializer(serializers.Serializer):
     auth_token = serializers.CharField()
 
@@ -172,11 +175,11 @@ class GoogleSocialAuthSerializer(serializers.Serializer):
 
         return register_social_user(
             provider=provider, email=email, name=name)
-```
+``````
 
 4. This serializer will take import from the next file we need to create `google.py`
 
-```python
+``````python
 from google.auth.transport import requests
 from google.oauth2 import id_token
 import time
@@ -200,11 +203,11 @@ class Google:
                 if 'accounts.google.com' in idinfo['iss']:
                     return idinfo
             return "The token is either invalid or has expired"
-```
+``````
 
 5. Next we need to create `register.py`
 
-```python
+``````python
 from rest_framework.authtoken.models import Token
 from default_locations.models import DefaultLocation
 from accounts.models import User
@@ -246,7 +249,7 @@ def register_social_user(provider, email, name):
             'user_id': new_user.id,
             'tokens': str(new_token[0]['key']),
         }
-```
+``````
 
 ### DRF Code Explained
 
@@ -268,21 +271,21 @@ def register_social_user(provider, email, name):
 - if the user already exists their existing token is deleted and a new one is created for them
 - if the user does not exist a token and a new user is created
 
-To reiterate: the DRF server needs to expose an unauthenticated endpoint that accepts an `idToken`, validate that token and if the token is valid it needs to create an Authentication Token and a new user if that `idToken` has not already been used by an existing account
+To reiterate: the DRF server needs to expose an unauthorized endpoint that accepts an `idToken`, validate that token and if the token is valid it needs to create an Authorization Token and a new user if that `idToken` has not already been used by an existing account
 
-### Requiring Authentication for other DRF endpoints
+### Requiring Authorization for other DRF endpoints
 
 1. add `permission_classes = (IsAuthenticated,)` with the `rest_framework.permissions import IsAuthenticated` function to all endpoints
 2. Place these settings in the `settings.py` file of the main portion of the Django project
 
-```python
+``````python
 AUTH_USER_MODEL = "accounts.User"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication', 
     ],
 }
-```
+``````
 
 3. The endpoints will now have `self.request.user` availble to them
 
@@ -299,57 +302,3 @@ REST_FRAMEWORK = {
   - [Project Repo](https://github.com/orgs/Oxygen-Oriented-Programming/repositories)
     - [NextAuth file](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Frontend-NextJS/blob/dev/pages/api/auth/%5B...nextauth%5D.js)
     - [DRF Accounts app](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Accounts-DjangoRestFramework/tree/dev/accounts)
-
-<style>
-h1 {
-  margin-right:-25%;
-  margin-left:-25%;
-  color:#11D424;
-  font-size: 2.5rem;
-  text-align: center;
-}
-
-h2 {
-  color:#11D424;
-  font-size: 2rem;
-  margin-top: 2rem;
-}
-
-p {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-ul {
-  list-style: disc;
-  margin-left: 2rem;
-}
-
-li {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-body {
-  display: flex;
-  flex-direction: column;
-  margin-left: 25%;
-  margin-right: 25%;
-  background-color: #fff;
-  color: #333;
-}
-
-/*Dark mode styles*/
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #333;
-    color: #fff;
-  }
-}
-img{
-  margin-left:-2rem;
-}
-a{
-  color:#408000;
-  text-decoration:none;
-}
-</style>
