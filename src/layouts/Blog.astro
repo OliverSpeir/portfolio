@@ -1,61 +1,116 @@
-<script>
-  type CodeBlockElement = HTMLPreElement & { parentNode: HTMLElement };
+---
+const { frontmatter } = Astro.props;
+---
 
-  const createCopyButton = () => {
-    const copyButton = document.createElement("button");
-    copyButton.className = "copy-code";
-    copyButton.innerText = "Copy Code";
-    return copyButton;
-  };
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={frontmatter.description} />
+    <link rel="icon" type="image/svg" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/profile_picture.png" />
+    <meta property="og:image" content={frontmatter.cardPicture} />
+    <title>{frontmatter.title}</title>
+    <script>
+      type CodeBlockElement = HTMLPreElement & { parentNode: HTMLElement };
 
-  const codeBlocks = Array.from(
-    document.querySelectorAll("pre")
-  ) as CodeBlockElement[];
+      const createCopyButton = () => {
+        const copyButton = document.createElement("button");
+        copyButton.className = "copy-code";
+        copyButton.innerText = "Copy Code";
+        return copyButton;
+      };
 
-  const copyButtonLabel = "Copy Code";
+      const codeBlocks = Array.from(
+        document.querySelectorAll("pre")
+      ) as CodeBlockElement[];
 
-  for (const codeBlock of codeBlocks) {
-    const wrapper = document.createElement("div");
-    wrapper.style.position = "relative";
+      const copyButtonLabel = "Copy Code";
 
-    const copyButton = createCopyButton();
-    copyButton.addEventListener("click", async () => {
-      const code = codeBlock.querySelector("code");
-      if (code) {
-        const text = code.textContent;
-        if (text) {
-          await navigator.clipboard.writeText(text);
+      for (const codeBlock of codeBlocks) {
+        const wrapper = document.createElement("div");
+        wrapper.style.position = "relative";
 
-          copyButton.innerText = "Code Copied";
+        const copyButton = createCopyButton();
+        copyButton.addEventListener("click", async () => {
+          const code = codeBlock.querySelector("code");
+          if (code) {
+            const text = code.textContent;
+            if (text) {
+              await navigator.clipboard.writeText(text);
 
-          setTimeout(() => {
-            copyButton.innerText = copyButtonLabel;
-          }, 700);
-        }
+              copyButton.innerText = "Code Copied";
+
+              setTimeout(() => {
+                copyButton.innerText = copyButtonLabel;
+              }, 700);
+            }
+          }
+        });
+
+        codeBlock.appendChild(copyButton);
+        codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+        wrapper.appendChild(codeBlock);
       }
-    });
-
-    codeBlock.appendChild(copyButton);
-    codeBlock.parentNode.insertBefore(wrapper, codeBlock);
-    wrapper.appendChild(codeBlock);
-  }
-</script>
-
-<slot />
-<h1>a</h1>
-
+    </script>
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-YXRK3RSZN8"
+    ></script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
 <style is:global>
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-color: #d6d6d6;
+      --accent-color: rgb(98, 94, 94);
+      --bg-color: #222;
+      --card-color: rgb(77, 75, 75);
+      --card-shadow: rgba(255, 255, 255, 0.39);
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --text-color: black;
+      --accent-color: #292c88;
+      --bg-color: #f6f6f6;
+      --card-color: rgb(165, 215, 246);
+      --card-shadow: rgba(45, 59, 170, 0.415);
+    }
+  }
+  @media (min-width:875px){
+    body {
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+  }
+  img {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
   .copy-code {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #3730a3;
+    background-color: var(--text-color);
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
     line-height: 1rem;
   }
 
   .copy-code:hover {
-    background-color: #312e81;
+    background-color: var(--accent-color);
   }
 </style>
