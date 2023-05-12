@@ -54,14 +54,19 @@ const { frontmatter } = Astro.props;
         wrapper.appendChild(codeBlock);
       }
     </script>
-  <script type="text/partytown">
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "G-YXRK3RSZN8");
-  </script>
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-YXRK3RSZN8"
+    ></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-YXRK3RSZN8");
+    </script>
   </head>
   <body>
     <slot />
