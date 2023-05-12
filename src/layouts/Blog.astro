@@ -8,7 +8,7 @@ const { frontmatter } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={frontmatter.description} />
     <link rel="icon" type="image/svg" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/profile_picture.png" />
+    <link rel="apple-touch-icon" href={frontmatter.cardPicture} />
     <meta property="og:image" content={frontmatter.cardPicture} />
     <meta name="twitter:card" content={frontmatter.cardPicture} />
     <title>{frontmatter.title}</title>
