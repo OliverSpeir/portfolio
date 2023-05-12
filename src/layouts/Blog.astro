@@ -10,6 +10,7 @@ const { frontmatter } = Astro.props;
     <link rel="icon" type="image/svg" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/profile_picture.png" />
     <meta property="og:image" content={frontmatter.cardPicture} />
+    <meta name="twitter:card" content={frontmatter.cardPicture} />
     <title>{frontmatter.title}</title>
     <script>
       type CodeBlockElement = HTMLPreElement & { parentNode: HTMLElement };
