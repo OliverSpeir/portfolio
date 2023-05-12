@@ -1,7 +1,9 @@
 ---
-# title=NextAuth with DRF
+title: "NextAuth with DRF"
+slug: "NextAuth-With-DRF"
+desc: "This blog post explains how to create a NextAuth SocialSignOn button that connects to a Django REST Framework API"
+layout: ../../layouts/Blog.astro
 ---
-import './blogCSS.css';
 
 # NextAuth Social Sign On (SSO) with Django REST Framework (DRF
 
@@ -43,7 +45,7 @@ Our NextJS project needs to create a NextAuth API which is as simple as creating
 
 ### NextAuth code
 
-``````javascript
+```javascript
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -94,7 +96,7 @@ export default NextAuth({
     },
   },
 });
-``````
+```
 
 ### NextAuth code explained
 
