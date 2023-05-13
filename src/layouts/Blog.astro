@@ -74,68 +74,69 @@ import NavLinks from "../components/NavLinks.astro";
   <body>
     <slot />
   </body>
-</html>
-<style is:global>
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --text-color: #d6d6d6;
-      --accent-color: rgb(98, 94, 94);
-      --bg-color: #222;
-      --card-color: rgb(77, 75, 75);
-      --card-shadow: rgba(255, 255, 255, 0.39);
-    }
-  }
-  @media (prefers-color-scheme: light) {
-    :root {
-      --text-color: black;
-      --accent-color: #292c88;
-      --bg-color: #f6f6f6;
-      --card-color: rgb(165, 215, 246);
-      --card-shadow: rgba(45, 59, 170, 0.415);
-    }
-  }
-  img {
-    width: 100%;
-    height: auto;
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  body {
-    max-width: 50rem;
-  }
-  .copy-code {
-    position: absolute;
-    top: 20px;
-    right: 10px;
-    background-color: var(--text-color);
-    padding: 0.25rem;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    border-radius: 2rem;
-  }
 
-  .copy-code:hover {
-    background-color: var(--accent-color);
-  }
-  a {
-    color: rgb(37, 96, 244);
-    text-decoration: none;
-  }
-  @media (min-width: 875px) {
-  }
-  @media (max-width: 874px) {
+  <style is:global>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-color: #d6d6d6;
+        --accent-color: rgb(98, 94, 94);
+        --bg-color: #222;
+        --card-color: rgb(77, 75, 75);
+        --card-shadow: rgba(255, 255, 255, 0.39);
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --text-color: black;
+        --accent-color: #292c88;
+        --bg-color: #f6f6f6;
+        --card-color: rgb(165, 215, 246);
+        --card-shadow: rgba(45, 59, 170, 0.415);
+      }
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+    html {
+      font-family: system-ui, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .copy-code {
-      opacity: 0.2;
+      position: absolute;
+      top: 20px;
+      right: 10px;
+      background-color: var(--text-color);
+      padding: 0.25rem;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      border-radius: 2rem;
     }
-    body {
-      padding-left: 5rem;
-      /* margin-right: 5rem; */
+
+    .copy-code:hover {
+      background-color: var(--accent-color);
     }
-  }
-</style>
+    a {
+      color: rgb(37, 96, 244);
+      text-decoration: none;
+    }
+    @media (min-width: 875px) {
+      body {
+        max-width: 50rem;
+      }
+    }
+    @media (max-width: 874px) {
+      .copy-code {
+        opacity: 0.2;
+      }
+      body {
+        /* padding-left: 5rem; */
+        /* margin-right: 5rem; */
+      }
+    }
+  </style>
+</html>
