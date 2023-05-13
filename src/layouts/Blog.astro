@@ -105,8 +105,6 @@ import NavLinks from "../components/NavLinks.astro";
     }
     .copy-code {
       position: absolute;
-      top: 20px;
-      right: 10px;
       background-color: var(--text-color);
       padding: 0.25rem;
       font-size: 0.75rem;
@@ -129,6 +127,10 @@ import NavLinks from "../components/NavLinks.astro";
         display: flex;
         flex-direction: column;
         align-items: center;
+      }
+      .copy-code {
+        top: 20px;
+        right: 10px;
       }
     }
     @media (max-width: 874px) {
