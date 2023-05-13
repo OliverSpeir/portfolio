@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import vercelStatic from "@astrojs/vercel/static";
 import partytown from "@astrojs/partytown";
-import mdx from "@astrojs/mdx";
 
 
 // https://astro.build/config
@@ -12,5 +11,5 @@ export default defineConfig({
     config: {
       forward: ["dataLayer.push"]
     }
-  }), mdx()]
+  })]
 });
