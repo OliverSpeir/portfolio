@@ -39,51 +39,54 @@ import SocialLogos from "../../components/SocialLogos.astro";
         body="This blog describes using NextAuth to provide Social Sign On for a Django REST Framework Backend"
       />
     </div>
+    <SocialLogos class="projects" />
   </body>
-  <SocialLogos class="bottom"/>
-  </html>
-  <style>
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --hover-accent: rgb(13, 28, 240);
-        --hover-accent-gradient: linear-gradient(
-          45deg,
-          var(--hover-accent),
-          #5b3fda99 30%,
-          white 60%
-        );
-      }
-      :root {
-        --text-color: #d6d6d6;
-        --accent-color: rgb(98, 94, 94);
-        --bg-color: #222;
-        --card-color: rgb(77, 75, 75);
-        --card-shadow: rgba(255, 255, 255, 0.39);
-      }
+</html>
+<style>
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --hover-accent: rgb(13, 28, 240);
+      --hover-accent-gradient: linear-gradient(
+        45deg,
+        var(--hover-accent),
+        #5b3fda99 30%,
+        white 60%
+      );
     }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --text-color: black;
-        --accent-color: #292c88;
-        --bg-color: #f6f6f6;
-        --card-color: rgb(165, 215, 246);
-        --card-shadow: rgba(45, 59, 170, 0.415);
-      }
+    :root {
+      --text-color: #d6d6d6;
+      --accent-color: rgb(98, 94, 94);
+      --bg-color: #222;
+      --card-color: rgb(77, 75, 75);
+      --card-shadow: rgba(255, 255, 255, 0.39);
     }
-    html {
-      font-family: system-ui, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --text-color: black;
+      --accent-color: #292c88;
+      --bg-color: #f6f6f6;
+      --card-color: rgb(165, 215, 246);
+      --card-shadow: rgba(45, 59, 170, 0.415);
     }
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    h1 {
-      margin-top: 2rem;
-    }
-    .cards {
-        margin-top: 5rem;
-    }
-  </style>
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    margin-top: 5rem;
+  }
+  .cards {
+    margin-top: 2rem;
+  }
+  footer {
+    margin-top: 5rem;
+  }
+</style>
