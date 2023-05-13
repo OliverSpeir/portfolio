@@ -3,8 +3,15 @@ layout: ../../layouts/Blog.astro
 title: "NextAuth with DRF"
 description: "This blog post explains how to create a NextAuth SocialSignOn button that connects to a Django REST Framework API"
 cardPicture: "/DRF-NextAuth-Logo.png"
-customeStyle: "@media (max-width: 874px {body {margin-left:2rem;}})"
 ---
+<style>
+  h1 {
+    color:#11D424;
+  }
+  h2 {
+    color:#11D424;
+  }
+</style>
 
 # NextAuth Social Sign On (SSO) with Django REST Framework (DRF)
 
@@ -12,6 +19,12 @@ This blog will outline and explain the steps for accomplishing:
 
 - SSO for NextJS frontend using NextAuth
 - Authenticated endpoints in DRF using Token Authentication
+
+## Table Of Contents
+
+- [NextAuth](#nextauth)
+- [DRF](#drf)
+- [Resources](#resources)
 
 ## Request Response Cycle
 
@@ -24,12 +37,6 @@ This blog will outline and explain the steps for accomplishing:
 7. useSession hook will be availble throughout the NextJS project to allow access to session information.
 
 ![NextAuth SSO Provider DRF image](/NA-DRF-RRC.png)
-
-## Set up steps
-
-1. SSO set up
-2. NextAuth Config
-3. DRF settings
 
 ## SSO Set up
 
@@ -114,12 +121,20 @@ export default NextAuth({
     - This is when `auth_token` gets added into the session object
   - After the session callback completes the session is created and the user is returned to the frontend.
 
-### Accessing session data in NextJS app
+### Making calls to the protected DRF endpoints
 
 - `import { useSession } from "next-auth/react";`
 - `const { data: session } = useSession();`
 - These two lines of code give the frontend access to the `auth_token` that we need to use to communicate with the DRF server
-  - and any other data that you want to add into the session (e.g. data from the `idToken` or sent from the DRF server)
+  - and any other data that you have added into the session (e.g. data from the `idToken` or sent from the DRF server)
+- When making requests to the protected DRF endpoints use this header:
+
+```javascript
+      headers: {
+        Authorization: "Token " + auth_token,
+        "Content-Type": "application/json",
+      }
+```
 
 ## DRF
 
@@ -275,6 +290,10 @@ To reiterate: the DRF server needs to expose an unauthorized endpoint that accep
 ### Requiring Authorization for other DRF endpoints
 
 1. add `permission_classes = (IsAuthenticated,)` with the `rest_framework.permissions import IsAuthenticated` function to all endpoints
+  
+    - it is possible to set permission classes with decorators as well
+    - `@permission_classes([IsAuthenticated])`
+    - [DRF permissions docs](https://www.django-rest-framework.org/api-guide/permissions/)
 2. Place these settings in the `settings.py` file of the main portion of the Django project
 
 ``````python
@@ -286,9 +305,10 @@ REST_FRAMEWORK = {
 }
 ``````
 
-3. The endpoints will now have `self.request.user` availble to them
+3. This is all that is required for the endpoints to refuse access when in invalid token is not sent to them and accept when a valid token is sent
+4. The endpoints will now have `self.request.user` availble to them
 
-## Related Resources and attribution
+## Resources
 
 - [Token Authentication](https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication)
 - [NextAuth Docs](https://next-auth.js.org/configuration/initialization)
