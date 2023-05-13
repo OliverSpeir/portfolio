@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.4.5",
-    "@astrojs/vercel": "^3.3.0"
+    "@astrojs/partytown": "^1.2.1",
+    "@astrojs/vercel": "^3.3.0",
+    "astro": "^2.4.5"
   }
 }
