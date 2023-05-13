@@ -3,12 +3,13 @@ export interface Props {
   title: string;
   href: string;
   target: string;
+  customclass: string;
 }
 
-const { href, title, target } = Astro.props;
+const { href, title, target, customclass } = Astro.props;
 ---
 
-<li class="link-card">
+<li class=`link-card ${customclass}`>
   <a href={href} target={target}>
     <h2>
       {title}
@@ -55,13 +56,17 @@ const { href, title, target } = Astro.props;
   }
   @media (min-width: 875px) {
     h2 {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: .25rem;
+      padding-bottom: .25rem;
     }
   }
   @media (max-width: 874px) {
     h2 {
       /* padding-top: 1rem; */
     }
+  }
+  .top {
+    position: relative;
+    right:69.5px;
   }
 </style>

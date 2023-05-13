@@ -1,5 +1,6 @@
 ---
 const { frontmatter } = Astro.props;
+import NavLinks from "../components/NavLinks.astro";
 ---
 
 <html>
@@ -14,19 +15,18 @@ const { frontmatter } = Astro.props;
     <title>{frontmatter.title}</title>
     <script>
       type CodeBlockElement = HTMLPreElement & { parentNode: HTMLElement };
+      const copyButtonLabel = "Copy Code";
 
       const createCopyButton = () => {
         const copyButton = document.createElement("button");
         copyButton.className = "copy-code";
-        copyButton.innerText = "Copy Code";
+        copyButton.innerText = copyButtonLabel;
         return copyButton;
       };
 
       const codeBlocks = Array.from(
         document.querySelectorAll("pre")
       ) as CodeBlockElement[];
-
-      const copyButtonLabel = "Copy Code";
 
       for (const codeBlock of codeBlocks) {
         const wrapper = document.createElement("div");
@@ -68,6 +68,9 @@ const { frontmatter } = Astro.props;
       gtag("config", "G-YXRK3RSZN8");
     </script>
   </head>
+  <header>
+    <NavLinks />
+  </header>
   <body>
     <slot />
   </body>
@@ -94,19 +97,22 @@ const { frontmatter } = Astro.props;
   img {
     width: 100%;
     height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   html {
     font-family: system-ui, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  body {
+    max-width: 50rem;
   }
   .copy-code {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 20px;
+    right: 10px;
     background-color: var(--text-color);
     padding: 0.25rem;
     font-size: 0.75rem;
