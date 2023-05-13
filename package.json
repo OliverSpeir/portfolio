@@ -7,14 +7,11 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/vercel": "^3.2.3",
-    "astro": "^2.2.1"
-  },
-  "devDependencies": {
-    "@astrojs/partytown": "^1.2.0"
+    "@astrojs/partytown": "^1.2.1",
+    "@astrojs/vercel": "^3.3.0",
+    "astro": "^2.4.5"
   }
 }

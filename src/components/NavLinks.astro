@@ -2,15 +2,22 @@
   <a class={Astro.url.pathname === "/" ? "active" : "link"} href="/">Home</a>
   <a
     class={Astro.url.pathname === "/projects/" ? "active" : "link"}
-    href="/projects">Projects</a
+    href="/projects"
   >
+    Projects
+  </a>
   <a
     class={Astro.url.pathname === "/skills/" ? "active" : "link"}
-    href="/skills">Skills</a
+    href="/skills"
   >
-  <a class={Astro.url.pathname === "/about/" ? "active" : "link"} href="/about"
-    >About</a
-  >
+    Skills
+  </a>
+  <a class={Astro.url.pathname === "/blog/" ? "active" : "link"} href="/blog">
+    Blog
+  </a>
+  <a class={Astro.url.pathname === "/about/" ? "active" : "link"} href="/about">
+    About
+  </a>
 </nav>
 
 <style>

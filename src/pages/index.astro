@@ -23,10 +23,12 @@ import SocialLogos from "../components/SocialLogos.astro";
     </div>
     <div class="cards">
       <ul role="list" class="card-grid">
-        <LinkCard href="/projects" title="Projects" target="_self" />
-        <LinkCard href="/CV.pdf" title="CV" target="_blank" />
-        <LinkCard href="/skills" title="Skills" target="_self" />
-        <LinkCard href="/about" title="About Me" target="_self" />
+        <div class=top"></div>
+        <LinkCard href="/CV.pdf" title="CV" target="_blank" customclass="top"/>
+        <LinkCard href="/projects" title="Projects" target="" customclass="" />
+        <LinkCard href="/skills" title="Skills" target="" customclass=""/>
+        <LinkCard href="/blog" title="Blog" target="" customclass=""/>
+        <LinkCard href="/about" title="About Me" target="" customclass=""/>
       </ul>
       <SocialLogos class="home-middle" />
     </div>
@@ -122,12 +124,15 @@ import SocialLogos from "../components/SocialLogos.astro";
       margin-left: 1rem;
     }
     .card-grid {
-      margin-top: 3rem;
+      margin-top: 2rem;
       display: grid;
       grid-template-columns: repeat(2, minmax(15ch, auto));
       column-gap: 0.5rem;
       row-gap: 0.5rem;
       padding: 0;
+    }
+    .top {
+      grid-row: span 1;
     }
   }
 </style>

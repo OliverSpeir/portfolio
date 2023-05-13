@@ -1,9 +1,7 @@
 import { defineConfig } from "astro/config";
 import vercelStatic from "@astrojs/vercel/static";
 import partytown from "@astrojs/partytown";
-import mdx from "@astrojs/mdx";
 
-import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,5 +11,5 @@ export default defineConfig({
     config: {
       forward: ["dataLayer.push"]
     }
-  }), mdx(), react()]
+  })]
 });
