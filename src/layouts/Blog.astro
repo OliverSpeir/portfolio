@@ -102,9 +102,6 @@ import NavLinks from "../components/NavLinks.astro";
       font-family: system-ui, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
     .copy-code {
       position: absolute;
@@ -128,19 +125,18 @@ import NavLinks from "../components/NavLinks.astro";
       body {
         max-width: 50rem;
       }
+      html {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
     @media (max-width: 874px) {
       .copy-code {
         opacity: 0.2;
       }
-      html {
-        width: 100%;
-      }
-      body {
-        /* padding-left: 5rem; */
-        /* margin-right: 5rem; */
-      }
     }
   </style>
+
 
 </html>
