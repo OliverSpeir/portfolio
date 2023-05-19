@@ -82,11 +82,9 @@ import NavLinks from "../components/NavLinks.astro";
         const height = getDocumentScrollHeight();
         window.addEventListener("scroll", () => {
           const scrollTop = getDocumentScrollTop();
-          const screenWidth = window.innerWidth;
-          const progressWidth = screenWidth <= 874 ? 85 : 55;
           if (progressElement) {
             progressElement.style.width = `${
-              (scrollTop / height) * progressWidth
+              (scrollTop / height) * 85
             }%`;
           }
         });
@@ -162,7 +160,7 @@ import NavLinks from "../components/NavLinks.astro";
       padding: 0.25rem;
       font-size: 0.75rem;
       line-height: 1rem;
-      border-radius: 2rem;
+      /* border-radius: 2rem; */
     }
     .copy-code:hover {
       background-color: var(--card-shadow);
@@ -178,6 +176,7 @@ import NavLinks from "../components/NavLinks.astro";
       height: 4px;
       background: rgb(89, 115, 247);
       z-index: 10000;
+      border-radius: 1rem;
     }
     @media (min-width: 875px) {
       body {
