@@ -284,7 +284,7 @@ To reiterate: the DRF server needs to expose an unauthorized endpoint that accep
 1. add `permission_classes = (IsAuthenticated,)` with the `rest_framework.permissions import IsAuthenticated` function to all endpoints
   
     - it is possible to set permission classes with decorators as well
-    - `@permission_classes([IsAuthenticated])`
+    - `@permission_classes( [IsAuthenticated], )`
     - [DRF permissions docs](https://www.django-rest-framework.org/api-guide/permissions/)
 2. Place these settings in the `settings.py` file of the main portion of the Django project
 
