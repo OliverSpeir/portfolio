@@ -85,7 +85,9 @@ import NavLinks from "../components/NavLinks.astro";
           const screenWidth = window.innerWidth;
           const progressWidth = screenWidth <= 874 ? 100 : 55;
           if (progressElement) {
-            progressElement.style.width = `${(scrollTop / height) * progressWidth}%`;
+            progressElement.style.width = `${
+              (scrollTop / height) * progressWidth
+            }%`;
           }
         });
       }
@@ -129,21 +131,21 @@ import NavLinks from "../components/NavLinks.astro";
       background-color: var(--bg-color);
       color: var(--text-color);
     }
-    /* code {
+    code {
       background: #181717;
       font-weight: bolder;
       font-size: large;
-    } */
+    }
     body {
       background: var(--body-color);
       padding: 1rem;
       border-radius: 1rem;
     }
-    /* pre > code {
-      /* font-weight: 100; */
+    pre > code {
+      font-weight: 100;
       background: none;
       font-style: normal;
-    } */
+    }
     pre {
       border-radius: 1rem;
       padding: 1rem;
@@ -168,12 +170,12 @@ import NavLinks from "../components/NavLinks.astro";
       text-decoration: none;
     }
     #scroll-progress {
-        position: fixed;
-        top: 0;
-        width: 0%;
-        height: 4px;
-        background: rgb(89, 115, 247);
-        z-index: 10000;
+      position: fixed;
+      top: 0;
+      width: 0%;
+      height: 4px;
+      background: rgb(89, 115, 247);
+      z-index: 10000;
     }
     @media (min-width: 875px) {
       body {
@@ -198,6 +200,10 @@ import NavLinks from "../components/NavLinks.astro";
         top: 0;
         right: 0;
       }
+      code {
+        display: block;
+        white-space: pre-wrap; /* This allows the text to wrap */
+        word-wrap: break-word;
       }
     }
   </style>
