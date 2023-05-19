@@ -10,7 +10,7 @@ import NavLinks from "../components/NavLinks.astro";
     <meta name="description" content={frontmatter.description} />
     <link rel="icon" type="image/svg" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/profile_picture.png" />
-    <link rel="sitemap" href="/sitemap-index.xml">
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:image" content={frontmatter.cardPicture} />
     <meta name="twitter:card" content={frontmatter.cardPicture} />
     <title>{frontmatter.title}</title>
@@ -68,9 +68,38 @@ import NavLinks from "../components/NavLinks.astro";
       gtag("js", new Date());
       gtag("config", "G-YXRK3RSZN8");
     </script>
+    <script>
+      function getDocumentScrollHeight(): number {
+        return (
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight
+        );
+      }
+      function getDocumentScrollTop(): number {
+        return document.body.scrollTop || document.documentElement.scrollTop;
+      }
+      function setScrollProgress(progressElement: HTMLElement | null): void {
+        const height = getDocumentScrollHeight();
+        window.addEventListener("scroll", () => {
+          const scrollTop = getDocumentScrollTop();
+          const screenWidth = window.innerWidth;
+          const progressWidth = screenWidth <= 874 ? 100 : 50;
+          if (progressElement) {
+            progressElement.style.width = `${(scrollTop / height) * progressWidth}%`;
+          }
+        });
+      }
+      function main(): void {
+        const scrollProgress: HTMLElement | null =
+          document.getElementById("scroll-progress");
+        setScrollProgress(scrollProgress);
+      }
+      main();
+    </script>
   </head>
   <header>
     <NavLinks />
+    <div class="scroll-progress" id="scroll-progress"></div>
   </header>
   <body>
     <slot />
@@ -81,8 +110,8 @@ import NavLinks from "../components/NavLinks.astro";
       :root {
         --text-color: #d6d6d6;
         --accent-color: rgb(98, 94, 94);
-        --bg-color: #222;
-        --card-color: rgb(77, 75, 75);
+        --bg-color: #000000;
+        --body-color: #222;
         --card-shadow: rgba(255, 255, 255, 0.39);
       }
     }
@@ -91,43 +120,72 @@ import NavLinks from "../components/NavLinks.astro";
         --text-color: black;
         --accent-color: #292c88;
         --bg-color: #f6f6f6;
-        --card-color: rgb(165, 215, 246);
+        --body-color: rgb(165, 215, 246);
         --card-shadow: rgba(45, 59, 170, 0.415);
       }
-    }
-    img {
-      width: 100%;
-      height: auto;
     }
     html {
       font-family: system-ui, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
     }
+    code {
+      background: #181717;
+      font-weight: bolder;
+      font-size: large;
+    }
+    body {
+      background: var(--body-color);
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+    pre > code {
+      /* font-weight: 100; */
+      background: none;
+      font-style: normal;
+    }
+    pre {
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
     .copy-code {
       position: absolute;
-      background-color: var(--accent-color);
+      background-color: ;
       padding: 0.25rem;
       font-size: 0.75rem;
       line-height: 1rem;
       border-radius: 2rem;
     }
-
     .copy-code:hover {
       background-color: var(--card-shadow);
     }
     a {
-      color: rgb(37, 96, 244);
+      color: rgb(89, 115, 247);
       text-decoration: none;
+    }
+    #scroll-progress {
+        position: fixed;
+        top: 0;
+        width: 0%;
+        height: 4px;
+        background: rgb(89, 115, 247);
+        z-index: 10000;
     }
     @media (min-width: 875px) {
       body {
-        max-width: 50rem;
+        max-width: 65rem;
       }
       html {
         display: flex;
         flex-direction: column;
         align-items: center;
+      }
+      #scroll-progress {
+        max-width: 65rem;
       }
       .copy-code {
         top: 20px;
@@ -139,6 +197,7 @@ import NavLinks from "../components/NavLinks.astro";
         opacity: 0.2;
         top: 0;
         right: 0;
+      }
       }
     }
   </style>
