@@ -83,7 +83,7 @@ import NavLinks from "../components/NavLinks.astro";
         window.addEventListener("scroll", () => {
           const scrollTop = getDocumentScrollTop();
           const screenWidth = window.innerWidth;
-          const progressWidth = screenWidth <= 874 ? 100 : 55;
+          const progressWidth = screenWidth <= 874 ? 80 : 55;
           if (progressElement) {
             progressElement.style.width = `${
               (scrollTop / height) * progressWidth
