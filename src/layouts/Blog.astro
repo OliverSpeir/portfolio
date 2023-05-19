@@ -83,9 +83,7 @@ import NavLinks from "../components/NavLinks.astro";
         window.addEventListener("scroll", () => {
           const scrollTop = getDocumentScrollTop();
           if (progressElement) {
-            progressElement.style.width = `${
-              (scrollTop / height) * 87
-            }%`;
+            progressElement.style.width = `${(scrollTop / height) * 87}%`;
           }
         });
       }
@@ -205,6 +203,11 @@ import NavLinks from "../components/NavLinks.astro";
         display: inline-block;
         white-space: pre-wrap; /* This allows the text to wrap */
         word-wrap: break-word;
+      }
+      pre > code {
+        display: unset;
+        white-space: unset;
+        word-wrap: unset;
       }
     }
   </style>
