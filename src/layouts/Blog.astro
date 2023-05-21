@@ -111,7 +111,6 @@ import NavLinks from "../components/NavLinks.astro";
         --bg-color: #000000;
         --body-color: #222;
         --card-shadow: rgba(255, 255, 255, 0.39);
-        --code-color: #000000;
       }
     }
     @media (prefers-color-scheme: light) {
@@ -121,7 +120,6 @@ import NavLinks from "../components/NavLinks.astro";
         --bg-color: #f6f6f6;
         --body-color: rgb(165, 215, 246);
         --card-shadow: rgba(45, 59, 170, 0.415);
-        --code-color:rgb(0, 19, 141);
       }
     }
     html {
@@ -130,7 +128,7 @@ import NavLinks from "../components/NavLinks.astro";
       color: var(--text-color);
     }
     code {
-      background: var(--code-color);
+      background: var(--bg-color);
       font-weight: bolder;
       font-size: large;
       box-shadow: 0 0 0 #181717, -5px 0 0 #181717;
