@@ -10,7 +10,12 @@ cardPicture: "/DRF-NextAuth-Logo.png"
 This blog will outline and explain the steps for accomplishing:
 
 - SSO for NextJS frontend using NextAuth
-- Authenticated endpoints in DRF using Token Authentication
+- Authenticated and Authorized endpoints in DRF using Token Authentication
+
+For context of this article a brief reminder of Authentication versus Authorization:
+
+- Authentication is essentially identifying the user
+- Authorization is giving an identified user permission to access a function
 
 ## Table Of Contents
 
@@ -21,12 +26,12 @@ This blog will outline and explain the steps for accomplishing:
 ## Request Response Cycle
 
 1. Frontend will send a reques to NextAuth Login API.
-2. NextAuth Login API will request a token from the SSO Server.
+2. NextAuth Login API will request a token from the SSO Server. This is the first step in Authentication.
 3. NextAuth API will send that token to DRF Server.
-4. DRF Server will validate that token with SSO Server.
+4. DRF Server will validate that token with SSO Server. This is the second step in Authentication, basically verification of authentication.
 5. DRF Server will either create a new account and token for that user or regenerate the token of that user and send it back to NextAuth API - any other information from the user can also be sent back and included in the resulting login session at this time.
-6. NextAuth will create a session which persists in the clients browser via an HTTP-only cookie (which cannot be accessed by javascript running in browser).
-7. useSession hook will be availble throughout the NextJS project to allow access to session information.
+6. NextAuth will create a session which persists in the clients browser via a cookie (which cannot be accessed by javascript running in browser).
+7. useSession hook will be availble throughout the NextJS project to allow access to session information. This session will contain the Authentication Token which will be used to Authenticate the user when they make requests to the backend.
 
 ![NextAuth SSO Provider DRF image](/NA-DRF-RRC.png)
 
@@ -122,10 +127,10 @@ export default NextAuth({
 - When making requests to the protected DRF endpoints use this header:
 
 ```javascript
-      headers: {
-        Authorization: "Token " + auth_token,
-        "Content-Type": "application/json",
-      }
+headers: {
+  Authorization: "Token " + auth_token,
+  "Content-Type": "application/json",
+}
 ```
 
 ## DRF
