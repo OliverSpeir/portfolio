@@ -17,7 +17,7 @@ const { links, title, body, src, icons, bullets } = Astro.props;
       <h2>
         {title}
       </h2>
-      <img src={src} />
+      <img src={src} alt={title}/>
       <div class="link-container">
         <a href={links.link1} target="_blank" class="link1"
           ><svg

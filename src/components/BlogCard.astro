@@ -14,7 +14,7 @@ const { title, body, src, picture } = Astro.props;
     <h2>
       {title}
     </h2>
-    <img src={picture} />
+    <img src={picture} alt={title}/>
     <p class="description">{body}</p>
   </a>
 </div>
