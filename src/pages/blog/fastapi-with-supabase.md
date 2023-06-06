@@ -89,6 +89,7 @@ In the endpoint functions the user_id can be accessed like this
 
 # Resources
 
+- My projects using this solution: [Frontend](https://github.com/OliverSpeir/business-card-frontend) [Backend](https://github.com/OliverSpeir/business-card-fastapi)
 - [Supabase Python Client Library](https://github.com/supabase-community/supabase-py)
 - [Supabase Python Client Library Docs](https://supabase.com/docs/reference/python/initializing)
 - [FastAPI Middleware Docs](https://fastapi.tiangolo.com/tutorial/middleware/)
