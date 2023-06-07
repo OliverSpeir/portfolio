@@ -55,6 +55,19 @@ body: JSON.stringify(body),
 });
 ```
 
+## FastAPI Supabase Client Setup
+
+```python
+    from supabase import create_client, Client
+    from fastapi import FastAPI, Request
+    
+    SUPABASE_URL = os.getenv("SUPABASE_URL")
+    SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
+
+    supabase: Client = create_client(SUPABASE_URL, SUPABASE_ANON_KEY)
+    app = FastAPI()
+```
+
 ## FastAPI Middleware
 
 ```python
@@ -74,7 +87,7 @@ async def add_authentication(request: Request, call_next):
         # effectively "logs in" the client library 
         # any requests made with the library will be authenticated which allows RLS to work
         supabase.postgrest.auth(token)
-    except Exception as e:
+    except Exception:
         return Response("Invalid user token", status_code=401)
 
     # adds the user_id into the state of the request which gives the endpoints access to it
@@ -87,9 +100,17 @@ In the endpoint functions the user_id can be accessed like this
 
 `user_id = info.context["request"].state.user_id`
 
+## Example RLS policy
+
+- Operation: `INSERT`
+- Target Roles: `authenticated`
+- WITH CHECK Expression: `(auth.uid() = user_id)`
+
+If this is the only policy applied to the table for `INSERT` only authenticated users will be able to create entries, and those entries' `user_id` column will need to match their own user_id that is stored automatically by supabase when they log in in the Auth Users table
+
 # Resources
 
-- My projects using this solution: [Frontend](https://github.com/OliverSpeir/business-card-frontend) [Backend](https://github.com/OliverSpeir/business-card-fastapi)
+- My project using this solution: [Frontend](https://github.com/OliverSpeir/business-card-frontend) [Backend](https://github.com/OliverSpeir/business-card-fastapi)
 - [Supabase Python Client Library](https://github.com/supabase-community/supabase-py)
 - [Supabase Python Client Library Docs](https://supabase.com/docs/reference/python/initializing)
 - [FastAPI Middleware Docs](https://fastapi.tiangolo.com/tutorial/middleware/)

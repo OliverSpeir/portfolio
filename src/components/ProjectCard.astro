@@ -12,12 +12,12 @@ const { links, title, body, src, icons, bullets } = Astro.props;
 ---
 
 <li class="project-card">
-  <div class="background">
-    <div class="foreground">
+    <div class="container">
       <h2>
         {title}
       </h2>
-      <img src={src} alt={title}/>
+      <div class="image-container">
+      <img src={src} alt={title}/></div>
       <div class="link-container">
         <a href={links.link1} target="_blank" class="link1"
           ><svg
@@ -64,11 +64,15 @@ const { links, title, body, src, icons, bullets } = Astro.props;
         }
       </ul>
     </div>
-  </div>
 </li>
 <style>
+  .image-container {
+    display: flex;
+    justify-content: center;
+  }
   img {
-    width: 100%;
+    width: 95%;
+    border-radius: .6rem;
   }
   .project-card {
     margin-top: 1rem;
@@ -105,27 +109,13 @@ const { links, title, body, src, icons, bullets } = Astro.props;
   .link2:hover svg path {
     fill: rgb(6, 0, 181);
   }
-  .background {
-    display: flex;
-    width: 100%;
-    padding: 0.25rem;
-    background-color: var(--accent-color);
-    background-image: none;
-    background-size: 400%;
-    border-radius: 0.6rem;
-    background-position: 100%;
-    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 4px 6px -1px var(--card-shadow),
-      0 2px 4px -2px var(--card-shadow);
-  }
-  .foreground {
+  .container {
     width: 100%;
     line-height: 1.4;
-    padding: 0.5vw;
+    padding: 0.5rem;
     border-radius: 0.6rem;
     color: var(--text-color);
     background-color: var(--card-color);
-    opacity: 0.8;
   }
   h2 {
     text-align: center;

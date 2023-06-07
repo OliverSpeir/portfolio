@@ -11,39 +11,48 @@ import SocialLogos from "../components/SocialLogos.astro";
     <ul role="list" class="card-grid">
       <SkillCard
         title="Languages"
-        skills={["Python", "JavaScript", "TypeScript", "SQL", "HTML", "CSS"]}
+        skills={[
+          { name: "Python", img: "/python-logo-small.svg" },
+          { name: "JavaScript", img: "/js-logo-small.svg" },
+          { name: "TypeScript", img: "/ts-logo-small.svg" },
+          { name: "SQL", img: "/sql-logo-small.svg" },
+          { name: "HTML", img: "/html-logo-small.svg" },
+          { name: "CSS", img: "/css-logo-small.svg" },
+        ]}
       />
       <SkillCard
         title="Front End Development"
         skills={[
-          "React",
-          "Next.js",
-          "Astro",
-          "Django Template Language",
-          "Tailwind CSS",
-          "Bootstrap CSS",
+          { name: "React", img: "/react-logo-small.svg" },
+          { name: "Next.js", img: "/nextjs-logo-small.svg" },
+          { name: "Astro", img: "/astro-logo-small.svg" },
+          { name: "Django Template Language", img: "/django-logo-small.svg" },
+          { name: "Tailwind CSS", img: "/tailwind-logo-small.svg" },
+          { name: "Bootstrap CSS", img: "/bootstrap-logo-small.svg" },
         ]}
       />
       <SkillCard
         title="Back End Development"
         skills={[
-          "Django REST Framework",
-          "Express.js",
-          "FastAPI",
-          "MongoDB",
-          "PostgreSQL",
-          "REST APIs",
+          { name: "Django REST Framework", img: "/django-logo-small.svg" },
+          { name: "Express.js", img: "/express-logo-small.svg" },
+          { name: "FastAPI", img: "/fastapi-logo-small.svg" },
+          { name: "MongoDB", img: "/mongodb-logo-small.svg" },
+          { name: "PostgreSQL", img: "/postgres-logo-small.svg" },
+          { name: "REST APIs", img: "/restapi-logo-small.svg" },
+          { name: "GraphQL", img: "/graphql-logo-small.svg" },
         ]}
       />
       <SkillCard
         title="Data Science"
         skills={[
-          "Scikit-Learn",
-          "Pandas",
-          "Jupyter Notebooks",
-          "Matplotlib",
-          "Numpy",
-          "Holoviz",
+          { name: "Pandas", img: "/pandas-logo-small.svg" },
+          { name: "Regression Analysis", img: "/regression-logo-small.svg" },
+          { name: "Jupyter Notebooks", img: "/jupyternotebook-logo-small.svg" },
+          { name: "Scikit-Learn", img: "/scikitlearn-logo-small.svg" },
+          { name: "Matplotlib", img: "/matplotlib-logo-small.svg" },
+          { name: "NumPy", img: "/numpy-logo-small.svg" },
+          { name: "Holoviz", img: "/holoviz-logo-small.svg" },
         ]}
       />
     </ul>
@@ -58,8 +67,8 @@ import SocialLogos from "../components/SocialLogos.astro";
     align-items: center;
   }
   .card-grid {
-    padding-left:0;
-    display:flex;
+    padding-left: 0;
+    display: flex;
     flex-direction: column;
     align-items: center;
   }

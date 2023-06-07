@@ -24,7 +24,7 @@ const { title } = Astro.props;
     <meta property="og:url" content="www.oliverspeir.com" />
     <meta name="twitter:card" content="/profile_picture_large.png" />
     <link rel="icon" type="image/svg" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/profile_picture.png" />
+    <link rel="apple-touch-icon" href="/profile_picture_large.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -32,8 +32,7 @@ const { title } = Astro.props;
   <script
     type="text/partytown"
     async
-    src="https://www.googletagmanager.com/gtag/js?id=G-YXRK3RSZN8"
-  ></script>
+    src="https://www.googletagmanager.com/gtag/js?id=G-YXRK3RSZN8"></script>
   <script type="text/partytown">
     window.dataLayer = window.dataLayer || [];
     function gtag() {
@@ -68,8 +67,8 @@ const { title } = Astro.props;
   @media (prefers-color-scheme: light) {
     :root {
       --text-color: black;
-      --accent-color: #292c88;
-      --bg-color: #FFFEFE;
+      --accent-color: #454889;
+      --bg-color: #ffffff;
       --card-color: rgb(165, 215, 246);
       --card-shadow: rgba(45, 59, 170, 0.415);
     }

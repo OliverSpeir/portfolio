@@ -1,7 +1,7 @@
 ---
 export interface Props {
   title: string;
-  skills: string[];
+  skills: { name: string; img: string }[];
 }
 
 const { title, skills } = Astro.props;
@@ -13,8 +13,15 @@ const { title, skills } = Astro.props;
       {title}
     </h2>
     <div class="container">
-      <ul class="skill-list">
-        {skills.map((skill) => <li class="skill">{skill}</li>)}
+      <ul class="no-bullets">
+        {
+          skills.map((skill) => (
+            <li class="skill">
+              <img src={skill.img} alt={skill.name} />
+              {skill.name}
+            </li>
+          ))
+        }
       </ul>
     </div>
   </a>
@@ -41,18 +48,32 @@ const { title, skills } = Astro.props;
     color: var(--text-color);
     background-color: var(--card-color);
     opacity: 0.8;
+    min-height: 13rem;
   }
+
+  .no-bullets {
+    list-style-type: none;
+  }
+  .skill img {
+    height: auto;
+    max-height: 1rem;
+    width: 1rem;
+    padding-right: .5rem;
+  }
+
   h2 {
     text-align: center;
     margin-top: 0;
     font-size: 1.25rem;
     transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
+
   .container {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     color: var(--text-color);
   }
+
   @media (max-width: 874px) {
     main {
       margin: auto;

@@ -10,7 +10,7 @@ import SocialLogos from "../../components/SocialLogos.astro";
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="Check out my blog posts!" />
     <link rel="icon" type="image/svg" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/profile_picture.png" />
+    <link rel="apple-touch-icon" href="/profile_picture_large.png" />
     <meta property="og:image" content="/profile_picture_large.png" />
     <meta name="twitter:card" content="/profile_picture_large.png" />
     <title>Blog - Oliver Speir</title>
@@ -48,16 +48,16 @@ import SocialLogos from "../../components/SocialLogos.astro";
   </body>
 </html>
 <style>
+  :root {
+    --hover-accent: rgb(13, 28, 240);
+    --hover-accent-gradient: linear-gradient(
+      45deg,
+      var(--hover-accent),
+      #5b3fda99 30%,
+      white 60%
+    );
+  }
   @media (prefers-color-scheme: dark) {
-    :root {
-      --hover-accent: rgb(13, 28, 240);
-      --hover-accent-gradient: linear-gradient(
-        45deg,
-        var(--hover-accent),
-        #5b3fda99 30%,
-        white 60%
-      );
-    }
     :root {
       --text-color: #d6d6d6;
       --accent-color: rgb(98, 94, 94);
@@ -69,7 +69,7 @@ import SocialLogos from "../../components/SocialLogos.astro";
   @media (prefers-color-scheme: light) {
     :root {
       --text-color: black;
-      --accent-color: #292c88;
+      --accent-color: #454889;
       --bg-color: #f6f6f6;
       --card-color: rgb(165, 215, 246);
       --card-shadow: rgba(45, 59, 170, 0.415);
