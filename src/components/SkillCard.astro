@@ -8,86 +8,49 @@ const { title, skills } = Astro.props;
 ---
 
 <li class="skill-card">
-  <a>
-    <h2>
-      {title}
-    </h2>
-    <div class="container">
-      <ul class="no-bullets">
-        {
-          skills.map((skill) => (
-            <li class="skill">
-              <img src={skill.img} alt={skill.name} />
-              {skill.name}
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </a>
+  <h2>
+    {title}
+  </h2>
+  <ul class="no-bullets">
+    {
+      skills.map((skill) => (
+        <li class="skill">
+          <img src={skill.img} alt={skill.name} />
+          {skill.name}
+        </li>
+      ))
+    }
+  </ul>
 </li>
 
 <style>
   .skill-card {
-    display: flex;
     list-style: none;
     width: 100%;
-    padding: 0.25rem;
-    margin-left: 0;
+    padding: 0.5rem 0.8rem;
     background-color: var(--card-color);
     border-radius: 0.6rem;
+    min-width: 25rem;
+    min-height: 25rem;
+    font-size: xx-large;
   }
-
-  .skill-card > a {
-    width: 100%;
-    text-decoration: none;
-    line-height: 1.4;
-    padding: 0.5rem 0.8rem;
-    border-radius: 0.35rem;
-    color: var(--text-color);
-    background-color: var(--card-color);
-    opacity: 0.8;
-    min-height: 13rem;
-  }
-
   .no-bullets {
     list-style-type: none;
   }
   .skill img {
     height: auto;
-    max-height: 1rem;
-    width: 1rem;
-    padding-right: 0.5rem;
+    max-height: 2rem;
+    width: 2rem;
+    padding-right: 1rem;
+    margin-left: -1rem;
   }
-
   h2 {
     text-align: center;
     margin-top: 0;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
   }
 
-  .container {
-    color: var(--text-color);
-  }
-
-  @media (min-width: 875px) {
-    .skill img {
-      height: auto;
-      max-height: 2rem;
-      width: 2rem;
-      padding-right: 1rem;
-      margin-left: -1rem;
-    }
-    .skill-card > a {
-      min-width: 25rem;
-      min-height: 25rem;
-      font-size: xx-large;
-    }
-    h2 {
-      font-size: 3rem;
-    }
-  }
   @media (max-width: 874px) {
     .skill img {
       margin-left: -2rem;
@@ -95,14 +58,11 @@ const { title, skills } = Astro.props;
     h2 {
       font-size: 1.5rem;
     }
-    .skill-card > a {
-      font-size: x-large;
-      min-width: 15rem;
-    }
     .skill-card {
-      /* width: 85%; */
       margin-bottom: 0.5rem;
-      min-width: 15rem;
+      font-size: x-large;
+      min-width: 10rem;
+      min-height: 10rem;
     }
   }
 </style>

@@ -11,11 +11,11 @@ import SocialLogos from "../components/SocialLogos.astro";
     <ul role="list" class="card-grid">
       <ProjectCard
         title="Clean Air Compass"
-        body="This project is for a web app that creates a mapping interface for PurpleAir Sensor Network using interpolated values. This app allows user to login using social sign on, save their default location, and sign up for SMS Alerts based on AQI values in any given area."
+        body="Web app that creates an interpolated map overlay based on PurpleAir sensors."
         bullets={[
-          "FastAPI to create an interpolation layer with SciKit Learn based on information from a REST API.",
-          "Django REST Framework to handle the user database and server secure CRUD endpoints.",
-          "NextJS frontend, using NextAuth for the social sign on and TailwindCSS for the styling.",
+          "FastAPI to create an interpolation layer with KNN regression.",
+          "Django REST Framework to handle the user database.",
+          "NextJS frontend, using NextAuth and TailwindCSS.",
         ]}
         src="/CleanAirCompassDemo.gif"
         icons={[
@@ -23,10 +23,8 @@ import SocialLogos from "../components/SocialLogos.astro";
           "djangorestframework",
           "nextjs",
           "fastapi",
-          "docker",
           "nextauth",
           "pandas",
-          "scikitlearn",
         ]}
         links={{
           link1: "https://github.com/orgs/Oxygen-Oriented-Programming/repositories",
@@ -37,16 +35,15 @@ import SocialLogos from "../components/SocialLogos.astro";
       />
       <ProjectCard
         title="ThoroughZED"
-        body="Machine learning based valuation for NFTs and an interactive dashboard to display relevant data. This was built with Python and designed to be used as a CLI tool."
+        body="Data Science project that estimates the value of NFTs and provides an interactive dashboard to display relevant data."
         bullets={[
-          "Gathered large data set from a public GraphQL API.",
-          "Trained Random Forest model to predict based on that data using SciKit Learn.",
-          "Created an interactive HoloViz Panel to visualize all data and display predictions.",
+          "Gathered and cleaned  a large data set from a public GraphQL API.",
+          "Trained Random Forest model on that data using SciKit Learn.",
+          "Uses HoloViz Panel and HVPlot for the interactive dashboard.",
         ]}
         src="/ThoroughZedDemo.gif"
         icons={[
           "python",
-          "panel",
           "pandas",
           "scikitlearn",
           "holoviz",
@@ -60,11 +57,11 @@ import SocialLogos from "../components/SocialLogos.astro";
       />
       <ProjectCard
         title="OpenIMG"
-        body="A web app that allows users to interface with the OpenAI DALLE2 API by creating images with prompts. Users can perform all CRUD actions with their prompts. Social Sign on using Auth0."
+        body="Web app that allows users to interface with the OpenAI DALLE2 API by creating images with prompts."
         bullets={[
-          "This app uses the DALLE2 API from OpenAI to create images based on a text prompt.",
-          "The App uses Auth0 to provide social sign on which allows users to preform CRUD actions on their prompts.",
-          "The prompts are saved to a MongoDB database which is managed by an ExpressJS backend using Mongoose.",
+          "MongoDB database which is managed by an ExpressJS backend using Mongoose.",
+          "Auth0 For Authentication providing Social Sign On.",
+          "React Bootstrap and CSS used for styling.",
         ]}
         src="/OpenImgDemo.gif"
         icons={["reactjs", "mongodb", "nodejs", "expressjs"]}
@@ -82,10 +79,8 @@ import SocialLogos from "../components/SocialLogos.astro";
 
 <style>
   main {
-    display: flex;
-    flex-direction: column;
-    margin-right: 2vw;
-    margin-left: 2vw;
+    margin-right: 0.8rem;
+    margin-left: 0.8rem;
   }
   h1 {
     text-align: center;
@@ -94,9 +89,13 @@ import SocialLogos from "../components/SocialLogos.astro";
     margin: 0;
   }
   .card-grid {
-    padding: 5vw;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   @media (min-width: 875px) {
+    main {
+      margin-top: 3rem;
+    }
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));

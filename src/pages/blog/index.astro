@@ -10,7 +10,7 @@ import SocialLogos from "../../components/SocialLogos.astro";
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="Check out my blog posts!" />
     <link rel="icon" type="image/svg" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/profile_picture_large.png" />
+    <link rel="apple-touch-icon" href="/profile_picture_small.png" />
     <meta property="og:image" content="/profile_picture_large.png" />
     <meta name="twitter:card" content="/profile_picture_large.png" />
     <title>Blog - Oliver Speir</title>
@@ -29,7 +29,6 @@ import SocialLogos from "../../components/SocialLogos.astro";
   </head>
   <body>
     <NavLinks />
-    <h1>Welcome to my Blog!</h1>
     <div class="cards">
       <BlogCard
         title="NextAuth with DRF"
@@ -85,11 +84,15 @@ import SocialLogos from "../../components/SocialLogos.astro";
     flex-direction: column;
     align-items: center;
   }
-  h1 {
-    margin-top: 5rem;
-  }
   .cards {
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  @media (min-width: 875px) {
+    .cards {
+      margin-top:5rem;
+    }
   }
   footer {
     margin-top: 5rem;
