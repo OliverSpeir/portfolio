@@ -73,6 +73,7 @@ body: JSON.stringify(body),
 ```python
 @app.middleware("http")
 async def add_authentication(request: Request, call_next):
+
     if request.method == "OPTIONS":
         return await call_next(request)
 
@@ -82,16 +83,12 @@ async def add_authentication(request: Request, call_next):
         return Response("Unauthorized", status_code=401)
 
     try:
-        # validates the token (will return invalid if token is not valid)
-        auth = supabase.auth.get_user(token)
-        # effectively "logs in" the client library 
-        # any requests made with the library will be authenticated which allows RLS to work
-        supabase.postgrest.auth(token)
+        auth = supabase.auth.get_user(token) # will raise exception if invalid
+        request.state.user_id = auth.user.id # makes user id available to all end points
+        supabase.postgrest.auth(token) # "logs" the client library on the backend
+    
     except Exception:
         return Response("Invalid user token", status_code=401)
-
-    # adds the user_id into the state of the request which gives the endpoints access to it
-    request.state.user_id = auth.user.id
 
     return await call_next(request)
 ```
