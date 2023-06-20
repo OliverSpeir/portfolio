@@ -95,7 +95,7 @@ async def add_authentication(request: Request, call_next):
 
 In the endpoint functions the user_id can be accessed like this: <br />
 FastAPI: <br />
-`user_id = request.state.user_id`
+`user_id = request.state.user_id` <br />
 Strawberry GraphQL on FastAPI: <br />
 `user_id = info.context["request"].state.user_id`
 
