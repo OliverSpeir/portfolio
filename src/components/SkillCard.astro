@@ -16,7 +16,8 @@ const { title, skills } = Astro.props;
       skills.map((skill) => (
         <li class="skill">
           <img src={skill.img} alt={skill.name} />
-          {skill.name}
+          <div class="skill-text">
+          {skill.name}</div>
         </li>
       ))
     }
@@ -33,6 +34,9 @@ const { title, skills } = Astro.props;
     min-width: 25rem;
     min-height: 25rem;
     font-size: xx-large;
+  }
+  .skill {
+    display:flex;
   }
   .no-bullets {
     list-style-type: none;
@@ -54,6 +58,10 @@ const { title, skills } = Astro.props;
   @media (max-width: 874px) {
     .skill img {
       margin-left: -2rem;
+    }
+    .skill-text {
+      margin-top: -.25rem;
+      padding-bottom: 1rem;
     }
     h2 {
       font-size: 1.5rem;
