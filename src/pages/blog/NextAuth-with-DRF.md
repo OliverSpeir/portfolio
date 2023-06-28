@@ -12,10 +12,7 @@ This blog will outline and explain the steps for accomplishing:
 - SSO for NextJS frontend using NextAuth
 - Authenticated and Authorized endpoints in DRF using Token Authentication
 
-For context of this article a brief reminder of Authentication versus Authorization:
-
-- Authentication is essentially identifying the user
-- Authorization is giving an identified user permission to access a function
+TLDR: The trick is to use the SignIn callback to send the `idToken` from SSO provider to the DRF backend, and have the DRF backend validate the token then create a token (or new account and token) that can be used to authenticate future requests to the DRF endpoints.
 
 ## Table Of Contents
 
@@ -37,10 +34,11 @@ For context of this article a brief reminder of Authentication versus Authorizat
 
 ## SSO Set up
 
-- In this example Google OAuth2 will be used, but any service that provides social sign on will work the same
-- First acquire a client ID and secret from the provider
-- Then configure the allowed origins and callback URLs with the SSO provider
-  - [NextAuth Callback URL Docs](https://next-auth.js.org/configuration/callbacks#redirect-callback)
+In this example Google OAuth2 will be used, but any service that provides social sign on will work the same.
+
+First acquire a client ID and secret from the provider, then configure the allowed origins and callback URLs with the SSO provider.
+
+[NextAuth Callback URL Docs](https://next-auth.js.org/configuration/callbacks#redirect-callback)
 
 ## NextAuth
 
@@ -103,28 +101,36 @@ export default NextAuth({
 
 ### NextAuth code explained
 
-- Uses the built in GoogleProvider, NextAuth has builtin providers for all SSO providers
-- Sets the secret from the environmental variables
-- Session settings are configured
-  - Max age determines how long the HTTP-only cookie will exist
-- Callback functions are configured
-  - The `signIn` callback is invoked when the user is authenticated by the SSO provider
-    - In this configuration the signIn callback will make a POST request to the DRF server
-      - The body of the POST request will be our idToken (which is received from the SSO provider)
-  - The  `jwt` callback is invoked when the the signIn callback returns true
-    - This is where we can define what information will be stored in the JWT that is sent to the client
-    - In this configuration we include the `auth_token` that is sent by the DRF Server which will later be used as an API key to make authenticated requests to the DRF server
-  - The `session` callback is invoked after the jwt callback signs and encrypts the jwt
-    - This is when `auth_token` gets added into the session object
-  - After the session callback completes the session is created and the user is returned to the frontend.
+NextAuth has builtin providers for all SSO providers, here we are using the GoogleProvider.
+
+This code starts off by setting the secret from an environmental variable, then the session settings are configured.
+
+`maxAge` determines how long the session will be valid, which means how long until the user will need to sign in again.
+
+#### Callback functions
+The `signIn` callback is invoked when the user is authenticated by the SSO provider.
+    
+In this configuration the `signIn` callback will make a POST request to the DRF server. The body of the POST request will be our `idToken` (which is received from the SSO provider).
+
+The `jwt` callback is invoked when the the signIn callback returns true.
+
+This is where we can define what information will be stored in the JWT, which is stored in the Session Cookie. In this configuration we include the `auth_token` that is sent by the DRF Server which will later be used as an API key to make authenticated requests to the DRF server.
+
+The `session` callback is invoked after the jwt callback signs and encrypts the jwt
+   
+This is when `auth_token` gets added into the session object. After the session callback completes the session is created and the user is returned to the frontend.
 
 ### Making calls to the protected DRF endpoints
 
-- `import { useSession } from "next-auth/react";`
-- `const { data: session } = useSession();`
-- These two lines of code give the frontend access to the `auth_token` that we need to use to communicate with the DRF server
-  - and any other data that you have added into the session (e.g. data from the `idToken` or sent from the DRF server)
-- When making requests to the protected DRF endpoints use this header:
+```js
+import { useSession } from "next-auth/react";
+const { data: session } = useSession();
+```
+These two lines of code give the frontend access to the `auth_token` that we need to use to communicate with the DRF server. 
+
+Any other data that you have added into the session (e.g. data from the `idToken` or sent from the DRF server) can also be accessed like this.
+
+When making requests to the protected DRF endpoints use this header:
 
 ```javascript
 headers: {
@@ -266,27 +272,27 @@ def register_social_user(provider, email, name):
 
 1. The user model needs to keep track of the auth_provider so that multiple SSO providers can be implemented
 
-- This allows for Sign in with Google, Sign in with Facebook, Sign in with Github, etc...
+   - This allows for Sign in with Google, Sign in with Facebook, Sign in with Github, etc...
 
 2. Creating a view for each SSO creates an endpoint that NextAuth will request during the `signIn` callback
 3. Creating a serializer for each endpoint allows for the `idToken` sent by that endpoint to be validated
 
-- This is where one would make a query for other data in the DRF's database that they might send back to be included in the frontend's session data
+    - This is where one would make a query for other data in the DRF's database that they might send back to be included in the frontend's session data
 
 4. Creating `google.py` as a seperate file is not strictly necessary but this allows for more readable code in my opinion
 
-- this function is what actually contacts the SSO provider and validates the token
+    - this function is what actually contacts the SSO provider and validates the token
 
 5. `register.py`  is where the users and tokens are generated
 
-- if the user already exists their existing token is deleted and a new one is created for them
-- if the user does not exist a token and a new user is created
+    - if the user already exists their existing token is deleted and a new one is created for them
+    - if the user does not exist a token and a new user is created
 
-To reiterate: the DRF server needs to expose an unauthorized endpoint that accepts an `idToken`, validate that token and if the token is valid it needs to create an Authorization Token and a new user if that `idToken` has not already been used by an existing account
+The DRF server needs to expose an unauthorized endpoint that accepts an `idToken`, validate that token with the provider and if the token is valid it needs to create an Authorization Token, and a new user if that `idToken` has not already been used by an existing account.
 
 ### Requiring Authorization for other DRF endpoints
 
-1. add `permission_classes = (IsAuthenticated,)` with the `rest_framework.permissions import IsAuthenticated` function to all endpoints
+1. Add `permission_classes = (IsAuthenticated,)` with the `rest_framework.permissions import IsAuthenticated` function to all endpoints
   
     - it is possible to set permission classes with decorators as well
     - `@permission_classes( [IsAuthenticated], )`
@@ -307,14 +313,11 @@ REST_FRAMEWORK = {
 
 ## Resources
 
+- [Project I used this code for](https://github.com/orgs/Oxygen-Oriented-Programming/repositories)
+    - [NextAuth file of the project](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Frontend-NextJS/blob/dev/pages/api/auth/%5B...nextauth%5D.js)
+    - [DRF Accounts app of the project](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Accounts-DjangoRestFramework/tree/dev/accounts)
 - [Token Authentication](https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication)
 - [NextAuth Docs](https://next-auth.js.org/configuration/initialization)
-- I wrote this article to supplement the resources I used while creating a project that applied these techniques. Writing this blog has also helped me cement my understanding, and provide an avenue for me to be fact checked or received feedback on my methods. I hope this can help someone as well if they are attempting to accomplish something similar.
-  - The main resources I used are:
-    - I started with this [GitHub Discussion](https://github.com/nextauthjs/next-auth/discussions/1350)
-    - Then I read this [article by Mahieyin Rahmun](https://mahieyin-rahmun.medium.com/how-to-configure-social-authentication-in-a-next-js-next-auth-django-rest-framework-application-cb4c82be137) and it's [second part](https://mahieyin-rahmun.medium.com/how-to-configure-social-authentication-in-a-next-js-next-auth-django-rest-framework-application-cb4c82be137)
-    - After that I read [this article by Episyche](https://episyche.com/blog/how-to-configure-google-sso-in-django-rest-framework-with-nextjs) and ending up using the code for `register.py`, `google.py` and `serializers.py`
-- The project I implemented this solution in:
-  - [Project Repo](https://github.com/orgs/Oxygen-Oriented-Programming/repositories)
-    - [NextAuth file](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Frontend-NextJS/blob/dev/pages/api/auth/%5B...nextauth%5D.js)
-    - [DRF Accounts app](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Accounts-DjangoRestFramework/tree/dev/accounts)
+- [GitHub Discussion about NextAuth and DRF](https://github.com/nextauthjs/next-auth/discussions/1350)
+- [Article by Mahieyin Rahmun](https://mahieyin-rahmun.medium.com/how-to-configure-social-authentication-in-a-next-js-next-auth-django-rest-framework-application-cb4c82be137) and its [second part](https://mahieyin-rahmun.medium.com/how-to-configure-social-authentication-in-a-next-js-next-auth-django-rest-framework-application-cb4c82be137)
+- [Article by Episyche](https://episyche.com/blog/how-to-configure-google-sso-in-django-rest-framework-with-nextjs) used for `register.py`, `google.py` and `serializers.py`
