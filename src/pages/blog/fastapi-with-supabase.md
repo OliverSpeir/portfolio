@@ -11,7 +11,7 @@ This blog will explain how to create a FastAPI backend for a frontend applicatio
 
 For a TLDR the trick is to send the access token that is received from the Supabase session on frontend as headers in the request to the FastAPI and then create middleware to validate that token with Supabase.
 
-Disclaimer: `supabase-py` is community maintained and currently in public alpha so the syntax is subject to change. This solution works as of 6/7/23.
+Disclaimer: [supabase-py](https://supabase.com/docs/reference/python/introduction) is community maintained and currently in public alpha so the syntax is subject to change. This solution works as version `1.0.3`
 
 # Contents
 
