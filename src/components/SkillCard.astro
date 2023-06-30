@@ -16,8 +16,7 @@ const { title, skills } = Astro.props;
       skills.map((skill) => (
         <li class="skill">
           <img src={skill.img} alt={skill.name} />
-          <div class="skill-text">
-          {skill.name}</div>
+          <div class="skill-text">{skill.name}</div>
         </li>
       ))
     }
@@ -31,45 +30,34 @@ const { title, skills } = Astro.props;
     padding: 0.5rem 0.8rem;
     background-color: var(--card-color);
     border-radius: 0.6rem;
-    min-width: 25rem;
-    min-height: 25rem;
-    font-size: xx-large;
+    font-size: x-large;
+    min-width: 10rem;
+    min-height: 10rem;
+    margin-bottom: 0.5rem;
   }
   .skill {
-    display:flex;
-  }
-  .no-bullets {
-    list-style-type: none;
+    display: flex;
   }
   .skill img {
     height: auto;
     max-height: 2rem;
     width: 2rem;
     padding-right: 1rem;
-    margin-left: -1rem;
+    margin-left: -2rem;
   }
   h2 {
     text-align: center;
     margin-top: 0;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
   }
+  .skill-text {
+    padding-bottom: 1rem;
+  }
 
-  @media (max-width: 874px) {
-    .skill img {
-      margin-left: -2rem;
-    }
-    .skill-text {
-      padding-bottom: 1rem;
-    }
-    h2 {
-      font-size: 1.5rem;
-    }
+  @media (min-width: 875px) {
     .skill-card {
-      margin-bottom: 0.5rem;
-      font-size: x-large;
-      min-width: 10rem;
-      min-height: 10rem;
+      margin-top: -2rem;
     }
   }
 </style>

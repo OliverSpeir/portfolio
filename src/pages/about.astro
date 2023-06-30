@@ -83,6 +83,8 @@ import SocialLogos from "../components/SocialLogos.astro";
       flex-direction: row;
       align-items: center;
       margin-bottom: 5rem;
+      justify-content: center;
+      max-width:75%;
     }
     .circle {
       display: none;
@@ -95,22 +97,27 @@ import SocialLogos from "../components/SocialLogos.astro";
       padding-left: 1rem;
       padding-right: 1rem;
       border-radius: 0.4rem;
-      font-size: x-large;
+      font-size: large;
+      min-width: 45ch;
     }
     .tall {
       border-radius: 0.4rem;
       margin-left: 1rem;
-      height: 785px;
+      height: 560px;
       width: auto;
+      max-width: 45ch;
+      margin-top: 0;
+      /* margin-top: -35vh; */
     }
     main {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      /* justify-content: center; */
       align-items: center;
-      margin-top: 5vh;
-      margin-right: 2vw;
-      margin-left: 2vw;
+      margin-top: 6vh;
+      /* margin-right: 2vw; */
+      /* margin-left: 2vw; */
+      /* max-width: 75%; */
     }
   }
 </style>
