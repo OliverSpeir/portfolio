@@ -241,7 +241,7 @@ def register_social_user(provider, email, name):
                 'tokens': str(new_token[0]['key'])}
         else:
             raise AuthenticationFailed(
-                detail='Please continue your login using ' + filtered_user_by_email[0].auth_provider)
+                detail='Login using ' + filtered_user_by_email[0].auth_provider)
     else:
         user = {
             'username': email,
