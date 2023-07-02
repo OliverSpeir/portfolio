@@ -84,8 +84,8 @@ async def add_authentication(request: Request, call_next):
 
     try:
         auth = supabase.auth.get_user(token) # will raise exception if invalid
-        request.state.user_id = auth.user.id # makes user id available to all end points
-        supabase.postgrest.auth(token) # "logs" the client library on the backend
+        request.state.user_id = auth.user.id # makes user id available 
+        supabase.postgrest.auth(token) # "logs in" the client library
     
     except Exception:
         return Response("Invalid user token", status_code=401)
