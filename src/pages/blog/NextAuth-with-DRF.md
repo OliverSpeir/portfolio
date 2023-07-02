@@ -199,7 +199,6 @@ class GoogleSocialAuthSerializer(serializers.Serializer):
 ``````python
 from google.auth.transport import requests
 from google.oauth2 import id_token
-import time
 
 class Google:
 
@@ -213,12 +212,6 @@ class Google:
                 return idinfo
 
         except:
-            for x in range(0,2):
-                print(f"attempt to validte {x}")
-                time.sleep(2)
-                idinfo = id_token.verify_oauth2_token(auth_token, requests.Request())
-                if 'accounts.google.com' in idinfo['iss']:
-                    return idinfo
             return "The token is either invalid or has expired"
 ``````
 
