@@ -1,21 +1,21 @@
 <nav class="links">
-  <a class={Astro.url.pathname === "/" ? "active" : "link"} href="/">Home</a>
+  <a class={Astro.url.pathname === "/" ? "active" : "link"} href="/" rel="prefetch">Home</a>
   <a
     class={Astro.url.pathname === "/projects/" ? "active" : "link"}
-    href="/projects"
+    href="/projects" rel="prefetch"
   >
     Projects
   </a>
   <a
     class={Astro.url.pathname === "/skills/" ? "active" : "link"}
-    href="/skills"
+    href="/skills" rel="prefetch"
   >
     Skills
   </a>
-  <a class={Astro.url.pathname === "/blog/" ? "active" : "link"} href="/blog">
+  <a class={Astro.url.pathname === "/blog/" ? "active" : "link"} href="/blog" rel="prefetch">
     Blog
   </a>
-  <a class={Astro.url.pathname === "/about/" ? "active" : "link"} href="/about">
+  <a class={Astro.url.pathname === "/about/" ? "active" : "link"} href="/about" rel="prefetch">
     About
   </a>
 </nav>
