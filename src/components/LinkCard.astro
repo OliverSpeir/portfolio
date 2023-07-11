@@ -10,7 +10,7 @@ const { href, title, target, customclass } = Astro.props;
 ---
 
 <li class=`link-card ${customclass}`>
-  <a href={href} target={target}>
+  <a href={href} target={target} rel="prefetch">
     <h2>
       {title}
     </h2>

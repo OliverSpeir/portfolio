@@ -9,6 +9,8 @@ export interface Props {
 }
 
 const { links, title, body, src, icons, bullets } = Astro.props;
+
+import {Image} from "@astrojs/image/components"
 ---
 
 <li class="project-card">
@@ -17,7 +19,9 @@ const { links, title, body, src, icons, bullets } = Astro.props;
         {title}
       </h2>
       <div class="image-container">
-      <img src={src} alt={title}/></div>
+      <img src={src} alt={title}/>
+      <!-- <Image src={src} alt={title} width={100} height={100} format="png"/> -->
+    </div>
       <div class="link-container">
         <a href={links.link1} target="_blank" class="link1"
           ><svg

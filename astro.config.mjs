@@ -1,8 +1,10 @@
 import { defineConfig } from "astro/config";
 import vercelStatic from "@astrojs/vercel/static";
 import partytown from "@astrojs/partytown";
-
 import sitemap from "@astrojs/sitemap";
+import prefetch from "@astrojs/prefetch";
+
+import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,5 +15,7 @@ export default defineConfig({
     config: {
       forward: ["dataLayer.push"]
     }
-  }), sitemap()]
+  }), sitemap(), prefetch({
+    throttle: 5
+  }), image()]
 });
