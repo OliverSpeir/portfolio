@@ -77,8 +77,11 @@ const containsCode = checkIfContainsMarkdownCodeBlock(blog.body)
     <link rel="icon" type="image/svg" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/profile_picture_small.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:description" content={blog.data.description}/>
     <meta property="og:image" content={blog.data.cardPicture} />
+    <meta property="og:url" content=`www.oliverspeir.com/${blog.slug}` />
     <meta name="twitter:card" content={blog.data.cardPicture} />
+    <meta property="og:title" content={blog.data.title} />
     <title>{blog.data.title}</title>
     <!-- <Meta/> -->
     {containsCode && <CopyCodeButtonScript/> }
