@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Blog.astro
 title: "FastAPI with Supabase"
 description: "This blog explains how to create a FastAPI that uses Supabase Auth and allows for RLS"
 cardPicture: "/fastapi-with-supabase-logo.png"

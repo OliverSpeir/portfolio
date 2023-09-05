@@ -1,0 +1,102 @@
+---
+import { getCollection } from "astro:content";
+// import Footer from "../components/Footer.astro";
+import Sidebar from "../../components/Sidebar.astro"
+import Bottombar from "../../components/Bottombar.astro";
+// import Meta from "../../components/Meta.astro";
+import type { CollectionEntry } from "astro:content";
+import CopyCodeButtonScript from "../../components/CopyCodeButtonScript.astro"
+import "../../components/style.css"
+import SocialLogos from "../../components/SocialLogos.astro";
+
+export async function getStaticPaths() {
+  const blogs = await getCollection("blogs");
+  return blogs.map((blog: CollectionEntry<"blogs">) => ({
+    params: { slug: blog.slug },
+    props: { blog },
+  }));
+}
+
+type Props = {
+  blog: CollectionEntry<"blogs">
+}
+const { blog }  = Astro.props;
+
+const { Content, headings } = await blog.render();
+
+const findRelatedblogs = (
+  currentBlog: CollectionEntry<"blogs">,
+  allblogs: CollectionEntry<"blogs">[]
+) => {
+  const currentSlugPath = currentBlog.slug.split("/");
+  const relatedblogs = allblogs
+    .filter((blog) => blog.slug !== currentBlog.slug)
+    .filter((blog) => {
+      const slugPath = blog.slug.split("/");
+      if (currentSlugPath.length === 1 && slugPath.length === 1) {
+        return true;
+      }
+      return (
+        slugPath.length >= 2 &&
+        (slugPath.slice(0, -1).join("/") ===
+          currentSlugPath.slice(0, -1).join("/") ||
+          slugPath[0] === currentSlugPath[0])
+      );
+    })
+    .map((blog) => {
+      return {
+        slug: blog.slug,
+        text: blog.id.split("/").pop()?.split(".")[0] || ""
+      };
+    });
+
+  return relatedblogs;
+};
+export type RelatedType = ReturnType<typeof findRelatedblogs>;
+
+const checkIfContainsMarkdownCodeBlock = (noteBody: CollectionEntry<"blogs">['body']): boolean => {
+    const codeBlockRegex = /```[^`]*```/g;
+    return codeBlockRegex.test(noteBody);
+}  
+
+const blogs = await getCollection("blogs");
+const related = findRelatedblogs(blog, blogs);
+const headingsWithDepth2 = headings.filter((heading) => heading.depth === 2);
+const noteTitle = blog.id.split("/").pop()?.split(".")[0] || "";
+const containsCode = checkIfContainsMarkdownCodeBlock(blog.body)
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={blog.data.description} />
+    <link rel="icon" type="image/svg" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/profile_picture_small.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:image" content={blog.data.cardPicture} />
+    <meta name="twitter:card" content={blog.data.cardPicture} />
+    <title>{blog.data.title}</title>
+    <!-- <Meta/> -->
+    {containsCode && <CopyCodeButtonScript/> }
+    <title>{noteTitle}</title>
+  </head>
+
+  <body class="bg-zinc-100 dark:bg-zinc-800"  tabindex="0" >
+    <!-- sidebar shows at tailwind xl: -->
+    <Sidebar related={related}, headingsWithDepth2={headingsWithDepth2}/>
+    <!-- bottom bar shows until xl: -->
+    <Bottombar related={related}, headingsWithDepth2={headingsWithDepth2} />
+
+    <article class="prose prose-zinc md:prose-lg lg:prose-xl prose-blockquote:bg-zinc-300 dark:prose-blockquote:bg-zinc-900 prose-blockquote:rounded-lg  mx-auto prose-li:my-0 dark:prose-blockquote:text-zinc-100 prose-blockquote:text-zinc-950  text-zinc-950 dark:prose-code:bg-zinc-400 prose-code:bg-zinc-300 prose-pre: prose-code:text-black prose-code:rounded-md prose-li:marker:text-zinc-950 prose-strong:text-zinc-950 prose-headings:text-black prose-a:text-blue-600 hover:prose-a:text-blue-900 dark:prose-strong:text-zinc-100 dark:text-zinc-100 dark:prose-li:marker:text-zinc-100 dark:prose-headings:text-zinc-50 dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-600 p-4 min-h-screen h-full break-words pb-14">
+      <!-- this h1 matches the Obsidian schema where the filename displays as an h1 at top of each note -->
+      <h1 class="mt-2">{noteTitle}</h1>
+      <!-- github flavored markdown done automatically by astro (can be configured differently) -->
+      <Content />
+    </article>
+
+    <SocialLogos/>
+
+  </body>
+</html>

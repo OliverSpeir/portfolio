@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Blog.astro
 title: "NextAuth with DRF"
 description: "This blog post explains how to create a NextAuth SocialSignOn button that connects to a Django REST Framework API"
 cardPicture: "/DRF-NextAuth-Logo.png"
