@@ -5,7 +5,7 @@ export const removeInlineStyles = () => {
     // console.log("inline style Plugin running");
     visit(tree, 'raw', node => {
       if (node.value.includes('<pre')) {
-        console.log("Encountered a raw <pre> element.");
+        // console.log("Encountered a raw <pre> element.");
         
         // Remove style attribute from <pre> inside raw content
         const regex = /(<pre[^>]+)style="[^"]*"/g;

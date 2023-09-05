@@ -13,12 +13,6 @@ This blog will outline and explain the steps for accomplishing:
 
 TLDR: The trick is to use the SignIn callback to send the `idToken` from SSO provider to the DRF backend, and have the DRF backend validate the token then create a token (or new account and token) that can be used to authenticate future requests to the DRF endpoints.
 
-## Table Of Contents
-
-- [NextAuth](#nextauth)
-- [DRF](#drf)
-- [Resources](#resources)
-
 ## Request Response Cycle
 
 1. Frontend will send a reques to NextAuth Login API.

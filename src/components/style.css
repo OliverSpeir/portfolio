@@ -1,4 +1,4 @@
-@tailwind base;
+;@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -77,9 +77,10 @@ pre code span {
 
 @media (prefers-color-scheme: light) {
     pre code span {
-        background-color: #1f2937
-    }
-    pre {
-        background-color: #1f2937 !important;
+        background-color: rgb(43,52,64)
     } 
 }
+
+.copy-code-button svg {
+    fill: none !important;
+  }

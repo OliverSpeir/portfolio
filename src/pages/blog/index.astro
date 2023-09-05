@@ -2,6 +2,7 @@
 import NavLinks from "../../components/NavLinks.astro";
 import BlogCard from "../../components/BlogCard.astro";
 import SocialLogos from "../../components/SocialLogos.astro";
+import { ViewTransitions } from 'astro:transitions';
 ---
 
 <html>
@@ -26,6 +27,7 @@ import SocialLogos from "../../components/SocialLogos.astro";
       gtag("js", new Date());
       gtag("config", "G-YXRK3RSZN8");
     </script>
+    <ViewTransitions />
   </head>
   <body>
     <NavLinks />
