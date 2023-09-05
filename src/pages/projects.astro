@@ -8,6 +8,7 @@ import SocialLogos from "../components/SocialLogos.astro";
 <Layout title="Projects - Oliver Speir">
   <NavLinks />
   <main>
+    <div class="grid-container">
     <ul role="list" class="card-grid">
       <ProjectCard
         title="Clean Air Compass"
@@ -73,6 +74,7 @@ import SocialLogos from "../components/SocialLogos.astro";
         }}
       />
     </ul>
+  </div>
   </main>
   <SocialLogos class="projects" />
 </Layout>
@@ -88,9 +90,15 @@ import SocialLogos from "../components/SocialLogos.astro";
     font-weight: 800;
     margin: 0;
   }
+  .grid-container {
+      display: flex;
+      justify-content: center;
+      width:100%;
+    }
   .card-grid {
     padding-left: 1rem;
     padding-right: 1rem;
+    max-width: 30rem;
   }
   @media (min-width: 875px) {
     main {
@@ -98,9 +106,12 @@ import SocialLogos from "../components/SocialLogos.astro";
     }
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
       gap: 2rem;
       padding: 0;
+      margin-left: 15rem;
+      margin-right: 15rem;
+      margin-top: 0;
     }
   }
 </style>

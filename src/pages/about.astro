@@ -2,14 +2,17 @@
 import Layout from "../layouts/Portfolio.astro";
 import NavLinks from "../components/NavLinks.astro";
 import SocialLogos from "../components/SocialLogos.astro";
+import profilePic from '../imgs/profile_picture_new.png';
+import profilePicTall from '../imgs/bio-pic.jpg';
+import { Image } from 'astro:assets';
 ---
 
 <Layout title="About Me - Oliver Speir">
   <NavLinks />
   <main>
     <div class="container">
-      <img src="/profile_picture.png" class="circle" alt="Picture of Oliver Speir"/>
       <div class="body-text">
+        <Image src={profilePic} class={"circle"} alt="Picture of Oliver Speir"/>
         <p>
           Hi, I'm Oliver! Coding and learning new technologies are my lifelong
           passions. All the way back in the early days of the internet, I was
@@ -32,7 +35,7 @@ import SocialLogos from "../components/SocialLogos.astro";
           to discuss how I can contribute to your company’s success.
         </p>
       </div>
-      <img src="/bio-pic.jpg" class="tall" alt="Picture of Oliver Speir"/>
+      <Image src={profilePicTall} class={"tall"} alt="Picture of Oliver Speir"/>
     </div>
     <SocialLogos class="projects" />
   </main>
@@ -62,9 +65,9 @@ import SocialLogos from "../components/SocialLogos.astro";
     }
     .circle {
       margin-bottom: 1rem;
-      border-radius: 50%;
-      height: 200px;
-      width: 200px;
+      border-radius: 8rem;
+      height: auto;
+      width: 10rem;
     }
     main {
       display: flex;
