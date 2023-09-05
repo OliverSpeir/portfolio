@@ -2,6 +2,7 @@
 import NavLinks from "../../components/NavLinks.astro";
 import BlogCard from "../../components/BlogCard.astro";
 import SocialLogos from "../../components/SocialLogos.astro";
+import { ViewTransitions } from 'astro:transitions';
 ---
 
 <html>
@@ -26,6 +27,7 @@ import SocialLogos from "../../components/SocialLogos.astro";
       gtag("js", new Date());
       gtag("config", "G-YXRK3RSZN8");
     </script>
+    <ViewTransitions />
   </head>
   <body>
     <NavLinks />
@@ -33,7 +35,7 @@ import SocialLogos from "../../components/SocialLogos.astro";
       <BlogCard
         title="NextAuth with DRF"
         picture="/DRF-NextAuth-Logo.png"
-        src="/blog/NextAuth-with-DRF"
+        src="/blog/nextauth-with-drf"
         body="This blog describes using NextAuth to provide Social Sign On for a Django REST Framework Backend"
       />
       <BlogCard

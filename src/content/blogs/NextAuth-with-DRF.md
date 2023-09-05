@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Blog.astro
 title: "NextAuth with DRF"
 description: "This blog post explains how to create a NextAuth SocialSignOn button that connects to a Django REST Framework API"
 cardPicture: "/DRF-NextAuth-Logo.png"
@@ -13,12 +12,6 @@ This blog will outline and explain the steps for accomplishing:
 - Authenticated and Authorized endpoints in DRF using Token Authentication
 
 TLDR: The trick is to use the SignIn callback to send the `idToken` from SSO provider to the DRF backend, and have the DRF backend validate the token then create a token (or new account and token) that can be used to authenticate future requests to the DRF endpoints.
-
-## Table Of Contents
-
-- [NextAuth](#nextauth)
-- [DRF](#drf)
-- [Resources](#resources)
 
 ## Request Response Cycle
 
