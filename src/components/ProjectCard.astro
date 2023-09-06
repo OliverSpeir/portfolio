@@ -97,12 +97,20 @@ const { links, title, body, src, icons, bullets } = Astro.props;
     padding-right: 1rem;
     text-decoration: none;
     font-size: x-large;
-    color: rgb(118, 153, 241);
+    color: rgb(89, 115, 247);
+  }
+  @media (prefers-color-scheme: dark){
+    .link1 {
+      color: rgb(118, 153, 241)
+    }
+    .link2 {
+      color: rgb(118, 153, 241)
+    }
   }
   .link2 {
     text-decoration: none;
     font-size: x-large;
-    color: rgb(118, 153, 241);
+    color: rgb(89, 115, 247);
   }
   .link1:is(:hover) {
     color: rgb(6, 0, 181);
