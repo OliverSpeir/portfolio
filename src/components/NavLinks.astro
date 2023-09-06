@@ -26,7 +26,12 @@
   }
   a.active {
     font-size: x-large;
-    color: rgb(54, 64, 70);
+    color: rgb(2,2,2);
+  }
+  @media (prefers-color-scheme: dark){
+    a.active {
+      color: rgb(255, 255, 255);
+    }
   }
   a.link {
     font-size: x-large;

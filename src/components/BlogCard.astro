@@ -1,12 +1,15 @@
 ---
+import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 export interface Props {
   title: string;
-  picture: string;
+  picture: object;
   src: string;
   body: string;
 }
 
 const { title, body, src, picture } = Astro.props;
+
 ---
 
 <div class="blog-card">
@@ -14,7 +17,7 @@ const { title, body, src, picture } = Astro.props;
     <h2>
       {title}
     </h2>
-    <img src={picture} alt={title}/>
+    <Image src={picture} alt={title} loading={"eager"}/>
     <p class="description">{body}</p>
   </a>
 </div>
@@ -26,7 +29,7 @@ const { title, body, src, picture } = Astro.props;
   .blog-card {
     display: flex;
     padding: 0.25rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     background-color: var(--accent-color);
     background-image: none;
     background-size: 400%;
@@ -44,7 +47,7 @@ const { title, body, src, picture } = Astro.props;
     border-radius: 0.6rem;
     color: var(--text-color);
     background-color: var(--card-color);
-    opacity: 0.8;
+    opacity: .95;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,5 +69,9 @@ const { title, body, src, picture } = Astro.props;
     padding-left: 1rem;
     padding-right: 1rem;
     max-width: 50ch;
+    z-index: 50;
+  }
+  .buffer {
+    margin-bottom: 2rem;
   }
 </style>

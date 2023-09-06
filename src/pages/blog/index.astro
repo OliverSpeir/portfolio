@@ -2,85 +2,30 @@
 import NavLinks from "../../components/NavLinks.astro";
 import BlogCard from "../../components/BlogCard.astro";
 import SocialLogos from "../../components/SocialLogos.astro";
-import { ViewTransitions } from 'astro:transitions';
+import Blog1Pic from '../../imgs/DRF-NextAuth-Logo-large.png';
+import Blog2Pic from '../../imgs/fastapi-supabase-logo-large.png'
+import Layout from "../../layouts/Portfolio.astro"
 ---
-
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Check out my blog posts!" />
-    <link rel="icon" type="image/svg" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/profile_picture_small.png" />
-    <meta property="og:image" content="/profile_picture_large.png" />
-    <meta name="twitter:card" content="/profile_picture_large.png" />
-    <title>Blog - Oliver Speir</title>
-    <script
-      type="text/partytown"
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-YXRK3RSZN8"></script>
-    <script type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-YXRK3RSZN8");
-    </script>
-    <ViewTransitions />
-  </head>
-  <body>
+<Layout title ="Blog">
+  <main>
     <NavLinks />
     <div class="cards">
       <BlogCard
         title="NextAuth with DRF"
-        picture="/DRF-NextAuth-Logo.png"
+        picture={Blog1Pic}
         src="/blog/nextauth-with-drf"
         body="This blog describes using NextAuth to provide Social Sign On for a Django REST Framework Backend"
       />
       <BlogCard
         title="FastAPI with Supabase-py"
-        picture="/fastapi-with-supabase-logo.png"
+        picture={Blog2Pic}
         src="/blog/fastapi-with-supabase"
         body="This blog explains how to create a FastAPI backend that uses Supabase Auth and allows for RLS"
       />
     </div>
     <SocialLogos class="projects" />
-  </body>
-</html>
+  </main></Layout>
 <style>
-  :root {
-    --hover-accent: rgb(13, 28, 240);
-    --hover-accent-gradient: linear-gradient(
-      45deg,
-      var(--hover-accent),
-      #5b3fda99 30%,
-      white 60%
-    );
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --text-color: #d6d6d6;
-      --accent-color: rgb(98, 94, 94);
-      --bg-color: #222;
-      --card-color: rgb(77, 75, 75);
-      --card-shadow: rgba(255, 255, 255, 0.39);
-    }
-  }
-  @media (prefers-color-scheme: light) {
-    :root {
-      --text-color: black;
-      --accent-color: rgb(37 99 235);
-      --bg-color: #f6f6f6;
-      --card-color: rgb(165, 215, 246);
-      --card-shadow: rgba(45, 59, 170, 0.415);
-    }
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-  }
   body {
     display: flex;
     flex-direction: column;
@@ -90,6 +35,7 @@ import { ViewTransitions } from 'astro:transitions';
     margin-top: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
+    margin-bottom: 5rem;
   }
   @media (min-width: 875px) {
     .cards {
