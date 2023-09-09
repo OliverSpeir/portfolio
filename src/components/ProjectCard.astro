@@ -19,7 +19,7 @@ const { links, title, body, src, icons, bullets } = Astro.props;
       {title}
     </h2>
     <div class="image-container">
-      <video autoplay loop muted playsinline>
+      <video loop autoplay muted playsinline>
         <source src={src} type="video/mp4"/>
         <track kind="captions" src="empty.vtt" label="No captions" srclang="en" />
       </video>
