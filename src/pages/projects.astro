@@ -7,14 +7,18 @@ import SocialLogos from "../components/SocialLogos.astro";
 
 <Layout title="Projects - Oliver Speir">
   <script>
-      const playVideo = () => {
-        const videoElement = document.querySelector("video");
-        if (videoElement) {
-          videoElement.play();
-        }
-    };
-    playVideo();
-    document.addEventListener('astro:after-swap', playVideo);
+  const playVideos = () => {
+    // Get the first three video elements using querySelectorAll and slice
+    const videoElements = document.querySelectorAll("video").slice(0, 3);
+    
+    // Loop through the selected video elements and play them
+    videoElements.forEach((videoElement) => {
+      videoElement.play();
+    });
+  };
+
+  // Runs the videos on view transitions/navigation
+  document.addEventListener('astro:after-swap', playVideos);
   </script>
   <NavLinks />
   <main>
