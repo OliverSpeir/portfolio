@@ -6,6 +6,16 @@ import SocialLogos from "../components/SocialLogos.astro";
 ---
 
 <Layout title="Projects - Oliver Speir">
+  <script>
+      const playVideo = () => {
+        const videoElement = document.querySelector("video");
+        if (videoElement) {
+          videoElement.play();
+        }
+    };
+    playVideo();
+    document.addEventListener('astro:after-swap', playVideo);
+  </script>
   <NavLinks />
   <main>
     <div class="grid-container">
