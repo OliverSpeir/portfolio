@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && jampack ./.vercel/output",
     "preview": "astro preview",
     "astro": "astro",
     "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""

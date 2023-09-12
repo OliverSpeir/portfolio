@@ -7,7 +7,6 @@ import { accessibleCheckbox } from './src/rehype-plugins/addAccessability';
 import { removeInlineStyles } from './src/rehype-plugins/removeInlineStyles';
 import tailwind from "@astrojs/tailwind";
 import critters from "astro-critters";
-
 import purgecss from "astro-purgecss";
 
 // https://astro.build/config
@@ -26,7 +25,5 @@ export default defineConfig({
     throttle: 5
   }), tailwind({
     applyBaseStyles: false
-  }),critters({
-    Exclude: ["index.html"]
-  }), purgecss()]
+  }),critters({path: ["./.vercel/output"]}), purgecss()]
 });
