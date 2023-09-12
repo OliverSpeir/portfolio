@@ -26,5 +26,5 @@ export default defineConfig({
     throttle: 5
   }), tailwind({
     applyBaseStyles: false
-  }), critters(), purgecss()]
+  }), critters(),]
 });
