@@ -25,5 +25,5 @@ export default defineConfig({
     throttle: 5
   }), tailwind({
     applyBaseStyles: false
-  }),critters({path: ["./.vercel/output"]}), purgecss()]
+  }),critters({path: ["./.vercel/output/static"]}), purgecss()]
 });
