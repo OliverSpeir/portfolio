@@ -23,7 +23,7 @@ TLDR: The trick is to use the SignIn callback to send the `idToken` from SSO pro
 6. NextAuth will create a session which persists in the clients browser via a cookie (which cannot be accessed by javascript running in browser).
 7. useSession hook will be availble throughout the NextJS project to allow access to session information. This session will contain the Authentication Token which will be used to Authenticate the user when they make requests to the backend.
 
-![NextAuth SSO Provider DRF image](/NA-DRF-RRC.png)
+![NextAuth SSO Provider DRF image](../../imgs/NA-DRF-RRC.png)
 
 ## SSO Set up
 
