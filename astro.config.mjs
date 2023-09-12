@@ -26,5 +26,7 @@ export default defineConfig({
     throttle: 5
   }), tailwind({
     applyBaseStyles: false
-  }),critters(), purgecss()]
+  }),critters({
+    Exclude: ["index.html"]
+  }), purgecss()]
 });
