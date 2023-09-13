@@ -84,3 +84,21 @@ pre code span {
 .copy-code-button svg {
     fill: none !important;
   }
+
+
+/* headings link icon */
+
+@layer components {
+    article.prose *:is(h1, h2, h3, h4, h5, h6) {
+        @apply flex items-center gap-2;
+    }
+    .anchor-link{
+        @apply mt-2
+    }
+}
+
+/* max width ignored by critters */
+
+.maxwidth {
+    max-width: 10rem;
+}

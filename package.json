@@ -20,10 +20,14 @@
     "astro": "^3.0.8",
     "astro-critters": "^2.0.11",
     "astro-purgecss": "^3.0.0",
+    "html-escaper": "^3.0.3",
+    "rehype-autolink-headings": "^7.0.0",
+    "rehype-slug": "^6.0.0",
     "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
+    "@types/html-escaper": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.59.11",
     "daisyui": "^3.6.5",

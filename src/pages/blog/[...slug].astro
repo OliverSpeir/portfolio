@@ -5,7 +5,8 @@ import Sidebar from "../../components/Sidebar.astro"
 import Bottombar from "../../components/Bottombar.astro";
 import NavLinks from "../../components/NavLinks.astro";
 // import Meta from "../../components/Meta.astro";
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry} from "astro:content";
+import type { MarkdownHeading } from "astro";
 import CopyCodeButtonScript from "../../components/CopyCodeButtonScript.astro"
 import "../../components/style.css"
 import SocialLogos from "../../components/SocialLogos.astro";
@@ -64,6 +65,21 @@ const checkIfContainsMarkdownCodeBlock = (noteBody: CollectionEntry<"blogs">['bo
 const blogs = await getCollection("blogs");
 const related = findRelatedblogs(blog, blogs);
 const headingsWithDepth2 = headings.filter((heading) => heading.depth === 2);
+function removeSectionFromText(headings: MarkdownHeading[]) {
+  return headings.map(item => {
+    const index = item.text.indexOf("Section"); // Find the index of "Section"
+
+    if (index !== -1) {
+      return {
+        ...item,
+        text: item.text.slice(0, index).trim() // Remove everything after and including "Section"
+      };
+    }
+
+    return item; // Return item unchanged if "Section" not found
+  });
+}
+const updatedHeadings = removeSectionFromText(headingsWithDepth2);
 const noteTitle = blog.id.split("/").pop()?.split(".")[0] || "";
 const containsCode = checkIfContainsMarkdownCodeBlock(blog.body)
 
@@ -90,8 +106,8 @@ const containsCode = checkIfContainsMarkdownCodeBlock(blog.body)
   </head>
   <NavLinks/>
   <body class="bg-zinc-100 dark:bg-zinc-800"  tabindex="0" >
-    <Sidebar related={related}, headingsWithDepth2={headingsWithDepth2}/>
-    <Bottombar related={related}, headingsWithDepth2={headingsWithDepth2} />
+    <Sidebar related={related}, headingsWithDepth2={updatedHeadings}/>
+    <Bottombar related={related}, headingsWithDepth2={updatedHeadings} />
 
     <article class="prose prose-zinc md:prose-lg lg:prose-xl prose-blockquote:bg-zinc-300 dark:prose-blockquote:bg-zinc-900 prose-blockquote:rounded-lg  mx-auto prose-li:my-0 dark:prose-blockquote:text-zinc-100 prose-blockquote:text-zinc-950  text-zinc-950 dark:prose-code:bg-zinc-400 prose-code:bg-zinc-300 prose-pre: prose-code:text-black prose-code:rounded-md prose-li:marker:text-zinc-950 prose-strong:text-zinc-950 prose-headings:text-black prose-a:text-blue-600 hover:prose-a:text-blue-900 dark:prose-strong:text-zinc-100 dark:text-zinc-100 dark:prose-li:marker:text-zinc-100 dark:prose-headings:text-zinc-50 dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-600 p-4 min-h-screen h-full break-words pb-14">
       <Content />
@@ -102,3 +118,8 @@ const containsCode = checkIfContainsMarkdownCodeBlock(blog.body)
 <SocialLogos class="projects"/>
 <div class="mb-16"></div>
 </html>
+<style>
+  body {
+    @apply bg-zinc-800
+  }
+</style>
