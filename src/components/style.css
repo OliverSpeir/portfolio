@@ -93,7 +93,7 @@ pre code span {
         @apply flex items-center gap-2;
     }
     .anchor-link{
-        @apply mt-2
+        @apply mt-1
     }
 }
 
