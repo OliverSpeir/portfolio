@@ -8,7 +8,7 @@ import { removeInlineStyles } from './src/rehype-plugins/removeInlineStyles';
 import { autolinkConfig } from './src/rehype-plugins/rehype-autolink-config'
 import tailwind from "@astrojs/tailwind";
 import critters from "astro-critters";
-import purgecss from "astro-purgecss";
+// import purgecss from "astro-purgecss";
 import autolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug';
 
@@ -28,5 +28,5 @@ export default defineConfig({
     throttle: 5
   }), tailwind({
     applyBaseStyles: false
-  }),critters({path: ["./.vercel/output/static"]}), purgecss()]
+  }),critters({path: ["./.vercel/output/static"]})]
 });
