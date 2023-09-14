@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && jampack ./.vercel/output/static",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
@@ -17,8 +17,9 @@
     "@astrojs/tailwind": "^5.0.0",
     "@astrojs/vercel": "^4.0.3",
     "@divriots/jampack": "^0.15.0",
-    "astro": "^3.0.8",
+    "astro": "^3.1.0",
     "astro-critters": "^2.0.11",
+    "astro-critters-slim": "^1.0.1",
     "astro-purgecss": "^3.0.0",
     "html-escaper": "^3.0.3",
     "rehype-autolink-headings": "^7.0.0",
@@ -30,7 +31,7 @@
     "@types/html-escaper": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.59.11",
-    "daisyui": "^3.6.5",
+    "daisyui": "^3.7.4",
     "eslint": "^8.43.0"
   }
 }

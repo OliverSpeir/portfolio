@@ -50,7 +50,7 @@ body: JSON.stringify(body),
 
 ### FastAPI Supabase Client Setup
 
-```python
+```py
 from supabase import create_client, Client
 from fastapi import FastAPI, Request
 
@@ -63,7 +63,7 @@ app = FastAPI()
 
 ### FastAPI Middleware
 
-```python
+```py
 @app.middleware("http")
 async def add_authentication(request: Request, call_next):
 
@@ -76,9 +76,9 @@ async def add_authentication(request: Request, call_next):
         return Response("Unauthorized", status_code=401)
 
     try:
-        auth = supabase.auth.get_user(token) # will raise exception if invalid
-        request.state.user_id = auth.user.id # makes user id available 
-        supabase.postgrest.auth(token) # "logs in" the client library
+        auth = supabase.auth.get_user(token) 
+        request.state.user_id = auth.user.id
+        supabase.postgrest.auth(token)
     
     except Exception:
         return Response("Invalid user token", status_code=401)
