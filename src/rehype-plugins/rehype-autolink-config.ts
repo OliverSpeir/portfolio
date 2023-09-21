@@ -42,5 +42,3 @@ export const autolinkConfig: Options = {
     createSROnlyLabel(toString(heading)),
   ],
 }
-
-console.log("running autolink")
