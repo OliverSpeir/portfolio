@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config";
 import vercelStatic from "@astrojs/vercel/static";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
-import prefetch from "@astrojs/prefetch";
 import { accessibleCheckbox } from './src/rehype-plugins/addAccessability';
 import { removeInlineStyles } from './src/rehype-plugins/removeInlineStyles';
 import { autolinkConfig } from './src/rehype-plugins/rehype-autolink-config'
@@ -24,9 +23,7 @@ export default defineConfig({
     config: {
       forward: ["dataLayer.push"]
     }
-  }), sitemap(), prefetch({
-    throttle: 5
-  }), tailwind({
+  }), sitemap(), tailwind({
     applyBaseStyles: false
   }), critters({path: ["./.vercel/output/static"]}), purgecss()]
 });
