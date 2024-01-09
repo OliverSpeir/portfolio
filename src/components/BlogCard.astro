@@ -1,6 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 export interface Props {
   title: string;
   picture: ImageMetadata;
@@ -17,7 +17,7 @@ const { title, body, src, picture } = Astro.props;
     <h2>
       {title}
     </h2>
-    <Image src={picture} alt={title} loading={"eager"}/>
+    <Picture src={picture} alt={title} loading={"eager"} formats={["avif","webp"]}/>
     <p class="description">{body}</p>
   </a>
 </div>

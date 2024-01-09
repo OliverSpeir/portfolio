@@ -4,7 +4,7 @@ import NavLinks from "../components/NavLinks.astro";
 import SocialLogos from "../components/SocialLogos.astro";
 import profilePic from '../imgs/profile_picture_new.png';
 import profilePicTall from '../imgs/bio-pic.jpg';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 ---
 
 <Layout title="About Me - Oliver Speir">
@@ -12,7 +12,7 @@ import { Image } from 'astro:assets';
   <main>
     <div class="container">
       <div class="body-text">
-        <Image src={profilePic} class={"circle"} alt="Picture of Oliver Speir"/>
+        <Picture src={profilePic} class={"circle"} alt="Picture of Oliver Speir" formats={["avif","webp"]}/>
         <p>
           Hi, I'm Oliver! Tech and learning new things are some of my lifelong
           passions. All the way back in the early days of the internet, I was
@@ -34,7 +34,7 @@ import { Image } from 'astro:assets';
           to discuss how I can contribute to your company’s success.
         </p>
       </div>
-      <Image src={profilePicTall} class={"tall"} alt="Picture of Oliver Speir"/>
+      <Picture src={profilePicTall} class={"tall"} alt="Picture of Oliver Speir" formats={["avif","webp"]}/>
     </div>
     <SocialLogos class="projects" />
   </main>

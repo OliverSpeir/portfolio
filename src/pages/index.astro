@@ -3,7 +3,7 @@ import Layout from "../layouts/Portfolio.astro";
 import LinkCard from "../components/LinkCard.astro";
 import SocialLogos from "../components/SocialLogos.astro";
 import profilePic from '../imgs/profile_picture_new.png';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 ---
 
 <Layout title="Oliver Speir">
@@ -14,7 +14,7 @@ import { Image } from 'astro:assets';
           <h1>Oliver Speir</h1>
           <h2>Software Engineer</h2>
         </div>
-        <Image src={profilePic} alt="Picture of Oliver Speir"/>
+        <Picture src={profilePic} alt="Picture of Oliver Speir" formats={["avif","webp"]}/>
       </div>
       <p class="body-text">
         From my passion for learning new technology to my ability to communicate
