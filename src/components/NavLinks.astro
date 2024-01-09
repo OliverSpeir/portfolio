@@ -1,21 +1,21 @@
 <nav class="links">
-  <a class={Astro.url.pathname === "/" ? "active" : "link"} href="/" >Home</a>
+  <a class={Astro.url.pathname === "/" ? "active" : "link"} href="/">Home</a>
   <a
     class={Astro.url.pathname === "/projects/" ? "active" : "link"}
-    href="/projects" 
+    href="/projects"
   >
     Projects
   </a>
   <a
     class={Astro.url.pathname === "/skills/" ? "active" : "link"}
-    href="/skills" 
+    href="/skills"
   >
     Skills
   </a>
-  <a class={Astro.url.pathname === "/blog/" ? "active" : "link"} href="/blog" >
+  <a class={Astro.url.pathname === "/blog/" ? "active" : "link"} href="/blog">
     Blog
   </a>
-  <a class={Astro.url.pathname === "/about/" ? "active" : "link"} href="/about" >
+  <a class={Astro.url.pathname === "/about/" ? "active" : "link"} href="/about">
     About
   </a>
 </nav>
@@ -26,9 +26,9 @@
   }
   a.active {
     font-size: x-large;
-    color: rgb(2,2,2);
+    color: rgb(2, 2, 2);
   }
-  @media (prefers-color-scheme: dark){
+  @media (prefers-color-scheme: dark) {
     a.active {
       color: rgb(255, 255, 255);
     }
@@ -49,5 +49,14 @@
     nav.links {
       gap: 0.5rem;
     }
+  }
+  @media (prefers-color-scheme: dark) {
+    a.link:is(:hover) {
+      color: rgb(217, 215, 245);
+    }
+    a.link {
+    font-size: x-large;
+    color: rgb(150, 165, 239);
+  }
   }
 </style>

@@ -20,6 +20,7 @@
     "astro-critters": "^2.0.11",
     "astro-critters-slim": "^1.0.1",
     "astro-purgecss": "^3.2.1",
+    "astro-vtbot": "^1.1.5",
     "hast-util-to-string": "^3.0.0",
     "hastscript": "^8.0.0",
     "html-escaper": "^3.0.3",

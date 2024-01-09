@@ -4,12 +4,11 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-
-import { ViewTransitions } from 'astro:transitions';
-
+import VtBotDebug from 'astro-vtbot/components/VtBotDebug.astro';
+import { ViewTransitions } from "astro:transitions";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,7 +16,7 @@ import { ViewTransitions } from 'astro:transitions';
       name="description"
       content="Oliver Speir's Portfolio Website. Contains links to CV, LinkedIn, GitHub and email address. Displays Skills, Projects and Biography."
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:title" content="Oliver Speir's Portfolio" />
     <meta
       property="og:description"
@@ -32,56 +31,63 @@ import { ViewTransitions } from 'astro:transitions';
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
+    <VtBotDebug />
+    <script
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id=G-YXRK3RSZN8"></script>
+
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-YXRK3RSZN8");
+    </script>
+
+    <script is:inline>
+      document.addEventListener("astro:page-load", function () {
+        // console.log("gtag",gtag)
+        console.log("datalayer",window.dataLayer)
+      });
+    </script>
   </head>
-  <script is:inline type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-YXRK3RSZN8"></script>
-  <script is:inline type="text/partytown">
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    // gtag("config", "G-YXRK3RSZN8");
-  </script>
-  <script is:inline>
-    		document.addEventListener("astro:page-load", function () {
-          gtag("config", "G-YXRK3RSZN8");
-			});
-  </script>
+
   <body>
     <slot />
+    <style is:global>
+      :root {
+        --hover-accent: #3b82f6;
+        --hover-accent-gradient: linear-gradient(
+          45deg,
+          var(--hover-accent),
+          #3b82f6 30%,
+          white 60%
+        );
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --text-color: #d6d6d6;
+          --accent-color: rgb(98, 94, 94);
+          --bg-color: #222;
+          --card-color: rgb(77, 75, 75);
+          --card-shadow: rgba(255, 255, 255, 0.39);
+        }
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --text-color: black;
+          --accent-color: #9ca3af;
+          --bg-color: #ffffff;
+          --card-color: #d1d5db;
+          --card-shadow: rgba(45, 59, 170, 0.415);
+        }
+      }
+      html {
+        font-family: system-ui, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  :root {
-    --hover-accent: #3b82f6;
-    --hover-accent-gradient: linear-gradient(
-      45deg,
-      var(--hover-accent),
-      #3b82f6 30%,
-      white 60%
-    );
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --text-color: #d6d6d6;
-      --accent-color: rgb(98, 94, 94);
-      --bg-color: #222;
-      --card-color: rgb(77, 75, 75);
-      --card-shadow: rgba(255, 255, 255, 0.39);
-    }
-  }
-  @media (prefers-color-scheme: light) {
-    :root {
-      --text-color: black;
-      --accent-color: #9ca3af;
-      --bg-color: #ffffff;
-      --card-color: #d1d5db;
-      --card-shadow: rgba(45, 59, 170, 0.415);
-    }
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-  }
-</style>

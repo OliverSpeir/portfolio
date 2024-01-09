@@ -32,6 +32,9 @@ dependencies:
   astro-purgecss:
     specifier: ^3.2.1
     version: 3.2.1(astro@4.1.1)(purgecss@5.0.0)
+  astro-vtbot:
+    specifier: ^1.1.5
+    version: 1.1.5(astro@4.1.1)
   hast-util-to-string:
     specifier: ^3.0.0
     version: 3.0.0
@@ -1690,6 +1693,14 @@ packages:
     dependencies:
       astro: 4.1.1(typescript@5.3.3)
       purgecss: 5.0.0
+    dev: false
+
+  /astro-vtbot@1.1.5(astro@4.1.1):
+    resolution: {integrity: sha512-f13WbXRF+XQ/3FngEFd+AER/FBVBudxpBHSfZL8KkxreTDLBVKzoSpud8OSYEKSpyXyIsYPaE9Nh8TSZwjj2gg==}
+    peerDependencies:
+      astro: ^4.0.0
+    dependencies:
+      astro: 4.1.1(typescript@5.3.3)
     dev: false
 
   /astro@4.1.1(typescript@5.3.3):
