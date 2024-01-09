@@ -40,11 +40,11 @@ import { ViewTransitions } from 'astro:transitions';
       dataLayer.push(arguments);
     }
     gtag("js", new Date());
-    gtag("config", "G-YXRK3RSZN8");
+    // gtag("config", "G-YXRK3RSZN8");
   </script>
   <script>
     		document.addEventListener("astro:page-load", function () {
-				loadFathom();
+          gtag("config", "G-YXRK3RSZN8");
 			});
   </script>
   <body>
