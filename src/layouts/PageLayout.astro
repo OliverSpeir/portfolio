@@ -28,6 +28,18 @@ const { title, description, post } = Astro.props;
     </script>
     <Meta {title} {description} {post} />
     <ViewTransitions />
+    <script>
+      function loadFathom() {
+        let script = document.createElement("script");
+        script.src = "https://cdn.usefathom.com/script.js";
+        script.setAttribute("data-site", "EVKAUHFY");
+        document.body.appendChild(script);
+      }
+      window.onload = loadFathom;
+      document.addEventListener("astro:page-load", function () {
+        loadFathom();
+      });
+    </script>
   </Head>
   <body>
     <SkipLinks />
