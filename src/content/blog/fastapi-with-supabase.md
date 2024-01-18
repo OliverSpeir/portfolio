@@ -7,23 +7,14 @@ date: 2023-08-20T03:21:44Z
 
 # FastAPI with Supabase Auth
 
-This blog will explain how to create a FastAPI backend for a frontend application that uses Supabase Auth.
-
-For a TLDR the trick is to send the access token that is received from the Supabase session on frontend as headers in the request to the FastAPI and then create middleware to validate that token with Supabase.
+TLDR the trick is to send the access token that is received from the Supabase session on frontend as headers in the request to the FastAPI and then create middleware to validate that token with Supabase.
 
 `Disclaimer: This solution works as of version 1.0.3 of Supabase-py`
 
 
 ## Overview
 
-Supabase Auth is very easy to set up on frontend, and allows for using Supabase like a backend-as-a-service quite easily. Supabase also offers Row Level Security feature for the Postgres DB they provide, which is very useful for adding another layer of security. This blog solves the issue of creating your own backend that can interface with Supabase. We will also ensure that RLS can be activated on Supabase to provide insurance if code that might leak data makes its way into the backend.
-
-The supabase python client library is quite useful as a wrapper for the REST APIs Supabase provides, however the documentation does not make it obvious how to authenticate a user from a backend, as it assumes the users will be logging in with the library.
-
-### Why create your own backend?
-
-This allows you to switch to a different DB provider, or use your own postgres container. It allows for backend logic, for example GraphQL resolvers could fetch data from sources other than the DB. There are many reasons why you wouldn't want to commit your product design to using Supabase as a backend.
-
+This blog details using `supabase-py` on a FastAPI layer in between frontend using Supabase Auth and Supabase itself.
 
 ## Solution
 
@@ -103,7 +94,7 @@ If this is the only policy applied to the table for `INSERT` only authenticated 
 
 ## Resources
 
-- My project using this solution (Live version's Supabase project is most likely is dormant): [Frontend](https://github.com/OliverSpeir/business-card-frontend) [Backend](https://github.com/OliverSpeir/business-card-fastapi)
+- My project using this solution: [Frontend](https://github.com/OliverSpeir/business-card-frontend) [Backend](https://github.com/OliverSpeir/business-card-fastapi)
 - [Supabase Python Client Library](https://github.com/supabase-community/supabase-py)
 - [Supabase Python Client Library Docs](https://supabase.com/docs/reference/python/initializing)
 - [FastAPI Middleware Docs](https://fastapi.tiangolo.com/tutorial/middleware/)
