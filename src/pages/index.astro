@@ -1,150 +1,31 @@
 ---
-import Layout from "../layouts/Portfolio.astro";
-import LinkCard from "../components/LinkCard.astro";
-import SocialLogos from "../components/SocialLogos.astro";
-import profilePic from '../imgs/profile_picture_new.png';
-import { Picture } from 'astro:assets';
+import Layout from "@layouts/PageLayout.astro";
+import PicAndLinks from "@components/pages/index/picandlinks/PicAndLinks.astro";
+import Flora from "@components/pages/index/flora/Flora.astro";
+import TimeScript from "@components/pages/index/TimeScript.astro";
+import VTColorThemeToggle from "@components/layout/VTColorThemeToggle.astro";
+
+const title = "Oliver Speir";
+const description = "Personal website";
 ---
 
-<Layout title="Oliver Speir">
-  <main>
-    <div class="text-container">
-      <div class="headers">
-        <div class="headers-text">
-          <h1>Oliver Speir</h1>
-          <h2>Software Engineer</h2>
-        </div>
-        <Picture src={profilePic} alt="Picture of Oliver Speir" formats={["avif","webp"]}/>
-      </div>
-      <p class="body-text">
-        From my passion for learning new technology to my ability to communicate
-        complex concepts effectively, I would be a valuable asset to any
-        organization and welcome the opportunity to contribute to the success of
-        your team.
-      </p>
+<Layout {title} {description}>
+  <VTColorThemeToggle />
+  <div class="flex justify-center">
+    <div class="flex gap-x-12 md:gap-x-20 flex-col sm:flex-row">
+      <nav>
+        <PicAndLinks />
+      </nav>
+
+      <section class="max-w-[20rem]">
+        <h1 id="main-content">Hey, I'm Oliver</h1>
+        <p class="mb-0">I value open source and decentralization.</p>
+        <p class="mt-0">I want the internet to be accessible.</p>
+        <p class="my-0">I'm in Mountain Time Zone,</p>
+        <p class="mt-0">it is currently <span id="time">00:00</span> for me.</p>
+        <TimeScript />
+        <Flora />
+      </section>
     </div>
-    <div class="cards">
-      <ul role="list" class="card-grid">
-        <div class=top"></div>
-        <LinkCard href="/CV.pdf" title="CV" target="_blank" customclass="top"/>
-        <LinkCard href="/projects" title="Projects" target="" customclass="" />
-        <LinkCard href="/skills" title="Skills" target="" customclass=""/>
-        <LinkCard href="/blog" title="Blog" target="" customclass=""/>
-        <LinkCard href="/about" title="About Me" target="" customclass=""/>
-      </ul>
-      <SocialLogos class="home-middle" />
-    </div>
-  </main>
-  <SocialLogos class="home-bottom" />
+  </div>
 </Layout>
-
-<style>
-  .headers {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  .headers-text {
-    text-align: center;
-  }
-
-  img {
-    border-radius: 8rem;
-    height: auto;
-    width: 7rem;
-    margin-left: 2rem;
-  }
-  .body-text {
-    margin-top: 3vh;
-    line-height: 1.6;
-    border: 1px solid var(--hover-accent) 25%;
-    background-color: var(--card-color);
-    padding: 1rem;
-    border-radius: 0.4rem;
-  }
-  .cards {
-    max-width: 60ch;
-  }
-
-
-  @media (max-width: 874px) {
-    h1 {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 800;
-      margin: 0;
-    }
-    h2 {
-      text-align: center;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #0041a9;
-      margin: 0;
-    }
-    main {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 2vw;
-      margin-left: 2vw;
-    }
-    .text-container {
-      max-width: 60ch;
-    }
-    .card-grid {
-      display: grid;
-      justify-content: center;
-      grid-template-columns: repeat(2, minmax(5ch, 1fr));
-      grid-template-rows: repeat(2, minmax(5ch, 1fr));
-      column-gap: 0.5rem;
-      row-gap: 0.5rem;
-      padding: 0;
-    }
-  }
-  @media (min-width: 875px) {
-    .body-text {
-      font-size: x-large;
-    }
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      font-weight: 800;
-      margin: 0;
-    }
-    h2 {
-      font-size: 2rem;
-    }
-    main {
-      display: flex;
-      padding-top: 15vh;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .text-container {
-      max-width: 60ch;
-      margin-right: 2rem;
-      margin-left: 1rem;
-    }
-    .card-grid {
-      margin-left: 2rem;
-      margin-right: 1rem;
-      margin-top: 8.15rem;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(15ch, auto));
-      column-gap: 0.5rem;
-      row-gap: 0.5rem;
-      padding: 0;
-    }
-    .top {
-      grid-row: span 1;
-    }
-  }
-
-  @media (prefers-color-scheme: dark){
-    h2 {
-      color: #3b82f6;
-    }
-  }
-</style>

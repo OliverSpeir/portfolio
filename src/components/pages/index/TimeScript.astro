@@ -1,0 +1,39 @@
+<script is:inline>
+  window.__handleTime ??= () => {
+    const updateTime = () => {
+      const formatter = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/Denver",
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      // Format the date
+      let timeInTimeZone = formatter.format(new Date()) ?? "";
+
+      // Remove leading zero from hours
+      timeInTimeZone = timeInTimeZone.replace(/^0/, '');
+
+      // Extract the hour for AM/PM logic
+      const hourString = timeInTimeZone.split(":")[0];
+      const hour = hourString ? parseInt(hourString, 10) : 0;
+      let amPmIndicator = hour < 12 ? " AM" : "";
+
+      // Append AM indicator if needed
+      const finalTime = timeInTimeZone + amPmIndicator;
+      const timeDisplay = document.getElementById("time");
+      if (timeDisplay) timeDisplay.innerText = finalTime;
+    };
+
+    // Perform an initial update
+    updateTime();
+  };
+
+  // Initialize the function
+  window.__handleTime();
+
+  // Set up the event listener for 'astro:after-swap'
+  document.addEventListener("astro:after-swap", () => {
+    window.__handleTime();
+  });
+</script>
