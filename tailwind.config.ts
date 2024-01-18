@@ -37,7 +37,7 @@ const config: Config = {
         "light-text": "#09090b",
         "dark-text": "#ecf1f9",
         "accent-color": "#272d6f",
-        "dark-accent-color": "#7089f6",
+        "dark-accent-color": "#acbef9",
       },
     },
   },
