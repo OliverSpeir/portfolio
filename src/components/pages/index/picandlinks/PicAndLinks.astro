@@ -1,0 +1,28 @@
+---
+import { Picture } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Socials from "@components/pages/index/picandlinks/Socials.astro";
+import pfp from "@assets/imgs/pfp.png";
+---
+<div class="flex gap-4 justify-center sm:flex-col min-w-max items-center mb-6">
+  <Picture
+    src={pfp}
+    alt=""
+    quality={100}
+    width={135}
+    formats={["avif", "webp"]}
+    densities={[1, 2]}
+    class="rounded-full"
+  />
+  <div class="flex flex-col">
+    <Socials />
+    <a class="flex items-center justify-evenly mt-3" href="/garden/"
+      ><Icon name="f7:tree" class="w-8 h-8" aria-hidden="true" />Digital Garden</a
+    >
+    <a
+      class="flex items-center justify-evenly mt-2"
+      href="https://cal.com/oliverspeir/chat"
+      target="_blank"><Icon name="radix-icons:calendar" class="w-7 h-7" aria-hidden="true" />Schedule Call</a
+    >
+  </div>
+</div>

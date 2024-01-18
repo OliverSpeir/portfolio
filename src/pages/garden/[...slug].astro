@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/PageLayout.astro";
+import VTColorThemeToggle from "@components/layout/VTColorThemeToggle.astro";
+
+export const getStaticPaths = async () => {
+	const posts = await getCollection("blog");
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+};
+const {post} = Astro.props
+const {
+	data: { title, description },
+} = post;
+const { Content } = await post.render();
+---
+<Layout {title} {description} {post}>
+	<div class="flex items-center"><VTColorThemeToggle />
+    <nav><a href="/">Homepage</a> <a href="/garden/">Garden</a></nav></div>
+	<article class="flex flex-col mx-auto max-w-[34rem]">
+		<Content />
+	</article>
+</Layout>
