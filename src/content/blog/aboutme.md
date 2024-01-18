@@ -14,3 +14,5 @@ Fast-forward to today, I have recently completed my Associates of Applied Scienc
 I believe that software developers have the ability to make the world a better place by creating code that is intuitive, inclusive and accessible.
 
 Please feel free to schedule a call with me or message me about anything, I'd love the opportunity to connect.
+
+![](../../assets/imgs/lookingout.jpg)(style:'display:flex; margin-right: auto; margin-left: auto;', aria-hidden:true)

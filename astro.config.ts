@@ -12,6 +12,7 @@ import { addGroupToH2 } from "./src/assets/plugins/rehype-autolink-h2group.js";
 import { accessibleCheckbox } from "./src/assets/plugins/accessibleCheckbox.js";
 import rehypeSlug from "rehype-slug";
 import autolinkHeadings from "rehype-autolink-headings";
+import imgAttr from "remark-imgattr"
 
 const config: AstroUserConfig = defineConfig({
   site: "http://www.example.com",
@@ -31,7 +32,7 @@ const config: AstroUserConfig = defineConfig({
     compress(),
   ],
   markdown: {
-		remarkPlugins: [remarkReadingTime],
+		remarkPlugins: [remarkReadingTime, imgAttr],
 		rehypePlugins: [
 			rehypeSlug,
 			accessibleCheckbox,
