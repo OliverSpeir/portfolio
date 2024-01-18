@@ -28,6 +28,7 @@ I'll keep this updated with everything I think is useful
 - Decap CMS
 - Tailwind CSS
 - Vanilla JS (TS)
+- Fathom Analytics
 
 ## Misc
 
