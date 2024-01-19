@@ -7,15 +7,16 @@ date: 2024-01-17T03:21:44Z
 
 # Theorycrafting
 
-thoughts etc, this is really just a public notes and invitation to for anyone else to give me their thoughts on these subjects as I like this subject a lot
+This is really just a public notes and invitation for anyone else to give me their thoughts on these subjects.
 
-Honestly slapped this post together, but I will come back as I solidify my thoughts
+Honestly slapped this post together, but I will come back as I solidify my thoughts.
 
 ## Downloading client side JS
 
-1. partytown
+1. module scripts
 2. qwik
-3. module scripts
+3. partytown
+4. inline scripts
 
 ## Prerendering
 
