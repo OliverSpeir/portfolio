@@ -40,5 +40,9 @@
         "destination": "/garden/aboutme",
         "permanent": true
       }
+  ],
+  "rewrites": [
+    { "source": "/404", "destination": "/" },
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
