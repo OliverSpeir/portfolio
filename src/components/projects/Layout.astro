@@ -1,0 +1,72 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+import { ViewTransitions } from "astro:transitions";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Oliver Speir's Portfolio Website. Contains links to CV, LinkedIn, GitHub and email address. Displays Skills, Projects and Biography."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="Oliver Speir's Portfolio" />
+    <meta
+      property="og:description"
+      content="Oliver Speir's Portfolio Website. Contains links to CV, LinkedIn, GitHub and email address. Displays Skills, Projects and Biography."
+    />
+    <!-- <meta property="og:image" content="/profile_picture_large.png" /> -->
+    <meta property="og:url" content="www.oliverspeir.com" />
+    <!-- <meta name="twitter:card" content="/profile_picture_large.png" /> -->
+    <link rel="icon" type="image/svg" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/profile_picture_small.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+
+  <body>
+    <slot />
+    <style is:global>
+      :root {
+        --hover-accent: #3b82f6;
+        --hover-accent-gradient: linear-gradient(
+          45deg,
+          var(--hover-accent),
+          #3b82f6 30%,
+          white 60%
+        );
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --text-color: #d6d6d6;
+          --accent-color: rgb(98, 94, 94);
+          --bg-color: #222;
+          --card-color: rgb(77, 75, 75);
+          --card-shadow: rgba(255, 255, 255, 0.39);
+        }
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --text-color: black;
+          --accent-color: #9ca3af;
+          --bg-color: #ffffff;
+          --card-color: #d1d5db;
+          --card-shadow: rgba(45, 59, 170, 0.415);
+        }
+      }
+      html {
+        font-family: system-ui, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+    </style>
+  </body>
+</html>

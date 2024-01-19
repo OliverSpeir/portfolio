@@ -1,0 +1,118 @@
+---
+import Layout from "@components/projects/Layout.astro";
+import ProjectCard from "@components/projects/ProjectCard.astro";
+---
+
+<Layout title="Projects - Oliver Speir">
+  <a href="/">Homepage</a>
+  <a href="/garden">Garden</a>
+  <script>
+    const playVideos = () => {
+      const videoElements = document.querySelectorAll("video");
+      videoElements.forEach((videoElement) => {
+        videoElement.play();
+      });
+    };
+    playVideos()
+    document.addEventListener('astro:after-swap', playVideos);
+  </script>
+  <main>
+    <div class="grid-container">
+    <ul role="list" class="card-grid">
+      <ProjectCard
+        title="Clean Air Compass"
+        body="Web app that creates an interpolated map overlay based on PurpleAir sensors."
+        bullets={[
+          "FastAPI to create interpolation layer with KNN regression.",
+          "Django REST Framework to handle the user database.",
+          "NextJS frontend, using NextAuth and TailwindCSS.",
+        ]}
+        src="/CleanAirCompass.mp4"
+        links={{
+          link1: "https://github.com/orgs/Oxygen-Oriented-Programming/repositories",
+          link1Name: "GitHub",
+          link2: "https://clean-air-compass.vercel.app/",
+          link2Name: "Live Site",
+        }}
+      />
+      <ProjectCard
+        title="ThoroughZED"
+        body="Data Science project that predicts and creates interactive dashboard."
+        bullets={[
+          "Gathered and cleaned  a large data set from a public GraphQL API.",
+          "Trained Random Forest model on that data using SciKit Learn.",
+          "HoloViz Panel and HVPlot interactive dashboard.",
+        ]}
+        src="/ThoroughZed.mp4"
+        links={{
+          link1: "https://github.com/ThoroughZed-Analytics/Thoroughzed",
+          link1Name: "GitHub",
+          link2: "/ThoroughZed.mp4",
+          link2Name: "Video",
+        }}
+      />
+      <ProjectCard
+        title="OpenIMG"
+        body="Web app that uses the OpenAI DALLE2 API to create images."
+        bullets={[
+          "MongoDB database and ExpressJS backend using Mongoose ORM.",
+          "Auth0 For Authentication providing Social Sign On.",
+          "React Bootstrap and CSS used for styling.",
+        ]}
+        src="/OpenImg.mp4"
+        links={{
+          link1: "https://github.com/orgs/Full-Stack-Fluency/repositories",
+          link1Name: "GitHub",
+          link2: "https://openimg.netlify.app/",
+          link2Name: "Live Site",
+        }}
+      />
+    </ul>
+  </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin-right: 0.8rem;
+    margin-left: 0.8rem;
+  }
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .grid-container {
+      display: flex;
+      justify-content: center;
+    }
+  .card-grid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 24rem;
+  }
+  @media (min-width: 675px) {
+    main {
+      margin-top: 3rem;
+    }
+    .card-grid {
+      max-width: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+      gap: 2rem;
+      padding: 0;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0;
+    }
+  }
+  @media (prefers-color-scheme: dark){
+    a {
+      color: rgb(118, 153, 241)
+    }
+    a {
+      color: rgb(118, 153, 241)
+    }
+  }
+</style>

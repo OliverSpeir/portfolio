@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/blog/nextauth-with-drf",
+      "destination": "/garden/nextauth-with-drf",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fastapi-with-supabase",
+      "destination": "/garden/fastapi-with-supabase",
+      "permanent": true
+    },
+    {
+      "source": "/projects",
+      "destination": "/garden/projects",
+      "permanent": true
+    }
+  ]
+}
