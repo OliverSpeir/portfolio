@@ -39,6 +39,6 @@
         "source": "/about",
         "destination": "/garden/aboutme",
         "permanent": true
-      },
+      }
   ]
 }
