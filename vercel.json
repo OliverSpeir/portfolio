@@ -29,6 +29,16 @@
         "source": "/projects/",
         "destination": "/garden/projects",
         "permanent": true
-      }
+      },
+      {
+        "source": "/about/",
+        "destination": "/garden/aboutme",
+        "permanent": true
+      },
+      {
+        "source": "/about",
+        "destination": "/garden/aboutme",
+        "permanent": true
+      },
   ]
 }
