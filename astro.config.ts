@@ -16,6 +16,9 @@ import imgAttr from "remark-imgattr"
 
 const config: AstroUserConfig = defineConfig({
   site: "http://www.example.com",
+  build: {
+    inlineStylesheets: 'always'
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
