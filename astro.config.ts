@@ -15,7 +15,7 @@ import autolinkHeadings from "rehype-autolink-headings";
 import imgAttr from "remark-imgattr"
 
 const config: AstroUserConfig = defineConfig({
-  site: "http://www.example.com",
+  site: "http://oliverspeir.dev/",
   build: {
     inlineStylesheets: 'always'
   },
