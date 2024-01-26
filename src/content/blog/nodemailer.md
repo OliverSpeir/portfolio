@@ -31,6 +31,8 @@ If you want your form to work without javascript, you'll want to return a redire
 
 [nodemailer-netlify-example](https://github.com/OliverSpeir/nodemailer-netlify-example)
 
+The TS and Terser stuff this example does is really overkill but I figured why not. There's also a simple .js example ready to be copy pasted. 
+
 ## Creating email HTML
 
 Basically it's tables and inline css, [more info](https://www.smashingmagazine.com/2021/04/complete-guide-html-email-templates-tools/)
