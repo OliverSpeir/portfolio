@@ -21,6 +21,7 @@
     "astro-compress": "^2.2.8",
     "astro-expressive-code": "^0.31.0",
     "astro-icon": "^1.0.2",
+    "astro-meta-tags": "^0.2.1",
     "astro-robots-txt": "^1.0.0",
     "hastscript": "^8.0.0",
     "mdast-util-to-string": "^4.0.0",

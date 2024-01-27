@@ -41,6 +41,9 @@ dependencies:
   astro-icon:
     specifier: ^1.0.2
     version: 1.0.2
+  astro-meta-tags:
+    specifier: ^0.2.1
+    version: 0.2.1(astro@4.2.1)
   astro-robots-txt:
     specifier: ^1.0.0
     version: 1.0.0
@@ -1433,6 +1436,14 @@ packages:
       '@iconify/utils': 2.1.16
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /astro-meta-tags@0.2.1(astro@4.2.1):
+    resolution: {integrity: sha512-IFAQG6Ymwke+53H5hcBFtdYyCpF2KEVpp5wA7Qrx8O2+4hUx3N9wE6Vy6QgRHH2Lkgv48PUN7t5fUDBpCMEbAA==}
+    peerDependencies:
+      astro: ^4.0.0
+    dependencies:
+      astro: 4.2.1
     dev: false
 
   /astro-robots-txt@1.0.0:

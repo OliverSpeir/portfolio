@@ -12,12 +12,12 @@ import { addGroupToH2 } from "./src/assets/plugins/rehype-autolink-h2group.js";
 import { accessibleCheckbox } from "./src/assets/plugins/accessibleCheckbox.js";
 import rehypeSlug from "rehype-slug";
 import autolinkHeadings from "rehype-autolink-headings";
-import imgAttr from "remark-imgattr"
-
+import imgAttr from "remark-imgattr";
+import metaTags from "astro-meta-tags";
 const config: AstroUserConfig = defineConfig({
   site: "http://oliverspeir.dev/",
   build: {
-    inlineStylesheets: 'always'
+    inlineStylesheets: "always",
   },
   integrations: [
     tailwind({
@@ -32,17 +32,20 @@ const config: AstroUserConfig = defineConfig({
       },
     }),
     expressiveCode(),
-    compress(),
+    compress({
+      Path: ["./dist", "./_astro"],
+    }),
+    metaTags(),
   ],
   markdown: {
-		remarkPlugins: [remarkReadingTime, imgAttr],
-		rehypePlugins: [
-			rehypeSlug,
-			accessibleCheckbox,
-			[autolinkHeadings, autolinkConfig],
-			addGroupToH2,
-		],
-	},
+    remarkPlugins: [remarkReadingTime, imgAttr],
+    rehypePlugins: [
+      rehypeSlug,
+      accessibleCheckbox,
+      [autolinkHeadings, autolinkConfig],
+      addGroupToH2,
+    ],
+  },
 });
 
 // https://astro.build/config
