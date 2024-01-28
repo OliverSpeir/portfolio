@@ -38,6 +38,8 @@ const config: Config = {
         "dark-text": "#ecf1f9",
         "accent-color": "#2f3a91",
         "dark-accent-color": "#acbef9",
+        "headings-light": "",
+        "headings-dark": ""
       },
     },
   },
@@ -83,6 +85,7 @@ const config: Config = {
           marginTop: "0rem",
           letterSpacing: "-.01em",
           fontWeight: "550",
+          "@apply text-headings-light dark:text-headings-dark": {}
         },
         article: {
           marginBottom: "3rem",
@@ -92,7 +95,7 @@ const config: Config = {
         },
         "h1, h2": {
           marginBottom: ".6rem",
-          fontSize: "24px",
+          fontSize: "28px",
         },
         h3: {
           marginBottom: ".6rem",
