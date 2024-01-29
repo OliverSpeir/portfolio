@@ -82,7 +82,7 @@ const config: Config = {
           "@apply text-accent-color dark:text-dark-accent-color": {},
         },
         "h1, h2, h3, h4": {
-          marginTop: "0rem",
+          marginTop: "1rem",
           letterSpacing: "-.01em",
           fontWeight: "550",
           "@apply text-headings-light dark:text-headings-dark": {}
@@ -128,7 +128,7 @@ const config: Config = {
         code: {
           backgroundColor: "#D4D4D8",
           "@apply px-1 py-[.1rem] rounded-md dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 whitespace-pre-wrap break-words": {}
-        }
+        },
       });
     }),
   ],
