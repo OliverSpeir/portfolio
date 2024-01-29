@@ -85,3 +85,7 @@ Basically it's tables and inline css, [more info](https://www.smashingmagazine.c
 [React Email](https://react.email/) is quite nice honestly, it has a dev server and supports Tailwind CSS. I've created a work around for an issue with exporting the html directly, [react-email-export-workaround](https://github.com/OliverSpeir/react-email-export-workaround).
 
 I've taken [React Email's Github Access Token clone email template](https://demo.react.email/preview/github-access-token.tsx?view=source&lang=markup) and edited the HTML directly a few times as well.
+
+## Why netlify?
+
+Netlify's free tier allows for commercial use (unlike vercel's) and the DX compared to AWS Lambda functions made it my go-to platform for serverless functions. I use it to host functions used by sites that aren't hosted on netlify as well.
