@@ -7,15 +7,17 @@ date: 2024-01-17T03:21:44Z
 
 # Creating an endpoint that sends emails
 
-The concept here is you a static site with a contact form, and you want to be able to have your contact form send an email when it is submitted.
+The concept here is you have a static site with a contact form, and you want to be able to have your contact form send an email when it is submitted.
 
 One solution is to use an SMTP Relay to send these emails. This post will outline using a serverless function to accomplish this. This function will be a [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) meaning it will work with or without javascript. 
 
 This example uses gmail as the SMTP, but there are some reports within the community that it is possible to have your domain blacklisted when using this, so it is suggested to either only use an actual gmail account, or use another SMTP. I personally use Proton, it comes with other goodies and costs ~$5/month, you do need to request access to use the SMTP feature. [MxRoute](https://mxroute.com/) is another good option because they have a lifetime plan.
 
-Another very common solution to this problem, is using a service like [Sendgrid](https://sendgrid.com/), which has a good free tier, or [Amazon SES](https://aws.amazon.com/ses/) where you pay for what you use. These services will allow you to send email via an API without having to use SMTP directly. 
+Another very common solution to this problem, is using a service like [Sendgrid](https://sendgrid.com/), which has a good free tier, or [Amazon SES](https://aws.amazon.com/ses/) where you pay for what you use. [Web3Forms](https://web3forms.com/) also offers a great free tier. These services will allow you to send email via an API without having to use SMTP directly. 
 
-Using SMTP directly like the example in this post takes a while, which means it is not easily done in a cloudflare worker for example. This function could also serve useful if you'd like to do some validation or protect your API key, and if you do this just skip the nodemailer parts and send a fetch request instead.
+Using SMTP directly like the example in this post takes a while, which means it is not easily done in a cloudflare worker for example.
+
+This function could also serve useful if you're using a service that provides an API and you'd like to do some validation or protect your API key, and if you do this just skip the nodemailer parts and send a fetch request instead.
 
 ## Serverless function
 
