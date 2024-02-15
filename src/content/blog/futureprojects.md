@@ -30,8 +30,7 @@ Some project ideas I'd like to get to eventually in no particular order
 
 ## Misc
 
-- Find vscode plugin that creates every new window in a slightly different color
 - Send emails via SMTP with cloudflare workers
-- Minmic starlight "on this page" aside 
+- Recreate starlight "on this page" panel as .astro component
     - Highlight current section when scrolled to
     - Mobile friendly version
