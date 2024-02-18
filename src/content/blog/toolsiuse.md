@@ -30,6 +30,7 @@ I'll try to keep this updated with everything I think is useful
   - format on save
   - word wrap
   - [peacock extension](https://www.peacockcode.dev/) (with surprise me on startup on)
+- [Pika](https://superhighfives.com/pika) color picker / contrast ratio calculator
 
 ## Misc
 
