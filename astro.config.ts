@@ -14,6 +14,9 @@ import rehypeSlug from "rehype-slug";
 import autolinkHeadings from "rehype-autolink-headings";
 import imgAttr from "remark-imgattr";
 import metaTags from "astro-meta-tags";
+import remarkCalloutDirectives from "@microflash/remark-callout-directives";
+import remarkDirective from "remark-directive";
+
 const config: AstroUserConfig = defineConfig({
   site: "http://oliverspeir.dev/",
   build: {
@@ -38,7 +41,12 @@ const config: AstroUserConfig = defineConfig({
     metaTags(),
   ],
   markdown: {
-    remarkPlugins: [remarkReadingTime, imgAttr],
+    remarkPlugins: [
+      remarkReadingTime,
+      imgAttr,
+      remarkDirective,
+      remarkCalloutDirectives,
+    ],
     rehypePlugins: [
       rehypeSlug,
       accessibleCheckbox,
