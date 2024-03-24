@@ -1,39 +1,32 @@
-<script is:inline>
-  window.__handleTime ??= () => {
-    const updateTime = () => {
-      const formatter = new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/Denver",
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-      });
+---
 
-      // Format the date
-      let timeInTimeZone = formatter.format(new Date()) ?? "";
+// it's  IIFE https://developer.mozilla.org/en-US/docs/Glossary/IIFE
 
-      // Remove leading zero from hours
-      timeInTimeZone = timeInTimeZone.replace(/^0/, '');
+// IIFE are useful for data-astro-rerun scripts because the window is preserved when using Astro's <ViewTransitions/>
 
-      // Extract the hour for AM/PM logic
-      const hourString = timeInTimeZone.split(":")[0];
-      const hour = hourString ? parseInt(hourString, 10) : 0;
-      let amPmIndicator = hour < 12 ? " AM" : "";
+/* unminified code 
 
-      // Append AM indicator if needed
-      const finalTime = timeInTimeZone + amPmIndicator;
-      const timeDisplay = document.getElementById("time");
-      if (timeDisplay) timeDisplay.innerText = finalTime;
-    };
-
-    // Perform an initial update
-    updateTime();
-  };
-
-  // Initialize the function
-  window.__handleTime();
-
-  // Set up the event listener for 'astro:after-swap'
-  document.addEventListener("astro:after-swap", () => {
-    window.__handleTime();
+(() => {
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Denver",
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
   });
+
+  // Format the date and remove leading zero from hours
+  let timeInTimeZone = formatter.format(new Date()).replace(/^0/, "");
+
+  // Determine AM/PM indicator
+  const amPmIndicator = parseInt(timeInTimeZone.split(":")[0], 10) < 12 ? " AM" : "";
+
+  // Update the display
+  const timeDisplay = document.getElementById("time");
+  if (timeDisplay) timeDisplay.innerText = timeInTimeZone + amPmIndicator;
+})();
+
+*/
+---
+<script is:inline data-astro-rerun>
+(()=>{let e=new Intl.DateTimeFormat("en-US",{timeZone:"America/Denver",hour12:!1,hour:"2-digit",minute:"2-digit"}).format(new Date).replace(/^0/,"");const t=parseInt(e.split(":")[0],10)<12?" AM":"",n=document.getElementById("time");n&&(n.innerText=e+t)})();
 </script>
