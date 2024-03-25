@@ -13,7 +13,7 @@ One solution is to use [nodemailer](https://www.nodemailer.com/) to send the ema
 
 See [alternative methods](#alternative-methods) for other options.
 
-:::note
+:::warn
 This example uses Gmail as the SMTP, but it is possible to have your domain blacklisted by using workspaces like this, either use an actual Gmail address, or another SMTP.
 :::
 
