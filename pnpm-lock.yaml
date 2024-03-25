@@ -26,9 +26,6 @@ dependencies:
   '@iconify-json/radix-icons':
     specifier: ^1.1.14
     version: 1.1.14
-  '@microflash/remark-callout-directives':
-    specifier: ^4.1.0
-    version: 4.1.0
   astro:
     specifier: ^4.5.9
     version: 4.5.9
@@ -50,9 +47,15 @@ dependencies:
   astro-robots-txt:
     specifier: ^1.0.0
     version: 1.0.0
+  defu:
+    specifier: ^6.1.4
+    version: 6.1.4
   hastscript:
     specifier: ^8.0.0
     version: 8.0.0
+  mdast-util-from-markdown:
+    specifier: ^2.0.0
+    version: 2.0.0
   mdast-util-to-string:
     specifier: ^4.0.0
     version: 4.0.0
@@ -80,6 +83,9 @@ dependencies:
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
+  unist-util-visit:
+    specifier: ^5.0.0
+    version: 5.0.0
 
 packages:
 
@@ -1399,17 +1405,6 @@ packages:
       tar: 6.2.1
     transitivePeerDependencies:
       - encoding
-      - supports-color
-    dev: false
-
-  /@microflash/remark-callout-directives@4.1.0:
-    resolution: {integrity: sha512-l7SPOHrRwAcMoixbJF2OElazYAV2jLtQkUa4jxDHGcEW7TzeB8icUiwRCmOHdCZMLeXXl/0Y+uBXKauI+Bgaog==}
-    dependencies:
-      defu: 6.1.4
-      hastscript: 9.0.0
-      mdast-util-from-markdown: 2.0.0
-      unist-util-visit: 5.0.0
-    transitivePeerDependencies:
       - supports-color
     dev: false
 
@@ -3267,16 +3262,6 @@ packages:
 
   /hastscript@8.0.0:
     resolution: {integrity: sha512-dMOtzCEd3ABUeSIISmrETiKuyydk1w0pa+gE/uormcTpSYuaNJPbX1NU3JLyscSLjwAQM8bWMhhIlnCqnRvDTw==}
-    dependencies:
-      '@types/hast': 3.0.4
-      comma-separated-tokens: 2.0.3
-      hast-util-parse-selector: 4.0.0
-      property-information: 6.4.1
-      space-separated-tokens: 2.0.2
-    dev: false
-
-  /hastscript@9.0.0:
-    resolution: {integrity: sha512-jzaLBGavEDKHrc5EfFImKN7nZKKBdSLIdGvCwDZ9TfzbF2ffXiov8CKE445L2Z1Ek2t/m4SKQ2j6Ipv7NyUolw==}
     dependencies:
       '@types/hast': 3.0.4
       comma-separated-tokens: 2.0.3

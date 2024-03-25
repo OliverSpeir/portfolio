@@ -11,7 +11,7 @@ The concept here is you have a static site with a contact form, and you want to 
 
 One solution is to use [nodemailer](https://www.nodemailer.com/) to send the emails. This post will outline using a serverless function to accomplish this. This function will be a [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) meaning it will work with or without javascript.
 
-See [alternative methods](#alternative-methods) for other options.
+See [alternative methods](#alternatives) for other options.
 
 :::warn
 This example uses Gmail as the SMTP, but it is possible to have your domain blacklisted by using workspaces like this, either use an actual Gmail address, or another SMTP.
