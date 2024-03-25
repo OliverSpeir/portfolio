@@ -13,7 +13,9 @@ One solution is to use [nodemailer](https://www.nodemailer.com/) to send the ema
 
 See [alternative methods](#alternative-methods) for other options.
 
-> This example uses gmail as the SMTP, but it is possible to have your domain blacklisted by using workspaces like this, either use an actual gmail address, or another SMTP. I personally use [Proton](https://proton.me/) and have heard [MxRoute](https://mxroute.com/) has a good lifetime purchase option for low volume.
+:::note
+This example uses Gmail as the SMTP, but it is possible to have your domain blacklisted by using workspaces like this, either use an actual Gmail address, or another SMTP.
+:::
 
 ## Serverless function
 
@@ -97,7 +99,9 @@ I've taken [React Email's clone of Github Access Token](https://demo.react.email
 
 Netlify's free tier allows for commercial use (unlike vercel's) and the DX compared to AWS Lambda functions made it my go-to platform for serverless functions. I use it to host functions used by sites that aren't hosted on netlify as well.∏
 
-## Alternative Methods
+## Alternatives
+
+For SMTP I personally use [Proton](https://proton.me/) and have heard [MxRoute](https://mxroute.com/) has a good lifetime purchase option for low volume.
 
 If you are using Astro's [hybrid/server output](https://docs.astro.build/en/guides/server-side-rendering/) instead of a purely static build, and deploying to either netlify or vercel, you can use nodemailer in an api route inside your project. This will allow you not to worry about CORS and simplify things in general.
 

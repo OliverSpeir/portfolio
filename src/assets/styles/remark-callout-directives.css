@@ -1,0 +1,83 @@
+:root {
+  --callout-accent-note: hsl(235, 76%, 29%);
+  --callout-bg-note: hsl(236, 77%, 90%);
+  --callout-border-note: hsl(235, 82%, 59%);
+  --callout-accent-tip: hsl(137, 66%, 30%);
+  --callout-accent-important: hsl(261, 69%, 59%);
+  --callout-accent-warning: hsl(41, 57%, 27%);
+  --callout-bg-warning: hsl(43, 80%, 88%);
+  --callout-border-warning: hsl(41, 80%, 63%);
+  --callout-accent-caution: hsl(356, 71%, 48%);
+}
+
+html.dark {
+  --callout-accent-note: hsl(235, 86%, 86%);
+  --callout-bg-note: hsl(235, 50%, 20%);
+  --callout-border-note: hsl(235, 90%, 59%);
+  --callout-accent-tip: hsl(128, 49%, 49%);
+  --callout-accent-important: hsl(262, 89%, 71%);
+  --callout-accent-warning: hsl(42, 72%, 87%);
+  --callout-bg-warning: hsl(43, 33%, 22%);
+  --callout-border-warning: hsl(42, 72%, 65%);
+  --callout-accent-caution: hsl(3, 93%, 63%);
+}
+
+.callout {
+  --calloutAccent: var(--callout-accent);
+  --callout-bg: var(--callout-bg);
+  --calloutHeaderFontWeight: var(--callout-header-font-weight, 500);
+  --callout-border: var(--callout-border);
+  border-left: 0.25em solid var(--callout-border);
+  padding: 0.5rem 1rem;
+  color: inherit;
+  background-color: var(--callout-bg);
+}
+
+.callout-indicator {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  margin-bottom: 16px;
+  color: var(--calloutAccent);
+}
+
+.callout-indicator > svg:first-of-type {
+  margin-right: 0.5rem;
+}
+
+.callout-content:first-child,
+.callout-content:only-child {
+  margin-block-start: 0;
+}
+
+.callout-content:last-child,
+.callout-content:only-child {
+  margin-block-end: 0;
+}
+
+.callout-note {
+  --callout-accent: var(--callout-accent-note);
+  --callout-bg: var(--callout-bg-note);
+  --callout-border: var(--callout-border-note);
+}
+
+.callout-commend {
+  --callout-accent: var(--callout-accent-tip);
+  --callout-bg: var(--callout-bg-tip);
+  --callout-border: var(--callout-border-tip);
+}
+.callout-warn {
+  --callout-accent: var(--callout-accent-warning);
+  --callout-bg: var(--callout-bg-warning);
+  --callout-border: var(--callout-border-warning);
+}
+.callout-deter {
+  --callout-accent: var(--callout-accent-caution);
+  --callout-bg: var(--callout-bg-caution);
+  --callout-border: var(--callout-border-deter);
+}
+.callout-assert {
+  --callout-accent: var(--callout-accent-important);
+  --callout-bg: var(--callout-bg-important);
+  --callout-border: var(--callout-border-important);
+}

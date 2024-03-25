@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/PageLayout.astro";
 import VTColorThemeToggle from "@components/layout/VTColorThemeToggle.astro";
 
+import "@assets/styles/remark-callout-directives.css"
 export const getStaticPaths = async () => {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
