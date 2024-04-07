@@ -51,7 +51,6 @@ const setDarkMode = () => {
     isSystemDark ? enableDarkMode(false) : disableDarkMode(false);
   }
 };
-setDarkMode();
 
 const activateToggles = (darkModeToggles) => {
   darkModeToggles.forEach((darkModeToggle) => {
@@ -70,10 +69,12 @@ const activateToggles = (darkModeToggles) => {
     });
   });
 };
-activateToggles(darkModeToggles);
 
+
+activateToggles(darkModeToggles);
+setDarkMode();
 document.addEventListener("astro:after-swap", () => {
   activateToggles(document.querySelectorAll(".darkmode-toggle"));
   setDarkMode();
 });
-window.addEventListener("pageshow", setDarkMode);
+// window.addEventListener("pageshow", setDarkMode);
