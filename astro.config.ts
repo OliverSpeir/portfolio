@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 import icon from "astro-icon";
 import expressiveCode from "astro-expressive-code";
-import compress from "astro-compress";
+import compress from "@playform/compress";
 import { remarkReadingTime } from "./src/assets/plugins/remark-reading-time.mjs";
 import { autolinkConfig } from "./src/assets/plugins/rehype-autolink-config.ts";
 import { addGroupToH2 } from "./src/assets/plugins/rehype-autolink-h2group.js";
@@ -35,9 +35,7 @@ const config: AstroUserConfig = defineConfig({
       },
     }),
     expressiveCode(),
-    compress({
-      Path: ["./dist", "./_astro"],
-    }),
+    compress(),
     metaTags(),
   ],
   markdown: {
