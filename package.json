@@ -19,7 +19,7 @@
     "@playform/compress": "^0.0.3",
     "astro": "^4.5.17",
     "astro-capo": "^0.0.1",
-    "astro-expressive-code": "^0.31.0",
+    "astro-expressive-code": "^0.35.0",
     "astro-icon": "^1.1.0",
     "astro-meta-tags": "^0.2.2",
     "astro-robots-txt": "^1.0.0",
