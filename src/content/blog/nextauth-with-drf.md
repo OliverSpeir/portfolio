@@ -45,51 +45,51 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
 export default NextAuth({
-  providers: [
-    GoogleProvider({
-      clientId: process.env.NEXT_PUBLIC_OAUTH_CLIENT,
-      clientSecret: process.env.NEXT_PUBLIC_OAUTH_SECRET,
-    }),
-  ],
-  secret: process.env.NEXTAUTH_SECRET,
-  session: {
-    maxAge: 24 * 60 * 60,
-  },
-  callbacks: {
-    async signIn({ user, account }) {
-      if (user) {
-        const idToken = account.id_token;
-        try {
-          await fetch(`${process.env.NEXT_PUBLIC_LOGIN_URL}`, {
-            method: "post",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              auth_token: idToken,
-            }),
-          })
-            .then((response) => response.json())
-            .then((data) => (user.auth_token = data));
-          return true;
-        } catch (error) {
-          return false;
-        }
-      }
-    },
-    async jwt({ token, user }) {
-      if (user) {
-        const { auth_token } = user;
-        token.auth_token = auth_token;
-      }
-      return token;
-    },
+	providers: [
+		GoogleProvider({
+			clientId: process.env.NEXT_PUBLIC_OAUTH_CLIENT,
+			clientSecret: process.env.NEXT_PUBLIC_OAUTH_SECRET,
+		}),
+	],
+	secret: process.env.NEXTAUTH_SECRET,
+	session: {
+		maxAge: 24 * 60 * 60,
+	},
+	callbacks: {
+		async signIn({ user, account }) {
+			if (user) {
+				const idToken = account.id_token;
+				try {
+					await fetch(`${process.env.NEXT_PUBLIC_LOGIN_URL}`, {
+						method: "post",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({
+							auth_token: idToken,
+						}),
+					})
+						.then((response) => response.json())
+						.then((data) => (user.auth_token = data));
+					return true;
+				} catch (error) {
+					return false;
+				}
+			}
+		},
+		async jwt({ token, user }) {
+			if (user) {
+				const { auth_token } = user;
+				token.auth_token = auth_token;
+			}
+			return token;
+		},
 
-    async session({ session, token }) {
-      if (token.auth_token) {
-        session.auth_token = token.auth_token;
-        return session;
-      }
-    },
-  },
+		async session({ session, token }) {
+			if (token.auth_token) {
+				session.auth_token = token.auth_token;
+				return session;
+			}
+		},
+	},
 });
 ```
 
@@ -102,8 +102,9 @@ This code starts off by setting the secret from an environmental variable, then 
 `maxAge` determines how long the session will be valid, which means how long until the user will need to sign in again.
 
 #### Callback functions
+
 The `signIn` callback is invoked when the user is authenticated by the SSO provider.
-    
+
 In this configuration the `signIn` callback will make a POST request to the DRF server. The body of the POST request will be our `idToken` (which is received from the SSO provider).
 
 The `jwt` callback is invoked when the the signIn callback returns true.
@@ -111,7 +112,7 @@ The `jwt` callback is invoked when the the signIn callback returns true.
 This is where we can define what information will be stored in the JWT, which is stored in the Session Cookie. In this configuration we include the `auth_token` that is sent by the DRF Server which will later be used as an API key to make authenticated requests to the DRF server.
 
 The `session` callback is invoked after the jwt callback signs and encrypts the jwt
-   
+
 This is when `auth_token` gets added into the session object. After the session callback completes the session is created and the user is returned to the frontend.
 
 ### Making calls to the protected DRF endpoints
@@ -120,7 +121,8 @@ This is when `auth_token` gets added into the session object. After the session 
 import { useSession } from "next-auth/react";
 const { data: session } = useSession();
 ```
-These two lines of code give the frontend access to the `auth_token` that we need to use to communicate with the DRF server. 
+
+These two lines of code give the frontend access to the `auth_token` that we need to use to communicate with the DRF server.
 
 Any other data that you have added into the session (e.g. data from the `idToken` or sent from the DRF server) can also be accessed like this.
 
@@ -145,7 +147,7 @@ Our endpoints will be protected by [Token Authorization](https://www.django-rest
 
 2. `views.py` should have a SocialAuthView that does not require authorization
 
-``````python
+```python
 @permission_classes((AllowAny, ))
 class GoogleSocialAuthView(GenericAPIView):
 
@@ -160,11 +162,11 @@ class GoogleSocialAuthView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         data = ((serializer.validated_data)['auth_token'])
         return Response(data, status=status.HTTP_200_OK)
-``````
+```
 
 3. `serializers.py` should have a SocialAuthSerializer that is used to validate the `idToken` that the NextAuth API sends
 
-``````python
+```python
 class GoogleSocialAuthSerializer(serializers.Serializer):
     auth_token = serializers.CharField()
 
@@ -186,11 +188,11 @@ class GoogleSocialAuthSerializer(serializers.Serializer):
 
         return register_social_user(
             provider=provider, email=email, name=name)
-``````
+```
 
 4. This serializer will take import from the next file we need to create `google.py`
 
-``````python
+```python
 from google.auth.transport import requests
 from google.oauth2 import id_token
 
@@ -207,11 +209,11 @@ class Google:
 
         except:
             return "The token is either invalid or has expired"
-``````
+```
 
 5. Next we need to create `register.py`
 
-``````python
+```python
 from rest_framework.authtoken.models import Token
 from default_locations.models import DefaultLocation
 from accounts.models import User
@@ -253,7 +255,7 @@ def register_social_user(provider, email, name):
             'user_id': new_user.id,
             'tokens': str(new_token[0]['key']),
         }
-``````
+```
 
 ### DRF Code Explained
 
@@ -264,36 +266,37 @@ def register_social_user(provider, email, name):
 2. Creating a view for each SSO creates an endpoint that NextAuth will request during the `signIn` callback
 3. Creating a serializer for each endpoint allows for the `idToken` sent by that endpoint to be validated
 
-    - This is where one would make a query for other data in the DRF's database that they might send back to be included in the frontend's session data
+   - This is where one would make a query for other data in the DRF's database that they might send back to be included in the frontend's session data
 
 4. Creating `google.py` as a seperate file is not strictly necessary but this allows for more readable code in my opinion
 
-    - this function is what actually contacts the SSO provider and validates the token
+   - this function is what actually contacts the SSO provider and validates the token
 
-5. `register.py`  is where the users and tokens are generated
+5. `register.py` is where the users and tokens are generated
 
-    - if the user already exists their existing token is deleted and a new one is created for them
-    - if the user does not exist a token and a new user is created
+   - if the user already exists their existing token is deleted and a new one is created for them
+   - if the user does not exist a token and a new user is created
 
 The DRF server needs to expose an unauthorized endpoint that accepts an `idToken`, validate that token with the provider and if the token is valid it needs to create an Authorization Token, and a new user if that `idToken` has not already been used by an existing account.
 
 ### Requiring Authorization for other DRF endpoints
 
 1. Add `permission_classes = (IsAuthenticated,)` with the `rest_framework.permissions import IsAuthenticated` function to all endpoints
-  
-    - it is possible to set permission classes with decorators as well
-    - `@permission_classes( [IsAuthenticated], )`
-    - [DRF permissions docs](https://www.django-rest-framework.org/api-guide/permissions/)
+
+   - it is possible to set permission classes with decorators as well
+   - `@permission_classes( [IsAuthenticated], )`
+   - [DRF permissions docs](https://www.django-rest-framework.org/api-guide/permissions/)
+
 2. Place these settings in the `settings.py` file of the main portion of the Django project
 
-``````python
+```python
 AUTH_USER_MODEL = "accounts.User"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication', 
+        'rest_framework.authentication.TokenAuthentication',
     ],
 }
-``````
+```
 
 3. This is all that is required for the endpoints to refuse access when in invalid token is not sent to them and accept when a valid token is sent
 4. The endpoints will now have `self.request.user` availble to them
@@ -301,8 +304,8 @@ REST_FRAMEWORK = {
 ## Resources
 
 - [Project I used this code for](https://github.com/orgs/Oxygen-Oriented-Programming/repositories)
-    - [NextAuth file of the project](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Frontend-NextJS/blob/dev/pages/api/auth/%5B...nextauth%5D.js)
-    - [DRF Accounts app of the project](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Accounts-DjangoRestFramework/tree/dev/accounts)
+  - [NextAuth file of the project](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Frontend-NextJS/blob/dev/pages/api/auth/%5B...nextauth%5D.js)
+  - [DRF Accounts app of the project](https://github.com/Oxygen-Oriented-Programming/Clean-Air-Compass-Accounts-DjangoRestFramework/tree/dev/accounts)
 - [Token Authentication](https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication)
 - [NextAuth Docs](https://next-auth.js.org/configuration/initialization)
 - [GitHub Discussion about NextAuth and DRF](https://github.com/nextauthjs/next-auth/discussions/1350)

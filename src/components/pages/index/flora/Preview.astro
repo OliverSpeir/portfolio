@@ -1,37 +1,32 @@
 ---
 type Props = {
-  href: string;
-  title: string;
-  date?: string;
-  description: string;
-  target?: string;
+	href: string;
+	title: string;
+	date?: string;
+	description: string;
+	target?: string;
 };
 const { href, title, date, description, target } = Astro.props;
 ---
 
 <a
-  {href}
-  {target}
-  class="flex flex-col bg-zinc-200 dark:bg-zinc-900 rounded-sm !no-underline group"
+	{href}
+	{target}
+	class="group flex flex-col rounded-sm bg-zinc-200 !no-underline dark:bg-zinc-900"
 >
-  <div class="my-2 mx-2">
-    <h3 class="leading-6 mb-0 group-hover:underline underline-offset-1">
-      {title}
-    </h3>
-    {
-      date && (
-        <time
-          datetime={date}
-          class="text-xs my-0 text-zinc-600 dark:text-zinc-400"
-        >
-          {date}
-        </time>
-      )
-    }
-    <p
-      class="mt-2 line-clamp-3 text-sm leading-6 text-light-text dark:text-dark-text mb-0"
-    >
-      {description}
-    </p>
-  </div>
+	<div class="mx-2 my-2">
+		<h3 class="mb-0 leading-6 underline-offset-1 group-hover:underline">
+			{title}
+		</h3>
+		{
+			date && (
+				<time datetime={date} class="my-0 text-xs text-zinc-600 dark:text-zinc-400">
+					{date}
+				</time>
+			)
+		}
+		<p class="mb-0 mt-2 line-clamp-3 text-sm leading-6 text-light-text dark:text-dark-text">
+			{description}
+		</p>
+	</div>
 </a>

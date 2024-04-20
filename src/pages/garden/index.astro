@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/PageLayout.astro";
-import VTColorThemeToggle from "@components/layout/VTColorThemeToggle.astro";
+import ThemeButton from "@components/layout/ThemeButton.astro";
 import Preview from "@components/pages/index/flora/Preview.astro";
 
 const title = "Digital Garden";
@@ -8,86 +8,86 @@ const description = "the plot";
 ---
 
 <Layout {title} {description}>
-  <div class="flex items-center">
-    <VTColorThemeToggle />
-    <nav><a href="/">Homepage</a></nav>
-  </div>
-  <div class="flex flex-col justify-center">
-    <h1 class="mx-auto">Digital Garden</h1>
-    <div class="flex justify-evenly gap-2 flex-col sm:flex-row">
-      <section>
-        <h2>Pinned</h2>
-        <div class="flex flex-col gap-2 sm:max-w-[16rem]">
-          <Preview
-            href="/garden/aboutme/"
-            title="About me"
-            description="Quick overview of me and my journey"
-          />
-          <Preview
-            href="/garden/futureprojects/"
-            title="Project roadmap"
-            description="Things I'd like to work on at some point"
-          />
-          <Preview
-            href="/garden/toolsiuse/"
-            title="Tools I use"
-            description="List of all tech related tools I use"
-          />
-        </div>
-      </section>
-      <section>
-        <h2>Recent</h2>
-        <div class="flex flex-col gap-2 sm:max-w-[16rem]">
-          <Preview
-            href="/garden/nodemailer/"
-            title="Serverless Nodemailer"
-            description="Serverless function to send emails via SMTP on static sites, zero js needed."
-            date="Jan, 2024"
-          />
-          <Preview
-            href="https://github.com/OliverSpeir/remark-imgattr"
-            target="_blank"
-            title="remark-imgAttr"
-            description="My first NPM package"
-            date="Jan, 2024"
-          />
-          <Preview
-            href="/garden/a11y/"
-            title="A11y thoughts"
-            date="Dec, 2023"
-            description="Notes and tools I've found while exploring Web Accessibility"
-          />
-          <Preview
-            href="/garden/theorycrafting/"
-            title="Web theorycrafting"
-            date="Dec, 2023"
-            description="Some thoughts and notes about how websites can and should work"
-          />
-        </div>
-      </section>
-      <section>
-        <h2>Older</h2>
-        <div class="flex flex-col gap-2 sm:max-w-[16rem]">
-          <Preview
-            href="/garden/fastapi-with-supabase/"
-            title="Fastapi with supabase"
-            date="Aug, 2023"
-            description="A trick I found for using the supabase-py library with FastAPI"
-          />
-          <Preview
-            href="/garden/nextauth-with-drf/"
-            title="Nextauth with DRF"
-            date="Apr, 2023"
-            description="A pretty detailed guide to using NextAuth with Django REST Framework"
-          />
-          <Preview
-            href="/garden/projects/"
-            title="School projects"
-            date="Feb, 2023"
-            description="A remnant from version 1 of this website, detailing my school prorjects"
-          />
-        </div>
-      </section>
-    </div>
-  </div>
+	<div class="flex items-center">
+		<ThemeButton />
+		<nav><a href="/">Homepage</a></nav>
+	</div>
+	<div class="flex flex-col justify-center">
+		<h1 class="mx-auto">Digital Garden</h1>
+		<div class="flex flex-col justify-evenly gap-2 sm:flex-row">
+			<section>
+				<h2>Pinned</h2>
+				<div class="flex flex-col gap-2 sm:max-w-[16rem]">
+					<Preview
+						href="/garden/aboutme/"
+						title="About me"
+						description="Quick overview of me and my journey"
+					/>
+					<Preview
+						href="/garden/futureprojects/"
+						title="Project roadmap"
+						description="Things I'd like to work on at some point"
+					/>
+					<Preview
+						href="/garden/toolsiuse/"
+						title="Tools I use"
+						description="List of all tech related tools I use"
+					/>
+				</div>
+			</section>
+			<section>
+				<h2>Recent</h2>
+				<div class="flex flex-col gap-2 sm:max-w-[16rem]">
+					<Preview
+						href="/garden/nodemailer/"
+						title="Serverless Nodemailer"
+						description="Serverless function to send emails via SMTP on static sites, zero js needed."
+						date="Jan, 2024"
+					/>
+					<Preview
+						href="https://github.com/OliverSpeir/remark-imgattr"
+						target="_blank"
+						title="remark-imgAttr"
+						description="My first NPM package"
+						date="Jan, 2024"
+					/>
+					<Preview
+						href="/garden/a11y/"
+						title="A11y thoughts"
+						date="Dec, 2023"
+						description="Notes and tools I've found while exploring Web Accessibility"
+					/>
+					<Preview
+						href="/garden/theorycrafting/"
+						title="Web theorycrafting"
+						date="Dec, 2023"
+						description="Some thoughts and notes about how websites can and should work"
+					/>
+				</div>
+			</section>
+			<section>
+				<h2>Older</h2>
+				<div class="flex flex-col gap-2 sm:max-w-[16rem]">
+					<Preview
+						href="/garden/fastapi-with-supabase/"
+						title="Fastapi with supabase"
+						date="Aug, 2023"
+						description="A trick I found for using the supabase-py library with FastAPI"
+					/>
+					<Preview
+						href="/garden/nextauth-with-drf/"
+						title="Nextauth with DRF"
+						date="Apr, 2023"
+						description="A pretty detailed guide to using NextAuth with Django REST Framework"
+					/>
+					<Preview
+						href="/garden/projects/"
+						title="School projects"
+						date="Feb, 2023"
+						description="A remnant from version 1 of this website, detailing my school prorjects"
+					/>
+				</div>
+			</section>
+		</div>
+	</div>
 </Layout>

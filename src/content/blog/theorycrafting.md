@@ -15,12 +15,11 @@ Honestly slapped this post together, but I will come back as I solidify my thoug
 
 This term is a bit unclear. Both static sites and "on demand generated" sites are server "rendered". Rendering meaning generating the HTML, JS, CSS and Images that comprise the website.
 
-The main advantage of "on demand generation" (meaning you have the ability to change the assets per request) is ability to work with things like: cookies, request headers and dynamic data. 
+The main advantage of "on demand generation" (meaning you have the ability to change the assets per request) is ability to work with things like: cookies, request headers and dynamic data.
 
-The main advantage of static generation is obviously that there doesn't need to be a generation process on every requeset. The cost of generation obviously depends on how much *could* change and how much can be "pregenerated".
+The main advantage of static generation is obviously that there doesn't need to be a generation process on every requeset. The cost of generation obviously depends on how much _could_ change and how much can be "pregenerated".
 
-
-## Routing 
+## Routing
 
 Client side routing is pretty nice, I think I like it but I'm curious what things will look like with MPA View Transitions.
 
@@ -42,28 +41,30 @@ Resumability needs consideration though, when it comes to [FID](https://web.dev/
 
 ## Partytown
 
-Uses web workers to execute Javascript outside of the main thread. This is pretty serious, and it differs from a service worker which just downloads and caches the javascript. 
+Uses web workers to execute Javascript outside of the main thread. This is pretty serious, and it differs from a service worker which just downloads and caches the javascript.
 
-A web worker can actually execute the javascript outside the main thread, which is an improvement from a module script because it doesn't have to wait for the page to load to begin execution. 
+A web worker can actually execute the javascript outside the main thread, which is an improvement from a module script because it doesn't have to wait for the page to load to begin execution.
 
 ## Signals
 
-I am not 100% sure and haven't spent very much time on this concept. I think they are basically just a subscription model. They are in contrast to React's useState hook which has the downfall of rerending the entire component the state belongs to. 
+I am not 100% sure and haven't spent very much time on this concept. I think they are basically just a subscription model. They are in contrast to React's useState hook which has the downfall of rerending the entire component the state belongs to.
 
 Here's chatGPT's vanilla JS version of signals:
 
 ```js
 function createSignal(initialValue) {
-    let value = initialValue;
-    const listeners = new Set();
+	let value = initialValue;
+	const listeners = new Set();
 
-    return [
-        () => value, // getter
-        (newValue) => {
-            value = newValue;
-            listeners.forEach((listener) => listener(value));
-        }, // setter
-        (listener) => { listeners.add(listener); } // subscribe
-    ];
+	return [
+		() => value, // getter
+		(newValue) => {
+			value = newValue;
+			listeners.forEach((listener) => listener(value));
+		}, // setter
+		(listener) => {
+			listeners.add(listener);
+		}, // subscribe
+	];
 }
 ```

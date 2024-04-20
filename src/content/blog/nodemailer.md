@@ -54,10 +54,10 @@ I think option 1 is what most users expect, and it's done with CSS and a returni
 
 ```css
 #success {
-  display: none;
+	display: none;
 }
 #success:target {
-  display: block;
+	display: block;
 }
 ```
 
@@ -66,24 +66,21 @@ I think option 1 is what most users expect, and it's done with CSS and a returni
 Can be anything you want obviously, but the trick to having it work as a **_progressive enhancement_** is using the form action and method properties. You'll also need to be sure to set the headers to properly so the function knows you're using Javascript to submit.
 
 ```html ins={2-3}
-<form
-  action="https://yourdomain.netlify.app/.netlify/functions/example"
-  method="POST"
->
-  <input type="email" name="email" />
-  <input type="text" name="subject" />
-  <textarea name="message" />
-  <button type="submit">Send</button>
+<form action="https://yourdomain.netlify.app/.netlify/functions/example" method="POST">
+	<input type="email" name="email" />
+	<input type="text" name="subject" />
+	<textarea name="message" />
+	<button type="submit">Send</button>
 </form>
 ```
 
 ```js ins={3-5}
 const response = await fetch(form.action, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(payload),
+	method: "POST",
+	headers: {
+		"Content-Type": "application/json",
+	},
+	body: JSON.stringify(payload),
 });
 ```
 

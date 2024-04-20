@@ -15,43 +15,38 @@ import autolinkHeadings from "rehype-autolink-headings";
 import imgAttr from "remark-imgattr";
 import metaTags from "astro-meta-tags";
 import remarkDirective from "remark-directive";
-import remarkCalloutDirectives from "./src/assets/plugins/remark-callout-directives-customized.js"
+import remarkCalloutDirectives from "./src/assets/plugins/remark-callout-directives-customized.js";
 
 const config: AstroUserConfig = defineConfig({
-  site: "http://oliverspeir.dev/",
-  build: {
-    inlineStylesheets: "always",
-  },
-  integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    sitemap(),
-    robotsTxt(),
-    icon({
-      include: {
-        bxl: ["linkedin-square", "github"],
-        f7: ["tree"],
-      },
-    }),
-    expressiveCode(),
-    compress(),
-    metaTags(),
-  ],
-  markdown: {
-    remarkPlugins: [
-      remarkReadingTime,
-      imgAttr,
-      remarkDirective,
-      remarkCalloutDirectives,
-    ],
-    rehypePlugins: [
-      rehypeSlug,
-      accessibleCheckbox,
-      [autolinkHeadings, autolinkConfig],
-      addGroupToH2,
-    ],
-  },
+	site: "http://oliverspeir.dev/",
+	build: {
+		inlineStylesheets: "always",
+	},
+	integrations: [
+		tailwind({
+			applyBaseStyles: false,
+		}),
+		sitemap(),
+		robotsTxt(),
+		icon({
+			include: {
+				bxl: ["linkedin-square", "github"],
+				f7: ["tree"],
+			},
+		}),
+		expressiveCode(),
+		compress(),
+		metaTags(),
+	],
+	markdown: {
+		remarkPlugins: [remarkReadingTime, imgAttr, remarkDirective, remarkCalloutDirectives],
+		rehypePlugins: [
+			rehypeSlug,
+			accessibleCheckbox,
+			[autolinkHeadings, autolinkConfig],
+			addGroupToH2,
+		],
+	},
 });
 
 // https://astro.build/config

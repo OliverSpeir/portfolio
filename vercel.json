@@ -1,48 +1,48 @@
 {
-  "redirects": [
-    {
-      "source": "/blog/nextauth-with-drf",
-      "destination": "/garden/nextauth-with-drf",
-      "permanent": true
-    },
-    {
-      "source": "/blog/fastapi-with-supabase",
-      "destination": "/garden/fastapi-with-supabase",
-      "permanent": true
-    },
-    {
-      "source": "/projects",
-      "destination": "/garden/projects",
-      "permanent": true
-    },
-    {
-        "source": "/blog/nextauth-with-drf/",
-        "destination": "/garden/nextauth-with-drf",
-        "permanent": true
-      },
-      {
-        "source": "/blog/fastapi-with-supabase/",
-        "destination": "/garden/fastapi-with-supabase",
-        "permanent": true
-      },
-      {
-        "source": "/projects/",
-        "destination": "/garden/projects",
-        "permanent": true
-      },
-      {
-        "source": "/about/",
-        "destination": "/garden/aboutme",
-        "permanent": true
-      },
-      {
-        "source": "/about",
-        "destination": "/garden/aboutme",
-        "permanent": true
-      }
-  ],
-  "rewrites": [
-    { "source": "/404", "destination": "/" },
-    { "source": "/(.*)", "destination": "/" }
-  ]
+	"redirects": [
+		{
+			"source": "/blog/nextauth-with-drf",
+			"destination": "/garden/nextauth-with-drf",
+			"permanent": true
+		},
+		{
+			"source": "/blog/fastapi-with-supabase",
+			"destination": "/garden/fastapi-with-supabase",
+			"permanent": true
+		},
+		{
+			"source": "/projects",
+			"destination": "/garden/projects",
+			"permanent": true
+		},
+		{
+			"source": "/blog/nextauth-with-drf/",
+			"destination": "/garden/nextauth-with-drf",
+			"permanent": true
+		},
+		{
+			"source": "/blog/fastapi-with-supabase/",
+			"destination": "/garden/fastapi-with-supabase",
+			"permanent": true
+		},
+		{
+			"source": "/projects/",
+			"destination": "/garden/projects",
+			"permanent": true
+		},
+		{
+			"source": "/about/",
+			"destination": "/garden/aboutme",
+			"permanent": true
+		},
+		{
+			"source": "/about",
+			"destination": "/garden/aboutme",
+			"permanent": true
+		}
+	],
+	"rewrites": [
+		{ "source": "/404", "destination": "/" },
+		{ "source": "/(.*)", "destination": "/" }
+	]
 }

@@ -11,7 +11,6 @@ TLDR the trick is to send the access token that is received from the Supabase se
 
 `Disclaimer: This solution works as of version 1.0.3 of Supabase-py`
 
-
 ## Overview
 
 This blog details using `supabase-py` on a FastAPI layer in between frontend using Supabase Auth and Supabase itself.
@@ -31,12 +30,12 @@ const session = await supabase.auth.getSession();
 const tokens = session?.data?.session?.access_token;
 
 const response = await fetch(apiUrl as RequestInfo, {
-method: "POST",
-headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${tokens}`,
-},
-body: JSON.stringify(body),
+	method: "POST",
+	headers: {
+		"Content-Type": "application/json",
+		Authorization: `Bearer ${tokens}`,
+	},
+	body: JSON.stringify(body),
 });
 ```
 
@@ -68,10 +67,10 @@ async def add_authentication(request: Request, call_next):
         return Response("Unauthorized", status_code=401)
 
     try:
-        auth = supabase.auth.get_user(token) 
+        auth = supabase.auth.get_user(token)
         request.state.user_id = auth.user.id
         supabase.postgrest.auth(token)
-    
+
     except Exception:
         return Response("Invalid user token", status_code=401)
 

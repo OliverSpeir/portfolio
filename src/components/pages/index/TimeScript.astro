@@ -1,5 +1,4 @@
 ---
-
 // it's  IIFE https://developer.mozilla.org/en-US/docs/Glossary/IIFE
 
 // IIFE are useful for data-astro-rerun scripts because the window is preserved when using Astro's <ViewTransitions/>
@@ -27,6 +26,19 @@
 
 */
 ---
+
 <script is:inline data-astro-rerun>
-(()=>{let e=new Intl.DateTimeFormat("en-US",{timeZone:"America/Denver",hour12:!1,hour:"2-digit",minute:"2-digit"}).format(new Date).replace(/^0/,"");const t=parseInt(e.split(":")[0],10)<12?" AM":"",n=document.getElementById("time");n&&(n.innerText=e+t)})();
+	(() => {
+		let e = new Intl.DateTimeFormat("en-US", {
+			timeZone: "America/Denver",
+			hour12: !1,
+			hour: "2-digit",
+			minute: "2-digit",
+		})
+			.format(new Date())
+			.replace(/^0/, "");
+		const t = parseInt(e.split(":")[0], 10) < 12 ? " AM" : "",
+			n = document.getElementById("time");
+		n && (n.innerText = e + t);
+	})();
 </script>

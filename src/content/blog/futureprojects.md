@@ -33,4 +33,3 @@ Some project ideas I'd like to get to eventually in no particular order
 - Recreate starlight "on this page" panel as .astro component
   - Highlight current section when scrolled to
   - Mobile friendly version
-
