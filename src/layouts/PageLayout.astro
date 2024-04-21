@@ -39,7 +39,6 @@ const { title, description, post } = Astro.props;
 				} else {
 					color = currentTheme === "dark" ? "#acbef9" : "#2f3a91";
 				}
-				console.log(themeColorMeta);
 				themeColorMeta && themeColorMeta.setAttribute("content", color);
 			})();
 		</script>

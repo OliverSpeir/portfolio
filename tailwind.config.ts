@@ -45,7 +45,7 @@ const config: Config = {
 	},
 
 	plugins: [
-		plugin(({ addBase, theme }) => {
+		plugin(({ addBase }) => {
 			addBase({
 				"*, ::before, ::after": {
 					boxSizing: "border-box",
@@ -101,28 +101,6 @@ const config: Config = {
 				},
 				"li>p": {
 					marginBottom: ".6rem",
-				},
-				blockquote: {
-					paddingTop: "0.5rem",
-					paddingBottom: "0.5rem",
-					paddingLeft: "1rem",
-					borderLeft: "5px solid",
-					borderColor: "#35363A",
-					backgroundColor: "#D4D4D8",
-					borderRadius: theme("borderRadius.md"),
-					fontStyle: "italic",
-					fontWeight: "450",
-					marginLeft: "0",
-					marginRight: "0",
-					"@apply sm:mx-5 dark:bg-zinc-900": {},
-					"& p:last-child": {
-						marginBottom: "0",
-					},
-				},
-				"article img": {
-					maxWidth: "100%",
-					height: "auto",
-					borderRadius: theme("borderRadius.md"),
 				},
 				code: {
 					backgroundColor: "#D4D4D8",
