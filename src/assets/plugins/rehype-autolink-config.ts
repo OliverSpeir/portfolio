@@ -2,7 +2,7 @@ import { h } from "hastscript";
 import type { Options } from "rehype-autolink-headings";
 
 // Custom escape function
-const escape = (str: string) => {
+const escape = (str: string = ""): string => {
 	const map: { [key: string]: string } = {
 		"&": "&amp;",
 		"<": "&lt;",
@@ -10,7 +10,11 @@ const escape = (str: string) => {
 		'"': "&quot;",
 		"'": "&#39;",
 	};
-	return str.replace(/[&<>"']/g, (m) => map[m as keyof typeof map]);
+
+	return str.replace(/[&<>"']/g, (m) => {
+		const key = m as keyof typeof map;
+		return map[key] ?? m;
+	});
 };
 
 interface HastNode {
