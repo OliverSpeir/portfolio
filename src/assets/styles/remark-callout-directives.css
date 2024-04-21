@@ -1,6 +1,6 @@
 /* This is taken from @microflash/remark-callout-directives/themes/github/index.css and modified. Modified to work with tailwind darkMode: class, among other things */
 
-:root[data-theme="light"] {
+:root {
 	--callout-headingFontColor-note: hsl(235, 76%, 29%);
 	--callout-bg-note: hsl(236, 77%, 90%);
 	--callout-border-note: hsl(235, 82%, 59%);

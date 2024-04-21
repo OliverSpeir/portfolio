@@ -9,7 +9,6 @@ const { defaultTheme = "auto" } = Astro.props;
 <script is:inline data-default-theme={defaultTheme}>
 	window.theme ??= (() => {
 		const defaultTheme = document.currentScript.getAttribute("data-default-theme");
-		console.log(defaultTheme);
 		const storageKey = "theme";
 		const store =
 			typeof localStorage !== "undefined"

@@ -21,14 +21,50 @@ const { title, description, post } = Astro.props;
 		<Meta {title} {description} {post} />
 		<ThemeManager />
 		<ViewTransitions />
-		<script is:inline>
-			document.addEventListener("theme-changed", (e) => console.log(e.detail));
-		</script>
-		<script is:inline>
-			theme.getTheme();
+		<script>
+			type ThemeChangedEventDetail = {
+				theme: "dark" | "light" | "auto";
+				systemTheme: "dark" | "light";
+				defaultTheme: "dark" | "light" | "auto";
+			};
+
+			const setBrowserTheme = (
+				theme: ThemeChangedEventDetail["theme"],
+				systemTheme: ThemeChangedEventDetail["systemTheme"],
+			) => {
+				const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+				let color;
+				if (theme === "auto") {
+					color = systemTheme === "dark" ? "#acbef9" : "#2f3a91";
+				} else {
+					color = theme === "dark" ? "#acbef9" : "#2f3a91";
+				}
+
+				themeColorMeta && themeColorMeta.setAttribute("content", color);
+			};
+
+			document.addEventListener("theme-changed", (e) => {
+				const customEvent = e as CustomEvent<ThemeChangedEventDetail>;
+				setBrowserTheme(customEvent.detail.theme, customEvent.detail.systemTheme);
+			});
 		</script>
 	</Head>
 	<body>
+		<script is:inline>
+			(() => {
+				const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+				const currentTheme = theme.getTheme();
+				let color;
+				if (currentTheme === "auto") {
+					color = theme.getSystemTheme() === "dark" ? "#acbef9" : "#2f3a91";
+				} else {
+					color = currentTheme === "dark" ? "#acbef9" : "#2f3a91";
+				}
+				console.log(themeColorMeta);
+				themeColorMeta && themeColorMeta.setAttribute("content", color);
+			})();
+		</script>
 		<SkipLinks />
 		<main>
 			<slot />
