@@ -1,23 +1,10 @@
 ---
-import { Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Socials from "@components/pages/index/picandlinks/Socials.astro";
-import pfp from "@assets/imgs/pfp1.png";
 ---
 
 <div class="mb-6 flex min-w-max items-center justify-center gap-4 sm:flex-col">
-	<Picture
-		src={pfp}
-		alt=""
-		quality={100}
-		width={135}
-		formats={["avif", "webp"]}
-		densities={[1, 2]}
-		class="rounded-full"
-		loading="eager"
-		fetchpriority="high"
-		decoding="sync"
-	/>
+	<img src="/pfp_4k.avif" width="135" height="152" alt="" class="rounded-full"/>
 	<div class="flex flex-col">
 		<Socials />
 		<a class="mt-3 flex items-center justify-evenly" href="/garden/"

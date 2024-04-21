@@ -18,37 +18,15 @@ const { title, description, post } = Astro.props;
 <!doctype html>
 <html lang="en" dir="ltr">
 	<Head>
+		<link />
+		{
+			Astro.url.pathname === "/" && (
+				<link rel="preload" as="image" href="/pfp_4k.avif" type="image/avif" />
+			)
+		}
 		<Meta {title} {description} {post} />
 		<ThemeManager />
 		<ViewTransitions />
-		<script>
-			type ThemeChangedEventDetail = {
-				theme: "dark" | "light" | "auto";
-				systemTheme: "dark" | "light";
-				defaultTheme: "dark" | "light" | "auto";
-			};
-
-			const setBrowserTheme = (
-				theme: ThemeChangedEventDetail["theme"],
-				systemTheme: ThemeChangedEventDetail["systemTheme"],
-			) => {
-				const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-				let color;
-				if (theme === "auto") {
-					color = systemTheme === "dark" ? "#acbef9" : "#2f3a91";
-				} else {
-					color = theme === "dark" ? "#acbef9" : "#2f3a91";
-				}
-
-				themeColorMeta && themeColorMeta.setAttribute("content", color);
-			};
-
-			document.addEventListener("theme-changed", (e) => {
-				const customEvent = e as CustomEvent<ThemeChangedEventDetail>;
-				setBrowserTheme(customEvent.detail.theme, customEvent.detail.systemTheme);
-			});
-		</script>
 	</Head>
 	<body>
 		<script is:inline>
@@ -79,6 +57,34 @@ const { title, description, post } = Astro.props;
 			window.onload = loadFathom;
 			document.addEventListener("astro:page-load", function () {
 				loadFathom();
+			});
+		</script>
+		<script>
+			type ThemeChangedEventDetail = {
+				theme: "dark" | "light" | "auto";
+				systemTheme: "dark" | "light";
+				defaultTheme: "dark" | "light" | "auto";
+			};
+
+			const setBrowserTheme = (
+				theme: ThemeChangedEventDetail["theme"],
+				systemTheme: ThemeChangedEventDetail["systemTheme"],
+			) => {
+				const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+				let color;
+				if (theme === "auto") {
+					color = systemTheme === "dark" ? "#acbef9" : "#2f3a91";
+				} else {
+					color = theme === "dark" ? "#acbef9" : "#2f3a91";
+				}
+
+				themeColorMeta && themeColorMeta.setAttribute("content", color);
+			};
+
+			document.addEventListener("theme-changed", (e) => {
+				const customEvent = e as CustomEvent<ThemeChangedEventDetail>;
+				setBrowserTheme(customEvent.detail.theme, customEvent.detail.systemTheme);
 			});
 		</script>
 	</body>
