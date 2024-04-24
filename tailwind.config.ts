@@ -45,7 +45,7 @@ const config: Config = {
 	},
 
 	plugins: [
-		plugin(({ addBase }) => {
+		plugin(({ addBase, theme }) => {
 			addBase({
 				"*, ::before, ::after": {
 					boxSizing: "border-box",
@@ -106,6 +106,11 @@ const config: Config = {
 					backgroundColor: "#D4D4D8",
 					"@apply px-1 py-[.1rem] rounded-md dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 whitespace-pre-wrap break-words":
 						{},
+				},
+				"article img": {
+					maxWidth: "100%",
+					height: "auto",
+					borderRadius: theme("borderRadius.md"),
 				},
 			});
 		}),
