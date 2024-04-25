@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .group:focus-within .anchor-icon {
 	opacity: 1;
 }

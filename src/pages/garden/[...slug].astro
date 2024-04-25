@@ -1,4 +1,5 @@
 ---
+import "@assets/styles/posts.css";
 import { getCollection } from "astro:content";
 import Layout from "@layouts/PageLayout.astro";
 import "@assets/styles/remark-callout-directives.css";
@@ -29,7 +30,7 @@ const lastModifiedFallback = lastModifiedDate.toLocaleString("en-US", {
 			<ThemeButton />
 			<nav><a href="/">Homepage</a> <a href="/garden/">Garden</a></nav>
 		</div>
-		<aside class="flex flex-col text-sm">
+		<aside class="flex flex-col text-sm sm:mr-2">
 			<span>Updated: <span id="modifiedAgo">{lastModifiedFallback}</span> </span>
 			<span>
 				Published: {
@@ -43,25 +44,27 @@ const lastModifiedFallback = lastModifiedDate.toLocaleString("en-US", {
 	</div>
 
 	<script is:inline data-last-modified={lastModifiedDate}>
-		const lastModified = new Date(document.currentScript.getAttribute("data-last-modified"));
-		const now = new Date();
-		const monthsAgo =
-			(now.getFullYear() - lastModified.getFullYear()) * 12 +
-			now.getMonth() -
-			lastModified.getMonth();
+		(() => {
+			const lastModified = new Date(document.currentScript.getAttribute("data-last-modified"));
+			const now = new Date();
+			const monthsAgo =
+				(now.getFullYear() - lastModified.getFullYear()) * 12 +
+				now.getMonth() -
+				lastModified.getMonth();
 
-		let textContent;
-		if (monthsAgo === 0) {
-			textContent = "This month";
-		} else if (monthsAgo === 1) {
-			textContent = "Last month";
-		} else if (monthsAgo > 12) {
-			textContent = lastModified.toLocaleString("en-US", { month: "short", year: "numeric" });
-		} else {
-			textContent = `${monthsAgo} months ago`;
-		}
+			let textContent;
+			if (monthsAgo === 0) {
+				textContent = "This month";
+			} else if (monthsAgo === 1) {
+				textContent = "Last month";
+			} else if (monthsAgo > 12) {
+				textContent = lastModified.toLocaleString("en-US", { month: "short", year: "numeric" });
+			} else {
+				textContent = `${monthsAgo} months ago`;
+			}
 
-		document.getElementById("modifiedAgo").textContent = textContent;
+			document.getElementById("modifiedAgo").textContent = textContent;
+		})();
 	</script>
 
 	<article class="mx-auto mt-2 flex max-w-[34rem] flex-col sm:mt-0">
