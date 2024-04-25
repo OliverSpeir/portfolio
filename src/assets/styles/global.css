@@ -7,7 +7,35 @@
 }
 
 @layer components {
-	*:is(h1, h2, h3, h4, h5, h6) {
+	*:is(h1, h2:not(#contents), h3, h4, h5, h6) {
 		@apply flex items-center gap-2;
 	}
+}
+
+:root[data-theme="dark"] {
+	--contents-bg: rgb(25, 25, 25);
+}
+:root {
+	--contents-bg: rgb(223, 220, 220);
+}
+
+
+#contents {
+	background-color: var(--contents-bg);
+	margin-bottom: 0px;
+	width: 100%;
+	font-size: 24px;
+	@apply flex items-center justify-center gap-2 rounded-t-lg;
+}
+
+#contents + ul {
+	background-color: var(--contents-bg);
+	margin-top: 0px;
+	padding-bottom: 0.35rem;
+	border-bottom-left-radius: 0.5rem/* 8px */;
+	border-bottom-right-radius: 0.5rem/* 8px */;	
+}
+
+#contents + ul ul {
+	margin-bottom: 0px;	
 }

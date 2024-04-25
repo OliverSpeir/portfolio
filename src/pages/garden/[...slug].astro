@@ -14,14 +14,57 @@ const { post } = Astro.props;
 const {
 	data: { title, description },
 } = post;
-const { Content } = await post.render();
+const { Content, remarkPluginFrontmatter } = await post.render();
+console.log(remarkPluginFrontmatter);
+const { lastModified } = remarkPluginFrontmatter;
+const lastModifiedDate = new Date(lastModified);
+const lastModifiedFallback = lastModifiedDate.toLocaleString("en-US", {
+	month: "short",
+	year: "numeric",
+});
 ---
 
 <Layout {title} {description} {post}>
-	<div class="flex items-center">
-		<ThemeButton />
-		<nav><a href="/">Homepage</a> <a href="/garden/">Garden</a></nav>
+	<div class="flex items-center justify-between">
+		<div class="flex items-center">
+			<ThemeButton />
+			<nav><a href="/">Homepage</a> <a href="/garden/">Garden</a></nav>
+		</div>
+		<aside class="flex flex-col text-sm">
+			<span>Last Updated: <span id="modifiedAgo">{lastModifiedFallback}</span> </span>
+			<span>
+				Published: {
+					new Date(remarkPluginFrontmatter.date).toLocaleString("en-US", {
+						month: "short",
+						year: "numeric",
+					})
+				}
+			</span>
+		</aside>
 	</div>
+
+	<script is:inline data-last-modified={lastModifiedDate}>
+		const lastModified = new Date(document.currentScript.getAttribute("data-last-modified"));
+		const now = new Date();
+		const monthsAgo =
+			(now.getFullYear() - lastModified.getFullYear()) * 12 +
+			now.getMonth() -
+			lastModified.getMonth();
+
+		let textContent;
+		if (monthsAgo === 0) {
+			textContent = "This month";
+		} else if (monthsAgo === 1) {
+			textContent = "Last month";
+		} else if (monthsAgo > 12) {
+			textContent = lastModified.toLocaleString("en-US", { month: "short", year: "numeric" });
+		} else {
+			textContent = `${monthsAgo} months ago`;
+		}
+
+		document.getElementById("modifiedAgo").textContent = textContent;
+	</script>
+
 	<article class="mx-auto mt-2 flex max-w-[34rem] flex-col sm:mt-0">
 		<Content />
 	</article>

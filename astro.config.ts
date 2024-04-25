@@ -16,6 +16,8 @@ import imgAttr from "remark-imgattr";
 import metaTags from "astro-meta-tags";
 import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "./src/assets/plugins/remark-callout-directives-customized.js";
+import { remarkModifiedTime } from "./src/assets/plugins/remark-last-modified.js";
+import remarkToc from "remark-toc";
 
 const config: AstroUserConfig = defineConfig({
 	site: "http://oliverspeir.dev/",
@@ -32,6 +34,7 @@ const config: AstroUserConfig = defineConfig({
 			include: {
 				bxl: ["linkedin-square", "github"],
 				f7: ["tree"],
+				gridicons: ["reader-external"],
 			},
 		}),
 		expressiveCode(),
@@ -39,7 +42,14 @@ const config: AstroUserConfig = defineConfig({
 		metaTags(),
 	],
 	markdown: {
-		remarkPlugins: [remarkReadingTime, imgAttr, remarkDirective, remarkCalloutDirectives],
+		remarkPlugins: [
+			remarkReadingTime,
+			imgAttr,
+			remarkDirective,
+			remarkCalloutDirectives,
+			remarkModifiedTime,
+			remarkToc,
+		],
 		rehypePlugins: [
 			rehypeSlug,
 			accessibleCheckbox,

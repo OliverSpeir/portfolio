@@ -13,9 +13,12 @@ One solution is to use [nodemailer](https://www.nodemailer.com/) to send the ema
 
 See [alternative methods](#alternatives) for other options.
 
-:::warn
+:::note
 This example uses Gmail as the SMTP, but it is possible to have your domain blacklisted by using workspaces like this, either use an actual Gmail address, or another SMTP.
 :::
+
+
+## Contents
 
 ## Serverless function
 
@@ -23,7 +26,7 @@ _As far as I am aware it is easiest to handle CORS yourself (instead of API gate
 
 This function is set up for netlify but netlify just uses AWS Lambda functions, just like vercel, so it could be easily hosted on any of the three.
 
-### Overview of function:
+### Overview of function
 
 1. Handle CORS / Block origins
 2. Create `transporter` with nodemailer based on environmental variables
