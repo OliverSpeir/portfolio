@@ -19,23 +19,22 @@
 	--contents-bg: rgb(223, 220, 220);
 }
 
-
 #contents {
 	background-color: var(--contents-bg);
 	margin-bottom: 0px;
 	width: 100%;
 	font-size: 24px;
-	@apply flex items-center justify-center gap-2 rounded-t-lg;
+	@apply flex items-center justify-center gap-2 rounded-t-sm;
 }
 
 #contents + ul {
 	background-color: var(--contents-bg);
 	margin-top: 0px;
 	padding-bottom: 0.35rem;
-	border-bottom-left-radius: 0.5rem/* 8px */;
-	border-bottom-right-radius: 0.5rem/* 8px */;	
+	border-bottom-left-radius: 0.125rem /* 8px */;
+	border-bottom-right-radius: 0.125rem /* 8px */;
 }
 
 #contents + ul ul {
-	margin-bottom: 0px;	
+	margin-bottom: 0px;
 }

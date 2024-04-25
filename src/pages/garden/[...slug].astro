@@ -15,7 +15,6 @@ const {
 	data: { title, description },
 } = post;
 const { Content, remarkPluginFrontmatter } = await post.render();
-console.log(remarkPluginFrontmatter);
 const { lastModified } = remarkPluginFrontmatter;
 const lastModifiedDate = new Date(lastModified);
 const lastModifiedFallback = lastModifiedDate.toLocaleString("en-US", {
@@ -31,7 +30,7 @@ const lastModifiedFallback = lastModifiedDate.toLocaleString("en-US", {
 			<nav><a href="/">Homepage</a> <a href="/garden/">Garden</a></nav>
 		</div>
 		<aside class="flex flex-col text-sm">
-			<span>Last Updated: <span id="modifiedAgo">{lastModifiedFallback}</span> </span>
+			<span>Updated: <span id="modifiedAgo">{lastModifiedFallback}</span> </span>
 			<span>
 				Published: {
 					new Date(remarkPluginFrontmatter.date).toLocaleString("en-US", {

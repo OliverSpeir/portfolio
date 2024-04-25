@@ -1,15 +1,41 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getEntry } from "astro:content";
 type Props = {
-	href: string;
-	title: string;
+	entry?: string;
+	href?: string;
+	title?: string;
 	date?: string;
-	description: string;
+	description?: string;
 	target?: string;
 	external?: boolean;
 	readingTime?: string;
+	dated?: boolean;
 };
-const { href, title, date, description, target, external = false, readingTime } = Astro.props;
+let {
+	entry,
+	href = "",
+	title = "",
+	date = "",
+	description = "",
+	target,
+	external = false,
+	readingTime = "",
+	dated = true,
+} = Astro.props;
+if (entry) {
+	const Entry = await getEntry("blog", entry);
+	const { remarkPluginFrontmatter: EntryFrontmatter } = await Entry!.render();
+	if (title === "") title = Entry!.data.title;
+	if (href === "") href = `/garden/${Entry?.slug}`;
+	if (date === "")
+		date = new Date(Entry!.data.date).toLocaleString("en-US", {
+			month: "short",
+			year: "numeric",
+		});
+	if (description === "") description = Entry!.data.description;
+	if (readingTime === "") readingTime = EntryFrontmatter.minutesRead;
+}
 ---
 
 <a
@@ -24,7 +50,7 @@ const { href, title, date, description, target, external = false, readingTime } 
 		</h3>
 		<div class="mt-1 flex gap-4">
 			{
-				date && (
+				dated && (
 					<time datetime={date} class="my-0 text-xs text-zinc-600 dark:text-zinc-400">
 						{date}
 					</time>

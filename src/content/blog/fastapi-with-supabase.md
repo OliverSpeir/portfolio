@@ -15,6 +15,8 @@ TLDR the trick is to send the access token that is received from the Supabase se
 
 This blog details using `supabase-py` on a FastAPI layer in between frontend using Supabase Auth and Supabase itself.
 
+## Contents
+
 ## Solution
 
 Create middleware that handles the authentication with Supabase. This will allow the FastAPI endpoints to make authenciated requests to Supabase using the Supabase client library without any extra work. The middleware can then add the user_id of the requestor into the state of the request so that each endpoint can access the user_id.

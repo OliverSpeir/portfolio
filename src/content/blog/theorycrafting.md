@@ -1,6 +1,6 @@
 ---
-title: "A11y Thoughts"
-description: "Some tools I've found for and thoughts I have about Web Accessibility"
+title: "Web Theorycrafting"
+description: "Some notes about web concepts"
 ogImage: "../../assets/imgs/theoryCrafting.png"
 date: 2024-01-17T03:21:44Z
 ---
@@ -10,6 +10,8 @@ date: 2024-01-17T03:21:44Z
 This is really just a public notes and invitation for anyone else to give me their thoughts on these subjects.
 
 Honestly slapped this post together, but I will come back as I solidify my thoughts.
+
+## Contents
 
 ## Server Side Rendering
 
