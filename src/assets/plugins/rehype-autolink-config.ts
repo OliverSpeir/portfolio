@@ -56,7 +56,7 @@ const createSROnlyLabel = (text: string) => {
 	return h(
 		"span",
 		{ "is:raw": true, class: "sr-only" },
-		`Link to the ${escape(text)} of this page`,
+		`Link to the ${escape(text)} section of this page`,
 	);
 };
 

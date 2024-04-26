@@ -3,7 +3,7 @@ import "@assets/styles/posts.css";
 import { getCollection } from "astro:content";
 import Layout from "@layouts/PageLayout.astro";
 import "@assets/styles/remark-callout-directives.css";
-import ThemeButton from "@components/layout/ThemeButton.astro";
+import ThemeButton from "@components/ThemeButton.astro";
 export const getStaticPaths = async () => {
 	const posts = await getCollection("blog");
 	return posts.map((post) => ({
@@ -15,13 +15,15 @@ const { post } = Astro.props;
 const {
 	data: { title, description },
 } = post;
-const { Content, remarkPluginFrontmatter } = await post.render();
+const { Content, remarkPluginFrontmatter, headings } = await post.render();
 const { lastModified } = remarkPluginFrontmatter;
 const lastModifiedDate = new Date(lastModified);
 const lastModifiedFallback = lastModifiedDate.toLocaleString("en-US", {
 	month: "short",
 	year: "numeric",
 });
+
+import TOC from "@components/TOC-WIP.astro";
 ---
 
 <Layout {title} {description} {post}>

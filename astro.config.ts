@@ -24,6 +24,7 @@ const config: AstroUserConfig = defineConfig({
 	build: {
 		inlineStylesheets: "always",
 	},
+	scopedStyleStrategy: "class",
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,
@@ -34,7 +35,7 @@ const config: AstroUserConfig = defineConfig({
 			include: {
 				bxl: ["linkedin-square", "github"],
 				f7: ["tree"],
-				gridicons: ["reader-external"],
+				gridicons: ["reader-external", "chevron-down"],
 			},
 		}),
 		expressiveCode(),

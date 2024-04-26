@@ -3,7 +3,6 @@ import { toString } from "mdast-util-to-string";
 
 export function remarkReadingTime() {
 	return function (tree, { data }) {
-		// console.log("running remarkReadingTime");
 		const textOnPage = toString(tree);
 		const readingTime = getReadingTime(textOnPage);
 		// readingTime.text will give us minutes read as a friendly string,
