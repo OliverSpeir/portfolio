@@ -1,11 +1,9 @@
 ---
-title: "Nodemailer"
+title: "Creating an endpoint that sends emails"
 description: "How to set up a serverless function that sends emails and use it on a static website"
 ogImage: "../../assets/imgs/nodemailer.png"
 date: 2024-01-17T03:21:44Z
 ---
-
-# Creating an endpoint that sends emails
 
 The concept here is you have a static site with a contact form, and you want to be able to have your contact form send an email when it is submitted.
 

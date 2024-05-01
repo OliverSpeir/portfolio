@@ -5,8 +5,6 @@ ogImage: "../../assets/imgs/todo.png"
 date: 2024-02-07T00:39:02Z
 ---
 
-# TO DO
-
 Some project ideas I'd like to get to eventually in no particular order
 
 ## Astro

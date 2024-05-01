@@ -1,15 +1,16 @@
 ---
-title: "FastAPI with Supabase"
+title: "FastAPI with Supabase Auth"
 description: "This blog explains how to create a FastAPI that uses Supabase Auth and allows for RLS"
 ogImage: "../../assets/imgs/fastapi-supabase.png"
 date: 2023-08-20T03:21:44Z
 ---
 
-# FastAPI with Supabase Auth
 
 TLDR the trick is to send the access token that is received from the Supabase session on frontend as headers in the request to the FastAPI and then create middleware to validate that token with Supabase.
 
-`Disclaimer: This solution works as of version 1.0.3 of Supabase-py`
+:::note
+This solution was created for `1.0.3` of Supabase-py
+:::
 
 ## Overview
 

@@ -1,0 +1,52 @@
+---
+type Props = {
+	title: string;
+	lastModified: string;
+	date: Date;
+    minutesRead: string;
+};
+
+const { lastModified, date: published, title, minutesRead } = Astro.props;
+const lastModifiedDate = new Date(lastModified);
+const lastModifiedFallback = lastModifiedDate.toLocaleString("en-US", {
+	month: "short",
+	year: "numeric",
+});
+---
+
+<h1>{title}</h1>
+<div class="flex text-xs mb-4 gap-x-3 italic mx-2 dark:text-gray-200">
+	<span>Updated: <span id="modifiedAgo">{lastModifiedFallback}</span> </span>
+	<span>
+		Published: {
+			new Date(published).toLocaleString("en-US", {
+				month: "short",
+				year: "numeric",
+			})
+		}
+	</span>
+    <span>{minutesRead}</span>
+</div>
+<script is:inline data-last-modified={lastModifiedDate}>
+	(() => {
+		const lastModified = new Date(document.currentScript.getAttribute("data-last-modified"));
+		const now = new Date();
+		const monthsAgo =
+			(now.getFullYear() - lastModified.getFullYear()) * 12 +
+			now.getMonth() -
+			lastModified.getMonth();
+
+		let textContent;
+		if (monthsAgo === 0) {
+			textContent = "This month";
+		} else if (monthsAgo === 1) {
+			textContent = "Last month";
+		} else if (monthsAgo > 12) {
+			textContent = lastModified.toLocaleString("en-US", { month: "short", year: "numeric" });
+		} else {
+			textContent = `${monthsAgo} months ago`;
+		}
+
+		document.getElementById("modifiedAgo").textContent = textContent;
+	})();
+</script>

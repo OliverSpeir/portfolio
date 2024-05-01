@@ -5,8 +5,6 @@ ogImage: "../../assets/imgs/theoryCrafting.png"
 date: 2024-01-17T03:21:44Z
 ---
 
-# Theorycrafting
-
 This is really just a public notes and invitation for anyone else to give me their thoughts on these subjects.
 
 Honestly slapped this post together, but I will come back as I solidify my thoughts.

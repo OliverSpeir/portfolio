@@ -1,11 +1,9 @@
 ---
-title: "NextAuth with DRF"
+title: "NextAuth with Django REST Framework"
 description: "This blog post explains how to create a NextAuth SocialSignOn button that connects to a Django REST Framework API"
 ogImage: "../../assets/imgs/drf-nextauth.png"
 date: 2023-04-03T03:21:44Z
 ---
-
-# NextAuth Social Sign On (SSO) with Django REST Framework (DRF)
 
 This blog will outline and explain the steps for accomplishing:
 

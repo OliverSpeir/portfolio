@@ -5,8 +5,6 @@ ogImage: "../../assets/imgs/iuse.png"
 date: 2024-01-17T03:21:44Z
 ---
 
-# Tech I Use
-
 I'll try to keep this updated with everything I think is useful
 
 ## Web Dev

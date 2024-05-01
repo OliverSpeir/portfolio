@@ -5,9 +5,7 @@ ogImage: "../../assets/imgs/todo.png"
 date: 2024-01-17T03:21:44Z
 ---
 
-# Hi, I'm Oliver
-
-👋
+Hey, I'm Oliver 👋
 
 ## My origin story
 
