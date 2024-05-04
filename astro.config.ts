@@ -10,7 +10,7 @@ import { remarkReadingTime } from "./src/assets/plugins/remark-reading-time.mjs"
 import { autolinkConfig } from "./src/assets/plugins/rehype-autolink-config.ts";
 import { addGroupToH2 } from "./src/assets/plugins/rehype-autolink-h2group.js";
 import { accessibleCheckbox } from "./src/assets/plugins/accessibleCheckbox.js";
-import rehypeSlug from "rehype-slug";
+import rehypeSlug from "./src/assets/plugins/customRehypeSlug.js";
 import autolinkHeadings from "rehype-autolink-headings";
 import imgAttr from "remark-imgattr";
 import metaTags from "astro-meta-tags";
@@ -25,6 +25,7 @@ const config: AstroUserConfig = defineConfig({
 		inlineStylesheets: "always",
 	},
 	scopedStyleStrategy: "class",
+	devToolbar: { enabled: false },
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,
@@ -34,8 +35,8 @@ const config: AstroUserConfig = defineConfig({
 		icon({
 			include: {
 				bxl: ["linkedin-square", "github"],
-				f7: ["tree"],
-				gridicons: ["reader-external", "chevron-down"],
+				ph: ["plant"],
+				gridicons: ["reader-external", "chevron-right"],
 			},
 		}),
 		expressiveCode(),

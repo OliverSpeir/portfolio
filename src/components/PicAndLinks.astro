@@ -5,16 +5,18 @@ import Socials from "@components/Socials.astro";
 
 <div class="mb-6 flex min-w-max items-center justify-center gap-4 sm:flex-col">
 	<img src="/pfp_5k.avif" width="135" height="152" alt="" class="rounded-full" />
-	<div class="flex flex-col">
+	<div class="flex flex-col gap-y-1">
 		<Socials />
-		<a class="mt-3 flex items-center justify-evenly" href="/garden/"
-			><Icon name="f7:tree" class="h-8 w-8" aria-hidden="true" />Digital Garden</a
+		<a class="mt-3 flex items-center justify-evenly gap-x-2" href="/garden/"
+			><Icon name="ph:plant" class="h-8 w-8" aria-hidden="true" /><span class="mt-[0.4rem]"
+				>Digital Garden</span
+			></a
 		>
 		<a
-			class="mt-2 flex items-center justify-evenly"
+			class="mt-2 flex items-center justify-evenly gap-x-2"
 			href="https://cal.com/oliverspeir/chat"
 			target="_blank"
-			><Icon name="radix-icons:calendar" class="h-7 w-7" aria-hidden="true" />Schedule Call</a
+			><Icon name="radix-icons:calendar" class="h-7 w-7" aria-hidden="true" /><span class="mt-1">Schedule Call</span></a
 		>
 	</div>
 </div>
