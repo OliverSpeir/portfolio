@@ -31,7 +31,13 @@ export class TOC extends HTMLElement {
 	protected set current(link: HTMLAnchorElement) {
 		if (link === this._current) return;
 		if (this._current) this._current.removeAttribute("aria-current");
+		if (this._current && this._current.parentElement) {
+			this._current.parentElement.classList.remove("current");
+		}
 		link.setAttribute("aria-current", "true");
+		if (link.parentElement) {
+			link.parentElement.classList.add("current");
+		}
 		this._current = link;
 	}
 

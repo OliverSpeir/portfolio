@@ -59,4 +59,17 @@ import TOC from "@components/TOC.astro";
 		<TOC {headings} />
 		<Content />
 	</article>
+	<style>
+		:root[data-theme="light"] {
+			--background-color: #f2f3f5;
+			--text-color: #09090b;
+			--accent-color: #2f3a91;
+		}
+
+		:root[data-theme="dark"] {
+			--background-color: #323232;
+			--text-color: #ecf1f9;
+			--accent-color: #acbef9;
+		}
+	</style>
 </Layout>

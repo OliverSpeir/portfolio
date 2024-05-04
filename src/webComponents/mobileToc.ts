@@ -64,7 +64,8 @@ export class MobileTOC extends TOC {
 			bottom: 100%;
 			transform: translateY(10px);
 			transform-origin: bottom;
-			background-color: white;
+			background-color: var(--contents-bg);
+			color: var(--text-color);
 			box-sizing: border-box;
 			box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 			border-radius: 10px;
@@ -80,12 +81,44 @@ export class MobileTOC extends TOC {
 			justify-content: center;
 			align-items: center;
 		}
-		#toc-content ul {
-			width: 90%;
-			padding: 0;
-			margin: 0;
-			list-style: none;
+		#toc-content-wrapper {
+			width:95%;
 		}
+		#toc-content ul {
+			width: 100%;
+			padding: 0;
+			list-style: none;
+			margin: 0;
+		}
+		
+		#toc-content li {
+			display: block;
+			width: 100%;
+			padding: 0;
+			box-sizing: border-box;
+			border-top: 1px solid #565656;
+		}
+
+		#toc-content ul ul li.current {
+			background-color: #323232;
+			border-radius: 2px;
+		}
+		
+		#toc-content a[aria-current="true"] {
+			background-color: #323232;
+			border-radius: 2px;
+		}
+
+		#toc-content > #toc-content-wrapper > ul > li:first-child {
+			border-top: none;
+		}
+
+		
+		#toc-content ul ul li {
+			padding-left: 20px;
+			padding-right: 0;
+		}
+		
 		#toc-content li, #toc-content a {
 			white-space: nowrap;
 			overflow: hidden; 
@@ -93,8 +126,17 @@ export class MobileTOC extends TOC {
 			display: block;
 			width: 100%;
 		}
-		#toc-content ul ul {  
-			padding-left: 20px;  
+		#toc-content a {
+			padding-left: 0.35rem;
+			text-decoration: none;
+			font-weight: 500;
+			color: var(--accent-color);
+			transition: color 0.15s;
+		}
+		#toc-content a:hover {
+			text-decoration: underline;
+			text-underline-position: from-font;
+			text-decoration-thickness: 2px;
 		}
 		#toc-content.enabled {
 			transition: opacity 0.3s, transform 0.3s, visibility 0s 0.3s; 

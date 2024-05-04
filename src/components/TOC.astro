@@ -64,15 +64,18 @@ const renderTocItems = (items: TocItem[]): string => `
 <template id="mobileToc">
 	<div>
 		<div id="toc-display">
-			<button id="toc-toggle"
-				>
-				<div id="button-title">Contents
-				<Icon name="gridicons:chevron-right" id="caret" class="h-5 w-5" aria-hidden="true" /></div>
+			<button id="toc-toggle">
+				<div id="button-title">
+					Contents
+					<Icon name="gridicons:chevron-right" id="caret" class="h-5 w-5" aria-hidden="true" />
+				</div>
 				<span id="display-current"></span>
 			</button>
 		</div>
 		<section id="toc-content" aria-expanded="false">
-			<Fragment set:html={renderTocItems(toc)} />
+			<div id="toc-content-wrapper">
+				<Fragment set:html={renderTocItems(toc)} />
+			</div>
 		</section>
 	</div>
 </template>
