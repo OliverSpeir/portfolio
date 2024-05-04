@@ -31,8 +31,32 @@ import TOC from "@components/TOC.astro";
 			</div>
 		</div>
 	</header>
+	<script>
+		import { VisibleOnScrollUp } from "../../webComponents/visibleOnScrollUp";
+		import { FlyoutMenu } from "../../webComponents/mobileMenu";
+
+		customElements.define("flyout-menu", FlyoutMenu);
+		customElements.define("visible-on-scroll-up", VisibleOnScrollUp);
+		const el = document.createElement("visible-on-scroll-up");
+		document.body.appendChild(el);
+
+		let shouldAdd = true;
+		document.addEventListener("astro:before-swap", (e) => {
+			e.to.pathname.startsWith("/garden/") && e.to.pathname.length > "/garden/".length
+				? (shouldAdd = true)
+				: (shouldAdd = false);
+		});
+		window.addEventListener("scroll", () => {
+			if (shouldAdd) {
+				const el = document.createElement("visible-on-scroll-up");
+				document.body.appendChild(el);
+				shouldAdd = false;
+			}
+		});
+	</script>
 	<article class="mx-auto mt-2 flex max-w-[34rem] flex-col sm:mt-0">
 		<PostHeader {title} {lastModified} {date} {minutesRead} />
+		<TOC {headings} />
 		<Content />
 	</article>
 </Layout>

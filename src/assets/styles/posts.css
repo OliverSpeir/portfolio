@@ -11,6 +11,9 @@
 	*:is(h1, h2:not(#contents), h3, h4, h5, h6) {
 		@apply flex items-center gap-2;
 	}
+	*:is(h1, h2, h3, h4, h5, h6) {
+		@apply scroll-m-5;
+	}
 }
 
 :root[data-theme="dark"] {

@@ -16,7 +16,7 @@ type Props = {
 const { themeIconRelationship = "opposite" } = Astro.props;
 ---
 
-<theme-toggle-button></theme-toggle-button>
+<theme-toggle-button ></theme-toggle-button>
 
 <script is:inline data-theme-icon-relationship={themeIconRelationship}>
 	if (!customElements.get("theme-toggle-button")) {
@@ -43,13 +43,14 @@ const { themeIconRelationship = "opposite" } = Astro.props;
 			}
 
 			render() {
+				const size = this.getAttribute('data-theme-icon-size') || '50px'
 				this.shadowRoot.innerHTML = `
                 <style>
                     button {
                         background-color: transparent;
                         border: none;
                         color: inherit;
-                        width: 50px;
+                        width: ${size};
                         height: auto;
                         cursor: pointer;
 						touch-action: manipulation;

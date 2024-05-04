@@ -1,0 +1,114 @@
+---
+import { Icon } from "astro-icon/components";
+import type { MarkdownHeading } from "astro";
+
+export type Props = {
+	headings: MarkdownHeading[];
+	maxHeadingDepth?: number;
+	minHeadingDepth?: number;
+};
+
+type TocItem = MarkdownHeading & {
+	children: TocItem[];
+};
+const { headings, maxHeadingDepth = 3, minHeadingDepth = 2 } = Astro.props;
+
+const generateToC = (
+	headings: MarkdownHeading[],
+	minHeadingLevel: number,
+	maxHeadingLevel: number,
+): TocItem[] => {
+	headings = headings.filter(
+		(heading) => heading.depth >= minHeadingLevel && heading.depth <= maxHeadingLevel,
+	);
+	const toc: TocItem[] = [{ depth: 2, slug: "_top", text: "Overview", children: [] }];
+	headings.forEach((heading) => injectChild(toc, { ...heading, children: [] }));
+	return toc;
+};
+
+const injectChild = (items: TocItem[], item: TocItem): void => {
+	const lastItem = items[items.length - 1];
+	if (!lastItem || lastItem.depth >= item.depth) {
+		items.push(item);
+	} else {
+		injectChild(lastItem.children, item);
+	}
+};
+
+const toc = generateToC(headings, minHeadingDepth, maxHeadingDepth);
+
+const removeLinkText = (input: string) => {
+	return input.replace(/Link to the .*? section of this page/g, "");
+};
+
+/** make this properly if you want to scoped style it etc https://github.com/withastro/starlight/blob/main/packages/starlight/components/TableOfContents/TableOfContentsList.astro by having this function be its own astro component that uses Astro.self */
+const renderTocItems = (items: TocItem[]): string => `
+  <ul>
+    ${items
+			.map(
+				(item) => `
+      <li>
+        <a href="#${item.slug}">${removeLinkText(item.text)}</a>
+        ${item.children && item.children.length > 0 ? renderTocItems(item.children) : ""}
+      </li>
+    `,
+			)
+			.join("")}
+  </ul>
+`;
+---
+
+<template id="desktopToc">
+	<Fragment set:html={renderTocItems(toc)} />
+</template>
+<template id="mobileToc">
+	<div>
+		<div id="toc-display">
+			<button id="toc-toggle"
+				>
+				<div id="button-title">Contents
+				<Icon name="gridicons:chevron-right" id="caret" class="h-5 w-5" aria-hidden="true" /></div>
+				<span id="display-current"></span>
+			</button>
+		</div>
+		<section id="toc-content" aria-expanded="false">
+			<Fragment set:html={renderTocItems(toc)} />
+		</section>
+	</div>
+</template>
+<noscript>
+	<nav class="fixed bottom-0 bg-black" id="tocNav">
+		<details>
+			<summary class="flex">
+				<div
+					class="flex cursor-pointer select-none items-center gap-x-1 text-dark-accent-color hover:underline"
+				>
+					Table of Contents
+					<Icon name="gridicons:chevron-right" id="caret" class="h-5 w-5" aria-hidden="true" />
+				</div>
+			</summary>
+			<div class="dropdown -mt-3">
+				<Fragment set:html={renderTocItems(toc)} />
+			</div>
+		</details>
+	</nav>
+</noscript>
+<style is:global>
+	summary::marker,
+	summary::-webkit-details-marker {
+		display: none;
+	}
+	details[open] #caret {
+		transform: rotateZ(180deg);
+	}
+	a[aria-current="true"] {
+		color: red;
+	}
+	ul {
+		margin-bottom: 0px;
+	}
+</style>
+<script>
+	import { MobileTOC } from "src/webComponents/mobileToc";
+	customElements.define("mobile-toc", MobileTOC);
+</script>
