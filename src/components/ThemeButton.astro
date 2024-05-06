@@ -143,12 +143,15 @@ const { themeIconRelationship = "opposite" } = Astro.props;
 					.querySelector("button")
 					.setAttribute("aria-label", `Theme toggle button: click to activate ${newMode} mode`);
 			}
+			
 			toggleAxe(isShown) {
 				const button = this.shadowRoot.querySelector("button");
 				if (isShown) {
-					button.tabIndex = -1;
+					button.setAttribute("tabindex", "-1");
+					button.setAttribute("aria-disabled", "true");
 				} else {
 					button.removeAttribute("tabindex");
+					button.removeAttribute("aria-disabled");
 				}
 			}
 		}

@@ -27,6 +27,9 @@ export class FlyoutMenu extends HTMLElement {
 			}
 
 			const isOpen = menuContent.classList.contains("show");
+			isOpen
+				? button.setAttribute("aria-label", "open menu")
+				: button.setAttribute("aria-label", "close menu");
 			menuContent.classList.toggle("show", !isOpen);
 			menuContent.classList.add("enabled");
 
@@ -39,10 +42,12 @@ export class FlyoutMenu extends HTMLElement {
 	close() {
 		const menuContent = this.querySelector("#menu-content");
 		const toggleIcon = this.querySelector(".toggle-icon");
-		if (!menuContent || !toggleIcon) return;
+		const toggleButton = this.querySelector(".toggle-btn") as HTMLButtonElement;
+		if (!menuContent || !toggleIcon || !toggleButton) return;
 		const isOpen = menuContent.classList.contains("show");
 
 		if (isOpen) {
+			toggleButton.setAttribute("aria-label", "open menu");
 			menuContent.classList.remove("show");
 			toggleIcon.innerHTML = `<svg width="30px" height="30px" viewBox="0 0 24 24" class="toggle-svg"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path d="M5 5L19 19"><animate fill="freeze" attributeName="d" dur="0.4s" values="M5 5L19 19;M5 5L19 5"/></path><path d="M12 12H12" opacity="0"><animate fill="freeze" attributeName="d" begin="0.2s" dur="0.4s" values="M12 12H12;M5 12H19"/><set attributeName="opacity" begin="0.2s" to="1"/></path><path d="M5 19L19 5"><animate fill="freeze" attributeName="d" dur="0.4s" values="M5 19L19 5;M5 19L19 19"/></path></g></svg>`;
 		}
@@ -60,10 +65,10 @@ export class FlyoutMenu extends HTMLElement {
 
 		if (isShown) {
 			toggleButton.toggleAxe(true);
-			button.tabIndex = -1;
-			button.ariaDisabled = "true";
+			button.setAttribute("tabindex", "-1");
+			button.setAttribute("aria-disabled", "true");
 			links.forEach((link: HTMLAnchorElement) => {
-				link.tabIndex = -1;
+				link.setAttribute("tabindex", "-1");
 			});
 		} else {
 			toggleButton.toggleAxe(false);
@@ -148,7 +153,7 @@ export class FlyoutMenu extends HTMLElement {
 
 	render() {
 		this.innerHTML = `
-        <button class="toggle-btn"><span class="toggle-icon"><svg width="30px" height="30px" viewBox="0 0 24 24" class="toggle-svg"><g fill="none" stroke="currentColor" stroke-dasharray="24" stroke-dashoffset="24" stroke-linecap="round" stroke-width="2"><path d="M5 5H19" stroke-dashoffset="0" /><path d="M5 12H19" stroke-dashoffset="0" /><path d="M5 19H19" stroke-dashoffset="0" /></g></svg></span></button>
+        <button class="toggle-btn" aria-label="open menu"><span class="toggle-icon"><svg width="30px" height="30px" viewBox="0 0 24 24" class="toggle-svg"><g fill="none" stroke="currentColor" stroke-dasharray="24" stroke-dashoffset="24" stroke-linecap="round" stroke-width="2"><path d="M5 5H19" stroke-dashoffset="0" /><path d="M5 12H19" stroke-dashoffset="0" /><path d="M5 19H19" stroke-dashoffset="0" /></g></svg></span></button>
         <div id="menu-content">
           <div class="icon-container">
             <theme-toggle-button data-theme-icon-size=60px></theme-toggle-button>

@@ -41,6 +41,9 @@ export class MobileTOC extends TOC {
 				}
 			}
 			const isOpen = tocContent.classList.contains("show");
+			isOpen
+				? button.setAttribute("aria-label", "open table of contents")
+				: button.setAttribute("aria-label", "close table of contents");
 			tocContent.classList.toggle("show", !isOpen);
 			buttonTitle.classList.toggle("show", !isOpen);
 			tocContent.classList.add("enabled");
@@ -53,6 +56,8 @@ export class MobileTOC extends TOC {
 
 	close() {
 		const tocContent = this.querySelector("#toc-content");
+		const button = this.querySelector("#toc-toggle");
+		if (button) button.setAttribute("aria-label", "open table of contents");
 		if (tocContent) {
 			tocContent.classList.toggle("show", false);
 		}
@@ -68,10 +73,10 @@ export class MobileTOC extends TOC {
 		if (!button || !(links.length > 0)) return;
 
 		if (isShown) {
-			button.tabIndex = -1;
-			button.ariaDisabled = "true";
+			button.setAttribute("tabindex", "-1");
+			button.setAttribute("aria-disabled", "true");
 			links.forEach((link: HTMLAnchorElement) => {
-				link.tabIndex = -1;
+				link.setAttribute("tabindex", "-1");
 			});
 		} else {
 			button.removeAttribute("tabindex");

@@ -54,31 +54,24 @@ export class VisibleOnScrollUp extends HTMLElement {
 
 	handleScroll = () => {
 		if (this.ignoreScrollUpdate) return;
-
 		const mobileToc = this.shadow.querySelector("mobile-toc") as MobileTOC;
 		const flyOut = this.shadow.querySelector("flyout-menu") as FlyoutMenu;
 		if (!mobileToc || !flyOut) return;
-
 		const isTocOpen = mobileToc.querySelector("section")?.classList.contains("show");
 		const isFlyOutOpen = flyOut.querySelector("#menu-content")?.classList.contains("show");
 
 		const scrollTop = window.scrollY || document.documentElement.scrollTop;
+		if (scrollTop > this.lastScrollTop) {
+			if (isTocOpen) mobileToc.close();
+			mobileToc.toggleAxe(true);
+			if (isFlyOutOpen) flyOut.close();
+			flyOut.toggleAxe(true);
 
-		// could put buffer from top here
-		if (scrollTop >= 0) {
-			if (scrollTop > this.lastScrollTop) {
-				// Scrolling down
-				if (isTocOpen) mobileToc.close();
-				if (isFlyOutOpen) flyOut.close();
-
-				this.style.transform = "translateY(100%)";
-			} else {
-				// Scrolling up
-				this.style.transform = "translateY(0)";
-			}
-		} else {
-			// If scrolled back to top within the 20px buffer
 			this.style.transform = "translateY(100%)";
+		} else {
+			mobileToc.toggleAxe(false);
+			flyOut.toggleAxe(false);
+			this.style.transform = "translateY(0)";
 		}
 		this.lastScrollTop = scrollTop;
 	};
