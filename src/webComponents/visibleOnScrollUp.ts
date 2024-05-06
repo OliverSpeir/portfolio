@@ -1,9 +1,9 @@
 import type { MobileTOC } from "./mobileToc";
+import type { FlyoutMenu } from "./mobileMenu";
 
 export class VisibleOnScrollUp extends HTMLElement {
 	private lastScrollTop: number = 0;
 	private readonly shadow: ShadowRoot;
-	// private hasScrolled: boolean = false;
 	private ignoreScrollUpdate: boolean = false;
 
 	constructor() {
@@ -15,7 +15,6 @@ export class VisibleOnScrollUp extends HTMLElement {
 		this.createContent();
 		this.lastScrollTop = window.scrollY || document.documentElement.scrollTop;
 		window.addEventListener("scroll", this.handleScroll);
-		// this.handleScroll();
 		this.addLinkClickListener();
 	}
 
@@ -50,23 +49,36 @@ export class VisibleOnScrollUp extends HTMLElement {
 		this.ignoreScrollUpdate = true;
 		setTimeout(() => {
 			this.ignoreScrollUpdate = false;
-		}, 10);
+		}, 100);
 	};
 
 	handleScroll = () => {
 		if (this.ignoreScrollUpdate) return;
 
+		const mobileToc = this.shadow.querySelector("mobile-toc") as MobileTOC;
+		const flyOut = this.shadow.querySelector("flyout-menu") as FlyoutMenu;
+		if (!mobileToc || !flyOut) return;
+
+		const isTocOpen = mobileToc.querySelector("section")?.classList.contains("show");
+		const isFlyOutOpen = flyOut.querySelector("#menu-content")?.classList.contains("show");
+
 		const scrollTop = window.scrollY || document.documentElement.scrollTop;
-		console.log(scrollTop);
-		console.log("handlescroll called");
-		// this.hasScrolled = true;
-		if (scrollTop > this.lastScrollTop) {
-			const mobileToc = this.shadow.querySelector("mobile-toc") as MobileTOC;
-			if (mobileToc) mobileToc.close();
-			this.style.transform = "translateY(100%)";
+
+		// could put buffer from top here
+		if (scrollTop >= 0) {
+			if (scrollTop > this.lastScrollTop) {
+				// Scrolling down
+				if (isTocOpen) mobileToc.close();
+				if (isFlyOutOpen) flyOut.close();
+
+				this.style.transform = "translateY(100%)";
+			} else {
+				// Scrolling up
+				this.style.transform = "translateY(0)";
+			}
 		} else {
-			// scrolling up
-			this.style.transform = "translateY(0)";
+			// If scrolled back to top within the 20px buffer
+			this.style.transform = "translateY(100%)";
 		}
 		this.lastScrollTop = scrollTop;
 	};
@@ -78,15 +90,19 @@ export class VisibleOnScrollUp extends HTMLElement {
                 bottom: 0;
                 left: 0;
                 right: 0;
-                color:black;
+                color: var(--text-color);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                background-color: white;
+                background-color: var(--contents-bg);
                 border-top: 1px solid black;
                 padding: 10px;
                 transform: translateY(100%);
                 transition: transform 0.3s ease-in-out;
+				z-index: 20;
+				width: 100%;
+				max-width: 100%;
+				touch-action: manipulation;
             }
         `;
 	}

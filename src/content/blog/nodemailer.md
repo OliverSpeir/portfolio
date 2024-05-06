@@ -15,6 +15,7 @@ See [alternative methods](#alternatives) for other options.
 This example uses Gmail as the SMTP, but it is possible to have your domain blacklisted by using workspaces like this, either use an actual Gmail address, or another SMTP.
 :::
 
+
 ## Contents
 
 ## Serverless function

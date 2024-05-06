@@ -86,6 +86,7 @@ export class TOC extends HTMLElement {
 		const visited = new Set<Element>();
 		while (el && !visited.has(el)) {
 			if (el instanceof HTMLHeadingElement) {
+				if (el.id === "_top") return el;
 				const level = el.tagName[1];
 				if (level && parseInt(level, 10) >= this.minH && parseInt(level, 10) <= this.maxH)
 					return el as HTMLHeadingElement;

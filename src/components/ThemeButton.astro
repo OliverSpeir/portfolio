@@ -16,7 +16,7 @@ type Props = {
 const { themeIconRelationship = "opposite" } = Astro.props;
 ---
 
-<theme-toggle-button ></theme-toggle-button>
+<theme-toggle-button></theme-toggle-button>
 
 <script is:inline data-theme-icon-relationship={themeIconRelationship}>
 	if (!customElements.get("theme-toggle-button")) {
@@ -43,7 +43,7 @@ const { themeIconRelationship = "opposite" } = Astro.props;
 			}
 
 			render() {
-				const size = this.getAttribute('data-theme-icon-size') || '50px'
+				const size = this.getAttribute("data-theme-icon-size") || "50px";
 				this.shadowRoot.innerHTML = `
                 <style>
                     button {
@@ -142,6 +142,14 @@ const { themeIconRelationship = "opposite" } = Astro.props;
 				this.shadowRoot
 					.querySelector("button")
 					.setAttribute("aria-label", `Theme toggle button: click to activate ${newMode} mode`);
+			}
+			toggleAxe(isShown) {
+				const button = this.shadowRoot.querySelector("button");
+				if (isShown) {
+					button.tabIndex = -1;
+				} else {
+					button.removeAttribute("tabindex");
+				}
 			}
 		}
 

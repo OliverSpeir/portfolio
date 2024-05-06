@@ -4,9 +4,10 @@ type Props = {
 	lastModified: string;
 	date: Date;
     minutesRead: string;
+	header: boolean;
 };
 
-const { lastModified, date: published, title, minutesRead } = Astro.props;
+const { lastModified, date: published, title, minutesRead, header } = Astro.props;
 const lastModifiedDate = new Date(lastModified);
 const lastModifiedFallback = lastModifiedDate.toLocaleString("en-US", {
 	month: "short",
@@ -14,16 +15,17 @@ const lastModifiedFallback = lastModifiedDate.toLocaleString("en-US", {
 });
 ---
 
-<h1>{title}</h1>
-<div class="flex text-xs mb-4 gap-x-3 italic mx-2 dark:text-gray-200">
-	<span>Updated: <span id="modifiedAgo">{lastModifiedFallback}</span> </span>
-	<span>
-		Published: {
+<h1 id="_top">{title}</h1>
+{ header && 
+<div class="flex text-xs mb-4 gap-x-3 italic mx-2 dark:text-gray-200 justify-evenly">
+	<span class="flex flex-col sm:flex-row">Updated:&nbsp;<span id="modifiedAgo">{lastModifiedFallback}</span> </span>
+	<span class="flex flex-col sm:flex-row">
+		Published:&nbsp;<span>{
 			new Date(published).toLocaleString("en-US", {
 				month: "short",
 				year: "numeric",
 			})
-		}
+		}</span>
 	</span>
     <span>{minutesRead}</span>
 </div>
@@ -50,3 +52,5 @@ const lastModifiedFallback = lastModifiedDate.toLocaleString("en-US", {
 		document.getElementById("modifiedAgo").textContent = textContent;
 	})();
 </script>
+}
+
