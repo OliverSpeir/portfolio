@@ -62,6 +62,9 @@ dependencies:
   astro-robots-txt:
     specifier: ^1.0.0
     version: 1.0.0
+  astro-vtbot:
+    specifier: ^1.7.15
+    version: 1.7.15
   eslint:
     specifier: ^8.57.0
     version: 8.57.0
@@ -2376,6 +2379,10 @@ packages:
     dependencies:
       valid-filename: 4.0.0
       zod: 3.22.4
+    dev: false
+
+  /astro-vtbot@1.7.15:
+    resolution: {integrity: sha512-TPqNlrnPKhm2t1yDjj7JyquKcW8WDQYmwsaMdk2ofkyc6LCP5JRvyMofA49wtbuLppV2irYIwq/uZw1TLMEW7w==}
     dev: false
 
   /astro@4.5.16(lightningcss@1.24.1)(terser@5.30.3)(typescript@5.4.5):

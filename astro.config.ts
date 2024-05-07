@@ -18,6 +18,7 @@ import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "./src/assets/plugins/remark-callout-directives-customized.js";
 import { remarkModifiedTime } from "./src/assets/plugins/remark-last-modified.js";
 import remarkToc from "remark-toc";
+import vtbot from "astro-vtbot"
 
 const config: AstroUserConfig = defineConfig({
 	site: "http://oliverspeir.dev/",
@@ -42,6 +43,7 @@ const config: AstroUserConfig = defineConfig({
 		expressiveCode(),
 		compress(),
 		metaTags(),
+		vtbot(),
 	],
 	markdown: {
 		remarkPlugins: [
