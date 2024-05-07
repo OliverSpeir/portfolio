@@ -80,6 +80,7 @@ export class FlyoutMenu extends HTMLElement {
 			});
 		}
 	}
+
 	getStyle() {
 		const style = document.createElement("style");
 		style.textContent = `
@@ -141,6 +142,7 @@ export class FlyoutMenu extends HTMLElement {
         background: none;
         outline: none;
       }
+      .toggle-btn:focus-visible { outline: 2px solid #4D90FE; outline-offset: 2px; }
       .toggle-icon {
         display: block;
       }

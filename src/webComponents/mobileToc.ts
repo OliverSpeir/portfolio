@@ -139,6 +139,9 @@ export class MobileTOC extends TOC {
 			box-sizing: border-box;
 			border-top: 1px solid #565656;
 		}
+		#toc-content li a:focus-visible {
+			background-color: var(---accent)
+		}
 
 		#toc-content ul ul li.current {
 			background-color: var(--contents-accent);
@@ -164,7 +167,6 @@ export class MobileTOC extends TOC {
 			overflow: hidden; 
 			text-overflow: ellipsis;
 			display: block;
-			width: 100%;
 		}
 		#toc-content a {
 			padding-left: 0.35rem;

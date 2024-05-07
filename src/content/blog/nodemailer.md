@@ -15,9 +15,6 @@ See [alternative methods](#alternatives) for other options.
 This example uses Gmail as the SMTP, but it is possible to have your domain blacklisted by using workspaces like this, either use an actual Gmail address, or another SMTP.
 :::
 
-
-## Contents
-
 ## Serverless function
 
 _As far as I am aware it is easiest to handle CORS yourself (instead of API gateway), but I could be wrong about this. If anyone has better ideas please reach out and I'll update this._
@@ -95,7 +92,7 @@ I've taken [React Email's clone of Github Access Token](https://demo.react.email
 
 ## Why netlify?
 
-Netlify's free tier allows for commercial use (unlike vercel's) and the DX compared to AWS Lambda functions made it my go-to platform for serverless functions. I use it to host functions used by sites that aren't hosted on netlify as well.∏
+Netlify's free tier allows for commercial use (unlike vercel's) and the DX compared to AWS Lambda functions made it my go-to platform for serverless functions. I use it to host functions used by sites that aren't hosted on netlify as well.
 
 ## Alternatives
 

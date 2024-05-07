@@ -59,17 +59,22 @@ const renderTocItems = (items: TocItem[]): string => `
 ---
 
 <template id="desktopToc">
-	<Fragment set:html={renderTocItems(toc)} />
+	<nav class="flex flex-col justify-center">
+		<span class="mb-0 text-center font-semibold text-lg text-zinc-800 dark:text-zinc-300">Table of Contents</span>
+		<div class="">
+			<Fragment set:html={renderTocItems(toc)} />
+		</div>
+	</nav>
 </template>
 <template id="mobileToc">
-	<div>
+	<nav>
 		<div id="toc-display">
 			<button id="toc-toggle" aria-label="open table of contents">
 				<div id="button-title">
 					Contents
 					<Icon name="gridicons:chevron-right" id="caret" aria-hidden="true" />
 				</div>
-				<span id="display-current"></span>
+				<span id="display-current">Overview</span>
 			</button>
 		</div>
 		<section id="toc-content" aria-expanded="false">
@@ -77,37 +82,7 @@ const renderTocItems = (items: TocItem[]): string => `
 				<Fragment set:html={renderTocItems(toc)} />
 			</div>
 		</section>
-	</div>
-</template>
-<noscript>
-	<nav class="fixed bottom-0 bg-black" id="tocNav">
-		<details>
-			<summary class="flex">
-				<div
-					class="flex cursor-pointer select-none items-center gap-x-1 text-dark-accent-color hover:underline"
-				>
-					Table of Contents
-					<Icon name="gridicons:chevron-right" id="caret" class="h-5 w-5" aria-hidden="true" />
-				</div>
-			</summary>
-			<div class="dropdown -mt-3">
-				<Fragment set:html={renderTocItems(toc)} />
-			</div>
-		</details>
 	</nav>
-</noscript>
-<style is:global>
-	summary::marker,
-	summary::-webkit-details-marker {
-		display: none;
-	}
-	details[open] #caret {
-		transform: rotateZ(180deg);
-	}
-	a[aria-current="true"] {
-		color: red;
-	}
-	ul {
-		margin-bottom: 0px;
-	}
-</style>
+</template>
+<aside-toc></aside-toc>
+
