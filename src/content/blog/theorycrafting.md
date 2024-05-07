@@ -9,8 +9,6 @@ This is really just a public notes and invitation for anyone else to give me the
 
 Honestly slapped this post together, but I will come back as I solidify my thoughts.
 
-## Contents
-
 ## Server Side Rendering
 
 This term is a bit unclear. Both static sites and "on demand generated" sites are server "rendered". Rendering meaning generating the HTML, JS, CSS and Images that comprise the website.

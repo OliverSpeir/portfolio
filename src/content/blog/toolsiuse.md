@@ -3,6 +3,7 @@ title: "Tools I Use"
 description: "List of all tech related tools I use"
 ogImage: "../../assets/imgs/iuse.png"
 date: 2024-01-17T03:21:44Z
+header: false
 ---
 
 I'll try to keep this updated with everything I think is useful

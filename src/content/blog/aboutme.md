@@ -3,6 +3,7 @@ title: "About me"
 description: "Quick overview of me and my journey"
 ogImage: "../../assets/imgs/todo.png"
 date: 2024-01-17T03:21:44Z
+header: false
 ---
 
 Hey, I'm Oliver 👋

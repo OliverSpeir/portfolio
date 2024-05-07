@@ -11,14 +11,36 @@
 	*:is(h1, h2:not(#contents), h3, h4, h5, h6) {
 		@apply flex items-center gap-2;
 	}
+	*:is(h1, h2, h3, h4, h5, h6) {
+		@apply scroll-m-5;
+	}
 }
 
 :root[data-theme="dark"] {
-	--contents-bg: rgb(25, 25, 25);
+	--contents-bg: rgb(24 24 27);
+	--background-color: #f2f3f5;
+	--text-color: #09090b;
+	--accent-color: #2f3a91;
+	--background-color: #323232;
+	--text-color: #ecf1f9;
+	--text-color-opposite: #09090b;
+	--accent-color: #acbef9;
+	--contents-accent: #323232;
+	--box-shadow-color: 182, 189, 243;
+	--box-shadow-opacity: 0.105;
+
 }
-:root {
-	--contents-bg: rgb(223, 220, 220);
+:root, :root[data-theme="light"] {
+	--contents-bg: rgb(228 228 231);
+	--background-color: #f2f3f5;
+	--text-color: #09090b;
+	--text-color-opposite: #ecf1f9;
+	--accent-color: #2f3a91;
+	--contents-accent: #cac1c1;
+	--box-shadow-color: 59, 60, 139;
+	--box-shadow-opacity: 0.5;
 }
+
 
 #contents {
 	background-color: var(--contents-bg);
@@ -38,4 +60,29 @@
 
 #contents + ul ul {
 	margin-bottom: 0px;
+}
+
+aside-toc a[aria-current="true"] {
+	text-decoration: underline;
+	text-underline-position: from-font;
+	text-decoration-thickness: 2px;
+	@apply dark:text-dark-accent-color text-accent-color
+}
+aside-toc ul {
+	margin-bottom: 0px;
+	margin-top: 0.25rem;
+	list-style: none;
+}
+aside-toc ul a {
+	@apply text-zinc-800 dark:text-zinc-300
+}
+aside-toc ul ul {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+aside-toc ul li {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden; 
 }

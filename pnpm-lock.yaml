@@ -17,6 +17,9 @@ dependencies:
   '@astrojs/vercel':
     specifier: ^7.5.2
     version: 7.5.2(astro@4.5.17)
+  '@iconify-icons/ph':
+    specifier: ^1.2.5
+    version: 1.2.5
   '@iconify-json/bxl':
     specifier: ^1.1.10
     version: 1.1.10
@@ -110,9 +113,6 @@ dependencies:
   rehype-autolink-headings:
     specifier: ^7.1.0
     version: 7.1.0
-  rehype-slug:
-    specifier: ^6.0.0
-    version: 6.0.0
   remark-directive:
     specifier: ^3.0.0
     version: 3.0.0
@@ -1095,6 +1095,12 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.3:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
+    dev: false
+
+  /@iconify-icons/ph@1.2.5:
+    resolution: {integrity: sha512-Ox2VkJDoFowrf0e74LlLUuLMiN73PsCN28MUx9wCQfyZAFrL8ntfBnMpzukfi/0vN9qpJKAiKYZ3dQ5JjBqt/A==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: false
 
   /@iconify-json/bxl@1.1.10:
@@ -6477,16 +6483,6 @@ packages:
       '@types/hast': 3.0.4
       hast-util-raw: 9.0.2
       vfile: 6.0.1
-    dev: false
-
-  /rehype-slug@6.0.0:
-    resolution: {integrity: sha512-lWyvf/jwu+oS5+hL5eClVd3hNdmwM1kAC0BUvEGD19pajQMIzcNUd/k9GsfQ+FfECvX+JE+e9/btsKH0EjJT6A==}
-    dependencies:
-      '@types/hast': 3.0.4
-      github-slugger: 2.0.0
-      hast-util-heading-rank: 3.0.0
-      hast-util-to-string: 3.0.0
-      unist-util-visit: 5.0.0
     dev: false
 
   /rehype-stringify@10.0.0:

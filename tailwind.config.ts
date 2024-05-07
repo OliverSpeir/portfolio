@@ -68,6 +68,8 @@ const config: Config = {
 				"html, body": {
 					fontFamily:
 						"ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', fallback-arial, 'Arial', 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
+					margin: "0",
+					padding: "0",
 				},
 				a: {
 					textDecoration: "none",
