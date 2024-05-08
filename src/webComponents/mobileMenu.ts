@@ -53,39 +53,12 @@ export class FlyoutMenu extends HTMLElement {
 		}
 	}
 
-	toggleAxe(isShown: boolean) {
-		type ToggleButton = HTMLElement & {
-			toggleAxe: (isShown: boolean) => void;
-		};
-		const button = this.querySelector(".toggle-btn") as HTMLButtonElement;
-		const content = this.querySelector("#menu-content") as HTMLDivElement;
-		const toggleButton = this.querySelector("theme-toggle-button") as ToggleButton;
-		if (!button || !content || !toggleButton) return;
-		const links = content.querySelectorAll("a");
-
-		if (isShown) {
-			toggleButton.toggleAxe(true);
-			button.setAttribute("tabindex", "-1");
-			button.setAttribute("aria-disabled", "true");
-			links.forEach((link: HTMLAnchorElement) => {
-				link.setAttribute("tabindex", "-1");
-			});
-		} else {
-			toggleButton.toggleAxe(false);
-			button.removeAttribute("tabindex");
-			button.removeAttribute("aria-disabled");
-
-			links.forEach((link: HTMLAnchorElement) => {
-				link.removeAttribute("tabindex");
-			});
-		}
-	}
-
 	getStyle() {
 		const style = document.createElement("style");
 		style.textContent = `
       flyout-menu {
         flex: 1 1 auto;
+        touch-action: manipulation;
       }  
       #menu-content {
         position: absolute;
@@ -105,7 +78,8 @@ export class FlyoutMenu extends HTMLElement {
         visibility: hidden;
         opacity: 0;
         z-index: 10;
-        transition: opacity 1s, transform 1s; 
+        transition: opacity 1s, transform 1s;
+        touch-action: manipulation;
       }
       #menu-content.enabled {
         transition: opacity 0.3s, transform 0.3s, visibility 0s 0.3s; 

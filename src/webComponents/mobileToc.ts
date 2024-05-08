@@ -67,27 +67,6 @@ export class MobileTOC extends TOC {
 		}
 	}
 
-	toggleAxe(isShown: boolean) {
-		const links = this.querySelectorAll("a") as NodeListOf<HTMLAnchorElement>;
-		const button = this.querySelector("#toc-toggle") as HTMLButtonElement;
-		if (!button || !(links.length > 0)) return;
-
-		if (isShown) {
-			button.setAttribute("tabindex", "-1");
-			button.setAttribute("aria-disabled", "true");
-			links.forEach((link: HTMLAnchorElement) => {
-				link.setAttribute("tabindex", "-1");
-			});
-		} else {
-			button.removeAttribute("tabindex");
-			button.removeAttribute("aria-disabled");
-
-			links.forEach((link: HTMLAnchorElement) => {
-				link.removeAttribute("tabindex");
-			});
-		}
-	}
-
 	getStyle() {
 		const style = document.createElement("style");
 		style.textContent = `
@@ -121,6 +100,7 @@ export class MobileTOC extends TOC {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			touch-action: manipulation;
 		}
 		#toc-content-wrapper {
 			width:95%;

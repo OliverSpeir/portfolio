@@ -86,3 +86,7 @@ aside-toc ul li {
 	text-overflow: ellipsis;
 	overflow: hidden; 
 }
+
+h2, h3, h4 {
+	scroll-margin: 1rem;
+}

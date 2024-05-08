@@ -1,6 +1,7 @@
 import type { MobileTOC } from "./mobileToc";
 import type { FlyoutMenu } from "./mobileMenu";
 
+/** set tabindex to 1 */
 export class VisibleOnScrollUp extends HTMLElement {
 	private lastScrollTop: number = 0;
 	private readonly shadow: ShadowRoot;
@@ -8,14 +9,14 @@ export class VisibleOnScrollUp extends HTMLElement {
 
 	constructor() {
 		super();
-		this.shadow = this.attachShadow({ mode: "open" });
+		this.shadow = this.attachShadow({ mode: "open", delegatesFocus: true });
 	}
 
 	connectedCallback() {
 		this.createContent();
 		this.lastScrollTop = window.scrollY || document.documentElement.scrollTop;
 		window.addEventListener("scroll", this.handleScroll);
-		this.addLinkClickListener();
+		this.addEventListeners();
 	}
 
 	disconnectedCallback() {
@@ -35,9 +36,10 @@ export class VisibleOnScrollUp extends HTMLElement {
 		this.shadow.appendChild(flyOut);
 	}
 
-	addLinkClickListener() {
+	addEventListeners() {
 		const links = this.shadow.querySelectorAll("a");
 		links.forEach((link) => link.addEventListener("click", this.handleLinkClick));
+		this.addEventListener("focus", this.handleFocus, true);
 	}
 
 	removeLinkClickListener() {
@@ -52,25 +54,34 @@ export class VisibleOnScrollUp extends HTMLElement {
 		}, 100);
 	};
 
+	handleFocus = () => {
+		this.style.transform = "translateY(0)";
+	};
+
 	handleScroll = () => {
 		if (this.ignoreScrollUpdate) return;
+		const scrollTop = Math.max(0, window.scrollY || document.documentElement.scrollTop);
+
+		if (scrollTop === 0) {
+			this.style.transform = "translateY(0)";
+			return;
+		}
+
+		if (Math.abs(scrollTop - this.lastScrollTop) < 5) {
+			return;
+		}
 		const mobileToc = this.shadow.querySelector("mobile-toc") as MobileTOC;
 		const flyOut = this.shadow.querySelector("flyout-menu") as FlyoutMenu;
 		if (!mobileToc || !flyOut) return;
 		const isTocOpen = mobileToc.querySelector("section")?.classList.contains("show");
 		const isFlyOutOpen = flyOut.querySelector("#menu-content")?.classList.contains("show");
 
-		const scrollTop = window.scrollY || document.documentElement.scrollTop;
 		if (scrollTop > this.lastScrollTop) {
 			if (isTocOpen) mobileToc.close();
-			mobileToc.toggleAxe(true);
 			if (isFlyOutOpen) flyOut.close();
-			flyOut.toggleAxe(true);
 
 			this.style.transform = "translateY(100%)";
 		} else {
-			mobileToc.toggleAxe(false);
-			flyOut.toggleAxe(false);
 			this.style.transform = "translateY(0)";
 		}
 		this.lastScrollTop = scrollTop;
