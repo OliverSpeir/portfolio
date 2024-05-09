@@ -34,8 +34,10 @@ const config: Config = {
 				inherit: "inherit",
 				"light-bg": "#f2f3f5",
 				"dark-bg": "#27272a",
-				"light-text": "#09090b",
-				"dark-text": "#ecf1f9",
+				"heading-light-text": "#09090b",
+				"light-text": "#363840",
+				"dark-text": "#c2c3c7",
+				"dark-heading-text": "#ecf1f9",
 				"accent-color": "#2f3a91",
 				"dark-accent-color": "#acbef9",
 				"headings-light": "",
@@ -51,12 +53,13 @@ const config: Config = {
 					boxSizing: "border-box",
 				},
 				html: {
-					fontSize: "17px",
-					lineHeight: "1.5",
-					"@apply text-light-text": {},
+					fontSize: "1.1rem",
+					lineHeight: "1.6rem",
+					"letter-spacing": "0.02em",
+					"@apply text-light-text dark:text-dark-text bg-light-bg dark:bg-dark-bg": {},
 				},
 				body: {
-					"@apply min-h-screen w-full bg-light-bg dark:bg-dark-bg p-2 dark:text-dark-text": {},
+					"@apply min-h-screen w-full p-2": {},
 				},
 				"body, dl, dd, p": {
 					margin: "0",
@@ -83,10 +86,12 @@ const config: Config = {
 					"@apply text-accent-color dark:text-dark-accent-color": {},
 				},
 				"h1, h2, h3, h4": {
-					marginTop: "1rem",
+					marginTop: "2.25rem",
 					letterSpacing: "-.01em",
-					fontWeight: "550",
-					"@apply text-headings-light dark:text-headings-dark": {},
+					fontWeight: "600",
+					fontSize: "1.4rem",
+					"letter-spacing": "0.02em",
+					"@apply text-heading-light-text dark:text-dark-heading-text": {},
 				},
 				article: {
 					marginBottom: "3rem",
@@ -96,10 +101,14 @@ const config: Config = {
 				},
 				"h1, h2": {
 					marginBottom: ".6rem",
-					fontSize: "28px",
+					fontSize: "1.65rem",
 				},
 				h3: {
 					marginBottom: ".6rem",
+				},
+				h1: {
+					marginTop: "1rem",
+					fontSize: "2rem",
 				},
 				"li>p": {
 					marginBottom: ".6rem",

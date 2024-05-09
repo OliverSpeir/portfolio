@@ -6,7 +6,7 @@ type Props = {
 	href?: string;
 	title?: string;
 	date?: string;
-	description?: string;
+	description?: string | boolean;
 	target?: string;
 	external?: boolean;
 	readingTime?: string;
@@ -41,12 +41,12 @@ if (entry) {
 <a
 	{href}
 	{target}
-	class="group flex flex-col rounded-sm bg-zinc-200 !no-underline dark:bg-zinc-900 px-1"
+	class="group flex flex-col rounded-sm bg-zinc-200 px-1 !no-underline dark:bg-zinc-900"
 >
 	<div class="mx-2 -mt-2 mb-1">
-		<h3 class="mb-0 leading-6 underline-offset-1 group-hover:underline flex gap-2 ">
+		<h3 class="mb-0 mt-4 flex gap-2 underline-offset-2 underline items-center">
 			{title}
-			{external && <Icon name="gridicons:reader-external" class="h-7 w-7" aria-hidden="true" />}
+			{external && <Icon name="gridicons:reader-external" class="h-7 w-7 -mb-1" aria-hidden="true" />}
 		</h3>
 		<div class="mt-1 flex gap-4">
 			{
@@ -62,8 +62,17 @@ if (entry) {
 				)
 			}
 		</div>
-		<p class="mb-0 mt-2 line-clamp-3 text-sm leading-6 text-light-text dark:text-dark-text">
-			{description}
-		</p>
+		{
+			description && (
+				<p class="mb-1 mt-2 line-clamp-3 text-sm leading-6 text-light-text dark:text-dark-text">
+					{description}
+				</p>
+			)
+		}
 	</div>
 </a>
+<style>
+	h3 {
+		font-size: 1.25rem;
+	}
+</style>

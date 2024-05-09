@@ -12,15 +12,15 @@ const description = "the plot";
 		<ThemeButton iconSize="2rem"/>
 		<nav><a href="/">Homepage</a></nav>
 	</div>
-	<div class="flex flex-col justify-center -mt-2">
+	<div class="flex flex-col justify-center -mt-2 mx-2">
 		<h1 class="mx-auto">Digital Garden</h1>
 		<div class="flex flex-col justify-evenly gap-2 sm:flex-row">
 			<section>
 				<h2>Pinned</h2>
 				<div class="flex flex-col gap-2 sm:max-w-[16rem]">
-					<Preview entry="aboutme" dated={false} description=" "/>
-					<Preview entry="futureprojects" dated={false} />
-					<Preview entry="toolsiuse" dated={false} />
+					<Preview entry="aboutme" dated={false} description={false} readingTime=" "/>
+					<Preview entry="futureprojects" dated={false} readingTime=" "/>
+					<Preview entry="toolsiuse" dated={false} readingTime=" "/>
 				</div>
 			</section>
 			<section>
@@ -66,3 +66,8 @@ const description = "the plot";
 		</div>
 	</div>
 </Layout>
+<style>
+	h2 {
+		font-size: 1.5rem;
+	}
+</style>

@@ -41,27 +41,6 @@
 	--box-shadow-opacity: 0.5;
 }
 
-
-#contents {
-	background-color: var(--contents-bg);
-	margin-bottom: 0px;
-	width: 100%;
-	font-size: 24px;
-	@apply flex items-center justify-center gap-2 rounded-t-sm;
-}
-
-#contents + ul {
-	background-color: var(--contents-bg);
-	margin-top: 0px;
-	padding-bottom: 0.35rem;
-	border-bottom-left-radius: 0.125rem /* 8px */;
-	border-bottom-right-radius: 0.125rem /* 8px */;
-}
-
-#contents + ul ul {
-	margin-bottom: 0px;
-}
-
 aside-toc a[aria-current="true"] {
 	text-decoration: underline;
 	text-underline-position: from-font;
@@ -89,4 +68,8 @@ aside-toc ul li {
 
 h2, h3, h4 {
 	scroll-margin: 1rem;
+}
+
+ul ul {
+	margin-bottom: 0px;
 }
