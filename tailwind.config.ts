@@ -54,7 +54,7 @@ const config: Config = {
 				},
 				html: {
 					fontSize: "1.1rem",
-					lineHeight: "1.6rem",
+					lineHeight: "1.5",
 					"letter-spacing": "0.02em",
 					"@apply text-light-text dark:text-dark-text bg-light-bg dark:bg-dark-bg": {},
 				},
@@ -90,6 +90,7 @@ const config: Config = {
 					letterSpacing: "-.01em",
 					fontWeight: "600",
 					fontSize: "1.4rem",
+					lineHeight: "1",
 					"letter-spacing": "0.02em",
 					"@apply text-heading-light-text dark:text-dark-heading-text": {},
 				},
