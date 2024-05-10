@@ -39,8 +39,8 @@ const toString = (node: HastNode): string => {
 const AnchorLinkIcon = h(
 	"svg",
 	{
-		width: 16,
-		height: 16,
+		width: 24,
+		height: 24,
 		version: 1.1,
 		viewBox: "0 0 16 16",
 		xlmns: "http://www.w3.org/2000/svg",
@@ -68,7 +68,7 @@ export const autolinkConfig: Options = {
 			`span.anchor-icon`,
 			{
 				ariaHidden: "true",
-				class: "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100",
+				class: "md:opacity-0 pr-2 group-hover:opacity-100 group-focus-within:opacity-100",
 			},
 			AnchorLinkIcon,
 		),

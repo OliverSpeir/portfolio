@@ -77,6 +77,8 @@ const config: Config = {
 				a: {
 					textDecoration: "none",
 					fontWeight: "500",
+					paddingTop: "0.1rem",
+					paddingBottom: "0.1rem",
 					transition: "color .15s",
 					"&:hover": {
 						textDecoration: "underline",
