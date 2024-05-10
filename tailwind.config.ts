@@ -87,6 +87,7 @@ const config: Config = {
 				},
 				"h1, h2, h3, h4": {
 					marginTop: "2.25rem",
+					marginBottom: "1rem",
 					letterSpacing: "-.01em",
 					fontWeight: "600",
 					fontSize: "1.4rem",
@@ -101,11 +102,7 @@ const config: Config = {
 					marginBottom: "1em",
 				},
 				"h1, h2": {
-					marginBottom: ".6rem",
 					fontSize: "1.65rem",
-				},
-				h3: {
-					marginBottom: ".6rem",
 				},
 				h1: {
 					marginTop: "1rem",
