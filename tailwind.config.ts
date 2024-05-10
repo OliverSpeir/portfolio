@@ -46,24 +46,6 @@ const config: Config = {
 		},
 	},
 
-	// *, *::before, *::after {
-	// 	box-sizing: border-box;
-	// }
-	// *{
-	// 	margin: 0;
-	// 	padding: 0;
-	// 	font: inherit;
-	// }
-	// html{
-	// 	color-scheme: dark light;
-	// }
-	// body {
-	// 	min-height: 100vh;
-	// }
-	// img, picture, svg, video{
-	// 	display: block;
-	// 	max-width: 100%;
-	// }
 	plugins: [
 		plugin(({ addBase, theme }) => {
 			addBase({
