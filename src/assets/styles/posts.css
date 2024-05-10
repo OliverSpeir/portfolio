@@ -18,7 +18,7 @@
 
 @layer components {
 	*:is(h1, h2:not(#contents), h3, h4, h5, h6) a {
-		@apply flex mt-2 min-h-2;
+		@apply flex mt-1 min-h-2;
 	}
 	*:is(h1, h2:not(#contents), h3, h4, h5, h6) a svg {
 		@apply min-h-6 min-w-6 mr-2;
