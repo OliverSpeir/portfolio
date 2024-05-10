@@ -31,8 +31,9 @@ import TOC from "@components/TOC.astro";
 			</div>
 		</div>
 	</header>
-	<article class="relative mx-auto my-0 w-full px-2 lg:-mt-1">
+	<article id="main-content" class="relative mx-auto my-0 w-full px-2 lg:-mt-1">
 		<div class="flex flex-row items-start justify-center">
+			<div class="lg:hidden"><visible-on-scroll-up></visible-on-scroll-up></div>
 			<div
 				class="sticky top-0 order-2 my-0 hidden min-h-screen w-full max-w-[17rem] pl-5 pt-[5rem] lg:block"
 			>
@@ -260,7 +261,7 @@ import TOC from "@components/TOC.astro";
 							}
 							getStyle() {
 								const style = document.createElement("style");
-								style.textContent = ` mobile-toc { width: 100%; max-width: 100%; display: flex; overflow: hidden; flex: 1 1 auto; touch-action: manipulation; } #toc-content { position: absolute; left: 0px; right: 0px; bottom: 100%; transform: translateY(10px); z-index: 10; background-color: var(--contents-bg); color: var(--text-color); box-sizing: border-box; box-shadow: 0 8px 16px rgba(var(--box-shadow-color), var(--box-shadow-opacity)); border: 2px solid var(--accent-color); border-radius: 10px; padding: 10px; margin: 10px; max-width: 17rem; visibility: hidden; opacity: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; touch-action: manipulation; } #toc-content-wrapper { width:95%; } #toc-content ul { width: 100%; padding: 0; list-style: none; margin: 0; } #toc-content li { display: block; width: 100%; padding: 0; box-sizing: border-box; border-top: 1px solid #565656; } #toc-content ul ul li.current { background-color: var(--contents-accent); border-radius: 2px; } #toc-content a[aria-current="true"] { background-color: var(--contents-accent); border-radius: 2px; } #toc-content > #toc-content-wrapper > ul > li:first-child { border-top: none; } #toc-content ul ul li { padding-left: 20px; padding-right: 0; } #toc-content li, #toc-content a { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; } #toc-content a { padding-left: 0.35rem; text-decoration: none; font-weight: 500; color: var(--accent-color); transition: color 0.15s; } #toc-content a:focus-visible { color: var(--text-color-opposite); background-color: var(--accent-color); } #toc-content a:hover { text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: 2px; } #toc-content.enabled { transition: opacity 0.3s, transform 0.3s, visibility 0s 0.3s; } #toc-content.show { visibility: visible; opacity: 1; transform: translate3d(0, 0px, 0); transition: opacity 0.3s, transform 0.3s, visibility 0s 0s; } #caret { transform: rotateZ(var(--caret-rotation)); transition: transform 0.3s ease-in-out; margin-top: 0.15rem; width: 1.25rem; height: 1.25rem; } #display-current { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; max-width: 47%; width: 100%; min-width: 10rem; text-align: left; margin-left: 0.35rem; } #button-title { display:flex; padding: 0.25rem; background-color: var(--contents-accent); justify-content: space-between; border: 1px solid grey; border-radius: .5rem; gap: 0.25rem; font-weight: 500; } #button-title.show { background-color: var(--accent-color); color: var(--text-color-opposite); } #toc-display { display: flex; width: 100%; } #toc-toggle { background: transparent; color: inherit; font: inherit; border: none; margin: 0; padding: 0; align-items: center; display: flex; width: 100%; -webkit-tap-highlight-color: rgba(0,0,0,0); } #toc-toggle:focus-visible { padding: 3px; }`;
+								style.textContent = ` mobile-toc { width: 100%; max-width: 100%; display: flex; overflow: hidden; flex: 1 1 auto; touch-action: manipulation; } #toc-content { position: absolute; left: 0px; right: 0px; bottom: 100%; transform: translateY(10px); z-index: 10; background-color: var(--contents-bg); color: var(--text-color); box-sizing: border-box; box-shadow: 0 8px 16px rgba(var(--box-shadow-color), var(--box-shadow-opacity)); border: 2px solid var(--accent-color); border-radius: 10px; padding: 10px; margin: 10px; max-width: 17rem; visibility: hidden; opacity: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; touch-action: manipulation; } #toc-content-wrapper { width:95%; } #toc-content ul { width: 100%; padding: 0; list-style: none; margin: 0; } #toc-content li { display: block; width: 100%; padding: 0; box-sizing: border-box; border-top: 1px solid #565656; } #toc-content ul ul li.current { background-color: var(--contents-accent); border-radius: 2px; } #toc-content a[aria-current="true"] { background-color: var(--contents-accent); border-radius: 2px; } #toc-content > #toc-content-wrapper > ul > li:first-child { border-top: none; } #toc-content ul ul li { padding-left: 20px; padding-right: 0; } #toc-content li, #toc-content a { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; padding-top: 0.05rem; padding-bottom: 0.05rem; } #toc-content a { padding-left: 0.35rem; text-decoration: none; font-weight: 500; color: var(--accent-color); transition: color 0.15s; } #toc-content a:focus-visible { color: var(--text-color-opposite); background-color: var(--accent-color); } #toc-content a:hover { text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: 2px; } #toc-content.enabled { transition: opacity 0.3s, transform 0.3s, visibility 0s 0.3s; } #toc-content.show { visibility: visible; opacity: 1; transform: translate3d(0, 0px, 0); transition: opacity 0.3s, transform 0.3s, visibility 0s 0s; } #caret { transform: rotateZ(var(--caret-rotation)); transition: transform 0.3s ease-in-out; margin-top: 0.15rem; width: 1.25rem; height: 1.25rem; } #display-current { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; max-width: 47%; width: 100%; min-width: 10rem; text-align: left; margin-left: 0.35rem; } #button-title { display:flex; padding: 0.25rem; background-color: var(--contents-accent); justify-content: space-between; border: 1px solid grey; border-radius: .5rem; gap: 0.25rem; font-weight: 500; } #button-title.show { background-color: var(--accent-color); color: var(--text-color-opposite); } #toc-display { display: flex; width: 100%; } #toc-toggle { background: transparent; color: inherit; font: inherit; border: none; margin: 0; padding: 0; align-items: center; display: flex; width: 100%; -webkit-tap-highlight-color: rgba(0,0,0,0); } #toc-toggle:focus-visible { padding: 3px; }`;
 								this.appendChild(style);
 							}
 						}
@@ -362,17 +363,12 @@ import TOC from "@components/TOC.astro";
 						if (!customElements.get("flyout-menu")) {
 							customElements.define("flyout-menu", FlyoutMenu);
 						}
-						const el = document.createElement("visible-on-scroll-up");
-						el.setAttribute("tabindex", "1");
-						document.body.appendChild(el);
-
 						if (!customElements.get("aside-toc")) {
 							customElements.define("aside-toc", TOC);
 						}
 					})({});
 				</script>
 			</div>
-			<!-- Main content container -->
 			<div class="order-1 max-w-full flex-1 md:max-w-xl">
 				<PostHeader {title} {lastModified} {date} {minutesRead} {header} />
 				<Content />

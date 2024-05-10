@@ -84,7 +84,7 @@ const response = await fetch(form.action, {
 
 ## Creating email HTML
 
-Basically it's tables and inline css, [more info](https://www.smashingmagazine.com/2021/04/complete-guide-html-email-templates-tools/).
+Basically it's tables and inline css, read more on [smashing magazine's complete guide to email html](https://www.smashingmagazine.com/2021/04/complete-guide-html-email-templates-tools/).
 
 [React Email](https://react.email/) is quite nice honestly, it has a dev server and supports Tailwind CSS. I've created a work around for an issue with exporting the html directly, [react-email-export-workaround](https://github.com/OliverSpeir/react-email-export-workaround).
 
