@@ -46,17 +46,40 @@ const config: Config = {
 		},
 	},
 
+	// *, *::before, *::after {
+	// 	box-sizing: border-box;
+	// }
+	// *{
+	// 	margin: 0;
+	// 	padding: 0;
+	// 	font: inherit;
+	// }
+	// html{
+	// 	color-scheme: dark light;
+	// }
+	// body {
+	// 	min-height: 100vh;
+	// }
+	// img, picture, svg, video{
+	// 	display: block;
+	// 	max-width: 100%;
+	// }
 	plugins: [
 		plugin(({ addBase, theme }) => {
 			addBase({
 				"*, ::before, ::after": {
 					boxSizing: "border-box",
 				},
+				"*": {
+					font: "inherit",
+				},
 				html: {
 					fontSize: "1.1rem",
 					lineHeight: "1.5",
+					colorScheme: "dark light",
 					"letter-spacing": "0.02em",
 					"@apply text-light-text dark:text-dark-text bg-light-bg dark:bg-dark-bg": {},
+					scrollBehavior: "smooth",
 				},
 				body: {
 					"@apply min-h-screen w-full p-2": {},
@@ -118,8 +141,11 @@ const config: Config = {
 					"@apply px-1 py-[.1rem] rounded-md dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 whitespace-pre-wrap break-words":
 						{},
 				},
-				"article img": {
+				"img, picture, svg, video": {
+					display: "block",
 					maxWidth: "100%",
+				},
+				"article img": {
 					height: "auto",
 					borderRadius: theme("borderRadius.md"),
 				},
