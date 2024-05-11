@@ -43,7 +43,7 @@ const config: AstroUserConfig = defineConfig({
 		expressiveCode(),
 		compress(),
 		metaTags(),
-		vtbot(),
+		// vtbot(),
 	],
 	markdown: {
 		remarkPlugins: [

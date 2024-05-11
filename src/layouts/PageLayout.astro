@@ -3,11 +3,11 @@ import "@assets/styles/tailwind.css";
 import { ViewTransitions } from "astro:transitions";
 import { Head } from "astro-capo";
 import Meta from "@components/Meta.astro";
-import SkipLinks from "@components/SkipLinks.astro";
+// import SkipLinks from "@components/SkipLinks.astro";
 import type { CollectionEntry } from "astro:content";
 import ThemeManager from "@components/ThemeManager.astro";
-import ProgressBar from 'astro-vtbot/components/ProgressBar.astro';
-import BrakePad from 'astro-vtbot/components/BrakePad.astro';
+// import ProgressBar from 'astro-vtbot/components/ProgressBar.astro';
+// import BrakePad from 'astro-vtbot/components/BrakePad.astro';
 
 type Props = {
 	title: string;
@@ -29,7 +29,6 @@ const { title, description, post } = Astro.props;
 		<Meta {title} {description} {post} />
 		<ThemeManager />
 		<ViewTransitions />
-		<ProgressBar></ProgressBar>
 	</Head>
 	<body>
 		<script is:inline>
@@ -45,7 +44,6 @@ const { title, description, post } = Astro.props;
 				themeColorMeta && themeColorMeta.setAttribute("content", color);
 			})();
 		</script>
-		<SkipLinks />
 		<main>
 			<slot />
 		</main>
