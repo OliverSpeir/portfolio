@@ -25,6 +25,10 @@
 	}
 }
 
+article {
+	padding-bottom: 3rem;
+}
+
 :root[data-theme="dark"] {
 	--contents-bg: rgb(24 24 27);
 	--background-color: #f2f3f5;

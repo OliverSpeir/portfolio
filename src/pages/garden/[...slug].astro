@@ -33,7 +33,6 @@ import TOC from "@components/TOC.astro";
 	</header>
 	<article id="main-content" class="relative mx-auto my-0 w-full px-2 lg:-mt-1">
 		<div class="flex flex-row items-start justify-center">
-			<div class="lg:hidden"><visible-on-scroll-up></visible-on-scroll-up></div>
 			<div
 				class="sticky top-0 order-2 my-0 hidden min-h-screen w-full max-w-[17rem] pl-5 pt-[5rem] lg:block"
 			>
@@ -291,7 +290,7 @@ import TOC from "@components/TOC.astro";
 									this.ignoreScrollUpdate = true;
 									setTimeout(() => {
 										this.ignoreScrollUpdate = false;
-									}, 500);
+									}, 1000);
 								}
 							}
 							createContent() {
@@ -318,15 +317,22 @@ import TOC from "@components/TOC.astro";
 								setTimeout(() => {
 									this.ignoreScrollUpdate = false;
 									this.lastScrollPos = window.scrollY || document.documentElement.scrollTop;
-								}, 100);
+								}, 1000);
 							};
 							handleFocus = () => {
 								this.style.transform = "translateY(0)";
 							};
 							handleScroll = () => {
-								if (this.ignoreScrollUpdate) return;
+								if (this.ignoreScrollUpdate) {
+									return;
+								}
 								const scrollPos = Math.max(0, window.scrollY || document.documentElement.scrollTop);
-
+								const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+								if (scrollPos >= maxScroll) {
+									this.style.transform = "translateY(0)";
+									this.lastScrollPos = scrollPos;
+									return;
+								}
 								if (Math.abs(scrollPos - this.lastScrollPos) < 5) {
 									return;
 								}
@@ -337,11 +343,9 @@ import TOC from "@components/TOC.astro";
 								const isFlyOutOpen = flyOut
 									.querySelector("#menu-content")
 									?.classList.contains("show");
+
 								if (scrollPos > this.lastScrollPos) {
-									if (isTocOpen) {
-										console.log("clsoing toc");
-										mobileToc.close();
-									}
+									if (isTocOpen) mobileToc.close();
 									if (isFlyOutOpen) flyOut.close();
 									this.style.transform = "translateY(100%)";
 								} else {
@@ -369,6 +373,7 @@ import TOC from "@components/TOC.astro";
 					})({});
 				</script>
 			</div>
+			<div class="lg:hidden"><visible-on-scroll-up></visible-on-scroll-up></div>
 			<div class="order-1 max-w-full flex-1 md:max-w-xl">
 				<PostHeader {title} {lastModified} {date} {minutesRead} {header} />
 				<Content />
