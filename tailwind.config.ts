@@ -58,7 +58,6 @@ const config: Config = {
 				html: {
 					fontSize: "1.1rem",
 					lineHeight: "1.5",
-					colorScheme: "dark light",
 					"letter-spacing": "0.02em",
 					"@apply text-light-text dark:text-dark-text bg-light-bg dark:bg-dark-bg": {},
 					scrollBehavior: "smooth",
@@ -98,7 +97,7 @@ const config: Config = {
 					letterSpacing: "-.01em",
 					fontWeight: "600",
 					fontSize: "1.4rem",
-					lineHeight: "1",
+					lineHeight: "1.25",
 					"letter-spacing": "0.02em",
 					"@apply text-heading-light-text dark:text-dark-heading-text": {},
 				},
