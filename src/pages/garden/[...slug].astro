@@ -314,14 +314,12 @@ import TOC from "@components/TOC.astro";
 								links.forEach((link) => link.removeEventListener("click", this.handleLinkClick));
 							}
 							handleLinkClick = () => {
-								// Clear any existing timeout to reset the timer
 								clearTimeout(this.timeoutId);
 
 								this.ignoreScrollUpdate = true;
 								const mobileToc = this.shadow.querySelector("mobile-toc");
 								mobileToc.close();
 
-								// Set a new timeout
 								this.timeoutId = setTimeout(() => {
 									this.ignoreScrollUpdate = false;
 									this.lastScrollPos = window.scrollY || document.documentElement.scrollTop;
