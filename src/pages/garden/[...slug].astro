@@ -273,6 +273,7 @@ import TOC from "@components/TOC.astro";
 							constructor() {
 								super();
 								this.shadow = this.attachShadow({ mode: "open", delegatesFocus: true });
+								this.timeoutId = null;
 							}
 							connectedCallback() {
 								this.createContent();
@@ -313,8 +314,15 @@ import TOC from "@components/TOC.astro";
 								links.forEach((link) => link.removeEventListener("click", this.handleLinkClick));
 							}
 							handleLinkClick = () => {
+								// Clear any existing timeout to reset the timer
+								clearTimeout(this.timeoutId);
+
 								this.ignoreScrollUpdate = true;
-								setTimeout(() => {
+								const mobileToc = this.shadow.querySelector("mobile-toc");
+								mobileToc.close();
+
+								// Set a new timeout
+								this.timeoutId = setTimeout(() => {
 									this.ignoreScrollUpdate = false;
 									this.lastScrollPos = window.scrollY || document.documentElement.scrollTop;
 								}, 1000);
