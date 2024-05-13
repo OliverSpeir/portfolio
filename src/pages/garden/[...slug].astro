@@ -249,11 +249,14 @@ import TOC from "@components/TOC.astro";
 							close() {
 								const tocContent = this.querySelector("#toc-content");
 								const button = this.querySelector("#toc-toggle");
+								const buttonTitle = this.querySelector("#button-title");
+								const caret = this.querySelector("#caret");
+
 								if (button) button.setAttribute("aria-label", "open table of contents");
 								if (tocContent) {
 									tocContent.classList.toggle("show", false);
 								}
-								const caret = this.querySelector("#caret");
+								if (buttonTitle) buttonTitle.classList.toggle("show", false);
 								if (caret) {
 									caret.style.transform = "rotateZ(0deg)";
 								}
