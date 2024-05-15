@@ -1,13 +1,11 @@
 ---
 import "@assets/styles/tailwind.css";
 import { ViewTransitions } from "astro:transitions";
+import type { TransitionAnimationPair } from "astro";
 import { Head } from "astro-capo";
 import Meta from "@components/Meta.astro";
-// import SkipLinks from "@components/SkipLinks.astro";
 import type { CollectionEntry } from "astro:content";
 import ThemeManager from "@components/ThemeManager.astro";
-// import ProgressBar from 'astro-vtbot/components/ProgressBar.astro';
-// import BrakePad from 'astro-vtbot/components/BrakePad.astro';
 
 type Props = {
 	title: string;
@@ -15,12 +13,32 @@ type Props = {
 	post?: CollectionEntry<"blog"> | undefined;
 };
 const { title, description, post } = Astro.props;
+
+const anim: TransitionAnimationPair = {
+	old: {
+		name: "fadeOutUp",
+		duration: "0.15s",
+		easing: "ease-in",
+		fillMode: "forwards",
+	},
+	new: {
+		name: "fadeInUp",
+		duration: "0.15s",
+		delay: "0.15s",
+		easing: "ease-out",
+		fillMode: "backwards",
+	},
+};
+
+const viewTransition = {
+	forwards: anim,
+	backwards:anim,
+};
 ---
 
 <!doctype html>
 <html lang="en" dir="ltr">
 	<Head>
-		<link />
 		{
 			Astro.url.pathname === "/" && (
 				<link rel="preload" as="image" href="/pfp_5k.avif" type="image/avif" />
@@ -44,7 +62,7 @@ const { title, description, post } = Astro.props;
 				themeColorMeta && themeColorMeta.setAttribute("content", color);
 			})();
 		</script>
-		<main>
+		<main transition:animate={viewTransition}>
 			<slot />
 		</main>
 		<script>
@@ -87,10 +105,30 @@ const { title, description, post } = Astro.props;
 				setBrowserTheme(customEvent.detail.theme, customEvent.detail.systemTheme);
 			});
 		</script>
-		<style is:global>
-			.swup-progress-bar {
-			  @apply bg-accent-color dark:bg-dark-accent-color
+		<style>
+			@keyframes fadeOutUp {
+				from {
+					opacity: 1;
+					transform: translateY(0);
+				}
+
+				to {
+					opacity: 0;
+					transform: translateY(12px);
+				}
 			}
-		  </style>
+
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(12px);
+				}
+
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+		</style>
 	</body>
 </html>
