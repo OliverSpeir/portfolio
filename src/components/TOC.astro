@@ -60,29 +60,28 @@ const renderTocItems = (items: TocItem[]): string => `
 
 <template id="desktopToc">
 	<nav class="flex flex-col justify-center">
-		<span class="mb-0 text-center font-semibold text-lg text-zinc-800 dark:text-zinc-300">Table of Contents</span>
+		<span class="mb-0 text-center text-lg font-semibold text-zinc-800 dark:text-zinc-300"
+			>Table of Contents</span
+		>
 		<div class="">
 			<Fragment set:html={renderTocItems(toc)} />
 		</div>
 	</nav>
 </template>
 <template id="mobileToc">
-	<nav>
-		<div id="toc-display">
-			<button id="toc-toggle" aria-label="open table of contents">
-				<div id="button-title">
-					Contents
-					<Icon name="gridicons:chevron-right" id="caret" aria-hidden="true" />
-				</div>
-				<span id="display-current">Overview</span>
-			</button>
-		</div>
-		<section id="toc-content" aria-expanded="false">
-			<div id="toc-content-wrapper">
-				<Fragment set:html={renderTocItems(toc)} />
+	<div id="btn-pad">
+		<button id="toc-toggle" aria-label="open table of contents" tabindex="0">
+			<div id="button-title">
+				Contents
+				<Icon name="gridicons:chevron-right" id="caret" aria-hidden="true" />
 			</div>
-		</section>
-	</nav>
+			<span id="display-current">Overview</span>
+		</button>
+	</div>
+	<section id="toc-content" aria-expanded="false">
+		<div id="toc-content-wrapper">
+			<Fragment set:html={renderTocItems(toc)} />
+		</div>
+	</section>
 </template>
 <aside-toc></aside-toc>
-
