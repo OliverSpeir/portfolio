@@ -307,20 +307,22 @@ import TOC from "@components/TOC.astro";
 							}
 						}
 						createContent() {
-							const style = document.createElement("style");
-							style.textContent = this.getStyle();
-							this.shadow.appendChild(style);
+							setTimeout(() => {
+								const style = document.createElement("style");
+								style.textContent = this.getStyle();
+								this.shadow.appendChild(style);
 
-							const nav = document.createElement("nav");
+								const nav = document.createElement("nav");
 
-							const mobileToc = document.createElement("mobile-toc");
-							const flyOut = document.createElement("flyout-menu");
-							flyOut.setAttribute("data-theme-icon-size", "60px");
+								const mobileToc = document.createElement("mobile-toc");
+								const flyOut = document.createElement("flyout-menu");
+								flyOut.setAttribute("data-theme-icon-size", "60px");
 
-							nav.appendChild(mobileToc);
-							nav.appendChild(flyOut);
+								nav.appendChild(mobileToc);
+								nav.appendChild(flyOut);
 
-							this.shadow.appendChild(nav);
+								this.shadow.appendChild(nav);
+							}, 450);
 						}
 
 						addEventListeners() {
@@ -396,7 +398,9 @@ import TOC from "@components/TOC.astro";
 					}
 				})({});
 			</script>
-			<div class="md:hidden"><visible-on-scroll-up tabindex="0"></visible-on-scroll-up></div>
+			<div class="md:hidden">
+				<visible-on-scroll-up tabindex="0" id="vos"></visible-on-scroll-up>
+			</div>
 			<div class="order-1 max-w-full flex-1 sm:max-w-xl">
 				<PostHeader {title} {lastModified} {date} {minutesRead} {header} />
 				<Content />

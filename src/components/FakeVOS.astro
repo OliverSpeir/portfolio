@@ -43,6 +43,15 @@
 		document.getElementById("fakeVOS").style.display = "none";
 	}, 450);
 </script>
+<script>
+	document.addEventListener("astro:before-preparation", (event) => {
+		const fromHref = event.from.href;
+		const fromPathname = fromHref.substring(fromHref.indexOf('/', fromHref.indexOf('//') + 2));
+		if (fromPathname.startsWith("/garden/") && fromPathname.length > 8) {
+			document.getElementById("vos")!.style.display = "none";
+		}
+	});
+</script>
 <style>
 	#fakeVOS {
 		display: flex;

@@ -8,8 +8,9 @@ header: false
 
 It is easy for things to get lost in the deluge of information, and I feel beholden to draw whatever attention I can to these things. This list is in no particular order, and certainly incomplete. Please message me if you have something you'd like to add. 
 
-Like everything else on my site, this is a WIP.
-
+:::note
+Like everything on my site, this page is a WIP.
+:::
 
 ## Humanitarian
 
