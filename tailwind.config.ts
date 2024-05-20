@@ -25,7 +25,7 @@ const config: Config = {
 	theme: {
 		screens: {
 			sm: "640px",
-			md: "768px",
+			md: "950px",
 			lg: "1024px",
 			xl: "1280px",
 		},
@@ -51,9 +51,6 @@ const config: Config = {
 			addBase({
 				"*, ::before, ::after": {
 					boxSizing: "border-box",
-				},
-				"*": {
-					font: "inherit",
 				},
 				html: {
 					fontSize: "1.1rem",

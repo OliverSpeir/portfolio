@@ -21,11 +21,10 @@ const { Content, remarkPluginFrontmatter, headings } = await post.render();
 const { lastModified, minutesRead } = remarkPluginFrontmatter;
 
 import TOC from "@components/TOC.astro";
-
 ---
 
 <Layout {title} {description} {post}>
-	<header class="relative z-50 mx-1 mt-1 hidden lg:block">
+	<header class="relative z-50 mx-1 mt-1 hidden md:block">
 		<div class="flex items-center justify-between">
 			<div class="flex items-center gap-1">
 				<ThemeButton iconSize="2rem" />
@@ -34,15 +33,16 @@ import TOC from "@components/TOC.astro";
 		</div>
 	</header>
 	<FakeVOS />
-	<article id="main-content" class="relative mx-auto my-0 w-full px-2 lg:-mt-1">
+	<article id="main-content" class="relative h-full min-h-full mx-auto my-0 w-full px-2 md:-mt-1">
 		<div class="flex flex-row items-start justify-center">
 			{
 				headings.length > 0 && (
-					<div class="sticky top-0 order-2 my-0 hidden min-h-screen w-full max-w-[17rem] pl-5 pt-[5rem] lg:block">
+					<div class="sticky top-0 order-2 my-0 hidden min-h-screen w-full max-w-[17rem] pl-5 pt-[5rem] md:block">
 						<TOC {headings} />
 					</div>
 				)
 			}
+
 			<script is:inline>
 				var c = (function () {
 					"use strict";
@@ -95,11 +95,11 @@ import TOC from "@components/TOC.astro";
 						}
 						getStyle() {
 							const style = document.createElement("style");
-							style.textContent = ` flyout-menu { touch-action: manipulation;} #menu-content { position: absolute; right: 0px; bottom: 100%; display: flex; transform: translateY(10px); transform-origin: bottom; background-color: var(--contents-bg);  box-shadow: 0 8px 16px rgba(var(--box-shadow-color), var(--box-shadow-opacity)); border: 2px solid var(--accent-color); border-radius: 10px; padding: 10px; margin: 10px; max-width: 100%; visibility: hidden; opacity: 0; z-index: 10; transition: opacity 1s, transform 1s; gap: 0.35rem; touch-action: manipulation; box-sizing: border-box;} #menu-content.enabled { transition: opacity 0.3s, transform 0.3s, visibility 0s 0.3s; } #menu-content.show { visibility: visible; opacity: 1; transform: translateY(0px); transition: opacity 0.3s, transform 0.3s, visibility 0s 0s; } .home-icon { height: 50px; width: 50px; color: var(--text-color) } .garden-icon { height: 50px; width: 50px; color: var(--text-color); } .icon-container { display: flex; justify-content: center; align-items: center; flex-direction: column; } .toggle-btn { cursor: pointer; border: none; background: none; outline: none; } .toggle-icon { display: block; } .toggle-svg { color: var(--text-color) } .toggle-btn:focus-visible { outline: 2px solid #4D90FE; outline-offset: 2px; } `;
+							style.textContent = ` flyout-menu { touch-action: manipulation; display: flex;} #menu-content { position: absolute; right: 0px; bottom: 100%; display: flex; transform: translateY(10px); transform-origin: bottom; background-color: var(--contents-bg);  box-shadow: 0 8px 16px rgba(var(--box-shadow-color), var(--box-shadow-opacity)); border: 2px solid var(--accent-color); border-radius: 10px; padding: 10px; margin: 10px; max-width: 100%; visibility: hidden; opacity: 0; z-index: 10; transition: opacity 1s, transform 1s; gap: 0.35rem; touch-action: manipulation; box-sizing: border-box;} #menu-content.enabled { transition: opacity 0.3s, transform 0.3s, visibility 0s 0.3s; } #menu-content.show { visibility: visible; opacity: 1; transform: translateY(0px); transition: opacity 0.3s, transform 0.3s, visibility 0s 0s; } .home-icon { height: 50px; width: 50px; color: var(--text-color) } .garden-icon { height: 50px; width: 50px; color: var(--text-color); } .icon-container { display: flex; justify-content: center; align-items: center; flex-direction: column; } .toggle-btn { cursor: pointer; border: none; background: none; outline: none; } .toggle-icon { display: block; } .toggle-svg { color: var(--text-color) } .toggle-btn:focus-visible { outline: 2px solid #4D90FE; outline-offset: 2px; } `;
 							this.appendChild(style);
 						}
 						render() {
-							this.innerHTML = ` <button class="toggle-btn" aria-label="open menu"><span class="toggle-icon"><svg width="30px" height="30px" viewBox="0 0 24 24" class="toggle-svg"><g fill="none" stroke="currentColor" stroke-dasharray="24" stroke-dashoffset="24" stroke-linecap="round" stroke-width="2"><path d="M5 5H19" stroke-dashoffset="0" /><path d="M5 12H19" stroke-dashoffset="0" /><path d="M5 19H19" stroke-dashoffset="0" /></g></svg></span></button> <div id="menu-content"> <div class="icon-container"> <theme-toggle-button ></theme-toggle-button> </div> <div class="icon-container"> <a href="/" aria-label="homepage"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="home-icon"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036c-.01-.003-.019 0-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M10.671 2.843a2 2 0 0 1 2.658 0l3.934 3.497l.25-1.504a1 1 0 1 1 1.973.328L19.03 7.91l2.635 2.343a1 1 0 0 1-1.328 1.494l-.464-.412l-.787 7.864A2 2 0 0 1 17.095 21H6.905a2 2 0 0 1-1.99-1.801l-.786-7.864l-.465.412a1 1 0 0 1-1.328-1.494zM5.957 9.71c.019.062.031.125.038.191l.91 9.1h10.19l.91-9.1c.007-.066.02-.13.038-.19L12 4.337z"/></g></svg></a> </div> <div class="icon-container"> <a href="/garden/" aria-label="garden"> <svg width="1em" height="1em" viewBox="0 0 256 256" class="garden-icon"><path fill="currentColor" d="M247.63 47.89a8 8 0 0 0-7.52-7.52c-51.76-3-93.32 12.74-111.18 42.22c-11.8 19.49-11.78 43.16-.16 65.74a71.34 71.34 0 0 0-14.17 27L98.33 159c7.82-16.33 7.52-33.35-1-47.49c-13.2-21.79-43.67-33.47-81.5-31.25a8 8 0 0 0-7.52 7.52c-2.23 37.83 9.46 68.3 31.25 81.5A45.82 45.82 0 0 0 63.44 176A54.58 54.58 0 0 0 87 170.33l25 25V224a8 8 0 0 0 16 0v-29.49a55.61 55.61 0 0 1 12.27-35a73.91 73.91 0 0 0 33.31 8.4a60.9 60.9 0 0 0 31.83-8.86c29.48-17.84 45.26-59.4 42.22-111.16M47.81 155.6C32.47 146.31 23.79 124.32 24 96c28.32-.24 50.31 8.47 59.6 23.81c4.85 8 5.64 17.33 2.46 26.94l-24.41-24.41a8 8 0 0 0-11.31 11.31l24.41 24.41c-9.61 3.18-18.93 2.39-26.94-2.46m149.31-10.22c-13.4 8.11-29.15 8.73-45.15 2l53.69-53.7a8 8 0 0 0-11.31-11.31L140.65 136c-6.76-16-6.15-31.76 2-45.15c13.94-23 47-35.82 89.33-34.83c.96 42.32-11.84 75.42-34.86 89.36"/></svg></a> </div> </div> `;
+							this.innerHTML = ` <button tabindex="0" class="toggle-btn" aria-label="open menu"><span class="toggle-icon"><svg width="30px" height="30px" viewBox="0 0 24 24" class="toggle-svg"><g fill="none" stroke="currentColor" stroke-dasharray="24" stroke-dashoffset="24" stroke-linecap="round" stroke-width="2"><path d="M5 5H19" stroke-dashoffset="0" /><path d="M5 12H19" stroke-dashoffset="0" /><path d="M5 19H19" stroke-dashoffset="0" /></g></svg></span></button> <div id="menu-content"> <div class="icon-container"> <theme-toggle-button ></theme-toggle-button> </div> <div class="icon-container"> <a href="/" aria-label="homepage"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="home-icon"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036c-.01-.003-.019 0-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M10.671 2.843a2 2 0 0 1 2.658 0l3.934 3.497l.25-1.504a1 1 0 1 1 1.973.328L19.03 7.91l2.635 2.343a1 1 0 0 1-1.328 1.494l-.464-.412l-.787 7.864A2 2 0 0 1 17.095 21H6.905a2 2 0 0 1-1.99-1.801l-.786-7.864l-.465.412a1 1 0 0 1-1.328-1.494zM5.957 9.71c.019.062.031.125.038.191l.91 9.1h10.19l.91-9.1c.007-.066.02-.13.038-.19L12 4.337z"/></g></svg></a> </div> <div class="icon-container"> <a href="/garden/" aria-label="garden"> <svg width="1em" height="1em" viewBox="0 0 256 256" class="garden-icon"><path fill="currentColor" d="M247.63 47.89a8 8 0 0 0-7.52-7.52c-51.76-3-93.32 12.74-111.18 42.22c-11.8 19.49-11.78 43.16-.16 65.74a71.34 71.34 0 0 0-14.17 27L98.33 159c7.82-16.33 7.52-33.35-1-47.49c-13.2-21.79-43.67-33.47-81.5-31.25a8 8 0 0 0-7.52 7.52c-2.23 37.83 9.46 68.3 31.25 81.5A45.82 45.82 0 0 0 63.44 176A54.58 54.58 0 0 0 87 170.33l25 25V224a8 8 0 0 0 16 0v-29.49a55.61 55.61 0 0 1 12.27-35a73.91 73.91 0 0 0 33.31 8.4a60.9 60.9 0 0 0 31.83-8.86c29.48-17.84 45.26-59.4 42.22-111.16M47.81 155.6C32.47 146.31 23.79 124.32 24 96c28.32-.24 50.31 8.47 59.6 23.81c4.85 8 5.64 17.33 2.46 26.94l-24.41-24.41a8 8 0 0 0-11.31 11.31l24.41 24.41c-9.61 3.18-18.93 2.39-26.94-2.46m149.31-10.22c-13.4 8.11-29.15 8.73-45.15 2l53.69-53.7a8 8 0 0 0-11.31-11.31L140.65 136c-6.76-16-6.15-31.76 2-45.15c13.94-23 47-35.82 89.33-34.83c.96 42.32-11.84 75.42-34.86 89.36"/></svg></a> </div> </div> `;
 						}
 					}
 
@@ -267,7 +267,7 @@ import TOC from "@components/TOC.astro";
 						}
 						getStyle() {
 							const style = document.createElement("style");
-							style.textContent = ` mobile-toc { display: flex; overflow: hidden; touch-action: manipulation; } #toc-content { position: absolute; left: 0px; right: 0px; bottom: 100%; transform: translateY(10px); z-index: 10; background-color: var(--contents-bg); color: var(--text-color); box-sizing: border-box; box-shadow: 0 8px 16px rgba(var(--box-shadow-color), var(--box-shadow-opacity)); border: 2px solid var(--accent-color); border-radius: 10px; padding: 10px; margin: 10px; max-width: 17rem; visibility: hidden; opacity: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; touch-action: manipulation; } #toc-content-wrapper { width: 95%; } #toc-content ul { width: 100%; padding: 0; list-style: none; margin: 0; } #toc-content li { display: block; width: 100%; padding: 0; box-sizing: border-box; border-top: 1px solid #565656; } #toc-content ul ul li.current { background-color: var(--contents-accent); border-radius: 2px; } #toc-content a[aria-current="true"] { background-color: var(--contents-accent); border-radius: 2px; } #toc-content > #toc-content-wrapper > ul > li:first-child { border-top: none; } #toc-content ul ul li { padding-left: 20px; padding-right: 0; } #toc-content li, #toc-content a { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; padding-top: 0.05rem; padding-bottom: 0.05rem; } #toc-content a { padding-left: 0.35rem; text-decoration: none; font-weight: 500; color: var(--accent-color); transition: color 0.15s; } #toc-content a:focus-visible { color: var(--text-color-opposite); background-color: var(--accent-color); } #toc-content a:hover { text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: 2px; } #toc-content.enabled { transition: opacity 0.3s, transform 0.3s, visibility 0s 0.3s; } #toc-content.show { visibility: visible; opacity: 1; transform: translate3d(0, 0px, 0); transition: opacity 0.3s, transform 0.3s, visibility 0s 0s; } #caret { transform: rotateZ(var(--caret-rotation)); transition: transform 0.3s ease-in-out; margin-top: 0.15rem; width: 1.25rem; height: 1.25rem; } #display-current { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; min-width: 10rem; text-align: left; margin-left: 0.35rem; } #button-title { display:flex; padding: 0.25rem; background-color: var(--contents-accent); justify-content: space-between; border: 1px solid grey; border-radius: .5rem; gap: 0.25rem; font-weight: 500; } #button-title.show { background-color: var(--accent-color); color: var(--text-color-opposite); } #toc-display { display: flex; width: 100%; } #toc-toggle { background: transparent; color: inherit; font: inherit; border: none; margin: 0; padding: 0; align-items: center; display: flex; width: fit-content; -webkit-tap-highlight-color: rgba(0,0,0,0); max-width: 45%; } #toc-toggle:focus-visible { padding: 3px; }`;
+							style.textContent = ` mobile-toc { display: flex; overflow: hidden; touch-action: manipulation; } #toc-content { position: absolute; left: 0px; right: 0px; bottom: 100%; transform: translateY(10px); z-index: 10; background-color: var(--contents-bg); color: var(--text-color); box-sizing: border-box; box-shadow: 0 8px 16px rgba(var(--box-shadow-color), var(--box-shadow-opacity)); border: 2px solid var(--accent-color); border-radius: 10px; padding: 10px; margin: 10px; max-width: 17rem; visibility: hidden; opacity: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; touch-action: manipulation; } #toc-content-wrapper { width: 95%; } #toc-content ul { width: 100%; padding: 0; list-style: none; margin: 0; } #toc-content li { display: block; width: 100%; padding: 0; box-sizing: border-box; border-top: 1px solid #565656; } #toc-content ul ul li.current { background-color: var(--contents-accent); border-radius: 2px; } #toc-content a[aria-current="true"] { background-color: var(--contents-accent); border-radius: 2px; } #toc-content > #toc-content-wrapper > ul > li:first-child { border-top: none; } #toc-content ul ul li { padding-left: 20px; padding-right: 0; } #toc-content li, #toc-content a { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; padding-top: 0.05rem; padding-bottom: 0.05rem; } #toc-content a { padding-left: 0.35rem; text-decoration: none; font-weight: 500; color: var(--accent-color); transition: color 0.15s; } #toc-content a:focus-visible { color: var(--text-color-opposite); background-color: var(--accent-color); } #toc-content a:hover { text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: 2px; } #toc-content.enabled { transition: opacity 0.3s, transform 0.3s, visibility 0s 0.3s; } #toc-content.show { visibility: visible; opacity: 1; transform: translate3d(0, 0px, 0); transition: opacity 0.3s, transform 0.3s, visibility 0s 0s; } #caret { transform: rotateZ(var(--caret-rotation)); transition: transform 0.3s ease-in-out; margin-top: 0.15rem; width: 1.25rem; height: 1.25rem; } #display-current { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; min-width: 10rem; text-align: left; margin-left: 0.35rem; } #button-title { display:flex; padding: 0.25rem; background-color: var(--contents-accent); justify-content: space-between; border: 1px solid grey; border-radius: .5rem; gap: 0.25rem; font-weight: 500; } #button-title.show { background-color: var(--accent-color); color: var(--text-color-opposite); } #toc-toggle { background: transparent;color:inherit;font:inherit;border:none; margin: 0; padding:0;align-items:center;display:flex;width:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);max-width:45%;box-sizing:border-box;}#btn-pad{padding:0.2rem;}`;
 							this.appendChild(style);
 						}
 					}
@@ -305,12 +305,19 @@ import TOC from "@components/TOC.astro";
 							const style = document.createElement("style");
 							style.textContent = this.getStyle();
 							this.shadow.appendChild(style);
+
+							const nav = document.createElement("nav");
+
 							const mobileToc = document.createElement("mobile-toc");
-							this.shadow.appendChild(mobileToc);
 							const flyOut = document.createElement("flyout-menu");
 							flyOut.setAttribute("data-theme-icon-size", "60px");
-							this.shadow.appendChild(flyOut);
+
+							nav.appendChild(mobileToc);
+							nav.appendChild(flyOut);
+
+							this.shadow.appendChild(nav);
 						}
+
 						addEventListeners() {
 							const links = this.shadow.querySelectorAll("a");
 							links.forEach((link) => link.addEventListener("click", this.handleLinkClick));
@@ -367,7 +374,7 @@ import TOC from "@components/TOC.astro";
 							this.lastScrollPos = scrollPos;
 						};
 						getStyle() {
-							return ` :host { position: fixed; bottom: 0; left: 0; right: 0; color: var(--text-color); display: flex; justify-content: space-between; align-items: center; background-color: var(--contents-bg); border-top: 1px solid black; padding: 10px; transform: translateY(0); transition: transform 0.3s ease-in-out; z-index: 20; width: 100%; max-width: 100%; touch-action: manipulation; }`;
+							return ` :host { position: fixed; bottom: 0; left: 0; right: 0; color: var(--text-color); background-color: var(--contents-bg); border-top: 1px solid black; padding: 0.625rem; transform: translateY(0); transition: transform 0.3s ease-in-out; z-index: 20; max-width: 100%; touch-action: manipulation; } nav { display: flex; justify-content: space-between; width: 100%; }`;
 						}
 					}
 					if (!customElements.get("visible-on-scroll-up")) {
@@ -384,8 +391,8 @@ import TOC from "@components/TOC.astro";
 					}
 				})({});
 			</script>
-			<div class="lg:hidden"><visible-on-scroll-up></visible-on-scroll-up></div>
-			<div class="order-1 max-w-full flex-1 md:max-w-xl">
+			<div class="md:hidden"><visible-on-scroll-up tabindex="0"></visible-on-scroll-up></div>
+			<div class="order-1 max-w-full flex-1 sm:max-w-xl">
 				<PostHeader {title} {lastModified} {date} {minutesRead} {header} />
 				<Content />
 			</div>

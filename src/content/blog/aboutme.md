@@ -8,14 +8,13 @@ header: false
 
 Hey, I'm Oliver 👋
 
-
 ## My values
 
 I believe that software developers have the ability to make the world a better place by creating code that is intuitive, inclusive and accessible.
 
 I want to use my skills to have a positive impact.
 
-In 2022 I reverted to Islam, and as a Muslim my primary objectives in this life are to worship God by doing good deeds and seeking knowledge.
+In 2022 I reverted to Islam, and as a Muslim my primary objective in this life is to worship God by doing good deeds and seeking knowledge.
 
 ## My tech origin story
 
