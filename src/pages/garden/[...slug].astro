@@ -33,7 +33,12 @@ import TOC from "@components/TOC.astro";
 		</div>
 	</header>
 	<FakeVOS />
-	<article id="main-content" class="relative h-full min-h-full mx-auto my-0 w-full px-2 md:-mt-1">
+	<script>
+		document.addEventListener("astro:after-swap", () =>
+			window.scrollTo({ left: 0, top: 0, behavior: "instant" }),
+		);
+	</script>
+	<article id="main-content" class="relative mx-auto my-0 h-full min-h-full w-full px-2 md:-mt-1">
 		<div class="flex flex-row items-start justify-center">
 			{
 				headings.length > 0 && (
