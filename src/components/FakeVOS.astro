@@ -38,10 +38,17 @@
 	</div>
 </div>
 <script is:inline data-astro-rerun>
-	document.getElementById("fakeVOS").style.display = "flex";
-	setTimeout(() => {
-		document.getElementById("fakeVOS").style.display = "none";
-	}, 450);
+  (function() {
+    const fakeVOS = document.getElementById('fakeVOS');
+    fakeVOS.style.display = "flex";
+    const height = fakeVOS.offsetHeight;
+    fakeVOS.style.transform = `translateY(calc(100dvh - ${height}px))`;
+    fakeVOS.style.marginBottom = `-${height}px`;
+    
+    setTimeout(() => {
+      document.getElementById("fakeVOS").style.display = "none";
+    }, 450);
+  })();
 </script>
 <script>
 	document.addEventListener("astro:before-preparation", (event) => {
@@ -54,25 +61,20 @@
 </script>
 <style>
 	#fakeVOS {
-		display: flex;
+		display: none;
 		position: absolute;
 		left: 0;
 		right: 0;
-		transform: translateY(calc(100vh - 3.81725rem));
+		/* transform: translateY(calc(100vh - 3.81725rem)); */
 		color: var(--text-color);
 		background-color: var(--contents-bg);
 		border-top: 1px solid black;
 		padding: 0.625rem;
 		z-index: 2;
 		max-width: 100%;
-		margin-bottom: -3.81725rem;
+		/* margin-bottom: -3.81725rem; */
 	}
 
-	@supports (height: 1dvh) {
-		#fakeVOS {
-			transform: translateY(calc(100dvh - 3.81725rem));
-		}
-	}
 	#fakeNav {
 		display: flex;
 		justify-content: space-between;
