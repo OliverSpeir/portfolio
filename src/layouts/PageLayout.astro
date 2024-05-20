@@ -6,7 +6,7 @@ import { Head } from "astro-capo";
 import Meta from "@components/Meta.astro";
 import type { CollectionEntry } from "astro:content";
 import ThemeManager from "@components/ThemeManager.astro";
-
+import PageOffset from "astro-vtbot/components/PageOffset.astro";
 type Props = {
 	title: string;
 	description: string;
@@ -32,7 +32,7 @@ const anim: TransitionAnimationPair = {
 
 const viewTransition = {
 	forwards: anim,
-	backwards:anim,
+	backwards: anim,
 };
 ---
 
@@ -47,6 +47,7 @@ const viewTransition = {
 		<Meta {title} {description} {post} />
 		<ThemeManager />
 		<ViewTransitions />
+		<PageOffset name="main" />
 	</Head>
 	<body>
 		<script is:inline>
@@ -62,7 +63,7 @@ const viewTransition = {
 				themeColorMeta && themeColorMeta.setAttribute("content", color);
 			})();
 		</script>
-		<main transition:animate={viewTransition}>
+		<main transition:animate={viewTransition} transition:name="main">
 			<slot />
 		</main>
 		<script>
