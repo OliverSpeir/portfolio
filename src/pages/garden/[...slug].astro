@@ -52,7 +52,6 @@ import TOC from "@components/TOC.astro";
 
 			<script is:inline>
 				var c = (function () {
-					"use strict";
 
 					class FlyoutMenu extends HTMLElement {
 						constructor() {
@@ -102,7 +101,7 @@ import TOC from "@components/TOC.astro";
 						}
 						getStyle() {
 							const style = document.createElement("style");
-							style.textContent = ` flyout-menu { touch-action: manipulation; display: flex;} #menu-content { position: absolute; right: 0px; bottom: 100%; display: flex; transform: translateY(10px); transform-origin: bottom; background-color: var(--contents-bg);  box-shadow: 0 8px 16px rgba(var(--box-shadow-color), var(--box-shadow-opacity)); border: 2px solid var(--accent-color); border-radius: 10px; padding: 10px; margin: 10px; max-width: 100%; visibility: hidden; opacity: 0; z-index: 10; transition: opacity 1s, transform 1s; gap: 0.35rem; touch-action: manipulation; box-sizing: border-box;} #menu-content.enabled { transition: opacity 0.3s, transform 0.3s, visibility 0s 0.3s; } #menu-content.show { visibility: visible; opacity: 1; transform: translateY(0px); transition: opacity 0.3s, transform 0.3s, visibility 0s 0s; } .home-icon { height: 50px; width: 50px; color: var(--text-color) } .garden-icon { height: 50px; width: 50px; color: var(--text-color); } .icon-container { display: flex; justify-content: center; align-items: center; flex-direction: column; } .toggle-btn { cursor: pointer; border: none; background: none; outline: none; } .toggle-icon { display: block; } .toggle-svg { color: var(--text-color) } .toggle-btn:focus-visible { outline: 2px solid #4D90FE; outline-offset: 2px; } `;
+							style.textContent = ` flyout-menu { touch-action: manipulation; display: flex;} #menu-content { position: absolute; right: 0px; bottom: 100%; display: flex; transform: translateY(10px); transform-origin: bottom; background-color: var(--contents-bg);  box-shadow: 0 8px 16px rgba(var(--box-shadow-color), var(--box-shadow-opacity)); border: 2px solid var(--accent-color); border-radius: 10px; padding: 10px; margin: 10px; max-width: 100%; visibility: hidden; opacity: 0; z-index: 10; transition: opacity 1s, transform 1s; gap: 0.35rem; touch-action: manipulation; box-sizing: border-box;} #menu-content.enabled { transition: opacity 0.3s, transform 0.3s, visibility 0s 0.3s; } #menu-content.show { visibility: visible; opacity: 1; transform: translateY(0px); transition: opacity 0.3s, transform 0.3s, visibility 0s 0s; } .home-icon { height: 50px; width: 50px; color: var(--accent-color) } .garden-icon { height: 50px; width: 50px; color: var(--accent-color); } .icon-container { display: flex; justify-content: center; align-items: center; flex-direction: column; } .toggle-btn { cursor: pointer; border: none; background: none; outline: none; } .toggle-icon { display: block; } .toggle-svg { color: var(--text-color) } .toggle-btn:focus-visible { outline: 2px solid #4D90FE; outline-offset: 2px; } `;
 							this.appendChild(style);
 						}
 						render() {

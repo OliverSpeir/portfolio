@@ -1,24 +1,19 @@
 ---
 import { Icon } from "astro-icon/components";
+import ThemeButton from "./ThemeButton.astro";
 ---
 
-<div class="flex justify-evenly">
-	<a
-		class="flex items-center"
-		href="https://www.linkedin.com/in/oliverspeir/"
-		aria-label="linked in"
-		target="_blank"
-		><Icon name="bxl:linkedin-square" class="h-10 w-10 sm:h-8 sm:w-8" aria-hidden="true" /></a
+<div class="flex items-center justify-between -mb-2">
+	<a href="https://www.linkedin.com/in/oliverspeir/" aria-label="linked in" target="_blank"
+		><Icon name="bxl:linkedin-square" class="h-8 w-8" aria-hidden="true" /></a
 	>
-	<a
-		class="flex items-center"
-		href="https://github.com/OliverSpeir/"
-		aria-label="git hub"
-		target="_blank"
-		><Icon name="bxl:github" class="h-10 w-10 sm:h-8 sm:w-8" aria-hidden="true" /></a
+	<a href="https://github.com/OliverSpeir/" aria-label="git hub" target="_blank"
+		><Icon name="bxl:github" class="h-8 w-8" aria-hidden="true" /></a
 	>
-	<a aria-label="Email" class="flex items-center" href="mailto:oliver@speir.dev" target="_blank"
-		><Icon name="fontisto:email" class="h-10 w-10 sm:h-8 sm:w-8" aria-hidden="true" /></a
+	<a aria-label="Email" href="mailto:oliver@speir.dev" target="_blank"
+		><Icon name="fontisto:email" class="h-8 w-8" aria-hidden="true" /></a
 	>
-	
+	<div class="mt-1">
+		<ThemeButton iconSize="1.75rem" />
+	</div>
 </div>

@@ -31,9 +31,6 @@ article {
 
 :root[data-theme="dark"] {
 	--contents-bg: rgb(24 24 27);
-	--background-color: #f2f3f5;
-	--text-color: #09090b;
-	--accent-color: #2f3a91;
 	--background-color: #323232;
 	--text-color: #ecf1f9;
 	--text-color-opposite: #09090b;
