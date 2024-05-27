@@ -1,44 +1,39 @@
 ---
-// it's  IIFE https://developer.mozilla.org/en-US/docs/Glossary/IIFE
 
-// IIFE are useful for data-astro-rerun scripts because the window is preserved when using Astro's <ViewTransitions/>
-
-/* unminified code 
-
-(() => {
-  const formatter = new Intl.DateTimeFormat("en-US", {
-    timeZone: "America/Denver",
-    hour12: false,
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
-  // Format the date and remove leading zero from hours
-  let timeInTimeZone = formatter.format(new Date()).replace(/^0/, "");
-
-  // Determine AM/PM indicator
-  const amPmIndicator = parseInt(timeInTimeZone.split(":")[0], 10) < 12 ? " AM" : "";
-
-  // Update the display
-  const timeDisplay = document.getElementById("time");
-  if (timeDisplay) timeDisplay.innerText = timeInTimeZone + amPmIndicator;
-})();
-
-*/
----
-
-<script is:inline data-astro-rerun>
-	(() => {
-		let e = new Intl.DateTimeFormat("en-US", {
-			timeZone: "America/Denver",
-			hour12: !1,
+/**
+ * 	(() => {
+		const now = new Date();
+		let formattedTime = new Intl.DateTimeFormat("en-US", {
+			timeZone: "Europe/London",
+			hour12: false,
 			hour: "2-digit",
 			minute: "2-digit",
-		})
-			.format(new Date())
-			.replace(/^0/, "");
-		const t = parseInt(e.split(":")[0], 10) < 12 ? " AM" : "",
-			n = document.getElementById("time");
-		n && (n.innerText = e + t);
+		}).format(now);
+		
+		// Determine AM or PM and adjust hour accordingly
+		let hours = parseInt(formattedTime.split(":")[0], 10);
+		const isAM = hours < 12;
+		const suffix = isAM ? " AM" : " PM";
+
+		// Convert 24h format to 12h format for display and remove leading zero if necessary
+		if (hours > 12) {
+			hours -= 12;
+		} else if (hours === 0) {
+			hours = 12; // Midnight to "12"
+		}
+
+		// Correctly format single-digit hours for 1-9 AM/PM without leading zero
+		formattedTime = (hours < 10 ? hours.toString() : formattedTime.slice(0, 2)) + formattedTime.slice(2, 5);
+
+		const timeElement = document.getElementById("time");
+		if (timeElement) {
+			timeElement.innerText = formattedTime + suffix;
+		}
 	})();
+ */
+---
+<script is:inline data-astro-rerun>
+(()=>{let e=new Date,t=new Intl.DateTimeFormat("en-US",{timeZone:"America/Denver",hour12:!1,hour:"2-digit",minute:"2-digit"}).format(e),i=parseInt(t.split(":")[0],10),n=i<12,o=n?" AM":" PM";i>12?i-=12:0===i&&(i=12),t=(i<10?i.toString():t.slice(0,2))+t.slice(2,5);let _=document.getElementById("time");_&&(_.innerText=t+o)})();
 </script>
+
+
