@@ -20,6 +20,7 @@
 		"@iconify-json/f7": "^1.1.0",
 		"@iconify-json/fontisto": "^1.1.8",
 		"@iconify-json/gridicons": "^1.1.14",
+		"@iconify-json/lucide": "^1.1.188",
 		"@iconify-json/ph": "^1.1.13",
 		"@iconify-json/radix-icons": "^1.1.14",
 		"@playform/compress": "^0.0.3",
@@ -58,5 +59,6 @@
 	},
 	"devDependencies": {
 		"remark-toc": "^9.0.0"
-	}
+	},
+	"packageManager": "pnpm@9.1.2+sha1.907f57a52517de34399d66401bf220a549e47b57"
 }
