@@ -18,7 +18,7 @@ import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "./src/assets/plugins/remark-callout-directives-customized.js";
 import { remarkModifiedTime } from "./src/assets/plugins/remark-last-modified.js";
 import remarkToc from "remark-toc";
-import vtbot from "astro-vtbot"
+// import vtbot from "astro-vtbot"
 
 const config: AstroUserConfig = defineConfig({
 	site: "http://oliverspeir.dev/",
@@ -33,13 +33,7 @@ const config: AstroUserConfig = defineConfig({
 		}),
 		sitemap(),
 		robotsTxt(),
-		icon({
-			include: {
-				bxl: ["linkedin-square", "github"],
-				ph: ["plant"],
-				gridicons: ["reader-external", "chevron-right"],
-			},
-		}),
+		icon(),
 		expressiveCode(),
 		compress(),
 		metaTags(),
