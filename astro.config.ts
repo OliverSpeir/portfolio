@@ -15,7 +15,8 @@ import autolinkHeadings from "rehype-autolink-headings";
 import imgAttr from "remark-imgattr";
 import metaTags from "astro-meta-tags";
 import remarkDirective from "remark-directive";
-import remarkCalloutDirectives from "./src/assets/plugins/remark-callout-directives-customized.js";
+// import remarkCalloutDirectives from "./src/assets/plugins/remark-callout-directives-customized.js";
+import astroStarlightRemarkAsides from "astro-starlight-remark-asides";
 import { remarkModifiedTime } from "./src/assets/plugins/remark-last-modified.js";
 import remarkToc from "remark-toc";
 // import vtbot from "astro-vtbot"
@@ -44,7 +45,7 @@ const config: AstroUserConfig = defineConfig({
 			remarkReadingTime,
 			imgAttr,
 			remarkDirective,
-			remarkCalloutDirectives,
+			astroStarlightRemarkAsides,
 			remarkModifiedTime,
 			remarkToc,
 		],

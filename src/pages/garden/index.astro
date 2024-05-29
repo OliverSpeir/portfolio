@@ -8,13 +8,13 @@ const description = "the plot";
 ---
 
 <Layout {title} {description}>
-	<div class="flex items-center pt-1 gap-1 mx-1">
-		<ThemeButton iconSize="2rem"/>
+	<div class="mx-1 flex items-center gap-1 pt-1">
+		<ThemeButton iconSize="2rem" />
 		<nav><a href="/">Homepage</a></nav>
 	</div>
-	<div class="flex flex-col justify-center -mt-2 mx-2">
+	<div class="mx-2 -mt-2 flex flex-col items-center justify-center">
 		<h1 class="mx-auto">Digital Garden</h1>
-		<div class="flex flex-col justify-evenly gap-2 sm:flex-row mb-2" id="main-content">
+		<div class="mb-2 flex max-w-3xl flex-col justify-evenly gap-2 sm:flex-row" id="main-content">
 			<section class="sm:order-2">
 				<h2>Recent</h2>
 				<div class="flex flex-col gap-2 sm:max-w-[16rem]">
@@ -39,11 +39,10 @@ const description = "the plot";
 			<section class="sm:order-1">
 				<h2>Pinned</h2>
 				<div class="flex flex-col gap-2 sm:max-w-[16rem]">
-					<Preview entry="aboutme" dated={false} description={false} readingTime=" "/>
-					<Preview entry="futureprojects" dated={false} readingTime=" "/>
-					<Preview entry="toolsiuse" dated={false} readingTime=" "/>
-					<Preview entry="causes" dated={false} readingTime=" "/>
-
+					<Preview entry="aboutme" dated={false} description={false} readingTime=" " />
+					<Preview entry="futureprojects" dated={false} readingTime=" " />
+					<Preview entry="toolsiuse" dated={false} readingTime=" " />
+					<Preview entry="causes" dated={false} readingTime=" " />
 				</div>
 			</section>
 			<section class="sm:order-3">

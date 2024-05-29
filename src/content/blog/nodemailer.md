@@ -15,6 +15,7 @@ See [alternative methods](#alternatives) for other options.
 This example uses Gmail as the SMTP, but it is possible to have your domain blacklisted by using workspaces like this, either use an actual Gmail address, or another SMTP.
 :::
 
+
 ## Serverless function
 
 _As far as I am aware it is easiest to handle CORS yourself (instead of API gateway), but I could be wrong about this. If anyone has better ideas please reach out and I'll update this._
