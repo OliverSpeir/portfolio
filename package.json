@@ -31,7 +31,7 @@
 		"astro-icon": "^1.1.0",
 		"astro-meta-tags": "^0.3.0",
 		"astro-robots-txt": "^1.0.0",
-		"astro-starlight-remark-asides": "^0.0.3",
+		"astro-starlight-remark-asides": "^0.0.6",
 		"astro-vtbot": "^1.7.21",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",

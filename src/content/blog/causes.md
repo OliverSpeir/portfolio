@@ -1,7 +1,7 @@
 ---
 title: "Important events"
 description: "Some of the important things happening in the world"
-ogImage: "../../assets/imgs/todo.png"
+ogImage: "@imgs/causes.webp"
 date: 2024-05-18T03:21:44Z
 header: false
 ---
