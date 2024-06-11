@@ -11,7 +11,7 @@
 		"format": "prettier -w --cache . && prettier -w --cache **/*.astro"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.6.0",
+		"@astrojs/check": "^0.7.0",
 		"@astrojs/sitemap": "^3.1.5",
 		"@astrojs/tailwind": "^5.1.0",
 		"@astrojs/vercel": "^7.6.0",
@@ -23,7 +23,7 @@
 		"@iconify-json/lucide": "^1.1.188",
 		"@iconify-json/ph": "^1.1.13",
 		"@iconify-json/radix-icons": "^1.1.14",
-		"@playform/compress": "^0.0.3",
+		"@playform/compress": "^0.0.12",
 		"@typescript-eslint/eslint-plugin": "^7.11.0",
 		"astro": "^4.9.2",
 		"astro-capo": "^0.0.1",
@@ -31,7 +31,7 @@
 		"astro-icon": "^1.1.0",
 		"astro-meta-tags": "^0.3.0",
 		"astro-robots-txt": "^1.0.0",
-		"astro-starlight-remark-asides": "^0.0.6",
+		"astro-starlight-remark-asides": "^0.0.7",
 		"astro-vtbot": "^1.7.21",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
@@ -46,8 +46,8 @@
 		"mdast-util-from-markdown": "^2.0.1",
 		"mdast-util-to-string": "^4.0.0",
 		"prettier": "^3.2.5",
-		"prettier-plugin-astro": "^0.13.0",
-		"prettier-plugin-tailwindcss": "^0.5.14",
+		"prettier-plugin-astro": "^0.14.0",
+		"prettier-plugin-tailwindcss": "^0.6.0",
 		"reading-time": "^1.5.0",
 		"rehype-autolink-headings": "^7.1.0",
 		"remark-directive": "^3.0.0",
@@ -61,5 +61,5 @@
 	"devDependencies": {
 		"remark-toc": "^9.0.0"
 	},
-	"packageManager": "pnpm@9.1.2+sha1.907f57a52517de34399d66401bf220a549e47b57"
+	"packageManager": "pnpm@9.3.0"
 }
