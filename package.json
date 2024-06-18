@@ -33,7 +33,7 @@
 		"astro-robots-txt": "^1.0.0",
 		"astro-starlight-remark-asides": "^0.0.7",
 		"astro-vtbot": "^1.7.21",
-		"eslint": "^8.57.0",
+		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-formatter-codeframe": "^7.32.1",
 		"eslint-plugin-astro": "^1.0.0",
