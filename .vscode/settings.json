@@ -19,5 +19,7 @@
 		"titleBar.inactiveForeground": "#e7e7e799"
 	},
 	"peacock.color": "#215732",
-	"accessibility.signals.sounds.volume": 0
+	"accessibility.signalOptions": {
+		"volume": 0
+	}
 }
