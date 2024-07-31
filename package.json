@@ -24,7 +24,7 @@
 		"@iconify-json/ph": "^1.1.13",
 		"@iconify-json/radix-icons": "^1.1.14",
 		"@playform/compress": "^0.0.12",
-		"@typescript-eslint/eslint-plugin": "^7.11.0",
+		"@typescript-eslint/eslint-plugin": "^8.0.0",
 		"astro": "^4.9.2",
 		"astro-capo": "^0.0.1",
 		"astro-expressive-code": "^0.35.3",
